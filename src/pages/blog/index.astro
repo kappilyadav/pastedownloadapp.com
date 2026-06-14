@@ -1,0 +1,75 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+---
+
+<ContentLayout title="Blog - PasteDownloadApp" description="Tips and guides for saving clipboard images, downloading screenshots, and using PasteDownloadApp." canonicalUrl="https://pastedownloadapp.com/blog/">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pastedownloadapp.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://pastedownloadapp.com/blog/" }
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Blog - PasteDownloadApp",
+      "description": "Tips and guides for saving clipboard images, downloading screenshots, and using PasteDownloadApp.",
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "url": "https://pastedownloadapp.com/blog/png-vs-jpg-vs-webp/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "url": "https://pastedownloadapp.com/blog/download-copied-image-mac/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "url": "https://pastedownloadapp.com/blog/save-screenshot-as-file-windows/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "url": "https://pastedownloadapp.com/blog/save-clipboard-image-without-software/"
+          }
+        ]
+      }
+    }
+  </script>
+  <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-6 leading-tight text-balance">
+    Blog
+  </h1>
+
+  <div class="text-body text-sm sm:text-[15px] leading-relaxed space-y-4">
+    <p>Tips and guides for saving images from your clipboard without extra software.</p>
+
+    <ul class="list-disc pl-5 space-y-3 mt-6 [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
+      <li>
+        <a href="/blog/png-vs-jpg-vs-webp/">PNG vs JPG vs WebP - Which Format Should You Save Your Image As?</a>
+        <span class="block text-mute text-xs mt-0.5">Learn the png vs jpg vs webp difference and how to pick the right format.</span>
+      </li>
+      <li>
+        <a href="/blog/download-copied-image-mac/">How to Download a Copied Image on Mac Without Saving to Photos</a>
+        <span class="block text-mute text-xs mt-0.5">Save clipboard images from your Mac - no Photos, no Preview.</span>
+      </li>
+      <li>
+        <a href="/blog/save-screenshot-as-file-windows/">How to Save a Screenshot Directly as a File (Without Opening MS Paint)</a>
+        <span class="block text-mute text-xs mt-0.5">Save clipboard images instantly - no Paint, no installs.</span>
+      </li>
+      <li>
+        <a href="/blog/save-clipboard-image-without-software/">5 Faster Ways to Save Clipboard Images (No Software Install Needed)</a>
+        <span class="block text-mute text-xs mt-0.5">Save clipboard images without installing any software using only your browser.</span>
+      </li>
+    </ul>
+  </div>
+</ContentLayout>

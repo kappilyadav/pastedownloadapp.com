@@ -1,0 +1,65 @@
+---
+import ContentLayout from '../layouts/ContentLayout.astro';
+---
+
+<ContentLayout title="About Us - PasteDownloadApp" description="About PasteDownloadApp: a free, privacy-first online image downloader. All image processing happens in your browser with zero uploads." canonicalUrl="https://pastedownloadapp.com/about/">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pastedownloadapp.com/" },
+        { "@type": "ListItem", "position": 2, "name": "About", "item": "https://pastedownloadapp.com/about/" }
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "About Us - PasteDownloadApp",
+      "description": "About PasteDownloadApp: a free, privacy-first online image downloader. All image processing happens in your browser with zero uploads.",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "PasteDownloadApp",
+        "description": "Free online image downloader that processes everything in your browser. No uploads, no sign-ups, unlimited use.",
+        "url": "https://pastedownloadapp.com/",
+        "foundingDate": "2025"
+      }
+    }
+  </script>
+
+  <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-6 leading-tight text-balance">
+    About Us
+  </h1>
+
+  <div class="text-body text-sm sm:text-[15px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
+    <p>
+      <strong>PasteDownloadApp</strong> is a free, privacy-first online image downloader. Our mission is simple: give you the fastest, most private way to save images from your clipboard or any URL: without uploading your data anywhere.
+    </p>
+
+    <h2>Why We Built This</h2>
+    <p>
+      We noticed that most online image tools either require you to upload files to a server, sign up for an account, or deal with watermarks and limits. We believed there was a better way. By leveraging modern browser APIs like the <strong>Clipboard API</strong> and <strong>Canvas API</strong>, we built a tool that does everything locally on your device.
+    </p>
+
+    <h2>Our Values</h2>
+    <ul class="list-disc pl-5 space-y-1.5">
+      <li><strong>Privacy:</strong> Zero uploads. Every image is processed in your browser and never touches a server.</li>
+      <li><strong>Free:</strong> No sign-ups, no paywalls, no hidden fees. Unlimited downloads for everyone.</li>
+      <li><strong>Speed:</strong> Paste an image and download it in under a second. Auto-download mode for batch workflows.</li>
+      <li><strong>Simplicity:</strong> A clean, focused interface with no clutter. Copy, paste, download.</li>
+      <li><strong>Cross-platform:</strong> Works on desktop and mobile, on Windows, Mac, Linux, Android, and iOS.</li>
+    </ul>
+
+    <h2>How It Works</h2>
+    <p>
+      When you paste an image or fetch one from a URL, the tool reads the image data using your browser&rsquo;s built-in APIs. If you choose a different format, the conversion happens via the Canvas API. At no point is your image transmitted over the network. This architecture guarantees both speed and privacy.
+    </p>
+
+    <h2>Get in Touch</h2>
+    <p>
+      We would love to hear from you. Whether you have feedback, suggestions, or just want to say hello, feel free to <a href="/contact/">contact us</a>.
+    </p>
+  </div>
+</ContentLayout>

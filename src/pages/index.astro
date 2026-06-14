@@ -1,11 +1,454 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Header from '../components/Header.astro';
+import PasteZone from '../components/PasteZone.astro';
+import UrlDownload from '../components/UrlDownload.astro';
+import Features from '../components/Features.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Paste Image to Download - Free Online Image Downloader" description="Paste image to download instantly from your clipboard or any URL. Free image downloader with copy paste download support. No uploads, private &amp; fast. Try our paste and download tool now." canonicalUrl="https://pastedownloadapp.com/" keywords="paste image to download, paste download, paste and download, image downloader, copy paste download, copy image download, copy and paste image to download, copy paste image to download, paste image to download mobile, image paste download, copy paste download image, copy and paste download image, paste download image">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "@id": "https://pastedownloadapp.com/#webapplication",
+      "name": "PasteDownloadApp",
+      "url": "https://pastedownloadapp.com/",
+      "description": "Free online tool to paste image to download instantly from clipboard or any URL. Supports copy paste download, format conversion, and image downloader features. All processing happens in your browser with zero uploads.",
+      "applicationCategory": "Multimedia",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I paste image to download on mobile?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tap the \u201cAccess Clipboard\u201d button to grant permission, then paste your image. Our tool also supports drag-and-drop from your gallery or file manager on supported mobile browsers like Chrome and Safari. All processing happens in your browser with zero uploads."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I paste image to download as JPG?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "After pasting your image, select JPEG (JPG) from the format dropdown before clicking Download. The tool converts your image client-side using the Canvas API, so you get a clean JPG file without any server uploads."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I paste an image and convert it to another format?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Paste any image from your clipboard or URL and download it in PNG, JPEG, or WebP format. The conversion is done entirely in your browser using the Canvas API, so your image never leaves your device."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is paste image to download free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, completely free with unlimited downloads. No sign-ups, no watermarks, no hidden fees, and no usage caps. Our image downloader is free to use forever."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I paste image to download on Android?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "On Android, tap the \u201cAccess Clipboard\u201d button to request clipboard permission, then paste your image. You can also drag and drop images from your gallery. Works in Chrome, Samsung Internet, and other modern mobile browsers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I paste an image to view it before downloading?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. After you paste an image or fetch one from a URL, the tool displays a preview with details like dimensions and file size. You can inspect the image before choosing a format and downloading."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I paste an image from clipboard on Android?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tap the \u201cAccess Clipboard\u201d button on our tool to request clipboard read permission on your Android browser. Once granted, you can long-press and select Paste, or use the tool\u2019s paste button to retrieve the image from your clipboard."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is paste image to download?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Paste image to download is a free online image downloader that lets you copy an image to your clipboard, paste it on the website, and download it in your preferred format (PNG, JPEG, or WebP). All processing happens in your browser with zero uploads, ensuring complete privacy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I download an image from copy and paste?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Copy an image to your clipboard (Ctrl+C on Windows or Cmd+C on Mac), visit our tool, paste it (Ctrl+V or Cmd+V), choose your preferred format from the dropdown, and click Download. For even faster workflows, enable Auto-download to save images instantly when pasted."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does paste image to download work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our tool uses the browser\u2019s Clipboard API to read image data directly from your clipboard. No data is uploaded to any server\u2014everything stays on your device. For URL downloads, it fetches images via HTTP and uses the Canvas API for format conversion."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I copy and paste to download?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Copy any image to your clipboard (right-click > Copy or Ctrl+C/Cmd+C), paste it into our tool (Ctrl+V/Cmd+V), select your desired output format (PNG, JPEG, WebP), and click Download. You can also enable Auto-download to save the file automatically without any extra clicks."
+          }
+        }
+      ]
+    }
+  </script>
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-ink focus:dark:bg-neutral-800 focus:text-on-primary focus:text-sm focus:rounded-lg focus:no-underline">
+    Skip to main content
+  </a>
+
+  <Header />
+
+  <main id="main-content" class="mx-auto max-w-[1400px] px-4 sm:px-6">
+
+    <!-- Hero -->
+    <section class="relative pt-12 pb-10 sm:pt-20 sm:pb-16 text-center overflow-hidden">
+      
+      <!-- Tool Cards -->
+      <section class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 mb-12 sm:mb-20 scroll-mt-14 sm:scroll-mt-24 max-w-8xl mx-auto">
+        <PasteZone />
+        <UrlDownload />
+      </section>
+
+      <div class="relative">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-canvas border border-hairline text-mute text-xs font-medium mb-6">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Privacy-first &middot; 100% in-browser
+        </span>
+
+        <h1 class="text-[32px] sm:text-5xl lg:text-[56px] font-semibold text-ink tracking-[-1.6px] sm:tracking-[-2.4px] leading-[1.1] max-w-[700px] mx-auto text-balance">
+          Paste Image to Download Instantly
+        </h1>
+        <p class="text-body text-base sm:text-lg lg:text-xl mt-4 sm:mt-5 max-w-[600px] mx-auto leading-relaxed text-pretty">
+          Free image downloader: paste image to download from clipboard or enter any URL. Copy paste download with zero uploads, no sign-ups, and unlimited use.
+        </p>
+        <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-8 sm:mt-10" aria-label="Information pages">
+            <a href="/about/" class="text-body text-xs sm:text-sm no-underline hover:text-ink transition-colors flex items-center gap-1.5">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            About
+          </a>
+          <span class="text-hairline-strong text-xs" aria-hidden="true">/</span>
+            <a href="/privacy/" class="text-body text-xs sm:text-sm no-underline hover:text-ink transition-colors flex items-center gap-1.5">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Privacy
+          </a>
+          <span class="text-hairline-strong text-xs" aria-hidden="true">/</span>
+            <a href="/terms/" class="text-body text-xs sm:text-sm no-underline hover:text-ink transition-colors flex items-center gap-1.5">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            Terms
+          </a>
+          <span class="text-hairline-strong text-xs" aria-hidden="true">/</span>
+            <a href="/contact/" class="text-body text-xs sm:text-sm no-underline hover:text-ink transition-colors flex items-center gap-1.5">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Contact
+          </a>
+        </nav>
+      </div>
+    </section>
+
+
+    <!-- Features -->
+    <section class="mb-12 sm:mb-20 scroll-mt-14 sm:scroll-mt-24">
+      <Features />
+    </section>
+
+    <!-- How It Works -->
+    <section class="mb-12 sm:mb-20 scroll-mt-14 sm:scroll-mt-24">
+      <HowItWorks />
+    </section>
+    <!-- SEO Content -->
+    <section class="mb-12 sm:mb-20 scroll-mt-14 sm:scroll-mt-24">
+      <div class="rounded-xl bg-canvas border border-hairline px-5 sm:px-10 py-8 sm:py-12">
+        <h2 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-6 leading-tight text-balance">
+          Paste Image to Download &ndash; The Ultimate Free Tool
+        </h2>
+
+        <div class="text-body text-sm sm:text-[15px] leading-relaxed space-y-4 [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-8 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
+          <p>
+            Looking for a fast, private, and reliable way to <strong>paste image to download</strong> from your clipboard or any URL? You have found the right tool. Our free <strong>image downloader</strong> lets you grab any image instantly without uploading files to a server. Everything runs locally in your browser, so your privacy is always protected. Whether you need to <strong>paste download</strong> a screenshot, a design mockup, or a photo you copied from the web, our tool handles it in one click.
+          </p>
+          <p>
+            The concept is simple: <strong>paste and download</strong> any image using your system clipboard. Copy an image (Ctrl+C on Windows or Cmd+C on Mac), come to our site, and press Ctrl+V or Cmd+V. That is all it takes. Our tool reads the image data directly from your clipboard, displays a preview, and lets you choose your preferred format before saving. No more saving to temporary files, opening editors, or using complex software just to download an image.
+          </p>
+
+          <h3>How to Paste and Download Images from Clipboard</h3>
+          <p>
+            The <strong>copy paste download</strong> workflow is designed for speed and convenience. When you <strong>copy image download</strong> any picture to your clipboard, our tool detects it instantly. You will see a preview of the pasted image along with its dimensions and file size. From there, you can download it as PNG, JPEG, or WebP. The <strong>copy and paste image to download</strong> process takes less than a second, making it ideal for anyone who works with images regularly: designers, developers, marketers, students, and casual users alike.
+          </p>
+          <p>
+            If you prefer a hands-free experience, enable the Auto-download toggle. With this feature turned on, every time you <strong>copy paste image to download</strong>, the file saves automatically in your chosen format. This is especially useful when you need to batch-process multiple images in quick succession. Simply copy, paste, and the file is on your machine before you can blink.
+          </p>
+
+          <h3>Copy Paste Download from Any URL</h3>
+          <p>
+            Not every image you need is in your clipboard. Sometimes you encounter a picture while browsing and want to save it. Our URL download feature lets you <strong>paste download image</strong> by simply entering the image link. Just grab the URL, paste it into the input field, and click Fetch. The tool retrieves the image, shows you a preview, and lets you download it in your format of choice. This <strong>copy paste download image</strong> method supports JPEG, PNG, WebP, GIF, SVG, BMP, and ICO formats.
+          </p>
+          <p>
+            For images on servers that block direct downloads, our tool automatically attempts to fetch them through a proxy. If that also fails, you can still preview the image and use the browser's right-click "Save Image As" option. We designed the <strong>copy and paste download image</strong> experience to be as seamless as possible, handling edge cases so you do not have to.
+          </p>
+
+          <h3>Paste Image to Download on Mobile</h3>
+          <p>
+            Need to <strong>paste image to download mobile</strong>? Our tool works on smartphones and tablets too. While mobile browsers handle clipboard access differently from desktop, you can still use the "Access Clipboard" button to request permission and paste images. Alternatively, use the drag-and-drop feature on supported mobile browsers to import images directly from your gallery or file manager. The ability to <strong>image paste download</strong> on any device makes our tool a versatile companion for your image-saving needs.
+          </p>
+
+          <h3>Why Use an Image Downloader?</h3>
+          <p>
+            An <strong>image downloader</strong> is essential for anyone who regularly saves images from various sources. Instead of using multiple tools or workarounds, our platform combines <strong>paste image to download</strong>, URL fetching, format conversion, and batch-friendly auto-download into one clean interface. Here is why users choose our tool:
+          </p>
+          <ul class="list-disc pl-5 space-y-1.5 text-body">
+            <li><strong>Privacy-first:</strong> All processing happens in your browser. Your <strong>paste download</strong> never touches a server.</li>
+            <li><strong>No sign-ups:</strong> Start using the <strong>image paste download</strong> tool immediately with zero registration.</li>
+            <li><strong>Format conversion:</strong> Convert between PNG, JPEG, and WebP with one click during the <strong>copy paste download</strong> process.</li>
+            <li><strong>Unlimited use:</strong> Download as many images as you want with no caps, no watermarks, and no hidden fees.</li>
+            <li><strong>Cross-platform:</strong> Works on Windows, Mac, Linux, Android, and iOS. <strong>Paste image to download mobile</strong> is fully supported.</li>
+          </ul>
+
+          <h3>How Paste Download Image Technology Works</h3>
+          <p>
+            When you <strong>paste download image</strong> using our tool, the image data never leaves your computer. We use the Clipboard API to read image data from your clipboard directly in the browser. For URL downloads, we fetch the image using standard HTTP requests combined with Canvas API for format conversion. Every step from <strong>copy and paste image to download</strong> to format selection happens client-side, meaning zero data transmission to external servers. This approach guarantees both speed and privacy.
+          </p>
+          <p>
+            The <strong>paste and download</strong> functionality also supports drag-and-drop. You can drag an image file from your file explorer or another browser tab directly onto the paste zone. The tool processes it the same way as a clipboard paste, giving you a preview and download options. This flexibility ensures you always have a convenient way to <strong>copy paste download image</strong> regardless of how the image reaches your device.
+          </p>
+
+          <h3>Get Started with Paste Image to Download</h3>
+          <p>
+            Ready to try the fastest way to <strong>paste image to download</strong>? No setup, no installation, no account creation. Just open the tool, paste your image or enter a URL, and download. Whether you are a professional needing quick access to screenshots or a casual user wanting to <strong>copy paste download</strong> a favorite picture, our free <strong>image downloader</strong> is built for you. Bookmark this page and come back anytime you need to save an image from your clipboard or the web.
+          </p>
+          <p class="text-mute text-xs italic mt-6 pt-4 border-t border-hairline">
+            Last updated: June 2026. This tool is free to use with no limitations.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="mb-12 sm:mb-20 scroll-mt-14 sm:scroll-mt-24">
+      <div class="rounded-xl bg-canvas border border-hairline px-5 sm:px-10 py-8 sm:py-12">
+        <h2 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-6 leading-tight text-balance">
+          Frequently Asked Questions
+        </h2>
+        <div class="space-y-3">
+          <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
+            <summary class="flex items-center gap-3 px-5 py-4 cursor-pointer text-ink font-medium text-sm sm:text-base list-none select-none [&::-webkit-details-marker]:hidden">
+              <svg class="shrink-0 w-4 h-4 text-mute transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              How do I paste image to download on mobile?
+            </summary>
+            <div class="px-5 pb-4 pt-0 text-body text-sm sm:text-[15px] leading-relaxed border-t border-hairline mt-0">
+              <p class="pt-3">Tap the <strong>Access Clipboard</strong> button to grant permission, then paste your image. Our tool also supports drag-and-drop from your gallery or file manager on supported mobile browsers like Chrome and Safari. All processing happens in your browser with zero uploads.</p>
+            </div>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
+            <summary class="flex items-center gap-3 px-5 py-4 cursor-pointer text-ink font-medium text-sm sm:text-base list-none select-none [&::-webkit-details-marker]:hidden">
+              <svg class="shrink-0 w-4 h-4 text-mute transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              How do I paste image to download as JPG?
+            </summary>
+            <div class="px-5 pb-4 pt-0 text-body text-sm sm:text-[15px] leading-relaxed border-t border-hairline mt-0">
+              <p class="pt-3">After pasting your image, select <strong>JPEG (JPG)</strong> from the format dropdown before clicking Download. The tool converts your image client-side using the Canvas API, so you get a clean JPG file without any server uploads.</p>
+            </div>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
+            <summary class="flex items-center gap-3 px-5 py-4 cursor-pointer text-ink font-medium text-sm sm:text-base list-none select-none [&::-webkit-details-marker]:hidden">
+              <svg class="shrink-0 w-4 h-4 text-mute transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              Can I paste an image and convert it to another format?
+            </summary>
+            <div class="px-5 pb-4 pt-0 text-body text-sm sm:text-[15px] leading-relaxed border-t border-hairline mt-0">
+              <p class="pt-3">Yes. Paste any image from your clipboard or URL and download it in <strong>PNG</strong>, <strong>JPEG</strong>, or <strong>WebP</strong> format. The conversion is done entirely in your browser using the Canvas API, so your image never leaves your device.</p>
+            </div>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
+            <summary class="flex items-center gap-3 px-5 py-4 cursor-pointer text-ink font-medium text-sm sm:text-base list-none select-none [&::-webkit-details-marker]:hidden">
+              <svg class="shrink-0 w-4 h-4 text-mute transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              Is paste image to download free?
+            </summary>
+            <div class="px-5 pb-4 pt-0 text-body text-sm sm:text-[15px] leading-relaxed border-t border-hairline mt-0">
+              <p class="pt-3">Yes, completely <strong>free</strong> with unlimited downloads. No sign-ups, no watermarks, no hidden fees, and no usage caps. Our image downloader is free to use forever.</p>
+            </div>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
+            <summary class="flex items-center gap-3 px-5 py-4 cursor-pointer text-ink font-medium text-sm sm:text-base list-none select-none [&::-webkit-details-marker]:hidden">
+              <svg class="shrink-0 w-4 h-4 text-mute transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              How do I paste image to download on Android?
+            </summary>
+            <div class="px-5 pb-4 pt-0 text-body text-sm sm:text-[15px] leading-relaxed border-t border-hairline mt-0">
+              <p class="pt-3">On Android, tap the <strong>Access Clipboard</strong> button to request clipboard permission, then paste your image. You can also drag and drop images from your gallery. Works in Chrome, Samsung Internet, and other modern mobile browsers.</p>
+            </div>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
+            <summary class="flex items-center gap-3 px-5 py-4 cursor-pointer text-ink font-medium text-sm sm:text-base list-none select-none [&::-webkit-details-marker]:hidden">
+              <svg class="shrink-0 w-4 h-4 text-mute transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              Can I paste an image to view it before downloading?
+            </summary>
+            <div class="px-5 pb-4 pt-0 text-body text-sm sm:text-[15px] leading-relaxed border-t border-hairline mt-0">
+              <p class="pt-3">Yes. After you paste an image or fetch one from a URL, the tool displays a <strong>preview</strong> with details like dimensions and file size. You can inspect the image before choosing a format and downloading.</p>
+            </div>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
+            <summary class="flex items-center gap-3 px-5 py-4 cursor-pointer text-ink font-medium text-sm sm:text-base list-none select-none [&::-webkit-details-marker]:hidden">
+              <svg class="shrink-0 w-4 h-4 text-mute transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              How do I paste an image from clipboard on Android?
+            </summary>
+            <div class="px-5 pb-4 pt-0 text-body text-sm sm:text-[15px] leading-relaxed border-t border-hairline mt-0">
+              <p class="pt-3">Tap the <strong>Access Clipboard</strong> button on our tool to request clipboard read permission on your Android browser. Once granted, you can long-press and select Paste, or use the tool's paste button to retrieve the image from your clipboard.</p>
+            </div>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
+            <summary class="flex items-center gap-3 px-5 py-4 cursor-pointer text-ink font-medium text-sm sm:text-base list-none select-none [&::-webkit-details-marker]:hidden">
+              <svg class="shrink-0 w-4 h-4 text-mute transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              What is paste image to download?
+            </summary>
+            <div class="px-5 pb-4 pt-0 text-body text-sm sm:text-[15px] leading-relaxed border-t border-hairline mt-0">
+              <p class="pt-3"><strong>Paste image to download</strong> is a free online image downloader that lets you copy an image to your clipboard, paste it on the website, and download it in your preferred format (PNG, JPEG, or WebP). All processing happens in your browser with zero uploads, ensuring complete privacy.</p>
+            </div>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
+            <summary class="flex items-center gap-3 px-5 py-4 cursor-pointer text-ink font-medium text-sm sm:text-base list-none select-none [&::-webkit-details-marker]:hidden">
+              <svg class="shrink-0 w-4 h-4 text-mute transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              How do I download an image from copy and paste?
+            </summary>
+            <div class="px-5 pb-4 pt-0 text-body text-sm sm:text-[15px] leading-relaxed border-t border-hairline mt-0">
+              <p class="pt-3">Copy an image to your clipboard (<strong>Ctrl+C</strong> on Windows or <strong>Cmd+C</strong> on Mac), visit our tool, paste it (<strong>Ctrl+V</strong> or <strong>Cmd+V</strong>), choose your preferred format from the dropdown, and click Download. For even faster workflows, enable <strong>Auto-download</strong> to save images instantly when pasted.</p>
+            </div>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
+            <summary class="flex items-center gap-3 px-5 py-4 cursor-pointer text-ink font-medium text-sm sm:text-base list-none select-none [&::-webkit-details-marker]:hidden">
+              <svg class="shrink-0 w-4 h-4 text-mute transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              How does paste image to download work?
+            </summary>
+            <div class="px-5 pb-4 pt-0 text-body text-sm sm:text-[15px] leading-relaxed border-t border-hairline mt-0">
+              <p class="pt-3">Our tool uses the browser's <strong>Clipboard API</strong> to read image data directly from your clipboard. No data is uploaded to any server: everything stays on your device. For URL downloads, it fetches images via HTTP and uses the <strong>Canvas API</strong> for format conversion.</p>
+            </div>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
+            <summary class="flex items-center gap-3 px-5 py-4 cursor-pointer text-ink font-medium text-sm sm:text-base list-none select-none [&::-webkit-details-marker]:hidden">
+              <svg class="shrink-0 w-4 h-4 text-mute transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              How do I copy and paste to download?
+            </summary>
+            <div class="px-5 pb-4 pt-0 text-body text-sm sm:text-[15px] leading-relaxed border-t border-hairline mt-0">
+              <p class="pt-3">Copy any image to your clipboard (right-click > Copy or <strong>Ctrl+C</strong>/<strong>Cmd+C</strong>), paste it into our tool (<strong>Ctrl+V</strong>/<strong>Cmd+V</strong>), select your desired output format (PNG, JPEG, WebP), and click Download. You can also enable <strong>Auto-download</strong> to save the file automatically without any extra clicks.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Articles -->
+    <section class="mb-12 sm:mb-20 scroll-mt-14 sm:scroll-mt-24">
+      <div class="rounded-xl bg-canvas border border-hairline px-5 sm:px-10 py-8 sm:py-12">
+        <h2 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-6 leading-tight text-balance">
+          Latest Guides &amp; Articles
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <a href="/blog/png-vs-jpg-vs-webp/" class="group flex flex-col rounded-xl border border-hairline bg-canvas p-5 hover:border-link/30 transition-colors">
+            <h3 class="text-ink font-medium text-sm sm:text-base tracking-tight group-hover:text-link transition-colors">
+              PNG vs JPG vs WebP &mdash; Which Format Should You Save Your Image As?
+            </h3>
+            <p class="text-mute text-xs sm:text-sm mt-1.5 leading-relaxed">
+              Learn the key differences between PNG, JPG, and WebP and how to pick the right format for your needs.
+            </p>
+          </a>
+          <a href="/blog/download-copied-image-mac/" class="group flex flex-col rounded-xl border border-hairline bg-canvas p-5 hover:border-link/30 transition-colors">
+            <h3 class="text-ink font-medium text-sm sm:text-base tracking-tight group-hover:text-link transition-colors">
+              How to Download a Copied Image on Mac Without Saving to Photos
+            </h3>
+            <p class="text-mute text-xs sm:text-sm mt-1.5 leading-relaxed">
+              Save clipboard images from your Mac directly as files&mdash;no Photos, no Preview, no extra steps.
+            </p>
+          </a>
+          <a href="/blog/save-screenshot-as-file-windows/" class="group flex flex-col rounded-xl border border-hairline bg-canvas p-5 hover:border-link/30 transition-colors">
+            <h3 class="text-ink font-medium text-sm sm:text-base tracking-tight group-hover:text-link transition-colors">
+              How to Save a Screenshot Directly as a File (Without Opening MS Paint)
+            </h3>
+            <p class="text-mute text-xs sm:text-sm mt-1.5 leading-relaxed">
+              Save screenshots as PNG or JPG files on Windows instantly&mdash;no Paint, no installs required.
+            </p>
+          </a>
+          <a href="/blog/save-clipboard-image-without-software/" class="group flex flex-col rounded-xl border border-hairline bg-canvas p-5 hover:border-link/30 transition-colors">
+            <h3 class="text-ink font-medium text-sm sm:text-base tracking-tight group-hover:text-link transition-colors">
+              5 Faster Ways to Save Clipboard Images (No Software Install Needed)
+            </h3>
+            <p class="text-mute text-xs sm:text-sm mt-1.5 leading-relaxed">
+              Discover fast methods to download copied images online using only your browser and free tools.
+            </p>
+          </a>
+        </div>
+
+        <p class="mt-6 pt-4 border-t border-hairline text-center">
+          <a href="/blog/" class="text-link underline underline-offset-2 decoration-link/30 hover:decoration-link transition-colors font-medium">View all articles &rarr;</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
 </Layout>
+
+<style>
+  .hero-gradient {
+    background:
+      radial-gradient(ellipse 80vw 70vw at 30% 40%, #007cf0 0%, transparent 70%),
+      radial-gradient(ellipse 70vw 55vw at 70% 50%, #7928ca 0%, transparent 70%),
+      radial-gradient(ellipse 55vw 45vw at 50% 60%, #ff0080 0%, transparent 70%),
+      radial-gradient(ellipse 80vw 55vw at 50% 30%, #ff4d4d 0%, transparent 70%);
+  }
+
+  @media (min-width: 640px) {
+    .hero-gradient {
+      background:
+        radial-gradient(ellipse 600px 500px at 30% 40%, #007cf0 0%, transparent 70%),
+        radial-gradient(ellipse 500px 400px at 70% 50%, #7928ca 0%, transparent 70%),
+        radial-gradient(ellipse 400px 300px at 50% 60%, #ff0080 0%, transparent 70%),
+        radial-gradient(ellipse 600px 400px at 50% 30%, #ff4d4d 0%, transparent 70%);
+    }
+  }
+
+  .dark .hero-gradient {
+    background:
+      radial-gradient(ellipse 80vw 70vw at 30% 40%, var(--color-gradient-develop-start) 0%, transparent 70%),
+      radial-gradient(ellipse 70vw 55vw at 70% 50%, var(--color-gradient-preview-start) 0%, transparent 70%),
+      radial-gradient(ellipse 55vw 45vw at 50% 60%, var(--color-gradient-preview-end) 0%, transparent 70%),
+      radial-gradient(ellipse 80vw 55vw at 50% 30%, var(--color-gradient-ship-start) 0%, transparent 70%);
+  }
+
+  @media (min-width: 640px) {
+    .dark .hero-gradient {
+      background:
+        radial-gradient(ellipse 600px 500px at 30% 40%, var(--color-gradient-develop-start) 0%, transparent 70%),
+        radial-gradient(ellipse 500px 400px at 70% 50%, var(--color-gradient-preview-start) 0%, transparent 70%),
+        radial-gradient(ellipse 400px 300px at 50% 60%, var(--color-gradient-preview-end) 0%, transparent 70%),
+        radial-gradient(ellipse 600px 400px at 50% 30%, var(--color-gradient-ship-start) 0%, transparent 70%);
+    }
+  }
+</style>

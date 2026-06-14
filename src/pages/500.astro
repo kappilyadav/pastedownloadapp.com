@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="500 – Server Error - PasteDownloadApp" description="Something went wrong on our end. Please try again later or contact support." canonicalUrl="https://pastedownloadapp.com/500/">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pastedownloadapp.com/" },
+        { "@type": "ListItem", "position": 2, "name": "500", "item": "https://pastedownloadapp.com/500/" }
+      ]
+    }
+  </script>
+  <Header />
+
+  <main id="main-content" class="py-10 mx-auto max-w-[1400px] px-4 sm:px-6">
+    <section class="flex flex-col items-center justify-center min-h-[60vh] text-center">
+      <span class="text-[120px] sm:text-[160px] font-bold text-hairline-strong leading-none select-none" aria-hidden="true">500</span>
+      <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-2 mb-3 leading-tight">
+        Server Error
+      </h1>
+      <p class="text-body text-sm sm:text-[15px] max-w-[450px] leading-relaxed text-pretty">
+        Something went wrong on our end. Please try again later.
+      </p>
+      <div class="flex items-center gap-3 mt-8">
+        <a href="/" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-ink text-on-primary text-sm font-medium no-underline hover:opacity-90 transition-opacity focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Back to Home
+        </a>
+        <a href="/contact/" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-hairline text-body text-sm font-medium no-underline hover:text-ink hover:border-ink/30 transition-colors focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Contact Support
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,65 @@
+---
+import ContentLayout from '../layouts/ContentLayout.astro';
+---
+
+<ContentLayout title="Contact Us - PasteDownloadApp" description="Contact the PasteDownloadApp team. Get in touch with questions, feedback, or support requests about our free image downloader tool." canonicalUrl="https://pastedownloadapp.com/contact/">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pastedownloadapp.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://pastedownloadapp.com/contact/" }
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contact Us - PasteDownloadApp",
+      "description": "Contact the PasteDownloadApp team. Get in touch with questions, feedback, or support requests.",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "PasteDownloadApp",
+        "url": "https://pastedownloadapp.com/",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "hello@pastedownloadapp.com"
+        }
+      }
+    }
+  </script>
+
+  <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-6 leading-tight text-balance">
+    Contact Us
+  </h1>
+
+  <div class="text-body text-sm sm:text-[15px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
+    <p>
+      Have a question, suggestion, or need help? We would love to hear from you. Here are the best ways to reach us:
+    </p>
+
+    <div class="rounded-xl border border-hairline bg-canvas-soft p-5 sm:p-6 space-y-4">
+      <div class="flex items-start gap-3">
+        <div class="w-9 h-9 rounded-lg bg-link-bg-soft flex items-center justify-center shrink-0">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-link" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <p class="text-ink text-sm font-semibold m-0">Email</p>
+          <a href="mailto:hello@pastedownloadapp.com" class="text-link text-sm no-underline hover:underline">hello@pastedownloadapp.com</a>
+          <p class="text-mute text-xs mt-0.5 m-0">We typically respond within 1&ndash;2 business days.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Frequently Requested Topics</h2>
+    <ul class="list-disc pl-5 space-y-1.5">
+      <li><strong>Bug reports:</strong> Please include your browser and OS version when reporting issues.</li>
+      <li><strong>Feature requests:</strong> We welcome suggestions for new formats, features, or improvements.</li>
+      <li><strong>Privacy questions:</strong> See our <a href="/privacy/">Privacy Policy</a> for details on how we handle your data.</li>
+      <li><strong>General inquiries:</strong> For anything else, just send us an email.</li>
+    </ul>
+  </div>
+</ContentLayout>

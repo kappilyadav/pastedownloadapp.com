@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="404 – Page Not Found - PasteDownloadApp" description="The page you are looking for does not exist or has been moved. Return to PasteDownloadApp homepage." canonicalUrl="https://pastedownloadapp.com/404/">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pastedownloadapp.com/" },
+        { "@type": "ListItem", "position": 2, "name": "404", "item": "https://pastedownloadapp.com/404/" }
+      ]
+    }
+  </script>
+  <Header />
+
+  <main id="main-content" class="py-10 mx-auto max-w-[1400px] px-4 sm:px-6">
+    <section class="flex flex-col items-center justify-center min-h-[60vh] text-center">
+      <span class="text-[120px] sm:text-[160px] font-bold text-hairline-strong leading-none select-none" aria-hidden="true">404</span>
+      <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-2 mb-3 leading-tight">
+        Page Not Found
+      </h1>
+      <p class="text-body text-sm sm:text-[15px] max-w-[450px] leading-relaxed text-pretty">
+        The page you are looking for does not exist or has been moved.
+      </p>
+      <a href="/" class="mt-8 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-ink text-on-primary text-sm font-medium no-underline hover:opacity-90 transition-opacity focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Back to Home
+      </a>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,287 @@
+---
+const { id = "url" } = Astro.props;
+---
+
+<section id={id} class="w-full">
+  <div class="rounded-xl bg-canvas border border-hairline shadow-[0_2px_4px_#0000000d,0_8px_24px_-8px_#00000026] overflow-hidden">
+    <div class="px-4 sm:px-6 py-4 sm:py-5 border-b border-hairline flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
+      <div class="text-left">
+        <h3 class="text-[15px] sm:text-[17px] font-semibold text-ink tracking-tight m-0">Download from URL</h3>
+        <p class="text-body text-xs sm:text-sm m-0 mt-0.5">Enter an image URL to download it</p>
+      </div>
+      <label for="urlFormat" class="sr-only">Image format</label>
+      <select id="urlFormat" class="text-xs text-body bg-canvas border border-hairline rounded-md px-2 py-1.5 outline-none focus:border-hairline-strong focus-visible:ring-2 focus-visible:ring-link self-start sm:self-auto">
+        <option value="original">Original</option>
+        <option value="png">PNG</option>
+        <option value="jpeg">JPEG</option>
+        <option value="webp">WebP</option>
+      </select>
+    </div>
+
+    <div class="px-4 sm:px-6 py-4 sm:py-6 space-y-4">
+      <div class="flex gap-2">
+        <div class="relative flex-1 min-w-0">
+          <label for="urlInput" class="sr-only">Image URL</label>
+          <input
+            id="urlInput"
+            type="url"
+            inputmode="url"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="https://example.com/image.jpg"
+            class="w-full h-10 sm:h-11 px-3 sm:px-4 pr-16 sm:pr-20 text-sm text-ink bg-canvas border border-hairline rounded-lg outline-none focus:border-hairline-strong transition-colors placeholder:text-mute focus-visible:ring-2 focus-visible:ring-link"
+          />
+          <button id="fetchUrlBtn" class="absolute right-1 top-1/2 -translate-y-1/2 bg-ink dark:bg-white text-on-primary dark:text-black text-xs font-medium px-3 sm:px-3.5 py-1.5 rounded-md hover:opacity-90 transition-opacity border-none cursor-pointer focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">
+            Fetch
+          </button>
+        </div>
+      </div>
+
+      <div id="urlPreviewContainer" class="hidden flex flex-col items-center gap-4">
+        <div class="relative max-h-[300px] overflow-hidden rounded-lg border border-hairline bg-canvas-soft-2">
+          <img id="urlPreviewImg" class="max-w-full max-h-[300px] object-contain" alt="URL image preview" />
+        </div>
+        <div class="flex items-center gap-2 sm:gap-3 flex-wrap justify-center">
+          <span id="urlInfo" class="text-mute text-xs w-full sm:w-auto text-center sm:text-left" role="status" aria-live="polite"></span>
+          <span id="urlCorsBadge" class="hidden text-xs px-2 py-0.5 rounded-full bg-warning-soft text-warning font-medium">Direct download only</span>
+          <button id="urlDownloadBtn" class="bg-ink dark:bg-white text-on-primary dark:text-black text-sm font-medium px-4 sm:px-5 py-2 rounded-full hover:opacity-90 transition-opacity border-none cursor-pointer flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
+          </button>
+          <button id="urlClearBtn" class="text-body text-sm px-4 py-2 rounded-full border border-hairline hover:bg-canvas-soft transition-colors cursor-pointer bg-transparent focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">Clear</button>
+        </div>
+      </div>
+
+      <div id="urlError" class="hidden text-error text-xs" role="alert"></div>
+    </div>
+
+    <div class="px-4 sm:px-6 py-3 bg-canvas-soft border-t border-hairline flex flex-wrap items-center gap-2 sm:gap-4 text-mute text-xs">
+      <span class="flex items-center gap-1">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Supports JPEG, PNG, WebP, GIF, SVG, BMP, ICO
+      </span>
+    </div>
+  </div>
+</section>
+
+<script>
+  const urlInput = document.getElementById('urlInput');
+  const fetchBtn = document.getElementById('fetchUrlBtn');
+  const urlPreviewContainer = document.getElementById('urlPreviewContainer');
+  const urlPreviewImg = document.getElementById('urlPreviewImg');
+  const urlInfo = document.getElementById('urlInfo');
+  const urlDownloadBtn = document.getElementById('urlDownloadBtn');
+  const urlClearBtn = document.getElementById('urlClearBtn');
+  const urlError = document.getElementById('urlError');
+  const urlFormat = document.getElementById('urlFormat');
+  const urlCorsBadge = document.getElementById('urlCorsBadge');
+
+  let currentBlob = null;
+  let currentOriginalUrl = '';
+  let isCorsBlocked = false;
+
+  function formatFileSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+
+  function getTimestamp() {
+    const now = new Date();
+    const y = now.getFullYear();
+    const m = String(now.getMonth() + 1).padStart(2, '0');
+    const d = String(now.getDate()).padStart(2, '0');
+    const h = String(now.getHours()).padStart(2, '0');
+    const min = String(now.getMinutes()).padStart(2, '0');
+    const s = String(now.getSeconds()).padStart(2, '0');
+    return `${y}${m}${d}_${h}${min}${s}`;
+  }
+
+  function getMimeType(format) {
+    const map = { png: 'image/png', jpeg: 'image/jpeg', webp: 'image/webp' };
+    return map[format] || null;
+  }
+
+  function getExtension(format, originalUrl) {
+    const map = { png: 'png', jpeg: 'jpg', webp: 'webp' };
+    if (format === 'original') {
+      const match = originalUrl.match(/\.(\w+)(?:\?.*)?$/);
+      return match ? match[1] : 'jpg';
+    }
+    return map[format] || 'jpg';
+  }
+
+  function downloadBlob(blob, filename) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  async function fetchBlobViaProxy(url) {
+    try {
+      const proxyUrl = `https://corsproxy.io/?url=${encodeURIComponent(url)}`;
+      const response = await fetch(proxyUrl);
+      if (!response.ok) throw new Error('Proxy failed');
+      const blob = await response.blob();
+      if (!blob.type.startsWith('image/')) throw new Error('Not an image');
+      return blob;
+    } catch {
+      return null;
+    }
+  }
+
+  async function handleDownload(imgElement, format, originalUrl) {
+    // Case 1: we already have a blob (from direct fetch or proxy)
+    if (currentBlob) {
+      if (format === 'original') {
+        const ext = getExtension(format, originalUrl);
+        const filename = `image_${getTimestamp()}.${ext}`;
+        downloadBlob(currentBlob, filename);
+        return;
+      }
+
+      // Format conversion: draw from the preview img
+      // (works because preview is from blob URL, same-origin)
+      const canvas = document.createElement('canvas');
+      canvas.width = imgElement.naturalWidth;
+      canvas.height = imgElement.naturalHeight;
+      const ctx = canvas.getContext('2d');
+      if (format === 'jpeg') {
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+      ctx.drawImage(imgElement, 0, 0);
+
+      canvas.toBlob((blob) => {
+        if (!blob) return;
+        currentBlob = blob;
+        const ext = getExtension(format, originalUrl);
+        const filename = `image_${getTimestamp()}.${ext}`;
+        downloadBlob(blob, filename);
+        urlInfo.textContent = `${format.toUpperCase()} \u00B7 ${formatFileSize(blob.size)}`;
+      }, getMimeType(format), 0.92);
+      return;
+    }
+
+    // Case 2: no blob yet, try fetching via proxy now
+    urlError.classList.add('hidden');
+    const blob = await fetchBlobViaProxy(originalUrl);
+    if (blob) {
+      currentBlob = blob;
+      const ext = getExtension(format, originalUrl);
+      const filename = `image_${getTimestamp()}.${ext}`;
+      downloadBlob(blob, filename);
+      return;
+    }
+
+    // Case 3: truly blocked, provide a helpful fallback
+    urlError.textContent = 'This server blocks automatic downloads. Try right-clicking the image and selecting "Save Image As\u2026"';
+    urlError.classList.remove('hidden');
+  }
+
+  function showPreviewFromBlob(blob) {
+    const blobUrl = URL.createObjectURL(blob);
+    urlPreviewImg.src = blobUrl;
+    urlPreviewImg.onload = () => {
+      urlPreviewContainer.classList.remove('hidden');
+      const img = /** @type {HTMLImageElement} */ (urlPreviewImg);
+      urlInfo.textContent = `${img.naturalWidth}\u00D7${img.naturalHeight} \u00B7 ${formatFileSize(blob.size)}`;
+    };
+  }
+
+  async function fetchImage(url) {
+    urlError.classList.add('hidden');
+    urlPreviewContainer.classList.add('hidden');
+    urlCorsBadge.classList.add('hidden');
+    currentBlob = null;
+    currentOriginalUrl = url;
+    isCorsBlocked = false;
+
+    // Step 1: try to fetch the image directly
+    try {
+      const response = await fetch(url, { mode: 'cors' });
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      const contentType = response.headers.get('content-type') || '';
+      if (!contentType.startsWith('image/')) throw new Error('Not an image');
+
+      const blob = await response.blob();
+      currentBlob = blob;
+      showPreviewFromBlob(blob);
+      return;
+    } catch {
+      // Step 2: try via CORS proxy
+      try {
+        const proxyUrl = `https://corsproxy.io/?url=${encodeURIComponent(url)}`;
+        const response = await fetch(proxyUrl);
+        if (!response.ok) throw new Error('Proxy failed');
+        const blob = await response.blob();
+        if (!blob.type.startsWith('image/')) throw new Error('Not an image');
+
+        currentBlob = blob;
+        showPreviewFromBlob(blob);
+        return;
+      } catch {
+        // Step 3: preview only via <img> (no canvas conversion possible)
+        const img = new Image();
+        img.onload = () => {
+          urlPreviewImg.src = img.src;
+          urlPreviewContainer.classList.remove('hidden');
+          urlCorsBadge.classList.remove('hidden');
+          isCorsBlocked = true;
+          const imgEl = /** @type {HTMLImageElement} */ (urlPreviewImg);
+          urlInfo.textContent = `${imgEl.naturalWidth}\u00D7${imgEl.naturalHeight}`;
+        };
+        img.onerror = () => {
+          urlError.textContent = 'Could not load image. The server may be blocking access, or the URL is invalid.';
+          urlError.classList.remove('hidden');
+        };
+        img.src = url;
+      }
+    }
+  }
+
+  function handleFetch() {
+    const url = urlInput.value.trim();
+    if (!url) {
+      urlError.textContent = 'Please enter an image URL';
+      urlError.classList.remove('hidden');
+      return;
+    }
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+      urlError.textContent = 'URL must start with http:// or https://';
+      urlError.classList.remove('hidden');
+      return;
+    }
+    fetchImage(url);
+  }
+
+  fetchBtn.addEventListener('click', handleFetch);
+
+  urlInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') handleFetch();
+  });
+
+  urlDownloadBtn.addEventListener('click', () => {
+    const format = urlFormat.value;
+    const img = /** @type {HTMLImageElement} */ (urlPreviewImg);
+    if (img && img.src && img.naturalWidth > 0) {
+      handleDownload(img, format, currentOriginalUrl);
+    }
+  });
+
+  urlClearBtn.addEventListener('click', () => {
+    currentBlob = null;
+    currentOriginalUrl = '';
+    isCorsBlocked = false;
+    urlPreviewImg.src = '';
+    urlPreviewContainer.classList.add('hidden');
+    urlError.classList.add('hidden');
+    urlCorsBadge.classList.add('hidden');
+    urlInput.value = '';
+  });
+</script>

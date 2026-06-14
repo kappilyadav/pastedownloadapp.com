@@ -1,0 +1,271 @@
+---
+const { id = "paste" } = Astro.props;
+---
+
+<section id={id} class="w-full">
+  <div class="rounded-xl bg-canvas border border-hairline/50 shadow-[0_2px_4px_#0000000d,0_8px_24px_-8px_#00000026] overflow-hidden">
+    <div class="px-4 sm:px-6 py-4 sm:py-5 border-b border-hairline flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
+      <div class="text-left">
+        <h3 class="text-[15px] sm:text-[17px] font-semibold text-ink tracking-tight m-0">Paste from Clipboard</h3>
+        <p class="text-body text-xs sm:text-sm m-0 mt-0.5">Press Ctrl+V or ⌘+V to paste an image</p>
+      </div>
+      <div class="flex items-center gap-2 sm:gap-3">
+        <label class="flex items-center gap-1.5 text-body text-xs cursor-pointer select-none shrink-0" for="autoDownload">
+          <input type="checkbox" id="autoDownload" checked class="w-3.5 h-3.5 rounded border-hairline text-ink accent-ink" />
+          Auto-download
+        </label>
+        <label for="pasteFormat" class="sr-only">Image format</label>
+        <select id="pasteFormat" class="text-xs text-body bg-canvas border border-hairline rounded-md px-2 py-1.5 outline-none focus:border-hairline-strong focus-visible:ring-2 focus-visible:ring-link">
+          <option value="png">PNG</option>
+          <option value="jpeg">JPEG</option>
+          <option value="webp">WebP</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="pasteDropZone" class="relative flex flex-col items-center justify-center min-h-[180px] sm:min-h-[260px] px-4 sm:px-6 py-6 sm:py-10 transition-all duration-200 cursor-pointer touch-action-manipulation" tabindex="0" role="button" aria-label="Paste image area. Press Ctrl+V to paste an image.">
+      <div id="pastePlaceholder" class="flex flex-col items-center gap-4 text-center">
+        <div class="w-14 h-14 rounded-xl bg-canvas-soft border border-hairline flex items-center justify-center text-body" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-ink text-sm font-medium m-0">Paste image here</p>
+          <p class="text-mute text-xs m-0 mt-1">Or click to access clipboard</p>
+        </div>
+        <button id="accessClipboard" class="bg-ink dark:bg-white text-on-primary dark:text-black text-sm font-medium px-4 py-2 rounded-full hover:opacity-90 transition-opacity border-none cursor-pointer focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">Access Clipboard</button>
+      </div>
+
+      <div id="pastePreview" class="hidden w-full flex-col items-center gap-4">
+        <div class="relative max-h-[300px] overflow-hidden rounded-lg border border-hairline bg-canvas-soft-2">
+          <img id="pasteImg" class="max-w-full max-h-[300px] object-contain" alt="Pasted image preview" />
+        </div>
+        <div class="mt-4 flex items-center gap-2 sm:gap-3 flex-wrap justify-center">
+          <span id="pasteInfo" class="text-mute text-xs w-full sm:w-auto text-center sm:text-left" role="status" aria-live="polite"></span>
+          <button id="downloadBtn" class="bg-ink dark:bg-white text-on-primary dark:text-black text-sm font-medium px-4 sm:px-5 py-2 rounded-full hover:opacity-90 transition-opacity border-none cursor-pointer flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
+          </button>
+          <button id="clearBtn" class="text-body text-sm px-4 py-2 rounded-full border border-hairline hover:bg-canvas-soft transition-colors cursor-pointer bg-transparent focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">Clear</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="px-4 sm:px-6 py-3 bg-canvas-soft border-t border-hairline flex flex-wrap items-center gap-2 sm:gap-4 text-mute text-xs">
+      <span class="flex items-center gap-1">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Privacy-first: all processing stays in your browser
+      </span>
+    </div>
+  </div>
+</section>
+
+<script>
+  const dropZone = document.getElementById('pasteDropZone');
+  const placeholder = document.getElementById('pastePlaceholder');
+  const preview = document.getElementById('pastePreview');
+  const pasteImg = document.getElementById('pasteImg');
+  const pasteInfo = document.getElementById('pasteInfo');
+  const downloadBtn = document.getElementById('downloadBtn');
+  const clearBtn = document.getElementById('clearBtn');
+  const autoDownload = document.getElementById('autoDownload');
+  const formatSelect = document.getElementById('pasteFormat');
+  const accessBtn = document.getElementById('accessClipboard');
+
+  let currentBlob = null;
+  let currentFileName = '';
+
+  function formatFileSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+
+  function getMimeType(format) {
+    const map = { png: 'image/png', jpeg: 'image/jpeg', webp: 'image/webp' };
+    return map[format] || 'image/png';
+  }
+
+  function getExtension(format) {
+    const map = { png: 'png', jpeg: 'jpg', webp: 'webp' };
+    return map[format] || 'png';
+  }
+
+  function getTimestamp() {
+    const now = new Date();
+    const y = now.getFullYear();
+    const m = String(now.getMonth() + 1).padStart(2, '0');
+    const d = String(now.getDate()).padStart(2, '0');
+    const h = String(now.getHours()).padStart(2, '0');
+    const min = String(now.getMinutes()).padStart(2, '0');
+    const s = String(now.getSeconds()).padStart(2, '0');
+    return `${y}${m}${d}_${h}${min}${s}`;
+  }
+
+  function downloadBlob(blob, filename) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  function convertAndDownload(imgElement, format) {
+    const canvas = document.createElement('canvas');
+    canvas.width = imgElement.naturalWidth;
+    canvas.height = imgElement.naturalHeight;
+    const ctx = canvas.getContext('2d');
+    if (format === 'jpeg') {
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+    ctx.drawImage(imgElement, 0, 0);
+
+    canvas.toBlob((blob) => {
+      if (!blob) return;
+      currentBlob = blob;
+      const ext = getExtension(format);
+      const filename = `pasted_${getTimestamp()}.${ext}`;
+      currentFileName = filename;
+      downloadBlob(blob, filename);
+      pasteInfo.textContent = `${format.toUpperCase()} \u00B7 ${formatFileSize(blob.size)}`;
+    }, getMimeType(format), 0.92);
+  }
+
+  function handleImagePaste(blob) {
+    const img = new Image();
+    img.onload = () => {
+      pasteImg.src = img.src;
+      pasteImg.width = img.naturalWidth;
+      pasteImg.height = img.naturalHeight;
+      placeholder.classList.add('hidden');
+      preview.classList.remove('hidden');
+      pasteInfo.textContent = `${img.naturalWidth}\u00D7${img.naturalHeight} \u00B7 ${formatFileSize(blob.size)}`;
+      currentBlob = blob;
+
+      if (autoDownload.checked) {
+        convertAndDownload(img, formatSelect.value);
+      }
+    };
+    img.src = URL.createObjectURL(blob);
+  }
+
+  function handlePasteEvent(items) {
+    for (const item of items) {
+      if (item.type.startsWith('image/')) {
+        const blob = item.getAsFile ? item.getAsFile() : item;
+        if (blob) {
+          handleImagePaste(blob);
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  document.addEventListener('paste', (e) => {
+    const items = e.clipboardData?.items;
+    if (items && handlePasteEvent(items)) {
+      e.preventDefault();
+    }
+  });
+
+  dropZone.addEventListener('click', async () => {
+    try {
+      const clipboardItems = await navigator.clipboard.read();
+      for (const item of clipboardItems) {
+        for (const type of item.types) {
+          if (type.startsWith('image/')) {
+            const blob = await item.getType(type);
+            handleImagePaste(blob);
+            return;
+          }
+        }
+      }
+    } catch {
+      // Fallback: user can paste manually
+    }
+  });
+
+  dropZone.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      dropZone.click();
+    }
+  });
+
+  dropZone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    dropZone.style.backgroundColor = 'var(--color-canvas-soft-2)';
+  });
+
+  dropZone.addEventListener('dragleave', () => {
+    dropZone.style.backgroundColor = '';
+  });
+
+  dropZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dropZone.style.backgroundColor = '';
+    const files = e.dataTransfer?.files;
+    if (files && files.length > 0) {
+      const file = files[0];
+      if (file.type.startsWith('image/')) {
+        handleImagePaste(file);
+      }
+    }
+  });
+
+  accessBtn.addEventListener('click', async (e) => {
+    e.stopPropagation();
+    try {
+      const clipboardItems = await navigator.clipboard.read();
+      for (const item of clipboardItems) {
+        for (const type of item.types) {
+          if (type.startsWith('image/')) {
+            const blob = await item.getType(type);
+            handleImagePaste(blob);
+            return;
+          }
+        }
+      }
+    } catch {
+      // Ignore permission errors
+    }
+  });
+
+  downloadBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const img = document.getElementById('pasteImg');
+    if (img && img.src) {
+      const imgEl = /** @type {HTMLImageElement} */ (img);
+      convertAndDownload(imgEl, formatSelect.value);
+    }
+  });
+
+  clearBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    currentBlob = null;
+    currentFileName = '';
+    pasteImg.removeAttribute('src');
+    pasteImg.removeAttribute('width');
+    pasteImg.removeAttribute('height');
+    placeholder.classList.remove('hidden');
+    preview.classList.add('hidden');
+  });
+
+  formatSelect.addEventListener('change', () => {
+    const img = document.getElementById('pasteImg');
+    if (img && img.src && preview.classList.contains('hidden') === false) {
+      const imgEl = /** @type {HTMLImageElement} */ (img);
+      if (imgEl.naturalWidth > 0) {
+        convertAndDownload(imgEl, formatSelect.value);
+      }
+    }
+  });
+</script>
