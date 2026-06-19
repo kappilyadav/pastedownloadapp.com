@@ -93,6 +93,7 @@ const { title, description, canonicalUrl } = Astro.props;
         "publisher": { "@id": "https://pastedownloadapp.com/#organization" }
       }
     </script>
+    <link rel="preconnect" href="https://storage.ko-fi.com" />
   </head>
   <body class="min-h-screen">
     <Header />
@@ -104,5 +105,28 @@ const { title, description, canonicalUrl } = Astro.props;
       </div>
     </main>
     <Footer />
+
+    <script is:inline>
+      window.addEventListener('load', function() {
+        var s = document.createElement('script');
+        s.src = 'https://storage.ko-fi.com/cdn/scripts/overlay-widget.js';
+        s.onload = function() {
+          kofiWidgetOverlay.draw('kappilyadav', {
+            'type': 'floating-chat',
+            'floating-chat.donateButton.text': 'Support me',
+            'floating-chat.donateButton.background-color': '#00b9fe',
+            'floating-chat.donateButton.text-color': '#fff'
+          });
+        };
+        document.body.appendChild(s);
+      });
+    </script>
+    <style>
+      iframe[title*="Ko-Fi"] {
+        right: auto !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+      }
+    </style>
   </body>
 </html>
