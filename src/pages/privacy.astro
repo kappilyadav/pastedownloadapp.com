@@ -2,7 +2,7 @@
 import ContentLayout from '../layouts/ContentLayout.astro';
 ---
 
-<ContentLayout title="Privacy Policy - PasteDownloadApp" description="Privacy Policy for PasteDownloadApp. Your privacy matters. All image processing happens in your browser with zero uploads to our servers." canonicalUrl="https://pastedownloadapp.com/privacy/">
+<ContentLayout title="Privacy Policy - PasteDownloadApp" description="Privacy Policy for PasteDownloadApp. Learn how PasteDownloadApp handles browser-based image processing, analytics, advertising, cookies, and third-party services." canonicalUrl="https://pastedownloadapp.com/privacy/">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -18,7 +18,7 @@ import ContentLayout from '../layouts/ContentLayout.astro';
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "Privacy Policy - PasteDownloadApp",
-      "description": "Privacy Policy for PasteDownloadApp. All image processing happens in your browser with zero uploads to our servers.",
+      "description": "Privacy Policy for PasteDownloadApp. Learn how PasteDownloadApp handles browser-based image processing, analytics, advertising, cookies, and third-party services.",
       "publisher": {
         "@type": "Organization",
         "name": "PasteDownloadApp"
@@ -31,19 +31,22 @@ import ContentLayout from '../layouts/ContentLayout.astro';
   </h1>
 
   <div class="text-body text-sm sm:text-[15px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
-    <p><strong>Last updated:</strong> June 2026</p>
+    <p><strong>Last updated:</strong> August 2026</p>
+
+    <h2>Image Processing</h2>
+    <p>
+      PasteDownloadApp is designed to process images in your browser whenever possible. Images pasted from your clipboard or added by drag and drop are handled locally using browser APIs such as the <strong>Clipboard API</strong> and <strong>Canvas API</strong>. We do <strong>not</strong> upload, store, or have access to images you paste from your device.
+    </p>
+    <p>
+      When you use the URL download feature, your browser first tries to fetch the image directly from the URL you enter. If direct access is blocked by the image host, the tool may try a third-party CORS proxy to retrieve the image so it can be previewed or downloaded. In that case, the image URL and image data may be processed by that third-party proxy according to its own policies.
+    </p>
 
     <h2>Information We Collect</h2>
     <p>
-      PasteDownloadApp is designed with your privacy as our top priority. Our tool processes all images entirely within your browser using the <strong>Clipboard API</strong> and <strong>Canvas API</strong>. We do <strong>not</strong> collect, store, transmit, or have access to any images you paste, upload, or download through our service.
+      We do not require an account and we do not ask you to provide your name, email address, or payment information to use the image tool. We may collect limited technical and usage information through analytics and advertising services, such as pages visited, browser type, device type, approximate location, referrer, interactions, and similar diagnostic information.
     </p>
     <p>
-      When you use the URL download feature, image data is fetched directly by your browser and processed client-side. No image data is routed through or stored on our servers at any point.
-    </p>
-
-    <h2>No Data Collection</h2>
-    <p>
-      We do not use cookies, tracking scripts, analytics, or any form of data collection technology. We do not collect personal information such as your name, email address, IP address, or browsing behavior.
+      Your browser may also store a local theme preference so the site can remember whether you prefer light mode or dark mode. This preference is stored locally in your browser and is not used to identify you.
     </p>
 
     <h2>Third-Party Services</h2>
@@ -51,17 +54,31 @@ import ContentLayout from '../layouts/ContentLayout.astro';
       Our website uses <strong>Google Fonts</strong> for typography. When you load the page, your browser requests font files from Google's servers, which may log your IP address according to Google's privacy policy. We use a <code>preconnect</code> and <code>preload</code> strategy to minimize the impact of this request.
     </p>
     <p>
-      No other third-party scripts, embeds, or services are used on this website.
+      We use <strong>Google Analytics</strong> to understand how visitors use the site and to improve the tool. Google Analytics may use cookies or similar technologies to collect usage information.
+    </p>
+    <p>
+      We may use <strong>Google AdSense</strong> or other Google advertising services to display ads. Google and its partners may use cookies, web beacons, IP addresses, advertising identifiers, and similar technologies to serve ads, measure ad performance, prevent fraud, and personalize ads where permitted. Third-party vendors, including Google, may use cookies to serve ads based on your prior visits to this and other websites.
+    </p>
+    <p>
+      You can learn more about how Google uses data from sites that use Google services at <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">How Google uses information from sites or apps that use our services</a>. You can manage Google ad personalization at <a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer">Google Ad Settings</a>.
+    </p>
+    <p>
+      The URL download feature may use <strong>corsproxy.io</strong> as a fallback when a direct image request is blocked by the source website. This fallback is only used for URL-based downloads, not for images pasted directly from your clipboard.
+    </p>
+
+    <h2>Cookies and Consent</h2>
+    <p>
+      Cookies and similar technologies may be used for analytics, advertising, security, fraud prevention, frequency capping, and ad measurement. Where required by law, including for users in the European Economic Area, the United Kingdom, and Switzerland, we will request consent before using cookies or personal data for personalized ads or measurement that requires consent.
     </p>
 
     <h2>Data Retention</h2>
     <p>
-      Since we do not collect any personal data or image data, there is nothing to retain. All processing is ephemeral and occurs entirely in your browser session. Once you close or refresh the page, no data persists.
+      Images pasted from your device are processed in your browser session and are not retained by us. Analytics and advertising providers may retain usage, cookie, and ad-related data according to their own retention policies. Local browser preferences remain on your device until you clear your browser data.
     </p>
 
     <h2>Your Rights</h2>
     <p>
-      Because we collect no personal data, there is no data to access, correct, delete, or port. If you have any questions about this privacy policy, please <a href="/contact/">contact us</a>.
+      Depending on your location, you may have rights to access, delete, correct, object to, or restrict certain uses of your personal data. You may also be able to withdraw consent for advertising or analytics cookies through your browser settings, consent controls, or Google ad settings. If you have any questions about this privacy policy, please <a href="/contact/">contact us</a>.
     </p>
 
     <h2>Changes to This Policy</h2>

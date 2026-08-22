@@ -1,0 +1,63 @@
+<script is:inline>
+  (function() {
+    var storageKey = 'theme';
+    var systemQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function getPreference() {
+      try {
+        var saved = localStorage.getItem(storageKey);
+        return saved === 'light' || saved === 'dark' || saved === 'system' ? saved : 'system';
+      } catch (error) {
+        return 'system';
+      }
+    }
+
+    function setPreference(value) {
+      try {
+        localStorage.setItem(storageKey, value);
+      } catch (error) {}
+    }
+
+    function resolveDarkMode(preference) {
+      return preference === 'dark' || (preference === 'system' && systemQuery.matches);
+    }
+
+    function updateThemeColor(isDark) {
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', isDark ? '#111111' : '#fafafa');
+    }
+
+    function syncControls(preference) {
+      document.querySelectorAll('[data-theme-menu]').forEach(function(menu) {
+        menu.dataset.themeCurrent = preference;
+      });
+      document.querySelectorAll('[data-theme-option]').forEach(function(control) {
+        var isSelected = control.dataset.themeOption === preference;
+        control.setAttribute('aria-checked', isSelected ? 'true' : 'false');
+      });
+    }
+
+    function applyTheme(preference) {
+      var isDark = resolveDarkMode(preference);
+      document.documentElement.classList.toggle('dark', isDark);
+      updateThemeColor(isDark);
+      syncControls(preference);
+    }
+
+    window.__setThemePreference = function(preference) {
+      if (preference !== 'light' && preference !== 'dark' && preference !== 'system') return;
+      setPreference(preference);
+      applyTheme(preference);
+    };
+
+    window.__syncThemeControls = function() {
+      applyTheme(getPreference());
+    };
+
+    systemQuery.addEventListener('change', function() {
+      if (getPreference() === 'system') applyTheme('system');
+    });
+
+    applyTheme(getPreference());
+  })();
+</script>

@@ -1,5 +1,6 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import { latestArticles } from '../../data/articles';
 ---
 
 <ContentLayout title="Blog - PasteDownloadApp" description="Tips and guides for saving clipboard images, downloading screenshots, and using PasteDownloadApp." canonicalUrl="https://pastedownloadapp.com/blog/">
@@ -53,23 +54,23 @@ import ContentLayout from '../../layouts/ContentLayout.astro';
   <div class="text-body text-sm sm:text-[15px] leading-relaxed space-y-4">
     <p>Tips and guides for saving images from your clipboard without extra software.</p>
 
-    <ul class="list-disc pl-5 space-y-3 mt-6 [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
-      <li>
-        <a href="/blog/png-vs-jpg-vs-webp/">PNG vs JPG vs WebP - Which Format Should You Save Your Image As?</a>
-        <span class="block text-mute text-xs mt-0.5">Learn the png vs jpg vs webp difference and how to pick the right format.</span>
-      </li>
-      <li>
-        <a href="/blog/download-copied-image-mac/">How to Download a Copied Image on Mac Without Saving to Photos</a>
-        <span class="block text-mute text-xs mt-0.5">Save clipboard images from your Mac - no Photos, no Preview.</span>
-      </li>
-      <li>
-        <a href="/blog/save-screenshot-as-file-windows/">How to Save a Screenshot Directly as a File (Without Opening MS Paint)</a>
-        <span class="block text-mute text-xs mt-0.5">Save clipboard images instantly - no Paint, no installs.</span>
-      </li>
-      <li>
-        <a href="/blog/save-clipboard-image-without-software/">5 Faster Ways to Save Clipboard Images (No Software Install Needed)</a>
-        <span class="block text-mute text-xs mt-0.5">Save clipboard images without installing any software using only your browser.</span>
-      </li>
-    </ul>
+    <div class="grid gap-4 mt-6">
+      {latestArticles.map((article) => (
+        <a href={article.href} class="group grid gap-4 sm:grid-cols-[180px_1fr] rounded-xl border border-hairline bg-canvas overflow-hidden no-underline transition-colors hover:border-hairline-strong focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">
+          <img
+            src={article.image}
+            alt={article.alt}
+            width="836"
+            height="471"
+            loading="lazy"
+            class="w-full sm:h-full aspect-[16/9] object-cover bg-canvas-soft"
+          />
+          <span class="block p-4 sm:pl-0">
+            <span class="block text-ink text-base sm:text-lg font-semibold tracking-tight leading-snug group-hover:text-link transition-colors">{article.title}</span>
+            <span class="block text-mute text-xs sm:text-sm leading-relaxed mt-2">{article.description}</span>
+          </span>
+        </a>
+      ))}
+    </div>
   </div>
 </ContentLayout>
