@@ -3,7 +3,7 @@ const { id = "paste" } = Astro.props;
 ---
 
 <section id={id} class="w-full">
-  <div class="rounded-xl bg-canvas border border-hairline/50 shadow-[0_2px_4px_#0000000d,0_8px_24px_-8px_#00000026] overflow-hidden">
+  <div class="rounded-xl bg-canvas border border-hairline/50 dark:border-hairline-strong shadow-[0_2px_4px_#0000000d,0_8px_24px_-8px_#00000026] dark:shadow-[0_1px_0_0_rgba(255,255,255,0.05)_inset,0_12px_28px_-10px_rgba(0,0,0,0.7)] overflow-hidden">
     <div class="px-4 sm:px-6 py-4 sm:py-5 border-b border-hairline flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
       <div class="text-left">
         <h3 class="text-[15px] sm:text-[17px] font-semibold text-ink tracking-tight m-0">Paste from Clipboard</h3>
@@ -15,7 +15,7 @@ const { id = "paste" } = Astro.props;
           Auto-download
         </label>
         <label for="pasteFormat" class="sr-only">Image format</label>
-        <select id="pasteFormat" class="text-xs text-body bg-canvas border border-hairline rounded-md px-2 py-1.5 outline-none focus:border-hairline-strong focus-visible:ring-2 focus-visible:ring-link">
+        <select id="pasteFormat" class="text-xs text-body bg-canvas border border-hairline dark:border-hairline-strong rounded-md px-2 py-1.5 outline-none focus:border-hairline-strong focus-visible:ring-2 focus-visible:ring-link">
           <option value="png">PNG</option>
           <option value="jpeg">JPEG</option>
           <option value="webp">WebP</option>

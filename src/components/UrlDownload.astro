@@ -3,14 +3,14 @@ const { id = "url" } = Astro.props;
 ---
 
 <section id={id} class="w-full">
-  <div class="rounded-xl bg-canvas border border-hairline shadow-[0_2px_4px_#0000000d,0_8px_24px_-8px_#00000026] overflow-hidden">
+  <div class="rounded-xl bg-canvas border border-hairline dark:border-hairline-strong shadow-[0_2px_4px_#0000000d,0_8px_24px_-8px_#00000026] dark:shadow-[0_1px_0_0_rgba(255,255,255,0.05)_inset,0_12px_28px_-10px_rgba(0,0,0,0.7)] overflow-hidden">
     <div class="px-4 sm:px-6 py-4 sm:py-5 border-b border-hairline flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
       <div class="text-left">
         <h3 class="text-[15px] sm:text-[17px] font-semibold text-ink tracking-tight m-0">Download from URL</h3>
         <p class="text-body text-xs sm:text-sm m-0 mt-0.5">Enter an image URL to download it</p>
       </div>
       <label for="urlFormat" class="sr-only">Image format</label>
-      <select id="urlFormat" class="text-xs text-body bg-canvas border border-hairline rounded-md px-2 py-1.5 outline-none focus:border-hairline-strong focus-visible:ring-2 focus-visible:ring-link self-start sm:self-auto">
+      <select id="urlFormat" class="text-xs text-body bg-canvas border border-hairline dark:border-hairline-strong rounded-md px-2 py-1.5 outline-none focus:border-hairline-strong focus-visible:ring-2 focus-visible:ring-link self-start sm:self-auto">
         <option value="original">Original</option>
         <option value="png">PNG</option>
         <option value="jpeg">JPEG</option>
@@ -29,7 +29,7 @@ const { id = "url" } = Astro.props;
             autocomplete="off"
             spellcheck="false"
             placeholder="https://example.com/image.jpg"
-            class="w-full h-10 sm:h-11 px-3 sm:px-4 pr-16 sm:pr-20 text-sm text-ink bg-canvas border border-hairline rounded-lg outline-none focus:border-hairline-strong transition-colors placeholder:text-mute focus-visible:ring-2 focus-visible:ring-link"
+            class="w-full h-10 sm:h-11 px-3 sm:px-4 pr-16 sm:pr-20 text-sm text-ink bg-canvas border border-hairline dark:border-hairline-strong rounded-lg outline-none focus:border-hairline-strong transition-colors placeholder:text-mute focus-visible:ring-2 focus-visible:ring-link"
           />
           <button id="fetchUrlBtn" class="absolute right-1 top-1/2 -translate-y-1/2 bg-ink dark:bg-white text-on-primary dark:text-black text-xs font-medium px-3 sm:px-3.5 py-1.5 rounded-md hover:opacity-90 transition-opacity border-none cursor-pointer focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">
             Fetch
