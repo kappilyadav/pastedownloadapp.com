@@ -2,11 +2,13 @@
 import { latestArticles } from '../data/articles';
 
 export interface Props {
-  currentHref: string;
+  hrefs: string[];
 }
 
-const { currentHref } = Astro.props;
-const relatedArticles = latestArticles.filter((article) => article.href !== currentHref);
+const { hrefs } = Astro.props;
+const relatedArticles = hrefs
+  .map((href) => latestArticles.find((article) => article.href === href))
+  .filter((article) => article !== undefined);
 ---
 
 <section class="mt-10 pt-6 border-t border-hairline">

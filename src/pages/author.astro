@@ -1,0 +1,85 @@
+---
+import ContentLayout from '../layouts/ContentLayout.astro';
+import { latestArticles } from '../data/articles';
+---
+
+<ContentLayout title="Kappil Yadav - Author, PasteDownloadApp" description="Kappil Yadav builds PasteDownloadApp, a browser-based tool for saving clipboard images and URLs as files. Read his background and the articles he has written." canonicalUrl="https://pastedownloadapp.com/author/">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pastedownloadapp.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Author", "item": "https://pastedownloadapp.com/author/" }
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "name": "Kappil Yadav - Author, PasteDownloadApp",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Kappil Yadav",
+        "url": "https://pastedownloadapp.com/author/",
+        "sameAs": ["https://github.com/kappilyadav"],
+        "jobTitle": "Developer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "PasteDownloadApp"
+        }
+      }
+    }
+  </script>
+
+  <div class="flex items-center gap-4 mb-6">
+    <span class="w-14 h-14 rounded-full bg-canvas-soft border border-hairline flex items-center justify-center text-base font-semibold text-ink shrink-0" aria-hidden="true">KY</span>
+    <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight m-0 leading-tight text-balance">
+      Kappil Yadav
+    </h1>
+  </div>
+
+  <div class="text-body text-sm sm:text-[15px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
+    <p>
+      I build and maintain PasteDownloadApp, a small browser-based tool for saving clipboard images and direct image URLs as files. I write the blog, fix the bugs, and answer the emails that come in through <a href="/contact/">the contact page</a>.
+    </p>
+
+    <h2>Why I Built PasteDownloadApp</h2>
+    <p>
+      I kept running into the same annoyance: a screenshot or a copied image would sit on my clipboard, and turning it into an actual file meant opening Paint or Preview, pasting into a blank canvas, and clicking through a save dialog. None of that needs a desktop app. The Clipboard API and the Canvas API can read a pasted image and re-encode it as PNG, JPEG, or WebP directly in the browser tab, so I built a page that does exactly that and nothing else. No account, no upload, no server involved in the conversion.
+    </p>
+
+    <h2>How I Work on This Site</h2>
+    <p>
+      I test changes against real files before I publish anything on the blog. When a post references a file size or a conversion result, I pasted or fetched that exact image through the live tool and read the number off the page, the same thing you would see if you did it yourself. I keep a running note of what changed on each article's byline so it is clear when something was updated and why.
+    </p>
+
+    <h2>Find Me</h2>
+    <p>
+      Code and commit history for this site are public on <a href="https://github.com/kappilyadav" target="_blank" rel="noopener noreferrer">GitHub (@kappilyadav)</a>. If you spot a bug or want to suggest a feature, that is the fastest way to reach me alongside <a href="/contact/">email</a>.
+    </p>
+  </div>
+
+  <div class="mt-10 pt-6 border-t border-hairline">
+    <h2 class="text-ink text-lg sm:text-xl font-semibold tracking-tight mt-0 mb-4 leading-tight">Articles by Kappil Yadav</h2>
+    <div class="grid gap-4">
+      {latestArticles.map((article) => (
+        <a href={article.href} class="group grid gap-4 sm:grid-cols-[160px_1fr] rounded-xl border border-hairline bg-canvas overflow-hidden !no-underline transition-colors hover:border-hairline-strong focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">
+          <img
+            src={article.image}
+            alt={article.alt}
+            width="836"
+            height="471"
+            loading="lazy"
+            class="w-full sm:h-full aspect-[16/9] object-cover bg-canvas-soft"
+          />
+          <span class="block p-4 sm:pl-0">
+            <span class="block text-ink text-base font-semibold tracking-tight leading-snug !no-underline group-hover:text-link transition-colors">{article.title}</span>
+            <span class="block text-mute text-xs sm:text-sm leading-relaxed mt-2 !no-underline">{article.description}</span>
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</ContentLayout>

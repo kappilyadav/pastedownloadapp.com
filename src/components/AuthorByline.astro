@@ -1,0 +1,31 @@
+---
+export interface Props {
+  publishDate: string;
+  updatedDate?: string;
+  changeNote?: string;
+}
+
+const { publishDate, updatedDate, changeNote } = Astro.props;
+
+function formatDate(iso: string) {
+  return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+---
+
+<div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-mute text-xs sm:text-sm mb-6 pb-6 border-b border-hairline not-prose">
+  <a href="/author/" class="flex items-center gap-2 text-ink no-underline hover:text-link transition-colors">
+    <span class="w-7 h-7 rounded-full bg-canvas-soft border border-hairline flex items-center justify-center text-[11px] font-semibold text-ink shrink-0" aria-hidden="true">KY</span>
+    <span class="font-medium">Written by Kappil Yadav</span>
+  </a>
+  <span aria-hidden="true">&middot;</span>
+  <span>Published {formatDate(publishDate)}</span>
+  {updatedDate && (
+    <>
+      <span aria-hidden="true">&middot;</span>
+      <span>Last updated {formatDate(updatedDate)}</span>
+    </>
+  )}
+  {changeNote && (
+    <span class="w-full text-mute text-xs mt-0.5">{changeNote}</span>
+  )}
+</div>

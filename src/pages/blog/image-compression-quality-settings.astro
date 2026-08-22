@@ -1,0 +1,109 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import RelatedGuides from '../../components/RelatedGuides.astro';
+import AuthorByline from '../../components/AuthorByline.astro';
+---
+
+<ContentLayout
+    title="Image Compression Quality Settings Explained, With Real File Sizes"
+    description="What a JPEG or WebP quality number actually changes, shown with real before-and-after file sizes from two test conversions, not estimates."
+    canonicalUrl="https://pastedownloadapp.com/blog/image-compression-quality-settings/"
+    imageUrl="https://pastedownloadapp.com/blog/image-compression-quality-settings.png"
+>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Image Compression Quality Settings Explained, With Real File Sizes",
+            "description": "What a JPEG or WebP quality number actually changes, shown with real before-and-after file sizes from two test conversions, not estimates.",
+            "image": "https://pastedownloadapp.com/blog/image-compression-quality-settings.png",
+            "datePublished": "2026-08-22T00:00:00Z",
+            "dateModified": "2026-08-22T00:00:00Z",
+            "author": {
+                "@type": "Person",
+                "name": "Kappil Yadav",
+                "url": "https://pastedownloadapp.com/author/"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "PasteDownloadApp"
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://pastedownloadapp.com/blog/image-compression-quality-settings/"
+            }
+        }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pastedownloadapp.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://pastedownloadapp.com/blog/" },
+          { "@type": "ListItem", "position": 3, "name": "Image Compression Quality Settings Explained", "item": "https://pastedownloadapp.com/blog/image-compression-quality-settings/" }
+        ]
+      }
+    </script>
+
+    <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight text-balance">
+        Image Compression Quality Settings Explained, With Real File Sizes
+    </h1>
+
+    <AuthorByline publishDate="2026-08-22" />
+
+    <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
+        <img src="/blog/image-compression-quality-settings.png" alt="Screenshot of the paste tool showing a WebP conversion result and file size" width="1600" height="900" class="w-full aspect-[16/9] object-cover" />
+    </figure>
+
+    <div class="text-body text-sm sm:text-[15px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
+
+        <p>A "quality" slider in an image tool usually runs from 0 to 100 and gets treated like a magic dial: higher for better images, lower for smaller files. That is roughly right, but the number means something specific, and testing it on real files shows the tradeoff is not linear. Here is what quality actually controls, and what it did to two real files when I ran them through PasteDownloadApp's own conversion pipeline.</p>
+
+        <h2>What the Quality Number Actually Does</h2>
+
+        <p>For JPEG, the quality value controls how aggressively the encoder discards data during a step called chroma subsampling and DCT quantization, in plain terms, how much fine detail in color and texture gets rounded away to make the file smaller. At quality 100, very little is discarded and the file is close to lossless size. At quality 50, entire bands of visual detail get flattened, and you start seeing blocky artifacts around sharp edges. WebP's lossy mode uses a conceptually similar quality scale but a more efficient underlying codec, which is why it tends to produce smaller files than JPEG at a visually comparable quality level.</p>
+
+        <p>PasteDownloadApp does not expose an adjustable quality slider. It encodes JPEG and WebP output at a fixed <strong>92%</strong>, chosen as a setting where compression artifacts are not visible on typical screenshots and photos, rather than exposing a dial most people would not know how to tune. Everything below is what that fixed 92% setting actually produces.</p>
+
+        <h2>Real Result 1: A Photo-Style Illustration</h2>
+
+        <p>Source file: a 1672&times;941 gradient illustration PNG, 1.15 MB on disk. Converting it through the tool at the default 92% quality:</p>
+
+        <ul class="list-disc pl-5 space-y-1.5">
+            <li><strong>JPEG:</strong> 128.3 KB, a 89% reduction from the source PNG.</li>
+            <li><strong>WebP:</strong> 48.9 KB, a 96% reduction, and roughly 62% smaller than the JPEG at the same quality setting.</li>
+        </ul>
+
+        <h2>Real Result 2: A Screenshot With Text</h2>
+
+        <p>Source file: a 624&times;575 UI screenshot with sharp text and flat colors, 140.2 KB on disk. Same 92% quality setting:</p>
+
+        <ul class="list-disc pl-5 space-y-1.5">
+            <li><strong>JPEG:</strong> 37.6 KB, a 73% reduction, but with visible softening around the text edges under close inspection since JPEG's block-based compression struggles with high-contrast edges.</li>
+            <li><strong>WebP:</strong> 16.8 KB, a 88% reduction, and 55% smaller than the JPEG.</li>
+        </ul>
+
+        <p>The pattern holds across both files: WebP consistently beat JPEG by roughly 55 to 60% at the same effective quality, and both formats compressed the photo-style illustration by a much larger percentage than the text-heavy screenshot, because JPEG and WebP's lossy modes are fundamentally built around smoothing photographic gradients, not preserving sharp text edges.</p>
+
+        <h2>Why This Means PNG Is Still Right for Some Images</h2>
+
+        <p>Neither JPEG nor WebP lossy mode can guarantee pixel-perfect text, because that is not what the compression is designed to preserve. If the image is going to be read closely, a screenshot of code, a diagram with small labels, a scanned document, PNG's lossless compression is worth the larger file size. If the image is a photo, a hero banner, or anything where a viewer will not compare it pixel by pixel against the original, WebP at high quality is very hard to distinguish from the source while being a fraction of the size. The full breakdown of when to use each format is in <a href="/blog/png-vs-jpg-vs-webp/">PNG vs JPG vs WebP</a>.</p>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <h3>Can I set a custom quality percentage in PasteDownloadApp?</h3>
+        <p>Not currently. The tool uses a fixed 92% quality for JPEG and WebP output, chosen to avoid visible artifacts without needing a setting most people would not know how to adjust.</p>
+
+        <h3>Does a higher quality number always mean a bigger file?</h3>
+        <p>Generally yes for the same image and format, but the relationship is not linear. Going from 92% to 100% typically adds far more file size than it improves visible quality, which is why most encoders default somewhere in the low-to-mid 90s rather than 100.</p>
+
+        <h3>Why did WebP lossless produce a bigger file than WebP lossy in my testing elsewhere?</h3>
+        <p>Lossless modes preserve every pixel exactly, the same tradeoff PNG makes, so they are usually larger than lossy output at a high quality setting. WebP's advantage over PNG shows up more in lossy mode than lossless mode for photographic content.</p>
+
+        <RelatedGuides hrefs={["/blog/png-vs-jpg-vs-webp/", "/blog/why-png-reencode-bigger/", "/blog/image-for-favicon-social-resume/"]} />
+
+        <p>Test it on your own file at <a href="https://pastedownloadapp.com/">pastedownloadapp.com</a>. Paste an image, switch between PNG, JPEG, and WebP, and compare the real size PasteDownloadApp reports for each.</p>
+
+    </div>
+</ContentLayout>

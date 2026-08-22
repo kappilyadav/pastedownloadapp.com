@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import RelatedGuides from '../../components/RelatedGuides.astro';
+import AuthorByline from '../../components/AuthorByline.astro';
 ---
 
 <ContentLayout
@@ -17,10 +18,11 @@ import RelatedGuides from '../../components/RelatedGuides.astro';
             "description": "Learn how to save an image on Mac or download a copied clipboard image as a file without Photos or Preview. Works for screenshots, Safari images, and MacBook clipboard images.",
             "image": "https://pastedownloadapp.com/blog/download-copied-image-mac.png",
             "datePublished": "2026-06-08T00:00:00Z",
-            "dateModified": "2026-08-05T00:00:00Z",
+            "dateModified": "2026-08-22T00:00:00Z",
             "author": {
-                "@type": "Organization",
-                "name": "PasteDownloadApp"
+                "@type": "Person",
+                "name": "Kappil Yadav",
+                "url": "https://pastedownloadapp.com/author/"
             },
             "publisher": {
                 "@type": "Organization",
@@ -44,9 +46,11 @@ import RelatedGuides from '../../components/RelatedGuides.astro';
       }
     </script>
 
-    <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-6 leading-tight text-balance">
+    <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight text-balance">
         How to Download a Copied Image on Mac Without Saving to Photos
     </h1>
+
+    <AuthorByline publishDate="2026-06-08" updatedDate="2026-08-22" changeNote="Added a screenshot of a real paste, and confirmed steps on macOS 26." />
 
     <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
         <img src="/blog/download-copied-image-mac.png" alt="Minimal laptop illustration showing a copied image being saved as a file on Mac" width="836" height="471" class="w-full aspect-[16/9] object-cover" />
@@ -74,6 +78,12 @@ import RelatedGuides from '../../components/RelatedGuides.astro';
         </ol>
 
         <p>It takes about four seconds. No account, no uploads, no app installs. Just <strong>Mac clipboard to file</strong> in a single paste.</p>
+
+        <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
+            <img src="/blog/screenshots/paste-tool-png-result.png" alt="Screenshot of PasteDownloadApp after pasting a clipboard image on Mac, showing the file dimensions 1672 by 941 and a size of 930.2 KB" width="624" height="575" class="w-full max-w-md mx-auto" loading="lazy" />
+        </figure>
+
+        <p>That screenshot is from an actual test run in Chrome 151 on macOS 26.4, pasting this article's own cover image straight from the clipboard. The 930.2 KB reading is the exact size Chrome reported for that file, not a rounded estimate.</p>
 
         <h2>How to Copy a Screenshot on Mac Without Saving First</h2>
 
@@ -120,7 +130,7 @@ import RelatedGuides from '../../components/RelatedGuides.astro';
         <h3>Does pastedownloadapp.com store my images?</h3>
         <p>No. The entire process runs client-side in your browser. Images never leave your device. Once you download the file, the page holds nothing. No uploads, no servers, no storage.</p>
 
-        <RelatedGuides currentHref="/blog/download-copied-image-mac/" />
+        <RelatedGuides hrefs={["/blog/save-screenshot-as-file-windows/", "/blog/clipboard-paste-chrome-firefox-safari/", "/blog/access-clipboard-not-working/"]} />
 
         <p>Try <a href="https://pastedownloadapp.com/">pastedownloadapp.com</a>. Paste your image and download it instantly, no software needed.</p>
 

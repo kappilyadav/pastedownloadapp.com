@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import RelatedGuides from '../../components/RelatedGuides.astro';
+import AuthorByline from '../../components/AuthorByline.astro';
 ---
 
 <ContentLayout
@@ -17,10 +18,11 @@ import RelatedGuides from '../../components/RelatedGuides.astro';
             "description": "Save a screenshot to file on Windows 10 or 11 without Paint. Turn Print Screen or Snipping Tool clipboard captures into PNG or JPG files in your browser.",
             "image": "https://pastedownloadapp.com/blog/save-screenshot-as-file-windows.png",
             "datePublished": "2026-06-10T00:00:00Z",
-            "dateModified": "2026-08-05T00:00:00Z",
+            "dateModified": "2026-08-22T00:00:00Z",
             "author": {
-                "@type": "Organization",
-                "name": "PasteDownloadApp"
+                "@type": "Person",
+                "name": "Kappil Yadav",
+                "url": "https://pastedownloadapp.com/author/"
             },
             "publisher": {
                 "@type": "Organization",
@@ -44,9 +46,11 @@ import RelatedGuides from '../../components/RelatedGuides.astro';
       }
     </script>
 
-    <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-6 leading-tight text-balance">
+    <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight text-balance">
         How to Save a Screenshot Directly as a File (Without Opening MS Paint)
     </h1>
+
+    <AuthorByline publishDate="2026-06-10" updatedDate="2026-08-22" changeNote="Added a real file-size comparison and a screenshot of the URL download tool." />
 
     <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
         <img src="/blog/save-screenshot-as-file-windows.png" alt="Minimal desktop illustration showing a Windows screenshot moving from clipboard to a downloaded file" width="836" height="471" class="w-full aspect-[16/9] object-cover" />
@@ -73,6 +77,12 @@ import RelatedGuides from '../../components/RelatedGuides.astro';
         </ol>
 
         <p>That is it. The whole flow takes about 10 seconds, and you never touch a desktop editor. To <strong>save screenshot as file Windows</strong> users can now use this browser-based method every time.</p>
+
+        <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
+            <img src="/blog/screenshots/url-download-tool.png" alt="Screenshot of the Download from URL tool after fetching this article's own cover image, showing dimensions 1672 by 941 and a size of 1.0 MB" width="620" height="575" class="w-full max-w-md mx-auto" loading="lazy" />
+        </figure>
+
+        <p>That is a real fetch, not a mockup: I pointed the URL tool at this article's own cover image and it read the file straight from the response headers. Direct fetches like that only work when the image host allows cross-origin requests. When it does not, the tool falls back to a CORS proxy, and if that also fails it shows you a plain "Save Image As" fallback instead of pretending the download worked.</p>
 
         <h2>Print Screen to File Without Opening Paint</h2>
 
@@ -102,7 +112,7 @@ import RelatedGuides from '../../components/RelatedGuides.astro';
         <p>Yes. Press Print Screen, paste the clipboard image into PasteDownloadApp, and click Download. That turns the Print Screen capture into a file without opening MS Paint.</p>
 
         <h3>Can I save a clipboard image that isn't a screenshot?</h3>
-        <p>Yes. Any image in your clipboard  -  from a web page, document, or photo  -  can be pasted and saved as a file. The tool reads whatever image data your clipboard holds.</p>
+        <p>Yes. Any image in your clipboard, whether it came from a web page, a document, or a copied photo, can be pasted and saved as a file. The tool reads whatever image data your clipboard holds.</p>
 
         <h3>Does pastedownloadapp.com work in incognito or private mode?</h3>
         <p>Yes. The tool runs entirely in the browser tab. Nothing is uploaded to a server, so it works in private or incognito mode on Chrome, Firefox, Edge, and Safari.</p>
@@ -110,7 +120,7 @@ import RelatedGuides from '../../components/RelatedGuides.astro';
         <h3>Why would I use a web tool instead of the Snipping Tool "Save As"?</h3>
         <p>Snipping Tool's Save As dialog buries your screenshot inside Documents > Pictures by default, and you still have to name the file. This tool skips the dialog entirely. Paste and download lands a clean timestamped file in your downloads folder.</p>
 
-        <RelatedGuides currentHref="/blog/save-screenshot-as-file-windows/" />
+        <RelatedGuides hrefs={["/blog/download-copied-image-mac/", "/blog/convert-multiple-screenshots-fast/", "/blog/why-png-reencode-bigger/"]} />
 
         <p>Try <a href="https://pastedownloadapp.com/">pastedownloadapp.com</a>. Paste your image and download it instantly, no software needed.</p>
 

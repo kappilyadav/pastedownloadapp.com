@@ -38,7 +38,15 @@ import { latestArticles } from '../data/articles';
           "name": "How do I use paste image to download on mobile?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Tap the Access Clipboard button to grant permission, then paste your image. On supported mobile browsers, you can also import images from your gallery or file manager. Clipboard image processing happens in your browser, which helps when you need to download an image from clipboard on Android or iOS."
+            "text": "Tap the Access Clipboard button to grant permission, then paste your image, or import it from your gallery or file manager if that button does not respond. Android and iOS handle this permission differently, which is covered in the guide to clipboard images on Android vs iPhone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why won't Ctrl+V paste my image?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The most common cause is that your clipboard does not actually contain image data, for example you copied a link instead of the picture itself. It can also be that the paste zone does not have focus yet, or that your specific browser applies stricter permission rules. See why clipboard paste behaves differently across browsers for the full breakdown."
           }
         },
         {
@@ -59,26 +67,26 @@ import { latestArticles } from '../data/articles';
         },
         {
           "@type": "Question",
-          "name": "Can I paste an image to view it before downloading?",
+          "name": "Why is my downloaded file a different size than expected?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. After you paste an image or fetch one from a URL, the tool displays a preview with details like dimensions and file size. You can inspect the image before choosing a format and downloading."
+            "text": "If you chose PNG as the output format, the browser's built-in encoder is not as aggressive as a dedicated PNG optimizer, so an already-optimized PNG can come out larger after conversion, not smaller. JPEG and WebP use a fixed 92 percent quality setting, which produces a real, tested size reduction. Both effects are explained with actual before-and-after numbers in the compression quality guide."
           }
         },
         {
           "@type": "Question",
-          "name": "What does this image downloader do?",
+          "name": "Does this work if I copy an image from a PDF?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "PasteDownloadApp is a paste downloader for copied images, screenshots, clipboard photos, and direct image URLs. Copy an image, paste it on the website, preview it, and save it in your preferred format."
+            "text": "It depends on your PDF viewer. If it lets you right-click an embedded image and choose Copy Image, that places real image data on your clipboard and it will paste normally. Some viewers only let you copy a text selection or a vector region, which does not produce pasteable image data. Taking a screenshot of the PDF page always works as a fallback."
           }
         },
         {
           "@type": "Question",
-          "name": "How do I download a copied image?",
+          "name": "What happens if a direct image URL won't download?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Copy an image to your clipboard, visit the tool, paste it with Ctrl+V or Cmd+V, choose a format, and click Download. You can enable Auto-download for faster repeated copy paste download workflows."
+            "text": "Some image hosts block direct cross-origin requests. When that happens, the tool automatically tries a CORS proxy fallback, and if that also fails, it shows the image so you can use your browser's built-in Save Image As option instead of a silent failure."
           }
         },
         {
@@ -168,60 +176,42 @@ import { latestArticles } from '../data/articles';
 
         <div class="text-body text-sm sm:text-[15px] leading-relaxed space-y-4 [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-8 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
           <p>
-            Looking for a fast, private, and reliable way to save a copied image as a file? PasteDownloadApp gives you a focused paste download workspace for screenshots, design mockups, charts, photos, and other images that are already on your clipboard. If you want a broader walkthrough, read the guide to <a href="/blog/save-clipboard-image-without-software/">save clipboard images without software</a>. You can preview the image, pick an output format, and download it without sending the file to our servers.
-          </p>
-          <p>
-            The workflow is simple: copy an image, open the tool, and press Ctrl+V or Cmd+V. The browser reads the image data, shows a preview, and lets you save it as PNG, JPEG, or WebP. If you are deciding between formats, compare <a href="/blog/png-vs-jpg-vs-webp/">PNG vs JPG vs WebP</a> before downloading. That means fewer temporary files, fewer trips through image editors, and a faster copy paste download path from copied image to finished file.
+            PasteDownloadApp is a focused workspace for getting an image off your clipboard, or a URL, and onto your disk as a file. Copy something (a screenshot, a design mockup, a chart from a meeting), open this page, press Ctrl+V or Cmd+V, and the browser reads the image data, shows you a preview with its dimensions and size, and lets you save it as PNG, JPEG, or WebP without sending anything to a server. If you want a slower walkthrough of that same flow, read <a href="/blog/save-clipboard-image-without-software/">saving clipboard images without extra software</a>.
           </p>
 
-          <h3>Save Images from Your Clipboard</h3>
+          <h3>From Your Clipboard</h3>
           <p>
-            Clipboard saving is designed for speed and convenience. Once you paste an image, the tool shows its dimensions and file size so you know exactly what you are saving. Designers, developers, marketers, students, and casual users can all use the same quick process for screenshots, copied photos, UI captures, and reference images. It is useful when you want to paste image to download, paste photo to download, copy image to download, or turn a clipboard capture into a clean image file. Windows users can also follow the guide to <a href="/blog/save-screenshot-as-file-windows/">save screenshots directly as files</a>.
+            Once you paste, the tool shows exact dimensions and file size before you commit to a format, and the <a href="/blog/png-vs-jpg-vs-webp/">PNG, JPG, and WebP comparison</a> is worth reading if you are not sure which one to pick. If you prefer a hands-free flow, the Auto-download toggle converts and saves each pasted image the moment it lands, which is the fastest way to get through several screenshots in a row, covered in more depth in <a href="/blog/convert-multiple-screenshots-fast/">converting several screenshots fast</a>. Mac users routing a copied image around Photos can follow the dedicated <a href="/blog/download-copied-image-mac/">Mac clipboard guide</a>; Windows users coming from Print Screen or Snipping Tool have their own <a href="/blog/save-screenshot-as-file-windows/">Windows screenshot guide</a>.
           </p>
           <p>
-            If you prefer a hands-free workflow, enable the Auto-download toggle. With this setting turned on, each pasted image saves automatically in your selected format. It is especially useful when you need to copy to download several images in a row, use Ctrl+V to download repeatedly, and keep moving. On macOS, see how to <a href="/blog/download-copied-image-mac/">download a copied image on Mac</a> without routing it through Photos.
-          </p>
-
-          <h3>Save Images from a URL</h3>
-          <p>
-            Not every image you need starts in your clipboard. When you have a direct image link, paste the URL into the input field and click Fetch. The tool retrieves the image, shows a preview, and lets you save it in the format you need. URL downloads support JPEG, PNG, WebP, GIF, SVG, BMP, and ICO formats, so the same page can work as a clipboard downloader and a simple image URL downloader.
-          </p>
-          <p>
-            Some image hosts block direct browser requests. When that happens, the tool can try a fallback fetch path and, if needed, still show the image so you can use your browser's standard "Save Image As" option. The goal is a clear, predictable saving flow without extra software.
+            Not every browser handles a clipboard paste the same way. If Ctrl+V does nothing, or a button labeled Access Clipboard stays unresponsive, that is a real, documented difference between browsers rather than a bug on this page: see <a href="/blog/clipboard-paste-chrome-firefox-safari/">why Chrome, Firefox, and Safari behave differently</a> and <a href="/blog/access-clipboard-not-working/">why Access Clipboard fails</a> for the specific causes and fixes.
           </p>
 
-          <h3>Use It on Mobile</h3>
+          <h3>From a URL</h3>
           <p>
-            The tool works on smartphones and tablets too. Mobile browsers handle clipboard access differently from desktop browsers, so use the "Access Clipboard" button when needed. On supported devices, you can also import images from your gallery or file manager and then choose the file format before saving. This helps with paste image to download mobile searches and common tasks like downloading an image from clipboard on Android.
+            When the image is not already on your clipboard, paste a direct link into the URL field and click Fetch. It supports JPEG, PNG, WebP, GIF, SVG, BMP, and ICO. Vector and multi-resolution icon files behave a little differently than an ordinary photo once they hit a canvas element, which is covered honestly (with real test results) in <a href="/blog/svg-ico-conversion-quirks/">SVG and ICO conversion quirks</a>. If a host blocks a direct request, the tool falls back to a CORS proxy, and if that also fails it shows a plain "Save Image As" fallback instead of a silent error.
           </p>
 
-          <h3>Why Use a Browser-Based Image Saver?</h3>
+          <h3>On Mobile</h3>
           <p>
-            If you regularly save images from different sources, a browser-based tool can remove a lot of small interruptions. PasteDownloadApp combines clipboard import, URL fetching, drag and drop, format conversion, and batch-friendly auto-download in one clean interface. Here is why users choose it:
+            The tool works the same way in a mobile browser, though the permission model behind clipboard access differs by OS. Android and iOS handle the "Access Clipboard" permission differently enough that it is worth reading if something does not work as expected: see <a href="/blog/mobile-clipboard-android-vs-ios/">clipboard images on Android vs iPhone</a>.
+          </p>
+
+          <h3>Why It Stays Private</h3>
+          <p>
+            Clipboard images are read with the browser's Clipboard API and converted with the Canvas API, both running entirely on your device. Nothing is uploaded, there is no account, and there is no limit on how many times you can use it:
           </p>
           <ul class="list-disc pl-5 space-y-1.5 text-body">
-            <li><strong>Privacy-first:</strong> Clipboard images are processed in your browser and never uploaded to our servers.</li>
-            <li><strong>No sign-ups:</strong> Start saving images immediately with zero registration.</li>
-            <li><strong>Format conversion:</strong> Paste to image formats like PNG, JPEG, and WebP before downloading.</li>
-            <li><strong>Flexible inputs:</strong> Use clipboard to download, drag and drop image downloader, direct URL, or mobile import workflows.</li>
-            <li><strong>Unlimited use:</strong> Download as many images as you want with no caps, no watermarks, and no hidden fees.</li>
-            <li><strong>Cross-platform:</strong> Works on Windows, Mac, Linux, Android, and iOS.</li>
+            <li><strong>Privacy-first:</strong> images are processed in your browser and never sent to our servers.</li>
+            <li><strong>No sign-ups:</strong> nothing to register before you start.</li>
+            <li><strong>Format conversion:</strong> PNG, JPEG, and WebP, chosen with a real quality tradeoff explained in <a href="/blog/image-compression-quality-settings/">how compression quality actually works</a>.</li>
+            <li><strong>Unlimited use:</strong> no caps, no watermarks, no hidden fees.</li>
+            <li><strong>Cross-platform:</strong> Windows, Mac, Linux, Android, and iOS.</li>
           </ul>
-
-          <h3>How the Browser-Based Processing Works</h3>
-          <p>
-            Clipboard images are handled directly by your browser. We use the Clipboard API to read image data and the Canvas API to convert formats when needed. For URL downloads, the browser fetches the image using standard HTTP requests and converts it when cross-origin rules allow. This approach keeps local clipboard files private while still giving you useful format options.
-          </p>
-          <p>
-            Drag and drop works the same way as clipboard import. You can drag an image file from your file explorer or another browser tab into the paste zone, inspect the preview, and choose a format. The page is built to keep the image-saving task straightforward, whether the file came from your clipboard, a folder, a mobile gallery, or a URL.
-          </p>
 
           <h3>Get Started</h3>
           <p>
-            No setup, installation, or account creation is required. Open the tool, paste an image or enter a direct image URL, choose your format, and save the file. Bookmark this page and come back whenever you need a quick way to turn copied images, pasted photos, screenshots, or URL images into downloadable files.
-          </p>
-          <p class="text-mute text-xs italic mt-6 pt-4 border-t border-hairline">
-            Last updated: June 2026. This tool is free to use with no limitations.
+            No installation or account is required. Paste an image or fetch a URL, pick a format, and save the file.
           </p>
         </div>
       </div>
@@ -240,16 +230,16 @@ import { latestArticles } from '../data/articles';
               How do I use paste image to download on mobile?
             </summary>
             <div class="px-5 pb-4 pt-0 text-body text-sm sm:text-[15px] leading-relaxed border-t border-hairline mt-0">
-              <p class="pt-3">Tap the <strong>Access Clipboard</strong> button to grant permission, then paste your image. On supported mobile browsers, you can also import images from your gallery or file manager. This is helpful when you need to download an image from clipboard on Android or save a copied photo on iOS.</p>
+              <p class="pt-3">Tap the <strong>Access Clipboard</strong> button to grant permission, then paste your image, or import it from your gallery or file manager if that button does not respond. Android and iOS handle this permission differently, which is covered in the guide to <a href="/blog/mobile-clipboard-android-vs-ios/">clipboard images on Android vs iPhone</a>.</p>
             </div>
           </details>
           <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
             <summary class="flex items-center gap-3 px-5 py-4 cursor-pointer text-ink font-medium text-sm sm:text-base list-none select-none [&::-webkit-details-marker]:hidden">
               <svg class="shrink-0 w-4 h-4 text-mute transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-              How do I save a pasted image as JPG?
+              Why won't Ctrl+V paste my image?
             </summary>
             <div class="px-5 pb-4 pt-0 text-body text-sm sm:text-[15px] leading-relaxed border-t border-hairline mt-0">
-              <p class="pt-3">After adding your image, select <strong>JPEG (JPG)</strong> from the format dropdown before clicking Download. The browser converts the file with the Canvas API so you can save a clean JPG. For format tradeoffs, read the <a href="/blog/png-vs-jpg-vs-webp/">PNG, JPG, and WebP guide</a>.</p>
+              <p class="pt-3">The most common cause is that your clipboard does not actually contain image data, for example you copied a link instead of the picture itself. It can also be that the paste zone does not have focus yet, or that your specific browser applies stricter permission rules. See <a href="/blog/clipboard-paste-chrome-firefox-safari/">why clipboard paste behaves differently across browsers</a> for the full breakdown.</p>
             </div>
           </details>
           <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
@@ -273,28 +263,28 @@ import { latestArticles } from '../data/articles';
           <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
             <summary class="flex items-center gap-3 px-5 py-4 cursor-pointer text-ink font-medium text-sm sm:text-base list-none select-none [&::-webkit-details-marker]:hidden">
               <svg class="shrink-0 w-4 h-4 text-mute transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-              Can I paste an image to view it before downloading?
+              Why is my downloaded file a different size than expected?
             </summary>
             <div class="px-5 pb-4 pt-0 text-body text-sm sm:text-[15px] leading-relaxed border-t border-hairline mt-0">
-              <p class="pt-3">Yes. After you paste an image or fetch one from a URL, the tool displays a <strong>preview</strong> with details like dimensions and file size. You can inspect the image before choosing a format and downloading.</p>
+              <p class="pt-3">If you chose <strong>PNG</strong> as the output, the browser's built-in encoder is not as aggressive as a dedicated PNG optimizer, so an already-optimized PNG can come out larger, not smaller. JPEG and WebP use a fixed 92% quality setting that produces a real, tested reduction. Both effects are shown with actual before-and-after numbers in <a href="/blog/why-png-reencode-bigger/">why re-saving a PNG can get bigger</a>.</p>
             </div>
           </details>
           <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
             <summary class="flex items-center gap-3 px-5 py-4 cursor-pointer text-ink font-medium text-sm sm:text-base list-none select-none [&::-webkit-details-marker]:hidden">
               <svg class="shrink-0 w-4 h-4 text-mute transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-              What does this image downloader do?
+              Does this work if I copy an image from a PDF?
             </summary>
             <div class="px-5 pb-4 pt-0 text-body text-sm sm:text-[15px] leading-relaxed border-t border-hairline mt-0">
-              <p class="pt-3">PasteDownloadApp is a paste downloader for copied images, screenshots, clipboard photos, and direct image URLs. Copy an image, paste it on the website, preview it, and save it in your preferred format (PNG, JPEG, or WebP).</p>
+              <p class="pt-3">It depends on your PDF viewer. If it lets you right-click an embedded image and choose <strong>Copy Image</strong>, that places real image data on your clipboard and it pastes normally here. Some viewers only copy a text or vector selection, which will not paste as an image. Taking a screenshot of the PDF page always works as a fallback.</p>
             </div>
           </details>
           <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
             <summary class="flex items-center gap-3 px-5 py-4 cursor-pointer text-ink font-medium text-sm sm:text-base list-none select-none [&::-webkit-details-marker]:hidden">
               <svg class="shrink-0 w-4 h-4 text-mute transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-              How do I download a copied image?
+              What happens if a direct image URL won't download?
             </summary>
             <div class="px-5 pb-4 pt-0 text-body text-sm sm:text-[15px] leading-relaxed border-t border-hairline mt-0">
-              <p class="pt-3">Copy an image to your clipboard (<strong>Ctrl+C</strong> on Windows or <strong>Cmd+C</strong> on Mac), visit the tool, paste it (<strong>Ctrl+V</strong> or <strong>Cmd+V</strong>), choose your preferred format, and click Download. For a step-by-step copy paste download workflow, see how to <a href="/blog/save-clipboard-image-without-software/">save clipboard images without software</a>. For repeated saves, enable <strong>Auto-download</strong>.</p>
+              <p class="pt-3">Some image hosts block direct cross-origin requests. When that happens, the tool automatically tries a CORS proxy fallback, and if that also fails it shows the image so you can use your browser's built-in <strong>Save Image As</strong> option instead of a silent failure.</p>
             </div>
           </details>
           <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
@@ -323,7 +313,7 @@ import { latestArticles } from '../data/articles';
         </h2>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {latestArticles.map((article) => (
+          {latestArticles.slice(0, 4).map((article) => (
             <a href={article.href} class="group flex flex-col overflow-hidden rounded-xl border border-hairline bg-canvas hover:border-link/30 transition-colors no-underline">
               <img src={article.image} alt={article.alt} class="aspect-[16/9] w-full object-cover border-b border-hairline" loading="lazy" width="836" height="471" />
               <div class="p-5">

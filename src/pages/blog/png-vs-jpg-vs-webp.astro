@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import RelatedGuides from '../../components/RelatedGuides.astro';
+import AuthorByline from '../../components/AuthorByline.astro';
 ---
 
 <ContentLayout
@@ -17,10 +18,11 @@ import RelatedGuides from '../../components/RelatedGuides.astro';
             "description": "Compare WebP vs PNG, WebP vs JPG, and PNG vs JPG for screenshots, photos, transparency, file size, and web performance before saving your clipboard image.",
             "image": "https://pastedownloadapp.com/blog/png-vs-jpg-vs-webp.png",
             "datePublished": "2026-06-12T00:00:00Z",
-            "dateModified": "2026-08-05T00:00:00Z",
+            "dateModified": "2026-08-22T00:00:00Z",
             "author": {
-                "@type": "Organization",
-                "name": "PasteDownloadApp"
+                "@type": "Person",
+                "name": "Kappil Yadav",
+                "url": "https://pastedownloadapp.com/author/"
             },
             "publisher": {
                 "@type": "Organization",
@@ -44,9 +46,11 @@ import RelatedGuides from '../../components/RelatedGuides.astro';
       }
     </script>
 
-    <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-6 leading-tight text-balance">
+    <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight text-balance">
         PNG vs JPG vs WebP - Which Format Should You Save Your Image As?
     </h1>
+
+    <AuthorByline publishDate="2026-06-12" updatedDate="2026-08-22" changeNote="Added real conversion numbers from two test files and a screenshot of the tool mid-conversion." />
 
     <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
         <img src="/blog/png-vs-jpg-vs-webp.png" alt="Three abstract image file cards representing PNG transparency, JPG photos, and WebP compression" width="836" height="471" class="w-full aspect-[16/9] object-cover" />
@@ -123,6 +127,46 @@ import RelatedGuides from '../../components/RelatedGuides.astro';
 
         <p>Still unsure? A simple rule: need transparency, use PNG; saving photos, use JPG; publishing on the web, try WebP. For a full picture of the WebP format explained, think of it as the successor that combines many strengths of both older formats.</p>
 
+        <h2>Real File Sizes From Converting Two Test Images</h2>
+
+        <p>Numbers are more useful than general claims, so here is what actually happened when I ran two real files through PasteDownloadApp in Chrome 151 on macOS 26. Both conversions used the tool's default output quality of 92%.</p>
+
+        <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
+            <img src="/blog/screenshots/paste-tool-webp-result.png" alt="Screenshot of PasteDownloadApp after converting a 1.1 MB illustration PNG to WebP, showing a resulting file size of 48.9 KB" width="624" height="575" class="w-full max-w-md mx-auto" loading="lazy" />
+        </figure>
+
+        <div class="overflow-x-auto rounded-xl border border-hairline">
+            <table class="w-full text-left text-sm">
+                <thead class="bg-canvas-soft text-ink">
+                    <tr>
+                        <th class="px-4 py-3 font-semibold">Test file</th>
+                        <th class="px-4 py-3 font-semibold">Original</th>
+                        <th class="px-4 py-3 font-semibold">Re-saved as PNG</th>
+                        <th class="px-4 py-3 font-semibold">JPEG (92%)</th>
+                        <th class="px-4 py-3 font-semibold">WebP (92%)</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-hairline">
+                    <tr>
+                        <td class="px-4 py-3 font-semibold text-ink">Gradient illustration, 1672&times;941</td>
+                        <td class="px-4 py-3">1.15 MB</td>
+                        <td class="px-4 py-3">1.93 MB</td>
+                        <td class="px-4 py-3">128.3 KB</td>
+                        <td class="px-4 py-3">48.9 KB</td>
+                    </tr>
+                    <tr>
+                        <td class="px-4 py-3 font-semibold text-ink">UI screenshot with text, 624&times;575</td>
+                        <td class="px-4 py-3">140.2 KB</td>
+                        <td class="px-4 py-3">231.5 KB</td>
+                        <td class="px-4 py-3">37.6 KB</td>
+                        <td class="px-4 py-3">16.8 KB</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>Two things stand out. First, WebP was smaller than JPEG on both files, by roughly 60% on the illustration and 55% on the screenshot, which tracks with what Google's own WebP documentation claims. Second, and less expected: choosing PNG as the output format did not preserve the original file size, it made both files larger. That is worth its own explanation, which I cover in <a href="/blog/why-png-reencode-bigger/">why re-saving a PNG can make the file bigger</a>.</p>
+
         <h2>How to Convert Clipboard Images Between Formats Online</h2>
 
         <p>You don't need Photoshop or a download. Here's how to convert an image using a browser-based tool:</p>
@@ -157,7 +201,7 @@ import RelatedGuides from '../../components/RelatedGuides.astro';
         <h3>Which image format loads fastest on a website?</h3>
         <p>WebP generally loads fastest thanks to its smaller file size, which means less data to download. JPG is next, and PNG loads slowest for large images. If speed is your priority, WebP is the best image format for web performance.</p>
 
-        <RelatedGuides currentHref="/blog/png-vs-jpg-vs-webp/" />
+        <RelatedGuides hrefs={["/blog/why-png-reencode-bigger/", "/blog/image-compression-quality-settings/", "/blog/image-for-favicon-social-resume/"]} />
 
         <p>Try <a href="https://pastedownloadapp.com/">pastedownloadapp.com</a> - paste your image and download it instantly, no software needed. Whether you need PNG for a screenshot on Windows, a copied image on Mac, JPG for a photo, or WebP for a fast-loading website, this free clipboard tool handles all three formats in seconds.</p>
 
