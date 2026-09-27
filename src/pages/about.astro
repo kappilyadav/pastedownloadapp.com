@@ -65,6 +65,16 @@ import AuthorByline from '../components/AuthorByline.astro';
       It does not resize images, it does not batch-process a folder of files at once, and it cannot turn a raster photo into a true vector SVG. Those are deliberate limits, not omissions I plan to quietly work around. If a feature would need a server, an account, or a heavier codebase than a single browser tab can run, it is out of scope for this tool. I write about the edges of what it can and cannot do on the <a href="/blog/">blog</a>, including real test results rather than marketing claims.
     </p>
 
+    <h2>Who This Is For</h2>
+    <p>
+      PasteDownloadApp is built for anyone who needs to turn a screenshot or a copied image into an actual file without opening a heavier editor: a developer grabbing a UI screenshot for a bug report, a writer pulling a reference image into a document, or someone who just copied an image from a chat app and wants it saved as a PNG. It is deliberately not aimed at professional photo editing or batch processing workflows. If you need layers, filters, or bulk conversion of hundreds of files at once, a dedicated desktop application will serve you better than a single browser tab ever could.
+    </p>
+
+    <h2>A Note on Trust</h2>
+    <p>
+      I understand that &ldquo;nothing is uploaded&rdquo; is an easy claim to make and a harder one to prove from the outside. That is part of why this page describes the exact browser APIs involved rather than just asserting privacy in the abstract. If you want to verify it yourself, open your browser's developer tools, go to the network tab, and paste or download an image. You will see requests to load the page and its fonts, and for URL downloads, a request to the image source or its fallback proxy, but nothing carrying your pasted image data to a server I control.
+    </p>
+
     <h2>How It Works, Technically</h2>
     <p>
       When you paste an image, the browser fires a <code>paste</code> event with the raw image data attached. The page reads that data, draws it onto an HTML canvas element, and calls <code>canvas.toBlob()</code> to produce a file in your chosen format. For URL downloads, the browser fetches the image over HTTPS and runs it through the same canvas pipeline when the source allows it. At no point does either path involve a request to any server I control. You can verify this yourself by opening your browser's network tab while using the tool.
