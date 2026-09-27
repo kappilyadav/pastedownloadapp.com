@@ -58,7 +58,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
 
     <div class="text-body text-sm sm:text-[15px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
 
-        <p>A copied image on a phone does not behave the same as one on a laptop. There is no right-click, no keyboard shortcut, and the browser is running inside an OS that has its own opinion about which apps get to touch the clipboard. I tested PasteDownloadApp in a 390 pixel wide mobile viewport (the layout below) to see exactly what changes, and the honest answer is that the biggest differences come from the OS, not the site.</p>
+        <p>A copied image on a phone does not behave the same as one on a laptop. There is no right-click and no keyboard shortcut. The browser also runs inside an OS that has its own opinion about which apps get to touch the clipboard. I tested PasteDownloadApp in a 390 pixel wide mobile viewport, shown below, to see exactly what changes. The honest answer: the biggest differences come from the OS, not the site.</p>
 
         <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
             <img src="/blog/screenshots/mobile-clipboard-tool.png" alt="Screenshot of PasteDownloadApp at 390 pixels wide, the standard iPhone viewport width, showing the Access Clipboard button" width="780" height="940" class="w-full max-w-xs mx-auto" loading="lazy" />
@@ -66,15 +66,15 @@ import AuthorByline from '../../components/AuthorByline.astro';
 
         <h2>How Copying an Image Works on Android</h2>
 
-        <p>On Android, long-pressing an image in Chrome, in Google Photos, or in most apps that render images gives you a "Copy image" option. That places the actual image data on the system clipboard, which Chrome for Android can then read through the same <code>paste</code> event and <code>navigator.clipboard.read()</code> paths used on desktop Chrome. In practice this means the workflow is close to identical to a laptop: long-press to copy, open the tool, tap the paste zone or use Access Clipboard, and the image appears. The one real gap is that Android has no Ctrl+V equivalent, so every mobile paste goes through the click-triggered <code>read()</code> path rather than a keystroke-triggered <code>paste</code> event, which matters because that is the path with the strictest permission requirements, as covered in <a href="/blog/clipboard-paste-chrome-firefox-safari/">how clipboard permissions differ across browsers</a>.</p>
+        <p>On Android, long-pressing an image in Chrome, in Google Photos, or in most apps that render images gives you a "Copy image" option. That places the actual image data on the system clipboard. Chrome for Android can then read it through the same <code>paste</code> event and <code>navigator.clipboard.read()</code> paths used on desktop Chrome. In practice, the workflow is close to identical to a laptop: long-press to copy, open the tool, tap the paste zone or use Access Clipboard, and the image appears. There is one real gap, though. Android has no Ctrl+V equivalent, so every mobile paste goes through the click-triggered <code>read()</code> path rather than a keystroke-triggered <code>paste</code> event. That matters, because it is the path with the strictest permission requirements, as covered in <a href="/blog/clipboard-paste-chrome-firefox-safari/">how clipboard permissions differ across browsers</a>.</p>
 
         <h2>How Copying an Image Works on iPhone</h2>
 
-        <p>iOS handles image copying at the system level through the same universal clipboard used for Handoff between Apple devices, and Safari on iOS exposes it through the same Async Clipboard API as desktop Safari. The practical difference is that iOS is stricter about which gesture counts as "direct enough" to authorize a clipboard read, and Safari on iOS does not always show a visible permission prompt the way desktop browsers do. It can silently fail instead. If tapping Access Clipboard does nothing on an iPhone, that is usually this restriction rather than a broken site, and it is worth trying a long-press into the paste area to trigger a native paste menu instead of relying on the button.</p>
+        <p>iOS handles image copying at the system level, through the same universal clipboard used for Handoff between Apple devices. Safari on iOS exposes it through the same Async Clipboard API as desktop Safari. The practical difference is that iOS is stricter about which gesture counts as "direct enough" to authorize a clipboard read. Safari on iOS also does not always show a visible permission prompt the way desktop browsers do; it can silently fail instead. If tapping Access Clipboard does nothing on an iPhone, that is usually this restriction rather than a broken site. It is worth trying a long-press into the paste area, to trigger a native paste menu instead of relying on the button.</p>
 
         <h2>Importing From the Photo Gallery Instead of the Clipboard</h2>
 
-        <p>Both platforms support a fallback that sidesteps clipboard permissions entirely: importing a file directly. On PasteDownloadApp, tapping the paste zone on a device where clipboard read is blocked still lets you use the browser's native file picker to pull an image straight from your photo library or downloads folder, which is treated as a dropped file rather than a clipboard read and does not hit any of the restrictions above.</p>
+        <p>Both platforms support a fallback that sidesteps clipboard permissions entirely: importing a file directly. On PasteDownloadApp, tapping the paste zone still works even on a device where clipboard read is blocked. It opens the browser's native file picker, so you can pull an image straight from your photo library or downloads folder. That counts as a dropped file rather than a clipboard read, so it does not hit any of the restrictions above.</p>
 
         <h2>Quick Comparison</h2>
 
@@ -105,7 +105,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
             </tbody>
         </table>
 
-        <p>None of this is specific to phones, either: the same file-versus-clipboard confusion trips people up on desktop, just with different shortcuts. See <a href="/blog/where-do-clipboard-images-go/">where clipboard images and screenshots actually go</a> for the full picture across Windows, Mac, Android, and iOS.</p>
+        <p>None of this is specific to phones, either. The same file-versus-clipboard confusion trips people up on desktop, just with different shortcuts. See <a href="/blog/where-do-clipboard-images-go/">where clipboard images and screenshots actually go</a> for the full picture across Windows, Mac, Android, and iOS.</p>
 
         <h2>Frequently Asked Questions</h2>
 
@@ -116,7 +116,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
         <p>Yes. ChromeOS runs the same Chrome browser engine as desktop and Android, so both the paste event and Access Clipboard behave the same way they do on a Windows or Mac laptop.</p>
 
         <h3>Does downloading save to my phone's normal downloads or photo gallery?</h3>
-        <p>It saves to the browser's downloads location, which on both Android and iOS is typically a Files or Downloads app rather than the photo gallery. You can move it into Photos afterward using the share sheet if you need it there.</p>
+        <p>It saves to the browser's downloads location. On both Android and iOS, that is typically a Files or Downloads app, not the photo gallery. You can move it into Photos afterward using the share sheet if you need it there.</p>
 
         <RelatedGuides hrefs={["/blog/access-clipboard-not-working/", "/blog/clipboard-paste-chrome-firefox-safari/", "/blog/save-clipboard-image-without-software/", "/blog/where-do-clipboard-images-go/"]} />
 
