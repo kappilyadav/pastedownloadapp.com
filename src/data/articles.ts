@@ -128,5 +128,35 @@ export const latestArticles = [
     publishDate: '2026-06-12',
     updatedDate: '2026-08-22',
     category: 'troubleshooting'
+  },
+  {
+    href: '/blog/where-do-clipboard-images-go/',
+    image: '/blog/where-do-clipboard-images-go.png',
+    absoluteImage: 'https://pastedownloadapp.com/blog/where-do-clipboard-images-go.png',
+    alt: 'Screenshot of the paste tool in its default empty state, showing the Paste image here and Access Clipboard prompt',
+    title: 'Where Do Clipboard Images and Screenshots Actually Go?',
+    description: 'Screenshots and copied images do not behave like normal files until you save them. Here is where they actually live on Windows, Mac, Android, and iOS.',
+    publishDate: '2026-09-27',
+    category: 'platforms'
+  },
+  {
+    href: '/blog/paste-screenshot-into-email-attachment/',
+    image: '/blog/paste-screenshot-into-email-attachment.png',
+    absoluteImage: 'https://pastedownloadapp.com/blog/paste-screenshot-into-email-attachment.png',
+    alt: 'Screenshot of the paste tool with an image pasted in, showing its dimensions, file size, and the Download button',
+    title: 'How to Turn a Pasted Screenshot Into an Email Attachment',
+    description: 'Gmail and Outlook can paste an image straight into the message body, but that is not the same as an attachment. Here is how to turn a clipboard image into a real file first.',
+    publishDate: '2026-09-27',
+    category: 'troubleshooting'
+  },
+  {
+    href: '/blog/why-image-url-wont-download/',
+    image: '/blog/why-image-url-wont-download.png',
+    absoluteImage: 'https://pastedownloadapp.com/blog/why-image-url-wont-download.png',
+    alt: 'Screenshot of the URL download tool with an image URL entered and its preview loaded, ready to download',
+    title: "Why Some Image URLs Won't Download Directly",
+    description: 'CORS, hotlink protection, and referrer blocking explained: why pasting an image URL sometimes fails, and what actually happens when a tool works around it.',
+    publishDate: '2026-09-27',
+    category: 'troubleshooting'
   }
 ];
