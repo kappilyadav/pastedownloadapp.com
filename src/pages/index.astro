@@ -6,6 +6,10 @@ import Features from '../components/Features.astro';
 import HowItWorks from '../components/HowItWorks.astro';
 import Footer from '../components/Footer.astro';
 import { latestArticles } from '../data/articles';
+
+const newestArticles = [...latestArticles].sort(
+  (a, b) => new Date(b.updatedDate || b.publishDate).getTime() - new Date(a.updatedDate || a.publishDate).getTime()
+);
 ---
 
 <Layout title="Paste Download - Copy Paste Image Downloader" description="Paste image to download from your clipboard, Ctrl+V, drag and drop, or a direct URL. Save copied images, photos, and screenshots as PNG, JPEG, or WebP." canonicalUrl="https://pastedownloadapp.com/">
@@ -311,7 +315,7 @@ import { latestArticles } from '../data/articles';
         </h2>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {latestArticles.slice(0, 4).map((article) => (
+          {newestArticles.slice(0, 4).map((article) => (
             <a href={article.href} class="group flex flex-col overflow-hidden rounded-xl border border-hairline bg-canvas hover:border-link/30 transition-colors no-underline">
               <img src={article.image} alt={article.alt} class="aspect-[16/9] w-full object-cover border-b border-hairline" loading="lazy" width="836" height="471" />
               <div class="p-5">
