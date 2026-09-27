@@ -71,7 +71,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
         <p>When your browser cannot fetch or read an image directly because of one of these two protections, PasteDownloadApp automatically retries the request through <strong>corsproxy.io</strong>, a third-party proxy that fetches the image server-side and returns it in a way your browser is allowed to read. This gets around CORS in most cases, because the proxy, not your browser, is the one making the original request. It does not always get around hotlink protection, since a strict Referer check can still reject the proxy's request the same way it would reject any other outside request.</p>
 
         <h2>When Nothing Works</h2>
-        <p>A small number of sources block both the direct request and the proxy fallback. This is usually one of a few things: a Referer check strict enough to reject even the proxy, a source that requires a logged-in session or a short-lived signed URL that expires almost immediately, or a host that blocks known proxy IP ranges outright. In these cases, the most reliable option is the one that does not depend on any of these protections at all: open the image in a new browser tab and use your browser's own "Save image as" option, since a real browser navigation carries the correct referrer and cookies automatically. If you then need to convert that saved file to a different format, you can drag it into PasteDownloadApp directly instead of pasting a URL.</p>
+        <p>A small number of sources block both the direct request and the proxy fallback. This is usually one of a few things: a Referer check strict enough to reject even the proxy, a source that requires a logged-in session or a short-lived signed URL that expires almost immediately, or a host that blocks known proxy IP ranges outright. In these cases, the most reliable option is the one that does not depend on any of these protections at all: open the image in a new browser tab and use your browser's own "Save image as" option, since a real browser navigation carries the correct referrer and cookies automatically. If you then need to convert that saved file to a different format, you can drag it into PasteDownloadApp directly instead of pasting a URL, the same drag-and-drop path covered in <a href="/blog/save-clipboard-image-without-software/">saving clipboard images without extra software</a>.</p>
 
         <h2>Frequently Asked Questions</h2>
 
@@ -84,7 +84,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
         <h3>Can I fix this myself if I own the image's server?</h3>
         <p>Yes. Adding an <code>Access-Control-Allow-Origin</code> header for the domains you want to support resolves the CORS side, and loosening or removing a Referer check resolves hotlink protection, though the second one reopens the exact bandwidth concern the protection was added for in the first place.</p>
 
-        <RelatedGuides hrefs={["/blog/save-clipboard-image-without-software/", "/blog/access-clipboard-not-working/", "/blog/image-compression-quality-settings/"]} />
+        <RelatedGuides hrefs={["/blog/save-clipboard-image-without-software/", "/blog/access-clipboard-not-working/", "/blog/png-vs-jpg-vs-webp/"]} />
 
         <p>Have a direct image link that keeps failing? Try it in <a href="https://pastedownloadapp.com/">PasteDownloadApp</a>, and if the proxy fallback still cannot reach it, save the image from your browser first and drag the file in instead.</p>
 

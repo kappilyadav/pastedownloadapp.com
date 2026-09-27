@@ -69,7 +69,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
         </ul>
 
         <h2>The Fix: Convert the Clipboard Image Into a File First</h2>
-        <p>The clipboard holds image data, not a file, until something writes it to disk. Pasting directly into an email body works because the mail client happens to accept that image data inline. A file upload field or an attachment button generally does not have that same ability. The workaround is simple: paste the image into <a href="https://pastedownloadapp.com/">PasteDownloadApp</a>, download it as a PNG or JPEG, and you now have an actual file on your device that any attachment button, upload field, or drag-and-drop area will accept.</p>
+        <p>The clipboard holds image data, not a file, until something writes it to disk (see <a href="/blog/where-do-clipboard-images-go/">where clipboard images and screenshots actually go</a> for the full explanation). Pasting directly into an email body works because the mail client happens to accept that image data inline. A file upload field or an attachment button generally does not have that same ability. The workaround is simple: paste the image into <a href="https://pastedownloadapp.com/">PasteDownloadApp</a>, download it as a PNG or JPEG, and you now have an actual file on your device that any attachment button, upload field, or drag-and-drop area will accept.</p>
 
         <h2>Attaching It in Gmail</h2>
         <p>Once you have a downloaded file, open Gmail, start a new message, and click the paperclip icon in the compose toolbar, or drag the downloaded file directly into the compose window. Either method attaches it as a proper file rather than an inline image, which shows up as a separate download for the recipient instead of embedded content in the message.</p>
@@ -91,7 +91,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
         <h3>Will converting the image to JPEG instead of PNG make the email smaller?</h3>
         <p>Usually yes for photographic screenshots with lots of color detail, though PNG stays smaller for screenshots that are mostly flat UI and text. PasteDownloadApp lets you choose the format before downloading, so you can pick whichever produces a smaller attachment for your specific image.</p>
 
-        <RelatedGuides hrefs={["/blog/save-clipboard-image-without-software/", "/blog/png-vs-jpg-vs-webp/", "/blog/access-clipboard-not-working/"]} />
+        <RelatedGuides hrefs={["/blog/save-clipboard-image-without-software/", "/blog/png-vs-jpg-vs-webp/", "/blog/access-clipboard-not-working/", "/blog/where-do-clipboard-images-go/"]} />
 
         <p>Have a screenshot ready to send? Paste it into <a href="https://pastedownloadapp.com/">PasteDownloadApp</a> and download it as a file you can attach anywhere.</p>
 

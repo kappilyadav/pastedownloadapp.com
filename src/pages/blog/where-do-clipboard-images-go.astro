@@ -84,7 +84,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
         <p>A screenshot, taken with the platform's dedicated screenshot tool, almost always becomes a real file automatically. A copy, whether of a screenshot or of any other image, almost always stays on the clipboard only, invisible to Finder, File Explorer, or any file picker, until you explicitly paste it somewhere that writes it to disk. That distinction, not the platform itself, is what actually decides whether you can find the image again later.</p>
 
         <h2>Turning a Clipboard-Only Image Into a Real File</h2>
-        <p>This is exactly the gap PasteDownloadApp exists to close. Whatever put the image on your clipboard, whether it was a Snipping Tool selection you did not save, a Control-modified Mac screenshot, or an image copied from a browser tab, pasting it into the tool with <strong>Ctrl+V</strong> or <strong>Cmd+V</strong> reads it directly from the clipboard and lets you download it as an actual PNG, JPEG, or WebP file. Nothing is uploaded; the read and the file conversion both happen in your browser.</p>
+        <p>This is exactly the gap PasteDownloadApp exists to close. Whatever put the image on your clipboard, whether it was a Snipping Tool selection you did not save, a Control-modified Mac screenshot, or an image copied from a browser tab, pasting it into the tool with <strong>Ctrl+V</strong> or <strong>Cmd+V</strong> reads it directly from the clipboard and lets you download it as an actual PNG, JPEG, or WebP file, ready to attach anywhere a real file is required, including <a href="/blog/paste-screenshot-into-email-attachment/">as an email attachment</a>. Nothing is uploaded; the read and the file conversion both happen in your browser.</p>
 
         <h2>Frequently Asked Questions</h2>
 
@@ -97,7 +97,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
         <h3>Does changing my screenshot save location fix this?</h3>
         <p>It fixes it for screenshots taken with your platform's screenshot shortcut, since those already save a file, just possibly to a folder you would not think to check. It does not change anything about images you copy manually, since those were never going to be saved as a file in the first place.</p>
 
-        <RelatedGuides hrefs={["/blog/save-clipboard-image-without-software/", "/blog/access-clipboard-not-working/", "/blog/save-screenshot-as-file-windows/"]} />
+        <RelatedGuides hrefs={["/blog/save-clipboard-image-without-software/", "/blog/access-clipboard-not-working/", "/blog/save-screenshot-as-file-windows/", "/blog/paste-screenshot-into-email-attachment/"]} />
 
         <p>If you have an image stuck on your clipboard right now, paste it into <a href="https://pastedownloadapp.com/">PasteDownloadApp</a> and download it before it disappears.</p>
 
