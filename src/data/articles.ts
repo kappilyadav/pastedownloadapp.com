@@ -1,7 +1,7 @@
 export const categories = [
-  { slug: 'platforms', label: 'Platforms & Browsers', description: 'How clipboard paste and screenshot saving actually behaves on each OS and browser.' },
-  { slug: 'troubleshooting', label: 'Troubleshooting & Workflow', description: 'Fixes for clipboard permission errors, and faster workflows for converting several images.' },
-  { slug: 'formats', label: 'File Formats & Compression', description: 'PNG, JPG, WebP, SVG, and ICO explained with real file sizes and quality tradeoffs.' }
+  { slug: 'platforms', label: 'Platforms & Browsers', description: 'How clipboard paste and screenshot saving actually behaves on each OS and browser. Chrome, Firefox, Safari, Windows, and Mac all implement the same underlying browser APIs slightly differently, and these guides cover exactly where those differences show up.' },
+  { slug: 'troubleshooting', label: 'Troubleshooting & Workflow', description: 'Fixes for clipboard permission errors, failed URL downloads, and faster workflows for converting several images at once. Start here if something in the tool is not behaving the way you expect.' },
+  { slug: 'formats', label: 'File Formats & Compression', description: 'PNG, JPG, WebP, SVG, and ICO explained with real file sizes and quality tradeoffs, tested against actual images rather than general advice. Use this section to decide which format fits a specific use case.' }
 ];
 
 export const latestArticles = [
