@@ -5,10 +5,11 @@ import AuthorByline from '../../components/AuthorByline.astro';
 ---
 
 <ContentLayout
-    title="SVG and ICO Quirks You Will Hit When Converting Images in a Browser"
+    title="SVG and ICO Quirks When Converting Images in a Browser"
     description="Vector files and multi-resolution icons do not behave like PNG or JPG. Real test results from converting an SVG and an ICO file through a browser-based tool."
     canonicalUrl="https://pastedownloadapp.com/blog/svg-ico-conversion-quirks/"
     imageUrl="https://pastedownloadapp.com/blog/svg-ico-conversion-quirks.png"
+    breadcrumbs={[{ name: "Home", href: "/" }, { name: "Blog", href: "/blog/" }, { name: "SVG and ICO Conversion Quirks" }]}
 >
     <script type="application/ld+json">
         {
@@ -34,17 +35,6 @@ import AuthorByline from '../../components/AuthorByline.astro';
             }
         }
     </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pastedownloadapp.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://pastedownloadapp.com/blog/" },
-          { "@type": "ListItem", "position": 3, "name": "SVG and ICO Conversion Quirks", "item": "https://pastedownloadapp.com/blog/svg-ico-conversion-quirks/" }
-        ]
-      }
-    </script>
 
     <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight text-balance">
         SVG and ICO Quirks You Will Hit When Converting Images in a Browser
@@ -56,21 +46,21 @@ import AuthorByline from '../../components/AuthorByline.astro';
         <img src="/blog/svg-ico-conversion-quirks.png" alt="Screenshot of the URL download tool used to fetch an SVG file" width="1600" height="900" class="w-full aspect-[16/9] object-cover" />
     </figure>
 
-    <div class="text-body text-sm sm:text-[15px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
+    <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
 
-        <p>PNG, JPG, and WebP are all raster formats: a fixed grid of pixels. SVG and ICO are not built the same way, and converting them through a browser-based tool exposes some quirks that do not show up with ordinary photos or screenshots. I fetched this site's own favicon files through PasteDownloadApp's URL tool to see exactly what happens.</p>
+        <p>PNG, JPG, and WebP are all raster formats: a fixed grid of pixels. SVG and ICO are not built the same way. Converting them through a browser-based tool exposes some quirks that do not show up with ordinary photos or screenshots. I fetched this site's own favicon files through PasteDownloadApp's URL tool to see exactly what happens.</p>
 
         <h2>SVG: The Browser Has to Decide a Size First</h2>
 
-        <p>SVG is a vector format, XML instructions describing shapes rather than pixels, so it does not have an inherent pixel size the way a PNG does. When a browser needs to draw an SVG onto a canvas (which is what happens during any SVG-to-PNG or SVG-to-WebP conversion), it has to rasterize it at some resolution, and that resolution comes from the SVG's own <code>width</code>, <code>height</code>, or <code>viewBox</code> attributes.</p>
+        <p>SVG is a vector format: XML instructions describing shapes rather than pixels. It does not have an inherent pixel size the way a PNG does. When a browser needs to draw an SVG onto a canvas, which is what happens during any SVG-to-PNG or SVG-to-WebP conversion, it has to rasterize it at some resolution. That resolution comes from the SVG's own <code>width</code>, <code>height</code>, or <code>viewBox</code> attributes.</p>
 
-        <p>I fetched this site's <code>favicon.svg</code>, a 72.8 KB vector file, through the URL download tool. Because the file declares <code>width="1200" height="1200"</code> explicitly, the browser read it at exactly 1200&times;1200 and rasterizing it to PNG produced a 54.2 KB file. That worked cleanly because the source file was explicit about its size. <strong>The quirk to watch for:</strong> an SVG that omits width, height, and viewBox will often fall back to a browser default rendering size, commonly 300&times;150, which produces a tiny, low-resolution raster output with no warning that anything went wrong. If a converted SVG comes out blurry or oddly cropped, check whether the source file actually declares a size before assuming the converter is broken.</p>
+        <p>I fetched this site's <code>favicon.svg</code>, a 72.8 KB vector file, through the URL download tool. The file declares <code>width="1200" height="1200"</code> explicitly, so the browser read it at exactly 1200&times;1200. Rasterizing it to PNG produced a 54.2 KB file. That worked cleanly because the source file was explicit about its size. Here is <strong>the quirk to watch for</strong>: an SVG that omits width, height, and viewBox will often fall back to a browser default rendering size, commonly 300&times;150. That produces a tiny, low-resolution raster output, with no warning that anything went wrong. If a converted SVG comes out blurry or oddly cropped, check whether the source file actually declares a size before assuming the converter is broken.</p>
 
         <h2>ICO: One File, Several Images, Only One Comes Out</h2>
 
-        <p>An ICO file is a container that can bundle several versions of the same icon at different resolutions, commonly 16&times;16, 32&times;32, and 48&times;48, so that Windows and browsers can pick whichever size fits the context (a tab icon versus a taskbar icon, for example). When you load an ICO file into an <code>&lt;img&gt;</code> element or a canvas, the browser exposes exactly one of those frames, not the full set, and which one it picks is not something a script gets to choose.</p>
+        <p>An ICO file is a container that can bundle several versions of the same icon at different resolutions, commonly 16&times;16, 32&times;32, and 48&times;48. That way, Windows and browsers can pick whichever size fits the context, a tab icon versus a taskbar icon, for example. When you load an ICO file into an <code>&lt;img&gt;</code> element or a canvas, the browser exposes exactly one of those frames, not the full set. Which one it picks is not something a script gets to choose.</p>
 
-        <p>I fetched this site's <code>favicon.ico</code>, a 14.7 KB file that bundles multiple resolutions, through the same URL tool. Chrome 151 read it as a single 48&times;48 image and reported it at the full 14.7 KB (the entire container's size, since the browser does not separate out just the one frame it renders). Converting that to PNG produced a 1.7 KB file at 48&times;48. If you specifically need the 16&times;16 or 32&times;32 version out of a multi-resolution ICO, a browser-based converter cannot get it for you: it only ever sees the frame the browser itself chose to decode.</p>
+        <p>I fetched this site's <code>favicon.ico</code>, a 14.7 KB file that bundles multiple resolutions, through the same URL tool. Chrome 151 read it as a single 48&times;48 image, and reported it at the full 14.7 KB: the entire container's size, since the browser does not separate out just the one frame it renders. Converting that to PNG produced a 1.7 KB file at 48&times;48. If you specifically need the 16&times;16 or 32&times;32 version out of a multi-resolution ICO, a browser-based converter cannot get it for you. It only ever sees the frame the browser itself chose to decode.</p>
 
         <h2>Practical Takeaways</h2>
 
@@ -86,7 +76,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
         <p>No. SVG is vector data, and there is no reliable automatic process for turning arbitrary pixels back into vector shapes. Canvas-based tools, this one included, can only rasterize vector formats into pixels, not the other way around.</p>
 
         <h3>Why did my converted SVG come out as a tiny, blank-looking image?</h3>
-        <p>The source SVG almost certainly did not declare a width, height, or viewBox, so the browser rasterized it at a small default size. Check the SVG's XML for those attributes, or open it in an editor that can add them.</p>
+        <p>The source SVG almost certainly did not declare a width, height, or viewBox. That is why the browser rasterized it at a small default size. Check the SVG's XML for those attributes, or open it in an editor that can add them.</p>
 
         <h3>Does the same size-selection quirk affect other multi-frame formats?</h3>
         <p>Animated GIFs have a related issue: canvas conversion captures a single frame, not the animation. If you need to keep an image moving, converting it to PNG, JPEG, or WebP through a canvas-based tool is not the right approach.</p>

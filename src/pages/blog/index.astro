@@ -3,17 +3,7 @@ import ContentLayout from '../../layouts/ContentLayout.astro';
 import { latestArticles } from '../../data/articles';
 ---
 
-<ContentLayout title="Blog - PasteDownloadApp" description="Tips and guides for saving clipboard images, downloading screenshots, and using PasteDownloadApp." canonicalUrl="https://pastedownloadapp.com/blog/">
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pastedownloadapp.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://pastedownloadapp.com/blog/" }
-      ]
-    }
-  </script>
+<ContentLayout title="Blog - PasteDownloadApp" description="Tips and guides for saving clipboard images, downloading screenshots, and using PasteDownloadApp." canonicalUrl="https://pastedownloadapp.com/blog/" breadcrumbs={[{ name: "Home", href: "/" }, { name: "Blog" }]}>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -106,7 +96,7 @@ import { latestArticles } from '../../data/articles';
     Blog
   </h1>
 
-  <div class="text-body text-sm sm:text-[15px] leading-relaxed space-y-4">
+  <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4">
     <p>Tips and guides for saving images from your clipboard without extra software.</p>
 
     <div class="grid gap-4 mt-6">

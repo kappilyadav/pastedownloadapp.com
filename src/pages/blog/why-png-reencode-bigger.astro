@@ -6,9 +6,10 @@ import AuthorByline from '../../components/AuthorByline.astro';
 
 <ContentLayout
     title="Why Re-Saving a PNG Can Make the File Bigger, Not Smaller"
-    description="A browser's Canvas re-encode is not the same as a PNG optimizer. Real numbers from two test files show a PNG growing by 60 to 65 percent after a round trip through canvas.toBlob."
+    description="A browser's Canvas re-encode is not the same as a PNG optimizer. Real numbers show a PNG growing by 60 to 65 percent after a round trip."
     canonicalUrl="https://pastedownloadapp.com/blog/why-png-reencode-bigger/"
     imageUrl="https://pastedownloadapp.com/blog/why-png-reencode-bigger.png"
+    breadcrumbs={[{ name: "Home", href: "/" }, { name: "Blog", href: "/blog/" }, { name: "Why Re-Saving a PNG Gets Bigger" }]}
 >
     <script type="application/ld+json">
         {
@@ -34,17 +35,6 @@ import AuthorByline from '../../components/AuthorByline.astro';
             }
         }
     </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pastedownloadapp.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://pastedownloadapp.com/blog/" },
-          { "@type": "ListItem", "position": 3, "name": "Why Re-Saving a PNG Gets Bigger", "item": "https://pastedownloadapp.com/blog/why-png-reencode-bigger/" }
-        ]
-      }
-    </script>
 
     <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight text-balance">
         Why Re-Saving a PNG Can Make the File Bigger, Not Smaller
@@ -56,13 +46,13 @@ import AuthorByline from '../../components/AuthorByline.astro';
         <img src="/blog/why-png-reencode-bigger.png" alt="Screenshot of the paste tool showing a re-encoded PNG result" width="1600" height="900" class="w-full aspect-[16/9] object-cover" />
     </figure>
 
-    <div class="text-body text-sm sm:text-[15px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
+    <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
 
-        <p>PNG is lossless, so re-saving a PNG as a PNG should produce an identical or near-identical file, right? While writing the format comparison for this site, I paste a PNG in, chose PNG as the output format, and watched the file come out <strong>larger</strong> than the original, not the same size, not smaller. That was surprising enough that I tested it on a second, completely different file to make sure it was not a fluke. It was not. Here is what is actually going on.</p>
+        <p>PNG is lossless, so re-saving a PNG as a PNG should produce an identical or near-identical file, right? While writing the format comparison for this site, I pasted a PNG in and chose PNG as the output format. The file came out <strong>larger</strong> than the original: not the same size, not smaller. That was surprising enough that I tested it on a second, completely different file, to make sure it was not a fluke. It was not. Here is what is actually going on.</p>
 
         <h2>The Test</h2>
 
-        <p>I converted two real PNGs through PasteDownloadApp's pipeline, selecting PNG as the output format for both, which routes the image through an HTML canvas and calls <code>canvas.toBlob()</code> to produce the file:</p>
+        <p>I converted two real PNGs through PasteDownloadApp's pipeline, selecting PNG as the output format for both. That routes the image through an HTML canvas and calls <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob" target="_blank" rel="noopener noreferrer"><code>canvas.toBlob()</code></a> to produce the file:</p>
 
         <div class="overflow-x-auto rounded-xl border border-hairline">
             <table class="w-full text-left text-sm">
@@ -91,28 +81,28 @@ import AuthorByline from '../../components/AuthorByline.astro';
             </table>
         </div>
 
-        <p>A third file, a 512&times;512 app icon, barely moved (22.3 KB to 22.2 KB), which turned out to be the clue that explained the other two.</p>
+        <p>A third file, a 512&times;512 app icon, barely moved: 22.3 KB to 22.2 KB. That turned out to be the clue that explained the other two.</p>
 
         <h2>Why This Happens: PNG Size Depends on the Encoder, Not Just the Pixels</h2>
 
-        <p>PNG's lossless compression (DEFLATE, the same family of algorithm used in ZIP files) has a lot of tunable parameters: compression level, filter strategy per scanline, and whether the encoder spends extra time trying multiple filter approaches and keeping the smallest result. A dedicated PNG optimizer, or the export pipeline of a design tool, typically spends real computation trying several strategies and picking the best one. A browser's built-in <code>canvas.toBlob('image/png')</code> is optimized for speed, not for squeezing out every possible byte, since it has to run instantly on a UI thread rather than as a batch job.</p>
+        <p>PNG's lossless compression (DEFLATE, the same family of algorithm used in ZIP files) has a lot of tunable parameters: compression level, filter strategy per scanline, and whether the encoder spends extra time trying multiple filter approaches and keeping the smallest result. A dedicated PNG optimizer, or the export pipeline of a design tool, typically spends real computation trying several strategies and picks the best one. A browser's built-in <code>canvas.toBlob('image/png')</code> is optimized for speed instead, not for squeezing out every possible byte. It has to run instantly on a UI thread, rather than as a batch job.</p>
 
-        <p>The two source files that grew significantly, the illustration and the screenshot, had both been pre-optimized before they were ever uploaded to this site's own asset pipeline, almost certainly by a build tool that ran a proper PNG compressor. Once decoded into raw pixels and re-encoded by the browser's faster, less aggressive encoder, that prior optimization was gone, and the new file reflects only what the browser's default encoder settings produce. The 512&times;512 icon barely changed because it was already small and simple enough that there was little room for a better encoder to improve on.</p>
+        <p>The two source files that grew significantly, the illustration and the screenshot, had both been pre-optimized before they were ever uploaded to this site's own asset pipeline. That was almost certainly done by a build tool that ran a proper PNG compressor. Once decoded into raw pixels and re-encoded by the browser's faster, less aggressive encoder, that prior optimization was gone. The new file reflects only what the browser's default encoder settings produce. The 512&times;512 icon barely changed, because it was already small and simple enough that there was little room for a better encoder to improve on.</p>
 
         <h2>What This Means for Format Choice</h2>
 
-        <p>If your PNG is already optimized, whether by a build tool, an export setting in Figma or Photoshop, or a dedicated compressor, running it back through any browser-based canvas tool for a same-format "conversion" will very likely make it bigger, not smaller. This is not specific to PasteDownloadApp: it is how <code>canvas.toBlob()</code> works in every browser, since none of them run a full PNG optimization pass by default. The practical rule: only choose PNG as your output format when you actually need lossless output for a fresh capture (a new screenshot, for instance), not as a way to "clean up" or shrink an existing PNG. For an existing PNG that is already too large, WebP lossy at PasteDownloadApp's default quality produced files 96% and 88% smaller than the originals in <a href="/blog/image-compression-quality-settings/">the real compression numbers I tested separately</a>, which is a far more effective path than re-saving as PNG.</p>
+        <p>Say your PNG is already optimized, whether by a build tool, an export setting in Figma or Photoshop, or a dedicated compressor. Running it back through any browser-based canvas tool for a same-format "conversion" will very likely make it bigger, not smaller. This is not specific to PasteDownloadApp. It is how <code>canvas.toBlob()</code> works in every browser, since none of them run a full PNG optimization pass by default. The practical rule: only choose PNG as your output format when you actually need lossless output for a fresh capture, a new screenshot, for instance. Do not use it as a way to "clean up" or shrink an existing PNG. For an existing PNG that is already too large, there is a far more effective path. WebP lossy at PasteDownloadApp's default quality produced files 96% and 88% smaller than the originals, in <a href="/blog/image-compression-quality-settings/">the real compression numbers I tested separately</a>.</p>
 
         <h2>Frequently Asked Questions</h2>
 
         <h3>Does this mean PNG compression is broken in the browser?</h3>
-        <p>No, it is working correctly, it is just optimized for encoding speed rather than minimum file size. The output is still a fully valid, lossless PNG; it is simply less aggressively compressed than a file that went through a dedicated optimizer.</p>
+        <p>No, it is working correctly. It is just optimized for encoding speed rather than minimum file size. The output is still a fully valid, lossless PNG. It is simply less aggressively compressed than a file that went through a dedicated optimizer.</p>
 
         <h3>Will converting the same PNG twice make it even bigger the second time?</h3>
-        <p>No. Once decoded and re-encoded once by the same encoder with the same settings, a second round trip through canvas.toBlob produces an equivalent-sized file, since there is no more prior third-party optimization left to lose.</p>
+        <p>No. Once an image has been decoded and re-encoded by the same encoder, with the same settings, a second round trip through canvas.toBlob will not shrink it further. It produces an equivalent-sized file, since there is no more prior third-party optimization left to lose.</p>
 
         <h3>Is there a way to get a smaller PNG out of a browser-based tool?</h3>
-        <p>Not through canvas.toBlob alone. Getting PNG file sizes down to what a dedicated optimizer produces requires a purpose-built compression library, which is a meaningfully heavier piece of code than a simple paste-and-convert tool. If PNG size matters more than format, a dedicated PNG optimizer is the right tool for that specific job.</p>
+        <p>Not through canvas.toBlob alone. Getting PNG file sizes down to what a dedicated optimizer produces requires a purpose-built compression library. That is a meaningfully heavier piece of code than a simple paste-and-convert tool. If PNG size matters more than format, a dedicated PNG optimizer is the right tool for that specific job.</p>
 
         <RelatedGuides hrefs={["/blog/image-compression-quality-settings/", "/blog/png-vs-jpg-vs-webp/", "/blog/convert-multiple-screenshots-fast/", "/blog/svg-ico-conversion-quirks/"]} />
 

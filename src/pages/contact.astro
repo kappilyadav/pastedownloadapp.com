@@ -2,17 +2,7 @@
 import ContentLayout from '../layouts/ContentLayout.astro';
 ---
 
-<ContentLayout title="Contact Us - PasteDownloadApp" description="Contact the PasteDownloadApp team. Get in touch with questions, feedback, or support requests about our free image downloader tool." canonicalUrl="https://pastedownloadapp.com/contact/">
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pastedownloadapp.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://pastedownloadapp.com/contact/" }
-      ]
-    }
-  </script>
+<ContentLayout title="Contact Us - PasteDownloadApp" description="Contact the PasteDownloadApp team. Get in touch with questions, feedback, or support requests about our free image downloader tool." canonicalUrl="https://pastedownloadapp.com/contact/" breadcrumbs={[{ name: "Home", href: "/" }, { name: "Contact" }]}>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -36,7 +26,7 @@ import ContentLayout from '../layouts/ContentLayout.astro';
     Contact Us
   </h1>
 
-  <div class="text-body text-sm sm:text-[15px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
+  <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
     <p>
       Have a question, suggestion, or need help? We would love to hear from you. PasteDownloadApp is built to be simple and dependable, and the fastest way to keep it that way is hearing directly from the people who use it. Here are the best ways to reach us, along with a few things that help us respond faster.
     </p>
@@ -53,6 +43,45 @@ import ContentLayout from '../layouts/ContentLayout.astro';
         </div>
       </div>
     </div>
+
+    <h2>Send Us a Message</h2>
+    <p>Prefer a form over email? Fill this out and it goes straight to our inbox.</p>
+
+    <div id="contactSuccessBanner" class="hidden rounded-xl border border-hairline bg-canvas-soft p-4 text-ink text-sm" role="status" aria-live="polite">
+      Thanks, your message is on its way. We typically respond within 1&ndash;2 business days.
+    </div>
+
+    <form id="contactForm" action="https://formsubmit.co/hello@pastedownloadapp.com" method="POST" class="space-y-4">
+      <input type="hidden" name="_subject" value="New message from PasteDownloadApp contact form" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_next" value="https://pastedownloadapp.com/contact/?sent=true" />
+      <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label for="contactName" class="block text-ink text-sm font-medium mb-1.5">Name</label>
+          <input id="contactName" type="text" name="name" required autocomplete="name" class="w-full h-10 sm:h-11 px-3 sm:px-4 text-sm text-ink bg-canvas border border-hairline dark:border-hairline-strong rounded-lg outline-none focus:border-hairline-strong transition-colors placeholder:text-mute focus-visible:ring-2 focus-visible:ring-link" />
+        </div>
+        <div>
+          <label for="contactEmail" class="block text-ink text-sm font-medium mb-1.5">Email</label>
+          <input id="contactEmail" type="email" name="email" required autocomplete="email" class="w-full h-10 sm:h-11 px-3 sm:px-4 text-sm text-ink bg-canvas border border-hairline dark:border-hairline-strong rounded-lg outline-none focus:border-hairline-strong transition-colors placeholder:text-mute focus-visible:ring-2 focus-visible:ring-link" />
+        </div>
+      </div>
+
+      <div>
+        <label for="contactSubject" class="block text-ink text-sm font-medium mb-1.5">Subject</label>
+        <input id="contactSubject" type="text" name="subject" placeholder="What's this about?" class="w-full h-10 sm:h-11 px-3 sm:px-4 text-sm text-ink bg-canvas border border-hairline dark:border-hairline-strong rounded-lg outline-none focus:border-hairline-strong transition-colors placeholder:text-mute focus-visible:ring-2 focus-visible:ring-link" />
+      </div>
+
+      <div>
+        <label for="contactMessage" class="block text-ink text-sm font-medium mb-1.5">Message</label>
+        <textarea id="contactMessage" name="message" required rows="5" placeholder="Bug reports, feature ideas, or anything else." class="w-full px-3 sm:px-4 py-2.5 text-sm text-ink bg-canvas border border-hairline dark:border-hairline-strong rounded-lg outline-none focus:border-hairline-strong transition-colors placeholder:text-mute focus-visible:ring-2 focus-visible:ring-link resize-y"></textarea>
+      </div>
+
+      <button type="submit" class="bg-ink dark:bg-white text-on-primary dark:text-black text-sm font-medium px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity border-none cursor-pointer focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">
+        Send Message
+      </button>
+    </form>
 
     <h2>Before You Reach Out</h2>
     <p>
@@ -91,3 +120,15 @@ import ContentLayout from '../layouts/ContentLayout.astro';
     </p>
   </div>
 </ContentLayout>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('sent') === 'true') {
+    const banner = document.getElementById('contactSuccessBanner');
+    if (banner) banner.classList.remove('hidden');
+
+    const url = new URL(window.location.href);
+    url.searchParams.delete('sent');
+    window.history.replaceState({}, '', url.toString());
+  }
+</script>
