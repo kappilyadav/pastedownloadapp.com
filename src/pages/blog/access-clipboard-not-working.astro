@@ -90,7 +90,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
         <p>Only through the browser's developer console, which will usually log a <code>NotAllowedError</code> with a short reason. Right-click the page, choose Inspect, and check the Console tab after clicking Access Clipboard to see the underlying error.</p>
 
         <h3>Does using a VPN or ad blocker affect clipboard access?</h3>
-        <p>A VPN has no effect, since this is a browser permission, not a network request. Some aggressive privacy extensions do block the Async Clipboard API outright, so if the button fails on every site, try disabling extensions one at a time.</p>
+        <p>A VPN has no effect, since this is a browser permission, not a network request. Some aggressive privacy extensions do block the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API" target="_blank" rel="noopener noreferrer">Async Clipboard API</a> outright, so if the button fails on every site, try disabling extensions one at a time.</p>
 
         <h3>Why does the same button work on one site but not another?</h3>
         <p>Clipboard permission is granted per site, not globally. Even within the same browser, you may have granted access on one domain and not another, or the other site may not have requested it correctly in the first place.</p>

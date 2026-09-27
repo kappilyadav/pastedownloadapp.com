@@ -66,7 +66,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
 
         <ul class="list-disc pl-5 space-y-1.5">
             <li><strong>The paste event.</strong> When you press Ctrl+V or Cmd+V while a page element has focus, the browser fires a <code>paste</code> event with a <code>clipboardData</code> object. A script can read image items directly out of that event without asking for any special permission, because it only fires in response to a real user keystroke.</li>
-            <li><strong>navigator.clipboard.read().</strong> This lets a script read the clipboard on demand, for example when you click an "Access Clipboard" button instead of pressing Ctrl+V. It requires the Async Clipboard API, a secure context (HTTPS), and, in most browsers, an explicit permission grant.</li>
+            <li><strong>navigator.clipboard.read().</strong> This lets a script read the clipboard on demand, for example when you click an "Access Clipboard" button instead of pressing Ctrl+V. It requires the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/read" target="_blank" rel="noopener noreferrer">Async Clipboard API</a>, a secure context (HTTPS), and, in most browsers, an explicit permission grant.</li>
         </ul>
 
         <p>PasteDownloadApp uses both: the paste event for the Ctrl+V flow, and <code>navigator.clipboard.read()</code> for the Access Clipboard button. That combination is also why the button sometimes behaves differently than the keyboard shortcut on the same page. If the button specifically is the one failing for you, see <a href="/blog/access-clipboard-not-working/">why "Access Clipboard" fails and how to fix it</a>.</p>

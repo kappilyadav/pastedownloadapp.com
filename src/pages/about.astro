@@ -77,7 +77,7 @@ import AuthorByline from '../components/AuthorByline.astro';
 
     <h2>How It Works, Technically</h2>
     <p>
-      When you paste an image, the browser fires a <code>paste</code> event with the raw image data attached. The page reads that data, draws it onto an HTML canvas element, and calls <code>canvas.toBlob()</code> to produce a file in your chosen format. At no point does this involve a request to any server I control. You can verify this yourself by opening your browser's network tab while using the tool.
+      When you paste an image, the browser fires a <code>paste</code> event with the raw image data attached. The page reads that data, draws it onto an HTML canvas element, and calls <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob" target="_blank" rel="noopener noreferrer"><code>canvas.toBlob()</code></a> to produce a file in your chosen format. At no point does this involve a request to any server I control. You can verify this yourself by opening your browser's network tab while using the tool.
     </p>
 
     <h2>Get in Touch</h2>
