@@ -23,7 +23,7 @@ import AuthorByline from '../components/AuthorByline.astro';
       "mainEntity": {
         "@type": "Organization",
         "name": "PasteDownloadApp",
-        "description": "A browser-based tool that converts a pasted clipboard image or a direct image URL into a PNG, JPEG, or WebP file with no uploads and no sign-ups.",
+        "description": "A browser-based tool that converts a pasted clipboard image into a PNG, JPEG, or WebP file with no uploads and no sign-ups.",
         "url": "https://pastedownloadapp.com/",
         "founder": {
           "@type": "Person",
@@ -44,7 +44,7 @@ import AuthorByline from '../components/AuthorByline.astro';
 
   <div class="text-body text-sm sm:text-[15px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
     <p>
-      <strong>PasteDownloadApp</strong> is a single-page tool that turns a clipboard image or a direct URL into a downloaded PNG, JPEG, or WebP file, entirely inside your browser tab. I built and run it myself. There is no team, no company behind it beyond me, and no server that ever sees your images.
+      <strong>PasteDownloadApp</strong> is a single-page tool that turns a clipboard image into a downloaded PNG, JPEG, or WebP file, entirely inside your browser tab. I built and run it myself. There is no team, no company behind it beyond me, and no server that ever sees your images.
     </p>
 
     <h2>Why I Built This</h2>
@@ -55,7 +55,6 @@ import AuthorByline from '../components/AuthorByline.astro';
     <h2>What It Actually Does</h2>
     <ul class="list-disc pl-5 space-y-1.5">
       <li><strong>Clipboard paste:</strong> reads an image directly from your clipboard using the browser's Clipboard API, no upload involved.</li>
-      <li><strong>URL fetch:</strong> retrieves a direct image link and previews it before you save.</li>
       <li><strong>Format conversion:</strong> re-encodes to PNG, JPEG, or WebP using the Canvas API, all on your device.</li>
       <li><strong>Auto-download:</strong> saves each pasted image immediately without an extra click, useful for getting through several screenshots quickly.</li>
       <li><strong>No account, no limit:</strong> there is nothing to sign up for and nothing that stops working after a certain number of downloads.</li>
@@ -73,12 +72,12 @@ import AuthorByline from '../components/AuthorByline.astro';
 
     <h2>A Note on Trust</h2>
     <p>
-      I understand that &ldquo;nothing is uploaded&rdquo; is an easy claim to make and a harder one to prove from the outside. That is part of why this page describes the exact browser APIs involved rather than just asserting privacy in the abstract. If you want to verify it yourself, open your browser's developer tools, go to the network tab, and paste or download an image. You will see requests to load the page and its fonts, and for URL downloads, a request to the image source or its fallback proxy, but nothing carrying your pasted image data to a server I control.
+      I understand that &ldquo;nothing is uploaded&rdquo; is an easy claim to make and a harder one to prove from the outside. That is part of why this page describes the exact browser APIs involved rather than just asserting privacy in the abstract. If you want to verify it yourself, open your browser's developer tools, go to the network tab, and paste an image. You will see requests to load the page and its fonts, but nothing carrying your pasted image data to a server I control.
     </p>
 
     <h2>How It Works, Technically</h2>
     <p>
-      When you paste an image, the browser fires a <code>paste</code> event with the raw image data attached. The page reads that data, draws it onto an HTML canvas element, and calls <code>canvas.toBlob()</code> to produce a file in your chosen format. For URL downloads, the browser fetches the image over HTTPS and runs it through the same canvas pipeline when the source allows it. At no point does either path involve a request to any server I control. You can verify this yourself by opening your browser's network tab while using the tool.
+      When you paste an image, the browser fires a <code>paste</code> event with the raw image data attached. The page reads that data, draws it onto an HTML canvas element, and calls <code>canvas.toBlob()</code> to produce a file in your chosen format. At no point does this involve a request to any server I control. You can verify this yourself by opening your browser's network tab while using the tool.
     </p>
 
     <h2>Get in Touch</h2>

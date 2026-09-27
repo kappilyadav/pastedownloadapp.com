@@ -37,10 +37,6 @@ import ContentLayout from '../layouts/ContentLayout.astro';
     <p>
       PasteDownloadApp is designed to process images in your browser whenever possible. Images pasted from your clipboard or added by drag and drop are handled locally using browser APIs such as the <strong>Clipboard API</strong> and <strong>Canvas API</strong>. We do <strong>not</strong> upload, store, or have access to images you paste from your device.
     </p>
-    <p>
-      When you use the URL download feature, your browser first tries to fetch the image directly from the URL you enter. If direct access is blocked by the image host, the tool may try a third-party CORS proxy to retrieve the image so it can be previewed or downloaded. In that case, the image URL and image data may be processed by that third-party proxy according to its own policies.
-    </p>
-
     <h2>Information We Collect</h2>
     <p>
       We do not require an account and we do not ask you to provide your name, email address, or payment information to use the image tool. We may collect limited technical and usage information through analytics and advertising services, such as pages visited, browser type, device type, approximate location, referrer, interactions, and similar diagnostic information.
@@ -62,10 +58,6 @@ import ContentLayout from '../layouts/ContentLayout.astro';
     <p>
       You can learn more about how Google uses data from sites that use Google services at <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">How Google uses information from sites or apps that use our services</a>. You can manage Google ad personalization at <a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer">Google Ad Settings</a>.
     </p>
-    <p>
-      The URL download feature may use <strong>corsproxy.io</strong> as a fallback when a direct image request is blocked by the source website. This fallback is only used for URL-based downloads, not for images pasted directly from your clipboard.
-    </p>
-
     <h2>Cookies and Consent</h2>
     <p>
       Cookies and similar technologies may be used for analytics, advertising, security, fraud prevention, frequency capping, and ad measurement. On your first visit, a cookie banner lets you choose <strong>Accept all</strong> or <strong>Reject non-essential</strong>. Advertising and analytics cookies, including the DART cookie described above, are not set for personalized ads or measurement until you choose Accept all. Where required by law, including for users in the European Economic Area, the United Kingdom, and Switzerland, this choice is requested before any such cookie is set. You can change your choice at any time by clearing your browser's local site data for pastedownloadapp.com, which will show the banner again on your next visit.
