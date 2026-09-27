@@ -52,8 +52,12 @@ import AuthorByline from '../../components/AuthorByline.astro';
 
     <AuthorByline publishDate="2026-09-27" />
 
+    <div class="rounded-xl border border-hairline bg-warning-soft text-warning text-sm px-5 py-4 my-6" role="note">
+        <strong>Update:</strong> PasteDownloadApp's URL download feature has been discontinued and is no longer available in the tool. This article is kept for reference, since the underlying CORS and hotlink-protection behavior described below still applies to any browser-based tool that tries to fetch images from arbitrary URLs.
+    </div>
+
     <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
-        <img src="/blog/why-image-url-wont-download.png" alt="Screenshot of the URL download tool with an image URL entered and its preview loaded, ready to download" width="1600" height="900" class="w-full aspect-[16/9] object-cover" />
+        <img src="/blog/why-image-url-wont-download.png" alt="Screenshot of the discontinued URL download tool with an image URL entered and its preview loaded" width="1600" height="900" class="w-full aspect-[16/9] object-cover" />
     </figure>
 
     <div class="text-body text-sm sm:text-[15px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
@@ -86,7 +90,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
 
         <RelatedGuides hrefs={["/blog/save-clipboard-image-without-software/", "/blog/access-clipboard-not-working/", "/blog/png-vs-jpg-vs-webp/"]} />
 
-        <p>Have a direct image link that keeps failing? Try it in <a href="https://pastedownloadapp.com/">PasteDownloadApp</a>, and if the proxy fallback still cannot reach it, save the image from your browser first and drag the file in instead.</p>
+        <p>Since the URL download feature has been discontinued, the reliable option now is to save the image from your browser first (right-click, "Save image as") and then drag the file into <a href="https://pastedownloadapp.com/">PasteDownloadApp</a> to convert it.</p>
 
     </div>
 </ContentLayout>

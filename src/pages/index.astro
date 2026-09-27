@@ -12,7 +12,7 @@ const newestArticles = [...latestArticles].sort(
 );
 ---
 
-<Layout title="Paste Download - Copy Paste Image Downloader" description="Paste image to download from your clipboard, Ctrl+V, drag and drop, or a direct URL. Save copied images, photos, and screenshots as PNG, JPEG, or WebP." canonicalUrl="https://pastedownloadapp.com/">
+<Layout title="Paste Download - Copy Paste Image Downloader" description="Paste image to download from your clipboard, Ctrl+V, or drag and drop. Save copied images, photos, and screenshots as PNG, JPEG, or WebP." canonicalUrl="https://pastedownloadapp.com/">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -20,7 +20,7 @@ const newestArticles = [...latestArticles].sort(
       "@id": "https://pastedownloadapp.com/#webapplication",
       "name": "PasteDownloadApp",
       "url": "https://pastedownloadapp.com/",
-      "description": "Free online paste download tool for saving copied images, clipboard photos, screenshots, and direct image URLs as PNG, JPEG, or WebP with private browser-based processing.",
+      "description": "Free online paste download tool for saving copied images, clipboard photos, and screenshots as PNG, JPEG, or WebP with private browser-based processing.",
       "applicationCategory": "Multimedia",
       "operatingSystem": "All",
       "browserRequirements": "Requires JavaScript",
@@ -57,7 +57,7 @@ const newestArticles = [...latestArticles].sort(
           "name": "Can I paste an image and convert it to another format?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Paste any image from your clipboard, drag and drop a file, or fetch one from a URL, then download it as PNG, JPEG, or WebP. Conversion is handled locally in your browser using the Canvas API."
+            "text": "Yes. Paste any image from your clipboard or drag and drop a file, then download it as PNG, JPEG, or WebP. Conversion is handled locally in your browser using the Canvas API."
           }
         },
         {
@@ -86,18 +86,10 @@ const newestArticles = [...latestArticles].sort(
         },
         {
           "@type": "Question",
-          "name": "What happens if a direct image URL won't download?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Some image hosts block direct cross-origin requests. When that happens, the tool automatically tries a CORS proxy fallback, and if that also fails, it shows the image so you can use your browser's built-in Save Image As option instead of a silent failure."
-          }
-        },
-        {
-          "@type": "Question",
           "name": "How does the browser-based processing work?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The tool uses the browser Clipboard API to read image data and the Canvas API for format conversion. Clipboard images are processed on your device. URL downloads are fetched through the browser and converted when possible."
+            "text": "The tool uses the browser Clipboard API to read image data and the Canvas API for format conversion, all processed on your device."
           }
         }
       ]
@@ -133,7 +125,7 @@ const newestArticles = [...latestArticles].sort(
           Paste Download Images Instantly
         </h1>
         <p class="text-body text-base sm:text-lg lg:text-xl mt-4 sm:mt-5 max-w-[600px] mx-auto leading-relaxed text-pretty">
-          Copy an image, press Ctrl+V, and download it as PNG, JPEG, or WebP. PasteDownloadApp works as a private paste downloader for screenshots, copied photos, clipboard images, drag-and-drop files, and direct image URLs.
+          Copy an image, press Ctrl+V, and download it as PNG, JPEG, or WebP. PasteDownloadApp works as a private paste downloader for screenshots, copied photos, clipboard images, and drag-and-drop files.
         </p>
         <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-8 sm:mt-10" aria-label="Information pages">
             <a href="/about/" class="text-body text-xs sm:text-sm no-underline hover:text-ink transition-colors flex items-center gap-1.5">
@@ -188,7 +180,7 @@ const newestArticles = [...latestArticles].sort(
 
         <div class="text-body text-sm sm:text-[15px] leading-relaxed space-y-4 [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-8 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
           <p>
-            PasteDownloadApp is a focused workspace for getting an image off your clipboard, or a URL, and onto your disk as a file. Copy something (a screenshot, a design mockup, a chart from a meeting), open this page, press Ctrl+V or Cmd+V, and the browser reads the image data, shows you a preview with its dimensions and size, and lets you save it as PNG, JPEG, or WebP without sending anything to a server. If you want a slower walkthrough of that same flow, read <a href="/blog/save-clipboard-image-without-software/">saving clipboard images without extra software</a>.
+            PasteDownloadApp is a focused workspace for getting an image off your clipboard and onto your disk as a file. Copy something (a screenshot, a design mockup, a chart from a meeting), open this page, press Ctrl+V or Cmd+V, and the browser reads the image data, shows you a preview with its dimensions and size, and lets you save it as PNG, JPEG, or WebP without sending anything to a server. If you want a slower walkthrough of that same flow, read <a href="/blog/save-clipboard-image-without-software/">saving clipboard images without extra software</a>.
           </p>
 
           <h3>From Your Clipboard</h3>
@@ -197,11 +189,6 @@ const newestArticles = [...latestArticles].sort(
           </p>
           <p>
             Not every browser handles a clipboard paste the same way. If Ctrl+V does nothing, or a button labeled Access Clipboard stays unresponsive, that is a real, documented difference between browsers rather than a bug on this page: see <a href="/blog/clipboard-paste-chrome-firefox-safari/">why Chrome, Firefox, and Safari behave differently</a> and <a href="/blog/access-clipboard-not-working/">why Access Clipboard fails</a> for the specific causes and fixes.
-          </p>
-
-          <h3>From a URL</h3>
-          <p>
-            When the image is not already on your clipboard, paste a direct link into the URL field and click Fetch. It supports JPEG, PNG, WebP, GIF, SVG, BMP, and ICO. Vector and multi-resolution icon files behave a little differently than an ordinary photo once they hit a canvas element, which is covered honestly (with real test results) in <a href="/blog/svg-ico-conversion-quirks/">SVG and ICO conversion quirks</a>. If a host blocks a direct request, the tool falls back to a CORS proxy, and if that also fails it shows a plain "Save Image As" fallback instead of a silent error.
           </p>
 
           <h3>On Mobile</h3>
@@ -223,7 +210,7 @@ const newestArticles = [...latestArticles].sort(
 
           <h3>Get Started</h3>
           <p>
-            No installation or account is required. Paste an image or fetch a URL, pick a format, and save the file.
+            No installation or account is required. Paste an image, pick a format, and save the file.
           </p>
         </div>
       </div>
@@ -260,7 +247,7 @@ const newestArticles = [...latestArticles].sort(
               Can I paste an image and convert it to another format?
             </summary>
             <div class="px-5 pb-4 pt-0 text-body text-sm sm:text-[15px] leading-relaxed border-t border-hairline mt-0">
-              <p class="pt-3">Yes. Paste any image from your clipboard or fetch one from a URL, then download it in <strong>PNG</strong>, <strong>JPEG</strong>, or <strong>WebP</strong> format. Conversion happens locally in your browser when supported.</p>
+              <p class="pt-3">Yes. Paste any image from your clipboard or drag and drop a file, then download it in <strong>PNG</strong>, <strong>JPEG</strong>, or <strong>WebP</strong> format. Conversion happens locally in your browser when supported.</p>
             </div>
           </details>
           <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
@@ -293,19 +280,10 @@ const newestArticles = [...latestArticles].sort(
           <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
             <summary class="flex items-center gap-3 px-5 py-4 cursor-pointer text-ink font-medium text-sm sm:text-base list-none select-none [&::-webkit-details-marker]:hidden">
               <svg class="shrink-0 w-4 h-4 text-mute transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-              What happens if a direct image URL won't download?
-            </summary>
-            <div class="px-5 pb-4 pt-0 text-body text-sm sm:text-[15px] leading-relaxed border-t border-hairline mt-0">
-              <p class="pt-3">Some image hosts block direct cross-origin requests. When that happens, the tool automatically tries a CORS proxy fallback, and if that also fails it shows the image so you can use your browser's built-in <strong>Save Image As</strong> option instead of a silent failure.</p>
-            </div>
-          </details>
-          <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
-            <summary class="flex items-center gap-3 px-5 py-4 cursor-pointer text-ink font-medium text-sm sm:text-base list-none select-none [&::-webkit-details-marker]:hidden">
-              <svg class="shrink-0 w-4 h-4 text-mute transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
               How does the browser-based processing work?
             </summary>
             <div class="px-5 pb-4 pt-0 text-body text-sm sm:text-[15px] leading-relaxed border-t border-hairline mt-0">
-              <p class="pt-3">The tool uses the browser's <strong>Clipboard API</strong> to read image data and the <strong>Canvas API</strong> for format conversion. Clipboard images are processed on your device. URL downloads are fetched through the browser and converted when possible.</p>
+              <p class="pt-3">The tool uses the browser's <strong>Clipboard API</strong> to read image data and the <strong>Canvas API</strong> for format conversion, all processed on your device.</p>
             </div>
           </details>
         </div>
