@@ -9,6 +9,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
     description="Mobile clipboard access does not match desktop. Here is the real difference saving a copied image on Android and iOS, tested in a mobile browser."
     canonicalUrl="https://pastedownloadapp.com/blog/mobile-clipboard-android-vs-ios/"
     imageUrl="https://pastedownloadapp.com/blog/mobile-clipboard-android-vs-ios.png"
+    breadcrumbs={[{ name: "Home", href: "/" }, { name: "Blog", href: "/blog/" }, { name: "Clipboard Images on Android vs iPhone" }]}
 >
     <script type="application/ld+json">
         {
@@ -34,17 +35,6 @@ import AuthorByline from '../../components/AuthorByline.astro';
             }
         }
     </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pastedownloadapp.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://pastedownloadapp.com/blog/" },
-          { "@type": "ListItem", "position": 3, "name": "Clipboard Images on Android vs iPhone", "item": "https://pastedownloadapp.com/blog/mobile-clipboard-android-vs-ios/" }
-        ]
-      }
-    </script>
 
     <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight text-balance">
         Saving a Clipboard Image on Android vs iPhone: What Actually Works
@@ -56,7 +46,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
         <img src="/blog/mobile-clipboard-android-vs-ios.png" alt="Screenshot of the paste download tool in a mobile browser viewport" width="1600" height="900" class="w-full aspect-[16/9] object-cover" />
     </figure>
 
-    <div class="text-body text-sm sm:text-[15px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
+    <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
 
         <p>A copied image on a phone does not behave the same as one on a laptop. There is no right-click and no keyboard shortcut. The browser also runs inside an OS that has its own opinion about which apps get to touch the clipboard. I tested PasteDownloadApp in a 390 pixel wide mobile viewport, shown below, to see exactly what changes. The honest answer: the biggest differences come from the OS, not the site.</p>
 

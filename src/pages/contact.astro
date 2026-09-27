@@ -2,17 +2,7 @@
 import ContentLayout from '../layouts/ContentLayout.astro';
 ---
 
-<ContentLayout title="Contact Us - PasteDownloadApp" description="Contact the PasteDownloadApp team. Get in touch with questions, feedback, or support requests about our free image downloader tool." canonicalUrl="https://pastedownloadapp.com/contact/">
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pastedownloadapp.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://pastedownloadapp.com/contact/" }
-      ]
-    }
-  </script>
+<ContentLayout title="Contact Us - PasteDownloadApp" description="Contact the PasteDownloadApp team. Get in touch with questions, feedback, or support requests about our free image downloader tool." canonicalUrl="https://pastedownloadapp.com/contact/" breadcrumbs={[{ name: "Home", href: "/" }, { name: "Contact" }]}>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -36,7 +26,7 @@ import ContentLayout from '../layouts/ContentLayout.astro';
     Contact Us
   </h1>
 
-  <div class="text-body text-sm sm:text-[15px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
+  <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
     <p>
       Have a question, suggestion, or need help? We would love to hear from you. PasteDownloadApp is built to be simple and dependable, and the fastest way to keep it that way is hearing directly from the people who use it. Here are the best ways to reach us, along with a few things that help us respond faster.
     </p>

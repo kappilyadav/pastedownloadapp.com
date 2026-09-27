@@ -1,0 +1,56 @@
+---
+import ContentLayout from '../layouts/ContentLayout.astro';
+import { latestArticles, categories } from '../data/articles';
+---
+
+<ContentLayout title="Sitemap - PasteDownloadApp" description="Full site map of PasteDownloadApp: every page and blog post in one place, organized by section." canonicalUrl="https://pastedownloadapp.com/sitemap/" breadcrumbs={[{ name: "Home", href: "/" }, { name: "Sitemap" }]}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Sitemap - PasteDownloadApp",
+      "description": "Full site map of PasteDownloadApp: every page and blog post in one place, organized by section."
+    }
+  </script>
+
+  <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-6 leading-tight text-balance">
+    Sitemap
+  </h1>
+
+  <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight">
+    <p>
+      Every page on PasteDownloadApp, in one place. If you're looking for the XML version used by search engines, see <a href="/sitemap-index.xml" class="text-link underline underline-offset-2 decoration-link/30 hover:decoration-link transition-colors">sitemap-index.xml</a>.
+    </p>
+
+    <h2>Main Pages</h2>
+    <ul class="list-disc pl-5 space-y-1.5">
+      <li><a href="/" class="text-link underline underline-offset-2 decoration-link/30 hover:decoration-link transition-colors">Home</a></li>
+      <li><a href="/about/" class="text-link underline underline-offset-2 decoration-link/30 hover:decoration-link transition-colors">About</a></li>
+      <li><a href="/author/" class="text-link underline underline-offset-2 decoration-link/30 hover:decoration-link transition-colors">Author</a></li>
+      <li><a href="/categories/" class="text-link underline underline-offset-2 decoration-link/30 hover:decoration-link transition-colors">Categories</a></li>
+      <li><a href="/contact/" class="text-link underline underline-offset-2 decoration-link/30 hover:decoration-link transition-colors">Contact</a></li>
+    </ul>
+
+    <h2>Blog</h2>
+    <ul class="list-disc pl-5 space-y-1.5">
+      <li><a href="/blog/" class="text-link underline underline-offset-2 decoration-link/30 hover:decoration-link transition-colors">Blog Index</a></li>
+      {categories.map((category) => (
+        <li>
+          {category.label}
+          <ul class="list-[circle] pl-5 mt-1.5 space-y-1.5">
+            {latestArticles.filter((article) => article.category === category.slug).map((article) => (
+              <li><a href={article.href} class="text-link underline underline-offset-2 decoration-link/30 hover:decoration-link transition-colors">{article.title}</a></li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ul>
+
+    <h2>Legal</h2>
+    <ul class="list-disc pl-5 space-y-1.5">
+      <li><a href="/privacy/" class="text-link underline underline-offset-2 decoration-link/30 hover:decoration-link transition-colors">Privacy Policy</a></li>
+      <li><a href="/terms/" class="text-link underline underline-offset-2 decoration-link/30 hover:decoration-link transition-colors">Terms &amp; Conditions</a></li>
+      <li><a href="/disclaimer/" class="text-link underline underline-offset-2 decoration-link/30 hover:decoration-link transition-colors">Disclaimer</a></li>
+    </ul>
+  </div>
+</ContentLayout>

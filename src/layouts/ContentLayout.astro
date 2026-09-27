@@ -6,6 +6,7 @@ import ThemeScript from '../components/ThemeScript.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieConsent from '../components/CookieConsent.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 
 export interface Props {
   title: string;
@@ -13,9 +14,23 @@ export interface Props {
   canonicalUrl: string;
   noindex?: boolean;
   imageUrl?: string;
+  breadcrumbs?: { name: string; href?: string }[];
 }
 
-const { title, description, canonicalUrl, noindex = false, imageUrl = 'https://pastedownloadapp.com/og-image.png' } = Astro.props;
+const { title, description, canonicalUrl, noindex = false, imageUrl = 'https://pastedownloadapp.com/og-image.png', breadcrumbs } = Astro.props;
+
+const breadcrumbJsonLd = breadcrumbs
+  ? JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbs.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.name,
+        item: item.href ? `https://pastedownloadapp.com${item.href}` : canonicalUrl
+      }))
+    })
+  : null;
 ---
 
 <!doctype html>
@@ -58,6 +73,8 @@ const { title, description, canonicalUrl, noindex = false, imageUrl = 'https://p
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageUrl} />
 
+    {breadcrumbJsonLd && <script type="application/ld+json" set:html={breadcrumbJsonLd} />}
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -97,6 +114,7 @@ const { title, description, canonicalUrl, noindex = false, imageUrl = 'https://p
     <Header />
     <main class="mx-auto max-w-[1400px] px-4 sm:px-6 pt-12 pb-20 sm:pt-16 sm:pb-28">
       <div class="max-w-3xl mx-auto">
+        {breadcrumbs && <Breadcrumbs items={breadcrumbs} />}
         <article class="rounded-xl bg-canvas border border-hairline px-5 sm:px-10 py-8 sm:py-12">
           <slot />
         </article>

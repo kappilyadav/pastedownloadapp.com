@@ -3,17 +3,7 @@ import ContentLayout from '../../layouts/ContentLayout.astro';
 import { categories, latestArticles } from '../../data/articles';
 ---
 
-<ContentLayout title="Categories - PasteDownloadApp Blog" description="Browse PasteDownloadApp blog posts by topic: platforms and browsers, troubleshooting and workflow, and file formats and compression." canonicalUrl="https://pastedownloadapp.com/categories/">
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pastedownloadapp.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Categories", "item": "https://pastedownloadapp.com/categories/" }
-      ]
-    }
-  </script>
+<ContentLayout title="Categories - PasteDownloadApp Blog" description="Browse PasteDownloadApp blog posts by topic: platforms and browsers, troubleshooting and workflow, and file formats and compression." canonicalUrl="https://pastedownloadapp.com/categories/" breadcrumbs={[{ name: "Home", href: "/" }, { name: "Categories" }]}>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -26,7 +16,7 @@ import { categories, latestArticles } from '../../data/articles';
   <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight text-balance">
     Categories
   </h1>
-  <p class="text-body text-sm sm:text-[15px] leading-relaxed mb-8 max-w-2xl">
+  <p class="text-body text-base sm:text-[17px] leading-relaxed mb-8 max-w-2xl">
     Every guide on the blog is written to solve one specific problem, whether that is a clipboard permission error, a format decision, or a platform quirk you just ran into. Browsing by category is the fastest way to find guides about the same kind of problem instead of scanning the full blog index for the right one. Jump to a topic below, or read the full <a href="/blog/" class="text-link underline underline-offset-2 decoration-link/30 hover:decoration-link transition-colors">blog index</a> if you would rather browse everything at once.
   </p>
 
@@ -63,7 +53,7 @@ import { categories, latestArticles } from '../../data/articles';
     ))}
   </div>
 
-  <p class="text-body text-sm sm:text-[15px] leading-relaxed mt-14 pt-6 border-t border-hairline max-w-2xl">
+  <p class="text-body text-base sm:text-[17px] leading-relaxed mt-14 pt-6 border-t border-hairline max-w-2xl">
     Can't find a guide for the problem you're running into? <a href="/contact/" class="text-link underline underline-offset-2 decoration-link/30 hover:decoration-link transition-colors">Let us know</a> and it may become the next one.
   </p>
 </ContentLayout>
