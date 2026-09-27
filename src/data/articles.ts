@@ -94,7 +94,6 @@ export const latestArticles = [
     description: 'Learn the differences between PNG, JPG, and WebP, including quality, transparency, and file size.',
     publishDate: '2026-06-12',
     updatedDate: '2026-08-22',
-    changeNote: 'Added real conversion numbers from two test files and a screenshot of the tool mid-conversion.',
     category: 'formats'
   },
   {
@@ -106,7 +105,6 @@ export const latestArticles = [
     description: 'Save clipboard images from your Mac directly as files without Photos, Preview, or extra steps.',
     publishDate: '2026-06-08',
     updatedDate: '2026-08-22',
-    changeNote: 'Added a screenshot of a real paste, and confirmed steps on macOS 26.',
     category: 'platforms'
   },
   {
@@ -118,7 +116,6 @@ export const latestArticles = [
     description: 'Turn Print Screen or Snipping Tool captures into PNG or JPG files without opening an editor.',
     publishDate: '2026-06-10',
     updatedDate: '2026-08-22',
-    changeNote: 'Added a real file-size comparison and a screenshot of the URL download tool.',
     category: 'platforms'
   },
   {
@@ -130,7 +127,6 @@ export const latestArticles = [
     description: 'Compare browser-based and built-in methods for saving copied images on desktop and mobile.',
     publishDate: '2026-06-12',
     updatedDate: '2026-08-22',
-    changeNote: 'Replaced generic advice with tested steps and linked to the new browser-differences guide.',
     category: 'troubleshooting'
   }
 ];
