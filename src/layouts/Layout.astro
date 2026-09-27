@@ -1,7 +1,9 @@
 ---
 import '../styles/global.css';
+import ConsentDefault from '../components/ConsentDefault.astro';
 import AdSense from '../components/AdSense.astro';
 import ThemeScript from '../components/ThemeScript.astro';
+import CookieConsent from '../components/CookieConsent.astro';
 
 export interface Props {
   title: string;
@@ -20,6 +22,7 @@ const { title, description, canonicalUrl, keywords } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#fafafa" />
+    <ConsentDefault />
     <AdSense />
     <ThemeScript />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -95,6 +98,7 @@ const { title, description, canonicalUrl, keywords } = Astro.props;
   </head>
   <body class="min-h-screen">
     <slot />
+    <CookieConsent />
 
     {/*
     <script is:inline>
