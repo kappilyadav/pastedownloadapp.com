@@ -128,5 +128,35 @@ export const latestArticles = [
     publishDate: '2026-06-12',
     updatedDate: '2026-08-22',
     category: 'troubleshooting'
+  },
+  {
+    href: '/blog/where-do-clipboard-images-go/',
+    image: '/og-image.png',
+    absoluteImage: 'https://pastedownloadapp.com/og-image.png',
+    alt: 'PasteDownloadApp logo and tagline on a light background',
+    title: 'Where Do Clipboard Images and Screenshots Actually Go?',
+    description: 'Screenshots and copied images do not behave like normal files until you save them. Here is where they actually live on Windows, Mac, Android, and iOS.',
+    publishDate: '2026-09-27',
+    category: 'platforms'
+  },
+  {
+    href: '/blog/paste-screenshot-into-email-attachment/',
+    image: '/og-image.png',
+    absoluteImage: 'https://pastedownloadapp.com/og-image.png',
+    alt: 'PasteDownloadApp logo and tagline on a light background',
+    title: 'How to Turn a Pasted Screenshot Into an Email Attachment',
+    description: 'Gmail and Outlook can paste an image straight into the message body, but that is not the same as an attachment. Here is how to turn a clipboard image into a real file first.',
+    publishDate: '2026-09-27',
+    category: 'troubleshooting'
+  },
+  {
+    href: '/blog/why-image-url-wont-download/',
+    image: '/og-image.png',
+    absoluteImage: 'https://pastedownloadapp.com/og-image.png',
+    alt: 'PasteDownloadApp logo and tagline on a light background',
+    title: "Why Some Image URLs Won't Download Directly",
+    description: 'CORS, hotlink protection, and referrer blocking explained: why pasting an image URL sometimes fails, and what actually happens when a tool works around it.',
+    publishDate: '2026-09-27',
+    category: 'troubleshooting'
   }
 ];
