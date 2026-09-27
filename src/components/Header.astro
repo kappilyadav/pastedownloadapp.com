@@ -13,9 +13,10 @@
 
     <!-- Desktop nav -->
     <nav class="hidden sm:flex items-center gap-1.5" aria-label="Main navigation">
-      <a href="/#paste" class="text-body text-sm px-3 py-1.5 rounded-full hover:bg-canvas-soft-2 transition-colors no-underline focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">Paste</a>
-      <a href="/#url" class="text-body text-sm px-3 py-1.5 rounded-full hover:bg-canvas-soft-2 transition-colors no-underline focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">URL</a>
-      <a href="/#features" class="text-body text-sm px-3 py-1.5 rounded-full hover:bg-canvas-soft-2 transition-colors no-underline focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">Features</a>
+      <a href="/about/" class="text-body text-sm px-3 py-1.5 rounded-full hover:bg-canvas-soft-2 transition-colors no-underline focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">About</a>
+      <a href="/blog/" class="text-body text-sm px-3 py-1.5 rounded-full hover:bg-canvas-soft-2 transition-colors no-underline focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">Blog</a>
+      <a href="/categories/" class="text-body text-sm px-3 py-1.5 rounded-full hover:bg-canvas-soft-2 transition-colors no-underline focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">Categories</a>
+      <a href="/contact/" class="text-body text-sm px-3 py-1.5 rounded-full hover:bg-canvas-soft-2 transition-colors no-underline focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">Contact</a>
       <div class="relative" data-theme-menu>
         <button type="button" data-theme-trigger class="w-7 h-7 relative rounded-full border border-hairline flex items-center justify-center text-body hover:text-ink transition-colors cursor-pointer bg-transparent focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none" aria-label="Choose theme" aria-haspopup="menu" aria-expanded="false">
           <svg data-theme-current-icon="light" class="absolute opacity-100 dark:opacity-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -47,8 +48,20 @@
       */}
     </nav>
 
-    <!-- Mobile theme menu (visible only on small screens) -->
-    <div class="relative sm:hidden" data-theme-menu>
+    <!-- Mobile nav + theme menu (visible only on small screens) -->
+    <div class="flex items-center gap-2 sm:hidden">
+    <div class="relative" data-nav-menu>
+      <button type="button" data-nav-trigger class="w-7 h-7 rounded-full border border-hairline flex items-center justify-center text-body hover:text-ink transition-colors cursor-pointer bg-transparent focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none" aria-label="Open menu" aria-haspopup="menu" aria-expanded="false">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div data-nav-dropdown class="hidden absolute right-0 top-full z-50 mt-2 min-w-36 rounded-md border border-hairline bg-canvas p-1 text-ink shadow-[0_8px_24px_-8px_#00000040,0_2px_8px_#00000014]">
+        <a href="/about/" class="block rounded-sm px-3 py-1.5 text-sm text-body no-underline hover:bg-canvas-soft-2 hover:text-ink transition-colors focus-visible:bg-canvas-soft-2 focus-visible:outline-none">About</a>
+        <a href="/blog/" class="block rounded-sm px-3 py-1.5 text-sm text-body no-underline hover:bg-canvas-soft-2 hover:text-ink transition-colors focus-visible:bg-canvas-soft-2 focus-visible:outline-none">Blog</a>
+        <a href="/categories/" class="block rounded-sm px-3 py-1.5 text-sm text-body no-underline hover:bg-canvas-soft-2 hover:text-ink transition-colors focus-visible:bg-canvas-soft-2 focus-visible:outline-none">Categories</a>
+        <a href="/contact/" class="block rounded-sm px-3 py-1.5 text-sm text-body no-underline hover:bg-canvas-soft-2 hover:text-ink transition-colors focus-visible:bg-canvas-soft-2 focus-visible:outline-none">Contact</a>
+      </div>
+    </div>
+    <div class="relative" data-theme-menu>
       <button type="button" data-theme-trigger class="w-7 h-7 relative rounded-full border border-hairline flex items-center justify-center text-body hover:text-ink transition-colors cursor-pointer bg-transparent focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none" aria-label="Choose theme" aria-haspopup="menu" aria-expanded="false">
         <svg data-theme-current-icon="light" class="absolute opacity-100 dark:opacity-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         <svg data-theme-current-icon="dark" class="absolute opacity-0 dark:opacity-100" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -72,6 +85,7 @@
         </button>
       </div>
     </div>
+    </div>
     {/*
     <a href="https://ko-fi.com/S2R1217QU6" target="_blank" rel="noopener noreferrer" class="sm:hidden ml-1.5">
       <img height="28" src="https://storage.ko-fi.com/cdn/kofi6.png?v=6" alt="Buy Me a Coffee at ko-fi.com" style="height:28px;border:0;" />
@@ -90,6 +104,30 @@
     });
   }
 
+  function closeNavMenus() {
+    document.querySelectorAll('[data-nav-menu]').forEach(function(menu) {
+      var trigger = menu.querySelector('[data-nav-trigger]');
+      var dropdown = menu.querySelector('[data-nav-dropdown]');
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      if (dropdown) dropdown.classList.add('hidden');
+    });
+  }
+
+  document.querySelectorAll('[data-nav-menu]').forEach(function(menu) {
+    var trigger = menu.querySelector('[data-nav-trigger]');
+    var dropdown = menu.querySelector('[data-nav-dropdown]');
+
+    trigger.addEventListener('click', function() {
+      var isOpen = trigger.getAttribute('aria-expanded') === 'true';
+      closeThemeMenus();
+      closeNavMenus();
+      if (!isOpen) {
+        trigger.setAttribute('aria-expanded', 'true');
+        dropdown.classList.remove('hidden');
+      }
+    });
+  });
+
   document.querySelectorAll('[data-theme-menu]').forEach(function(menu) {
     var trigger = menu.querySelector('[data-theme-trigger]');
     var dropdown = menu.querySelector('[data-theme-dropdown]');
@@ -97,6 +135,7 @@
     trigger.addEventListener('click', function() {
       var isOpen = trigger.getAttribute('aria-expanded') === 'true';
       closeThemeMenus();
+      closeNavMenus();
       if (!isOpen) {
         trigger.setAttribute('aria-expanded', 'true');
         dropdown.classList.remove('hidden');
@@ -115,10 +154,14 @@
   document.addEventListener('click', function(event) {
     var target = event.target;
     if (!(target instanceof Element) || !target.closest('[data-theme-menu]')) closeThemeMenus();
+    if (!(target instanceof Element) || !target.closest('[data-nav-menu]')) closeNavMenus();
   });
 
   document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') closeThemeMenus();
+    if (event.key === 'Escape') {
+      closeThemeMenus();
+      closeNavMenus();
+    }
   });
 
   window.__syncThemeControls();

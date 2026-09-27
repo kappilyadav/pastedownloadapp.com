@@ -1,0 +1,65 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { categories, latestArticles } from '../../data/articles';
+---
+
+<ContentLayout title="Categories - PasteDownloadApp Blog" description="Browse PasteDownloadApp blog posts by topic: platforms and browsers, troubleshooting and workflow, and file formats and compression." canonicalUrl="https://pastedownloadapp.com/categories/">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pastedownloadapp.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Categories", "item": "https://pastedownloadapp.com/categories/" }
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Categories - PasteDownloadApp Blog",
+      "description": "Browse PasteDownloadApp blog posts by topic: platforms and browsers, troubleshooting and workflow, and file formats and compression."
+    }
+  </script>
+
+  <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight text-balance">
+    Categories
+  </h1>
+  <p class="text-body text-sm sm:text-[15px] leading-relaxed mb-8 max-w-2xl">
+    Every guide on the blog, grouped by topic. Jump to a category or read the full <a href="/blog/" class="text-link underline underline-offset-2 decoration-link/30 hover:decoration-link transition-colors">blog index</a>.
+  </p>
+
+  <nav aria-label="Category quick links" class="flex flex-wrap gap-2 mb-10 not-prose">
+    {categories.map((category) => (
+      <a href={`#${category.slug}`} class="text-ink text-sm px-3 py-1.5 rounded-full border border-hairline hover:bg-canvas-soft-2 no-underline transition-colors focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">{category.label}</a>
+    ))}
+  </nav>
+
+  <div class="space-y-14">
+    {categories.map((category) => (
+      <section id={category.slug} class="scroll-mt-20">
+        <h2 class="text-ink text-lg sm:text-xl font-semibold tracking-tight mt-0 mb-1 leading-tight">{category.label}</h2>
+        <p class="text-mute text-sm leading-relaxed mb-5 max-w-2xl">{category.description}</p>
+        <div class="grid gap-4">
+          {latestArticles.filter((article) => article.category === category.slug).map((article) => (
+            <a href={article.href} class="group grid gap-4 sm:grid-cols-[180px_1fr] rounded-xl border border-hairline bg-canvas overflow-hidden no-underline transition-colors hover:border-hairline-strong focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">
+              <img
+                src={article.image}
+                alt={article.alt}
+                width="836"
+                height="471"
+                loading="lazy"
+                class="w-full sm:h-full aspect-[16/9] object-cover bg-canvas-soft"
+              />
+              <span class="block p-4 sm:pl-0">
+                <span class="block text-ink text-base sm:text-lg font-semibold tracking-tight leading-snug group-hover:text-link transition-colors">{article.title}</span>
+                <span class="block text-mute text-xs sm:text-sm leading-relaxed mt-2">{article.description}</span>
+              </span>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</ContentLayout>

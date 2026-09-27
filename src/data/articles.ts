@@ -1,3 +1,9 @@
+export const categories = [
+  { slug: 'platforms', label: 'Platforms & Browsers', description: 'How clipboard paste and screenshot saving actually behaves on each OS and browser.' },
+  { slug: 'troubleshooting', label: 'Troubleshooting & Workflow', description: 'Fixes for clipboard permission errors, and faster workflows for converting several images.' },
+  { slug: 'formats', label: 'File Formats & Compression', description: 'PNG, JPG, WebP, SVG, and ICO explained with real file sizes and quality tradeoffs.' }
+];
+
 export const latestArticles = [
   {
     href: '/blog/clipboard-paste-chrome-firefox-safari/',
@@ -6,7 +12,8 @@ export const latestArticles = [
     alt: 'Screenshot of the paste download tool used to test clipboard behavior across browsers',
     title: 'Why Clipboard Image Paste Behaves Differently in Chrome, Firefox, and Safari',
     description: 'The Clipboard API is not implemented the same way everywhere. Here is what actually differs between browsers.',
-    publishDate: '2026-08-22'
+    publishDate: '2026-08-22',
+    category: 'platforms'
   },
   {
     href: '/blog/mobile-clipboard-android-vs-ios/',
@@ -15,7 +22,8 @@ export const latestArticles = [
     alt: 'Screenshot of the paste download tool in a mobile browser viewport',
     title: 'Saving a Clipboard Image on Android vs iPhone: What Actually Works',
     description: 'Mobile clipboard access does not match desktop. Here is the real difference between Android and iOS browsers.',
-    publishDate: '2026-08-22'
+    publishDate: '2026-08-22',
+    category: 'platforms'
   },
   {
     href: '/blog/access-clipboard-not-working/',
@@ -24,7 +32,8 @@ export const latestArticles = [
     alt: 'Screenshot of the paste tool showing the Access Clipboard button in its default state',
     title: 'Why "Access Clipboard" Fails, and How to Fix It',
     description: 'Clipboard read permission errors explained: browser support, HTTPS requirements, and permission prompts.',
-    publishDate: '2026-08-22'
+    publishDate: '2026-08-22',
+    category: 'troubleshooting'
   },
   {
     href: '/blog/convert-multiple-screenshots-fast/',
@@ -33,7 +42,8 @@ export const latestArticles = [
     alt: 'Screenshot of the paste tool with Auto-download enabled and a converted file size shown',
     title: 'How to Convert Several Screenshots Fast Without Batch Software',
     description: 'PasteDownloadApp converts one image at a time. Here is the fastest real workflow for getting through a stack of them.',
-    publishDate: '2026-08-22'
+    publishDate: '2026-08-22',
+    category: 'troubleshooting'
   },
   {
     href: '/blog/image-compression-quality-settings/',
@@ -42,7 +52,8 @@ export const latestArticles = [
     alt: 'Screenshot of the paste tool showing a WebP conversion result and file size',
     title: 'Image Compression Quality Settings Explained, With Real File Sizes',
     description: 'What a JPEG or WebP quality number actually changes, shown with real before-and-after file sizes.',
-    publishDate: '2026-08-22'
+    publishDate: '2026-08-22',
+    category: 'formats'
   },
   {
     href: '/blog/svg-ico-conversion-quirks/',
@@ -51,7 +62,8 @@ export const latestArticles = [
     alt: 'Screenshot of the URL download tool used to fetch an SVG file',
     title: 'SVG and ICO Quirks You Will Hit When Converting Images in a Browser',
     description: 'Vector files and multi-resolution icons do not behave like PNG or JPG. Here is what actually happens when you convert them.',
-    publishDate: '2026-08-22'
+    publishDate: '2026-08-22',
+    category: 'formats'
   },
   {
     href: '/blog/image-for-favicon-social-resume/',
@@ -60,7 +72,8 @@ export const latestArticles = [
     alt: 'Screenshot of an app icon converted to WebP with transparency preserved',
     title: 'Preparing an Image for a Favicon, a Social Post, or a Resume',
     description: 'Each use case has different size and format requirements. Here is what to pick and why, with real numbers.',
-    publishDate: '2026-08-22'
+    publishDate: '2026-08-22',
+    category: 'formats'
   },
   {
     href: '/blog/why-png-reencode-bigger/',
@@ -69,7 +82,8 @@ export const latestArticles = [
     alt: 'Screenshot of the paste tool showing a re-encoded PNG result',
     title: 'Why Re-Saving a PNG Can Make the File Bigger, Not Smaller',
     description: 'A browser Canvas re-encode is not the same as a PNG optimizer. Here is the real size difference and why it happens.',
-    publishDate: '2026-08-22'
+    publishDate: '2026-08-22',
+    category: 'formats'
   },
   {
     href: '/blog/png-vs-jpg-vs-webp/',
@@ -80,7 +94,8 @@ export const latestArticles = [
     description: 'Learn the differences between PNG, JPG, and WebP, including quality, transparency, and file size.',
     publishDate: '2026-06-12',
     updatedDate: '2026-08-22',
-    changeNote: 'Added real conversion numbers from two test files and a screenshot of the tool mid-conversion.'
+    changeNote: 'Added real conversion numbers from two test files and a screenshot of the tool mid-conversion.',
+    category: 'formats'
   },
   {
     href: '/blog/download-copied-image-mac/',
@@ -91,7 +106,8 @@ export const latestArticles = [
     description: 'Save clipboard images from your Mac directly as files without Photos, Preview, or extra steps.',
     publishDate: '2026-06-08',
     updatedDate: '2026-08-22',
-    changeNote: 'Added a screenshot of a real paste, and confirmed steps on macOS 26.'
+    changeNote: 'Added a screenshot of a real paste, and confirmed steps on macOS 26.',
+    category: 'platforms'
   },
   {
     href: '/blog/save-screenshot-as-file-windows/',
@@ -102,7 +118,8 @@ export const latestArticles = [
     description: 'Turn Print Screen or Snipping Tool captures into PNG or JPG files without opening an editor.',
     publishDate: '2026-06-10',
     updatedDate: '2026-08-22',
-    changeNote: 'Added a real file-size comparison and a screenshot of the URL download tool.'
+    changeNote: 'Added a real file-size comparison and a screenshot of the URL download tool.',
+    category: 'platforms'
   },
   {
     href: '/blog/save-clipboard-image-without-software/',
@@ -113,6 +130,7 @@ export const latestArticles = [
     description: 'Compare browser-based and built-in methods for saving copied images on desktop and mobile.',
     publishDate: '2026-06-12',
     updatedDate: '2026-08-22',
-    changeNote: 'Replaced generic advice with tested steps and linked to the new browser-differences guide.'
+    changeNote: 'Replaced generic advice with tested steps and linked to the new browser-differences guide.',
+    category: 'troubleshooting'
   }
 ];
