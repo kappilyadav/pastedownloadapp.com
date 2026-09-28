@@ -90,10 +90,10 @@ export const latestArticles = [
     image: '/blog/png-vs-jpg-vs-webp.png',
     absoluteImage: 'https://pastedownloadapp.com/blog/png-vs-jpg-vs-webp.png',
     alt: 'Three abstract image file cards representing PNG transparency, JPG photos, and WebP compression',
-    title: 'PNG vs JPG vs WebP - Which Format Should You Save Your Image As?',
-    description: 'Learn the differences between PNG, JPG, and WebP, including quality, transparency, and file size.',
+    title: 'PNG vs JPG vs WebP: Real File Sizes Compared',
+    description: 'PNG vs JPG vs WebP for quality, transparency, and file size, backed by real measured results, not general claims.',
     publishDate: '2026-06-12',
-    updatedDate: '2026-08-22',
+    updatedDate: '2026-09-28',
     category: 'formats'
   },
   {
