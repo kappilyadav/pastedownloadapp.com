@@ -40,10 +40,11 @@ export const latestArticles = [
     image: '/blog/convert-multiple-screenshots-fast.png',
     absoluteImage: 'https://pastedownloadapp.com/blog/convert-multiple-screenshots-fast.png',
     alt: 'Screenshot of the paste tool with Auto-download enabled and a converted file size shown',
-    title: 'How to Convert Several Screenshots Fast Without Batch Software',
-    description: 'PasteDownloadApp converts one image at a time. Here is the fastest real workflow for getting through a stack of them.',
+    title: 'How to Convert a Screenshot to JPG (or PNG or WebP)',
+    description: 'How to convert a screenshot to JPG in your browser, with real tested file sizes for PNG vs JPEG vs WebP.',
     publishDate: '2026-08-22',
-    category: 'troubleshooting'
+    updatedDate: '2026-09-28',
+    category: 'formats'
   },
   {
     href: '/blog/image-compression-quality-settings/',
