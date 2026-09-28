@@ -134,9 +134,10 @@ export const latestArticles = [
     image: '/blog/where-do-clipboard-images-go.png',
     absoluteImage: 'https://pastedownloadapp.com/blog/where-do-clipboard-images-go.png',
     alt: 'Screenshot of the paste tool in its default empty state, showing the Paste image here and Access Clipboard prompt',
-    title: 'Where Do Clipboard Images and Screenshots Actually Go?',
-    description: 'Screenshots and copied images do not behave like normal files until you save them. Here is where they actually live on Windows, Mac, Android, and iOS.',
+    title: 'Where Do Screenshots Go? Mac, Windows, Android, and iPhone',
+    description: 'Screenshots and copied images do not behave like normal files until you save them. Here is exactly where they go on Mac, Windows, Android, and iPhone.',
     publishDate: '2026-09-27',
+    updatedDate: '2026-09-28',
     category: 'platforms'
   },
   {
