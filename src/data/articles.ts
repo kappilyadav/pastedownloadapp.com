@@ -59,7 +59,7 @@ export const latestArticles = [
     href: '/blog/svg-ico-conversion-quirks/',
     image: '/blog/svg-ico-conversion-quirks.png',
     absoluteImage: 'https://pastedownloadapp.com/blog/svg-ico-conversion-quirks.png',
-    alt: 'Screenshot of the URL download tool used to fetch an SVG file',
+    alt: 'Screenshot of PasteDownloadApp after converting this site\'s own favicon.svg to a 54.2 KB PNG',
     title: 'SVG and ICO Quirks You Will Hit When Converting Images in a Browser',
     description: 'Vector files and multi-resolution icons do not behave like PNG or JPG. Here is what actually happens when you convert them.',
     publishDate: '2026-08-22',
