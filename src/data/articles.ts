@@ -70,9 +70,10 @@ export const latestArticles = [
     image: '/blog/image-for-favicon-social-resume.png',
     absoluteImage: 'https://pastedownloadapp.com/blog/image-for-favicon-social-resume.png',
     alt: 'Screenshot of an app icon converted to WebP with transparency preserved',
-    title: 'Preparing an Image for a Favicon, a Social Post, or a Resume',
-    description: 'Each use case has different size and format requirements. Here is what to pick and why, with real numbers.',
+    title: 'Favicon Size Guide: Every Size You Actually Need',
+    description: 'What size a favicon actually needs to be, from 16x16 browser tabs to 512x512 PWA icons, plus format and transparency guidance backed by real numbers.',
     publishDate: '2026-08-22',
+    updatedDate: '2026-09-28',
     category: 'formats'
   },
   {
