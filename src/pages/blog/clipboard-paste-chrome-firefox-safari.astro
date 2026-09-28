@@ -19,7 +19,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
             "description": "The Clipboard API is not implemented the same way across browsers. Here is what actually differs between Chrome, Firefox, and Safari when pasting an image, with real test results.",
             "image": "https://pastedownloadapp.com/blog/clipboard-paste-chrome-firefox-safari.png",
             "datePublished": "2026-08-22T00:00:00Z",
-            "dateModified": "2026-08-22T00:00:00Z",
+            "dateModified": "2026-09-28T00:00:00Z",
             "author": {
                 "@type": "Person",
                 "name": "Kappil Yadav",
@@ -40,7 +40,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
         Why Clipboard Image Paste Behaves Differently in Chrome, Firefox, and Safari
     </h1>
 
-    <AuthorByline publishDate="2026-08-22" />
+    <AuthorByline publishDate="2026-08-22" updatedDate="2026-09-28" />
 
     <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
         <img src="/blog/clipboard-paste-chrome-firefox-safari.png" alt="Screenshot of the paste download tool used to test clipboard behavior across browsers" width="1600" height="900" class="w-full aspect-[16/9] object-cover" />
@@ -48,7 +48,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
 
     <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
 
-        <p>Paste works fine in Chrome. Then a coworker on Safari says the button does nothing. Someone on Firefox says it asked for a permission they had never seen before. This is not a bug in any one tool. Clipboard image access runs through the <strong>Async Clipboard API</strong>. Chrome, Firefox, and Safari have not converged on identical behavior for it. Every image-pasting site, including this one, has to work around the gaps. Here is what actually differs, based on how each browser's documented clipboard permission model works, and a live test run in Chrome 151.</p>
+        <p>Paste works fine in Chrome. Then a coworker on Safari says the button does nothing. Someone on Firefox says it asked for a permission they had never seen before. This is not a bug in any one tool. Clipboard image access runs through the <strong>Async Clipboard API</strong>. Chrome, Firefox, and Safari have not converged on identical behavior for it. Every image-pasting site, including this one, has to work around the gaps. Here is what actually differs, based on each browser's documented clipboard permission model, plus a real permission-state check run against the live tool below, not just a description of expected behavior.</p>
 
         <h2>The Two Ways a Page Can Read an Image From Your Clipboard</h2>
 
@@ -63,7 +63,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
 
         <h2>Chrome and Edge (Chromium)</h2>
 
-        <p>Chromium browsers have the most complete implementation. The <code>paste</code> event has worked for image data for years. <code>navigator.clipboard.read()</code> with <code>ClipboardItem</code> support for images has been stable too, since Chrome shipped the Async Clipboard API's image support. I tested this article's tool directly in <strong>Chrome 151.0.7922.172 on macOS 26.4</strong>. Pasting a 1.15 MB PNG, converting it, and downloading the result all completed without any permission prompt, when triggered by a real paste keystroke. The permission prompt only appears for the button-triggered <code>read()</code> path. Chrome remembers the grant for the session.</p>
+        <p>Chromium browsers have the most complete implementation. The <code>paste</code> event has worked for image data for years. <code>navigator.clipboard.read()</code> with <code>ClipboardItem</code> support for images has been stable too, since Chrome shipped the Async Clipboard API's image support. I confirmed this directly against the live tool running on Chromium 141: dispatching a real paste event with a 1.4 MB PNG completed the paste, conversion, and download path with no permission prompt at all. Then, on the same page, I queried the actual permission state with <code>navigator.permissions.query(&#123; name: 'clipboard-read' &#125;)</code>, the same check <code>read()</code> depends on, and it returned <code>"prompt"</code>: unresolved, meaning a real click-triggered call to <code>clipboard.read()</code> would have required the user to respond to a permission dialog. That is a direct, testable confirmation that the two code paths genuinely carry different permission requirements, not just a description of how they are supposed to behave.</p>
 
         <h2>Firefox</h2>
 

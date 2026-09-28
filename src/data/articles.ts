@@ -40,10 +40,11 @@ export const latestArticles = [
     image: '/blog/convert-multiple-screenshots-fast.png',
     absoluteImage: 'https://pastedownloadapp.com/blog/convert-multiple-screenshots-fast.png',
     alt: 'Screenshot of the paste tool with Auto-download enabled and a converted file size shown',
-    title: 'How to Convert Several Screenshots Fast Without Batch Software',
-    description: 'PasteDownloadApp converts one image at a time. Here is the fastest real workflow for getting through a stack of them.',
+    title: 'How to Convert a Screenshot to JPG (or PNG or WebP)',
+    description: 'How to convert a screenshot to JPG in your browser, with real tested file sizes for PNG vs JPEG vs WebP.',
     publishDate: '2026-08-22',
-    category: 'troubleshooting'
+    updatedDate: '2026-09-28',
+    category: 'formats'
   },
   {
     href: '/blog/image-compression-quality-settings/',
@@ -70,9 +71,10 @@ export const latestArticles = [
     image: '/blog/image-for-favicon-social-resume.png',
     absoluteImage: 'https://pastedownloadapp.com/blog/image-for-favicon-social-resume.png',
     alt: 'Screenshot of an app icon converted to WebP with transparency preserved',
-    title: 'Preparing an Image for a Favicon, a Social Post, or a Resume',
-    description: 'Each use case has different size and format requirements. Here is what to pick and why, with real numbers.',
+    title: 'Favicon Size Guide: Every Size You Actually Need',
+    description: 'What size a favicon actually needs to be, from 16x16 browser tabs to 512x512 PWA icons, plus format and transparency guidance backed by real numbers.',
     publishDate: '2026-08-22',
+    updatedDate: '2026-09-28',
     category: 'formats'
   },
   {
@@ -90,10 +92,10 @@ export const latestArticles = [
     image: '/blog/png-vs-jpg-vs-webp.png',
     absoluteImage: 'https://pastedownloadapp.com/blog/png-vs-jpg-vs-webp.png',
     alt: 'Three abstract image file cards representing PNG transparency, JPG photos, and WebP compression',
-    title: 'PNG vs JPG vs WebP - Which Format Should You Save Your Image As?',
-    description: 'Learn the differences between PNG, JPG, and WebP, including quality, transparency, and file size.',
+    title: 'PNG vs JPG vs WebP: Real File Sizes Compared',
+    description: 'PNG vs JPG vs WebP for quality, transparency, and file size, backed by real measured results, not general claims.',
     publishDate: '2026-06-12',
-    updatedDate: '2026-08-22',
+    updatedDate: '2026-09-28',
     category: 'formats'
   },
   {
@@ -134,9 +136,10 @@ export const latestArticles = [
     image: '/blog/where-do-clipboard-images-go.png',
     absoluteImage: 'https://pastedownloadapp.com/blog/where-do-clipboard-images-go.png',
     alt: 'Screenshot of the paste tool in its default empty state, showing the Paste image here and Access Clipboard prompt',
-    title: 'Where Do Clipboard Images and Screenshots Actually Go?',
-    description: 'Screenshots and copied images do not behave like normal files until you save them. Here is where they actually live on Windows, Mac, Android, and iOS.',
+    title: 'Where Do Screenshots Go? Mac, Windows, Android, and iPhone',
+    description: 'Screenshots and copied images do not behave like normal files until you save them. Here is exactly where they go on Mac, Windows, Android, and iPhone.',
     publishDate: '2026-09-27',
+    updatedDate: '2026-09-28',
     category: 'platforms'
   },
   {
