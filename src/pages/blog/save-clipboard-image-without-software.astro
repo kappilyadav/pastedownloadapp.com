@@ -44,7 +44,7 @@ import VideoLink from '../../components/VideoLink.astro';
     <AuthorByline publishDate="2026-06-12" updatedDate="2026-09-28" />
 
     <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
-        <img src="/blog/save-clipboard-image-without-software.png" alt="Browser and clipboard illustration showing copied images flowing into a downloadable file" width="836" height="471" class="w-full aspect-[16/9] object-cover" />
+        <img src="/blog/save-clipboard-image-without-software.webp" alt="Browser and clipboard illustration showing copied images flowing into a downloadable file" width="836" height="471" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
     </figure>
 
     <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
@@ -101,7 +101,7 @@ import VideoLink from '../../components/VideoLink.astro';
         <p>Open <a href="https://pastedownloadapp.com/">pastedownloadapp.com</a>, press Ctrl+V (or Cmd+V on Mac), and the clipboard image appears ready to download in PNG, JPEG, or WebP. No sign-up, no size limit, and nothing is uploaded: the conversion happens with the browser's own Canvas API, entirely on your device.</p>
 
         <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
-            <img src="/blog/screenshots/paste-tool-chart-20-9kb-result.png" alt="Screenshot of PasteDownloadApp after pasting a 1000 by 640 test chart, showing a PNG output of 20.9 KB" width="1200" height="1179" class="w-full max-w-lg mx-auto" loading="lazy" />
+            <img src="/blog/screenshots/paste-tool-chart-20-9kb-result.webp" alt="Screenshot of PasteDownloadApp after pasting a 1000 by 640 test chart, showing a PNG output of 20.9 KB" width="1200" height="1179" class="w-full max-w-lg mx-auto" loading="lazy" decoding="async" />
         </figure>
 
         <p>That screenshot is a real run: a 1000&times;640 test chart, pasted and converted to a 20.9 KB PNG, reported directly by the tool. This is the only method of the five that gives you a choice of output format at full resolution with nothing sent anywhere.</p>
@@ -157,7 +157,7 @@ import VideoLink from '../../components/VideoLink.astro';
         <p>On Android, copy an image from Chrome, Photos, or another app when the app supports image copying, then open the tool in your browser. Mobile clipboard support varies by browser, but the goal is the same: turn a temporary clipboard image into a real file you can keep, upload, or share. The permission prompts look different on a phone than on a laptop, which I cover with real screenshots in <a href="/blog/mobile-clipboard-android-vs-ios/">saving a clipboard image on Android vs iPhone</a>.</p>
 
         <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
-            <img src="/blog/screenshots/mobile-clipboard-tool.png" alt="Screenshot of PasteDownloadApp running in a 390 pixel wide mobile browser viewport with the Access Clipboard button visible" width="780" height="940" class="w-full max-w-xs mx-auto" loading="lazy" />
+            <img src="/blog/screenshots/mobile-clipboard-tool.webp" alt="Screenshot of PasteDownloadApp running in a 390 pixel wide mobile browser viewport with the Access Clipboard button visible" width="780" height="940" class="w-full max-w-xs mx-auto" loading="lazy" decoding="async" />
         </figure>
 
         <h2>Should You Save Clipboard Images as PNG or JPG?</h2>

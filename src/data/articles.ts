@@ -7,7 +7,7 @@ export const categories = [
 export const latestArticles = [
   {
     href: '/blog/clipboard-paste-chrome-firefox-safari/',
-    image: '/blog/clipboard-paste-chrome-firefox-safari.png',
+    image: '/blog/clipboard-paste-chrome-firefox-safari.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/clipboard-paste-chrome-firefox-safari.png',
     alt: 'Screenshot of the paste download tool used to test clipboard behavior across browsers',
     title: 'Why Clipboard Image Paste Behaves Differently in Chrome, Firefox, and Safari',
@@ -17,7 +17,7 @@ export const latestArticles = [
   },
   {
     href: '/blog/mobile-clipboard-android-vs-ios/',
-    image: '/blog/mobile-clipboard-android-vs-ios.png',
+    image: '/blog/mobile-clipboard-android-vs-ios.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/mobile-clipboard-android-vs-ios.png',
     alt: 'Screenshot of the paste download tool in a mobile browser viewport',
     title: 'Saving a Clipboard Image on Android vs iPhone: What Actually Works',
@@ -28,7 +28,7 @@ export const latestArticles = [
   },
   {
     href: '/blog/access-clipboard-not-working/',
-    image: '/blog/access-clipboard-not-working.png',
+    image: '/blog/access-clipboard-not-working.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/access-clipboard-not-working.png',
     alt: 'Screenshot of the paste tool showing the Access Clipboard button in its default state',
     title: 'Why "Access Clipboard" Fails, and How to Fix It',
@@ -39,7 +39,7 @@ export const latestArticles = [
   },
   {
     href: '/blog/convert-multiple-screenshots-fast/',
-    image: '/blog/convert-multiple-screenshots-fast.png',
+    image: '/blog/convert-multiple-screenshots-fast.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/convert-multiple-screenshots-fast.png',
     alt: 'Screenshot of the paste tool with Auto-download enabled and a converted file size shown',
     title: 'How to Convert a Screenshot to JPG (or PNG or WebP)',
@@ -50,7 +50,7 @@ export const latestArticles = [
   },
   {
     href: '/blog/image-compression-quality-settings/',
-    image: '/blog/image-compression-quality-settings.png',
+    image: '/blog/image-compression-quality-settings.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/image-compression-quality-settings.png',
     alt: 'Screenshot of the paste tool showing a WebP conversion result and file size',
     title: 'Image Compression Quality Settings Explained, With Real File Sizes',
@@ -61,7 +61,7 @@ export const latestArticles = [
   },
   {
     href: '/blog/svg-ico-conversion-quirks/',
-    image: '/blog/svg-ico-conversion-quirks.png',
+    image: '/blog/svg-ico-conversion-quirks.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/svg-ico-conversion-quirks.png',
     alt: 'Screenshot of PasteDownloadApp after converting this site\'s own favicon.svg to a 54.2 KB PNG',
     title: 'SVG and ICO Quirks You Will Hit When Converting Images in a Browser',
@@ -72,7 +72,7 @@ export const latestArticles = [
   },
   {
     href: '/blog/image-for-favicon-social-resume/',
-    image: '/blog/image-for-favicon-social-resume.png',
+    image: '/blog/image-for-favicon-social-resume.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/image-for-favicon-social-resume.png',
     alt: 'Screenshot of an app icon converted to WebP with transparency preserved',
     title: 'Favicon Size Guide: Every Size You Actually Need',
@@ -83,7 +83,7 @@ export const latestArticles = [
   },
   {
     href: '/blog/why-png-reencode-bigger/',
-    image: '/blog/why-png-reencode-bigger.png',
+    image: '/blog/why-png-reencode-bigger.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/why-png-reencode-bigger.png',
     alt: 'Screenshot of the paste tool showing a re-encoded PNG result',
     title: 'Why Re-Saving a PNG Can Make the File Bigger, Not Smaller',
@@ -94,7 +94,7 @@ export const latestArticles = [
   },
   {
     href: '/blog/png-vs-jpg-vs-webp/',
-    image: '/blog/png-vs-jpg-vs-webp.png',
+    image: '/blog/png-vs-jpg-vs-webp.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/png-vs-jpg-vs-webp.png',
     alt: 'Three abstract image file cards representing PNG transparency, JPG photos, and WebP compression',
     title: 'PNG vs JPG vs WebP: Real File Sizes Compared',
@@ -105,7 +105,7 @@ export const latestArticles = [
   },
   {
     href: '/blog/download-copied-image-mac/',
-    image: '/blog/download-copied-image-mac.png',
+    image: '/blog/download-copied-image-mac.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/download-copied-image-mac.png',
     alt: 'Minimal laptop illustration showing a copied image being saved as a file on Mac',
     title: 'How to Download a Copied Image on Mac Without Saving to Photos',
@@ -116,7 +116,7 @@ export const latestArticles = [
   },
   {
     href: '/blog/save-screenshot-as-file-windows/',
-    image: '/blog/save-screenshot-as-file-windows.png',
+    image: '/blog/save-screenshot-as-file-windows.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/save-screenshot-as-file-windows.png',
     alt: 'Minimal desktop illustration showing a Windows screenshot moving from clipboard to a downloaded file',
     title: 'How to Save a Screenshot Directly as a File Without Opening MS Paint',
@@ -127,7 +127,7 @@ export const latestArticles = [
   },
   {
     href: '/blog/save-clipboard-image-without-software/',
-    image: '/blog/save-clipboard-image-without-software.png',
+    image: '/blog/save-clipboard-image-without-software.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/save-clipboard-image-without-software.png',
     alt: 'Browser and clipboard illustration showing copied images flowing into a downloadable file',
     title: '5 Faster Ways to Save Clipboard Images Without Software',
@@ -138,7 +138,7 @@ export const latestArticles = [
   },
   {
     href: '/blog/where-do-clipboard-images-go/',
-    image: '/blog/where-do-clipboard-images-go.png',
+    image: '/blog/where-do-clipboard-images-go.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/where-do-clipboard-images-go.png',
     alt: 'Screenshot of the paste tool in its default empty state, showing the Paste image here and Access Clipboard prompt',
     title: 'Where Do Screenshots Go? Mac, Windows, Android, and iPhone',
@@ -149,7 +149,7 @@ export const latestArticles = [
   },
   {
     href: '/blog/paste-screenshot-into-email-attachment/',
-    image: '/blog/paste-screenshot-into-email-attachment.png',
+    image: '/blog/paste-screenshot-into-email-attachment.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/paste-screenshot-into-email-attachment.png',
     alt: 'Screenshot of the paste tool with an image pasted in, showing its dimensions, file size, and the Download button',
     title: 'How to Turn a Pasted Screenshot Into an Email Attachment',
@@ -160,7 +160,7 @@ export const latestArticles = [
   },
   {
     href: '/blog/why-image-url-wont-download/',
-    image: '/blog/why-image-url-wont-download.png',
+    image: '/blog/why-image-url-wont-download.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/why-image-url-wont-download.png',
     alt: 'Screenshot of the URL download tool with an image URL entered and its preview loaded, ready to download',
     title: "Why Some Image URLs Won't Download Directly",
@@ -171,7 +171,7 @@ export const latestArticles = [
   },
   {
     href: '/blog/paste-image-into-excel-google-sheets-cell/',
-    image: '/blog/paste-image-into-excel-google-sheets-cell.png',
+    image: '/blog/paste-image-into-excel-google-sheets-cell.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/paste-image-into-excel-google-sheets-cell.png',
     alt: 'Screenshot of PasteDownloadApp with a pasted illustration of a blue mug, set to JPEG and ready to download as a file for a spreadsheet cell',
     title: 'How to Paste an Image Into an Excel Cell or Google Sheets',
@@ -181,7 +181,7 @@ export const latestArticles = [
   },
   {
     href: '/blog/paste-image-into-pdf/',
-    image: '/blog/paste-image-into-pdf.png',
+    image: '/blog/paste-image-into-pdf.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/paste-image-into-pdf.png',
     alt: 'Screenshot of PasteDownloadApp with a pasted 1200 by 500 signature image, ready to download as a PNG file for placing into a PDF',
     title: 'How to Paste an Image Into a PDF on Mac or Windows',
@@ -191,7 +191,7 @@ export const latestArticles = [
   },
   {
     href: '/blog/paste-image-to-search/',
-    image: '/blog/paste-image-to-search.png',
+    image: '/blog/paste-image-to-search.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/paste-image-to-search.png',
     alt: 'Screenshot of PasteDownloadApp with a pasted 1200 by 900 lighthouse illustration, ready to save as a file before running a reverse image search',
     title: 'How to Paste an Image to Search on Google, Bing, and TinEye',
