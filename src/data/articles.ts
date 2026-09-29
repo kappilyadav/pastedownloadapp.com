@@ -168,5 +168,35 @@ export const latestArticles = [
     publishDate: '2026-09-27',
     updatedDate: '2026-09-29',
     category: 'troubleshooting'
+  },
+  {
+    href: '/blog/paste-image-into-excel-google-sheets-cell/',
+    image: '/blog/paste-image-into-excel-google-sheets-cell.png',
+    absoluteImage: 'https://pastedownloadapp.com/blog/paste-image-into-excel-google-sheets-cell.png',
+    alt: 'Screenshot of PasteDownloadApp with a pasted illustration of a blue mug, set to JPEG and ready to download as a file for a spreadsheet cell',
+    title: 'How to Paste an Image Into an Excel Cell or Google Sheets',
+    description: 'Ctrl+V drops a picture on top of your cells, not inside one. Here is how to put an image inside an Excel or Google Sheets cell so it sorts and filters with your data.',
+    publishDate: '2026-09-29',
+    category: 'troubleshooting'
+  },
+  {
+    href: '/blog/paste-image-into-pdf/',
+    image: '/blog/paste-image-into-pdf.png',
+    absoluteImage: 'https://pastedownloadapp.com/blog/paste-image-into-pdf.png',
+    alt: 'Screenshot of PasteDownloadApp with a pasted 1200 by 500 signature image, ready to download as a PNG file for placing into a PDF',
+    title: 'How to Paste an Image Into a PDF on Mac or Windows',
+    description: 'How to paste an image into a PDF with Mac Preview, Adobe Acrobat, and Microsoft Word, and what to do when the image is only on your clipboard.',
+    publishDate: '2026-09-29',
+    category: 'troubleshooting'
+  },
+  {
+    href: '/blog/paste-image-to-search/',
+    image: '/blog/paste-image-to-search.png',
+    absoluteImage: 'https://pastedownloadapp.com/blog/paste-image-to-search.png',
+    alt: 'Screenshot of PasteDownloadApp with a pasted 1200 by 900 lighthouse illustration, ready to save as a file before running a reverse image search',
+    title: 'How to Paste an Image to Search on Google, Bing, and TinEye',
+    description: 'Search with a copied image or screenshot without saving it first. How paste-to-search works on Google Lens, Bing Visual Search, and TinEye.',
+    publishDate: '2026-09-29',
+    category: 'troubleshooting'
   }
 ];
