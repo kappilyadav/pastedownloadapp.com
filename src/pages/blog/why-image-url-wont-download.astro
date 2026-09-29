@@ -2,6 +2,7 @@
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import RelatedGuides from '../../components/RelatedGuides.astro';
 import AuthorByline from '../../components/AuthorByline.astro';
+import VideoLink from '../../components/VideoLink.astro';
 ---
 
 <ContentLayout
@@ -19,7 +20,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
             "description": "CORS, hotlink protection, and referrer blocking explained: why pasting an image URL sometimes fails, and what actually happens when a tool works around it.",
             "image": "https://pastedownloadapp.com/blog/why-image-url-wont-download.png",
             "datePublished": "2026-09-27T00:00:00Z",
-            "dateModified": "2026-09-27T00:00:00Z",
+            "dateModified": "2026-09-29T00:00:00Z",
             "author": {
                 "@type": "Person",
                 "name": "Kappil Yadav",
@@ -40,7 +41,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
         Why Some Image URLs Won't Download Directly
     </h1>
 
-    <AuthorByline publishDate="2026-09-27" />
+    <AuthorByline publishDate="2026-09-27" updatedDate="2026-09-29" />
 
     <div class="rounded-xl border border-hairline bg-warning-soft text-warning text-sm px-5 py-4 my-6" role="note">
         <strong>Update:</strong> PasteDownloadApp's URL download feature has been discontinued and is no longer available in the tool. This article is kept for reference. The CORS and hotlink-protection behavior described below still applies to any browser-based tool that tries to fetch images from arbitrary URLs.
@@ -58,8 +59,22 @@ import AuthorByline from '../../components/AuthorByline.astro';
         <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS" target="_blank" rel="noopener noreferrer">Cross-Origin Resource Sharing, or CORS</a>, is a browser security rule. It stops a script on one website from reading the actual bytes of a resource hosted on a different website. The only way around it is an <code>Access-Control-Allow-Origin</code> header from that resource's own server. The image host does not have to configure anything special to block you. This is just the default, safe behavior of every modern browser. A page can display an image from another domain just fine. But a script on that page cannot read its pixel data, for example to draw it onto a canvas and re-encode it, unless the header is present.</p>
         <p>This is exactly the situation PasteDownloadApp's old URL download feature ran into. Displaying the image was easy. Reading and re-encoding it is a different story. That step is what lets a tool convert an image or force a download with a specific filename. It requires CORS permission that many image hosts simply do not grant.</p>
 
+        <VideoLink
+            videoId="4KHiSt0oLJ0"
+            title="CORS in 100 Seconds"
+            channel="Fireship"
+            note="A quick visual explanation of what an origin is, why the browser blocks cross-origin reads by default, and the Access-Control-Allow-Origin header that lifts the block."
+        />
+
         <h2>Hotlink Protection: A Deliberate Block</h2>
         <p>Separately from CORS, many servers check the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Referer" target="_blank" rel="noopener noreferrer"><code>Referer</code> header</a> on incoming requests. They reject any request that did not come from their own website. This is called hotlink protection. It exists to stop other sites from embedding an image directly and burning the original host's bandwidth. It is common on stock photo sites, some CDNs, and forums tired of their images showing up everywhere except their own pages. Unlike CORS, this is an intentional block. It targets exactly what a URL download tool is trying to do.</p>
+
+        <h2>The Link Is Not Actually an Image</h2>
+        <p>A surprising number of failed "image URLs" are not image URLs at all. Many sites show a picture on a page whose address looks like a direct link but actually returns an HTML page with the image embedded in it. Search result links, social media post links, and image gallery pages all work this way. A tool that asks for image bytes gets a web page back, and the conversion fails.</p>
+        <p>The fix is to find the real file address. Right-click the image itself, not the page, and choose "Open image in new tab". The address bar in that new tab is the actual image URL. It usually ends in a file extension such as .jpg, .png, or .webp, or contains a CDN path with size parameters. Some sites also serve images through <code>blob:</code> or <code>data:</code> addresses that only exist inside that page. Those cannot be downloaded from anywhere else at all, so saving or copying the image directly is the only route.</p>
+
+        <h2>Links That Expire or Change Format</h2>
+        <p>Cloud storage and private sharing services often hand out signed URLs: long addresses with a token that is valid for a limited time, sometimes only minutes. A link copied from one of these works in your own tab right away and then fails later, or fails when a different service requests it. Content delivery networks can also return a different format depending on who asks. Your browser may receive a WebP or AVIF version of an image, while a server-side request for the same address gets a JPEG, or an error. That is why the same link can behave differently in different tools.</p>
 
         <h2>What Happens When the Direct Request Fails</h2>
         <p>Your browser could not fetch or read an image directly when one of these two protections applied. In that case, PasteDownloadApp automatically retried the request through <strong>corsproxy.io</strong>. That is a third-party proxy that fetches the image server-side and returns it in a way your browser is allowed to read. This got around CORS in most cases, because the proxy, not your browser, made the original request. It did not always get around hotlink protection. A strict Referer check could still reject the proxy's request the same way it would reject any other outside request.</p>

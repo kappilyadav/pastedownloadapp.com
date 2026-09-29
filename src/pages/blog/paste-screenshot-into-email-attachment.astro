@@ -2,6 +2,7 @@
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import RelatedGuides from '../../components/RelatedGuides.astro';
 import AuthorByline from '../../components/AuthorByline.astro';
+import VideoLink from '../../components/VideoLink.astro';
 ---
 
 <ContentLayout
@@ -19,7 +20,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
             "description": "Gmail and Outlook can paste an image straight into the message body, but that is not the same as an attachment. Here is how to turn a clipboard image into a real file first.",
             "image": "https://pastedownloadapp.com/blog/paste-screenshot-into-email-attachment.png",
             "datePublished": "2026-09-27T00:00:00Z",
-            "dateModified": "2026-09-27T00:00:00Z",
+            "dateModified": "2026-09-29T00:00:00Z",
             "author": {
                 "@type": "Person",
                 "name": "Kappil Yadav",
@@ -40,7 +41,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
         How to Turn a Pasted Screenshot Into an Email Attachment
     </h1>
 
-    <AuthorByline publishDate="2026-09-27" />
+    <AuthorByline publishDate="2026-09-27" updatedDate="2026-09-29" />
 
     <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
         <img src="/blog/paste-screenshot-into-email-attachment.png" alt="Screenshot of the paste tool with an image pasted in, showing its dimensions, file size, and the Download button" width="1600" height="900" class="w-full aspect-[16/9] object-cover" />
@@ -66,6 +67,24 @@ import AuthorByline from '../../components/AuthorByline.astro';
 
         <h2>Attaching It in Outlook</h2>
         <p>In both Outlook desktop and the web version, use <strong>Insert &gt; Attach File</strong> and browse to the file you downloaded. You can also drag it into the message window the same way. If you need it to appear inline as well as attached, most versions of Outlook let you do both: paste the image into the body first, then attach the file separately.</p>
+
+        <VideoLink
+            videoId="zJRiCaj7zVs"
+            title="Insert Photos: Inline vs. Attachment in Gmail"
+            channel="Gmail Fiend"
+            note="A side-by-side look at the two ways Gmail handles an image: dropped into the message body, or attached as a file. Useful if you are not sure which one your recipient will actually receive."
+        />
+
+        <h2>Attaching From a Phone</h2>
+        <p>The same split exists on mobile. In the Gmail app on Android or iPhone, tap the paperclip and choose the file. On iPhone, a file downloaded from Safari lands in the Files app under Downloads, so browse there rather than in Photos. On Android, Chrome saves to the Downloads folder, which the Gmail file picker opens by default. In the iOS Mail app, tap inside the message body, then use the attachment button above the keyboard to insert a file from Files. If you only have the screenshot on your clipboard, paste it into PasteDownloadApp in the phone's browser first, download it, then attach the saved file.</p>
+
+        <h2>Keeping the Attachment Small Enough to Send</h2>
+        <p>Mail services cap attachment size, and a full-resolution screenshot from a large or high-density display can be bigger than people expect. Gmail allows up to 25 MB of attachments per message and offers to send anything larger as a Google Drive link instead. Outlook's limit depends on the account type and the organization's settings, and 20 MB is a common ceiling. A single screenshot rarely gets close to those numbers, but ten of them in one message can.</p>
+        <p>Format is the easiest lever. A screenshot of a web page or app, full of flat color and sharp text, usually stays small as PNG and looks crisp. A screenshot of a photo, a video frame, or a busy gradient compresses far better as JPEG. PasteDownloadApp's JPEG and WebP output use a quality setting of 0.92, which keeps text readable while cutting size. If you are not sure, download both and compare the sizes the tool shows before attaching. The <a href="/blog/image-compression-quality-settings/">compression quality guide</a> has real before-and-after numbers.</p>
+        <p>One caution for JPEG: it does not support transparency. If your screenshot has transparent areas, for example a cropped window with a see-through shadow, PasteDownloadApp fills them with white when you choose JPEG. That is usually what you want in an email, but pick PNG if you need the transparency preserved.</p>
+
+        <h2>Naming the File Before You Attach It</h2>
+        <p>Files downloaded from PasteDownloadApp are named with a timestamp, such as <code>pasted_</code> followed by the date and time. That keeps multiple downloads from overwriting each other, but a name like that tells the recipient nothing. Renaming the file to something descriptive, such as "invoice-error-march.png", takes a few seconds and makes the attachment much easier to find later in both your sent folder and the recipient's inbox. Gmail and Outlook show the file name on the attachment chip, so it is also the first thing the recipient sees.</p>
 
         <h2>Email Signatures Are a Special Case</h2>
         <p>Signature editors in Gmail and Outlook generally do accept a pasted image directly. A signature is stored as part of the account settings, not composed fresh each time, which is why the paste works there. If your signature editor rejects a paste or shows a broken image, there is a more reliable path: save the clipboard image as a file first, then use the signature editor's own "insert image" or upload option.</p>

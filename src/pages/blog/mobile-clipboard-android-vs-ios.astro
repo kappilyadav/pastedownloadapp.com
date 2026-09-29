@@ -2,6 +2,7 @@
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import RelatedGuides from '../../components/RelatedGuides.astro';
 import AuthorByline from '../../components/AuthorByline.astro';
+import VideoLink from '../../components/VideoLink.astro';
 ---
 
 <ContentLayout
@@ -19,7 +20,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
             "description": "Mobile clipboard access does not match desktop browsers. Here is the real difference between saving a copied image on Android and iOS, tested in a mobile browser viewport.",
             "image": "https://pastedownloadapp.com/blog/mobile-clipboard-android-vs-ios.png",
             "datePublished": "2026-08-22T00:00:00Z",
-            "dateModified": "2026-09-28T00:00:00Z",
+            "dateModified": "2026-09-29T00:00:00Z",
             "author": {
                 "@type": "Person",
                 "name": "Kappil Yadav",
@@ -40,7 +41,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
         Saving a Clipboard Image on Android vs iPhone: What Actually Works
     </h1>
 
-    <AuthorByline publishDate="2026-08-22" updatedDate="2026-09-28" />
+    <AuthorByline publishDate="2026-08-22" updatedDate="2026-09-29" />
 
     <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
         <img src="/blog/mobile-clipboard-android-vs-ios.png" alt="Screenshot of the paste download tool in a mobile browser viewport" width="1600" height="900" class="w-full aspect-[16/9] object-cover" />
@@ -61,6 +62,32 @@ import AuthorByline from '../../components/AuthorByline.astro';
         <h2>How Copying an Image Works on iPhone</h2>
 
         <p>iOS handles image copying at the system level, through the same universal clipboard used for Handoff between Apple devices. Safari on iOS exposes it through the same Async Clipboard API as desktop Safari. The practical difference is that iOS is stricter about which gesture counts as "direct enough" to authorize a clipboard read; the call has to fire synchronously inside the tap handler with no delay, the same restriction covered in <a href="/blog/clipboard-paste-chrome-firefox-safari/">how clipboard permissions differ across browsers</a>. Safari on iOS also does not always show a visible permission prompt the way desktop browsers do; it can silently fail instead. If tapping Access Clipboard does nothing on an iPhone, retrying the tap once, right after copying and without switching apps in between, is the most reliable fix.</p>
+
+        <h2>Getting a Screenshot Onto the Clipboard on Each Phone</h2>
+
+        <p>Most people reach this page with a screenshot, not a web image. Both platforms can put a screenshot on the clipboard without saving it to the camera roll first, but the path is different on each.</p>
+
+        <p><strong>On iPhone,</strong> take the screenshot as usual (side button plus volume up on Face ID models), then tap the thumbnail that appears in the corner before it slides away. That opens the markup editor. Tap <strong>Done</strong>, and one of the options is <strong>Copy and Delete</strong>. It copies the screenshot to the clipboard and discards the saved copy, so nothing lands in Photos. For an image that is already in Photos, open it, tap the share icon, and choose <strong>Copy Photo</strong>.</p>
+
+        <p><strong>On Android,</strong> the details vary by manufacturer, but the common route is the Gboard keyboard. Recent versions of Gboard can show a freshly taken screenshot in the keyboard's clipboard panel, ready to paste. Outside of Gboard, open the screenshot in Google Photos, tap share, and look for a copy option, or long-press an image inside Chrome and choose <strong>Copy image</strong>. Samsung phones add their own clipboard panel on the Samsung Keyboard that behaves similarly.</p>
+
+        <VideoLink
+            videoId="CWgZ7fsdA-U"
+            title="How to Copy and Paste Images Across Android Apps with Gboard?"
+            note="A short walkthrough of copying an image on Android and pasting it from Gboard's clipboard panel, which is the quickest way to get a screenshot into a browser tool on most Android phones."
+        />
+
+        <h2>Copying on iPhone, Pasting on a Mac (and Back)</h2>
+
+        <p>If you own both an iPhone and a Mac, you may not need the phone to save anything at all. Apple's Universal Clipboard shares the clipboard between devices signed in to the same Apple Account with Bluetooth, Wi-Fi, and Handoff turned on. Copy an image on the iPhone, switch to the Mac within a short window, and press Cmd+V on PasteDownloadApp. The image arrives as if you had copied it on the Mac, and you can download it from there as PNG, JPEG, or WebP. The reverse also works. It is often faster than AirDropping a file, because nothing needs to be accepted on the other side.</p>
+
+        <p>Universal Clipboard only holds the most recent item, and it expires after a short time, so copy right before you paste. If nothing arrives, check that Handoff is enabled on both devices, since that is the setting most often switched off.</p>
+
+        <VideoLink
+            videoId="aqADk5n99h0"
+            title="Copy and Paste Between Your Macs and Other Apple Devices"
+            note="Shows the Universal Clipboard setup between a Mac, iPhone, and iPad, including the Handoff setting that has to be enabled for a copied image to cross devices."
+        />
 
         <h2>What to Do When Access Clipboard Just Won't Work</h2>
 

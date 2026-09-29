@@ -1,0 +1,23 @@
+---
+export interface Props {
+  videoId: string;
+  title: string;
+  channel?: string;
+  note: string;
+}
+
+const { videoId, title, channel, note } = Astro.props;
+const url = `https://www.youtube.com/watch?v=${videoId}`;
+---
+
+<aside class="not-prose my-6 rounded-xl border border-hairline bg-canvas-soft p-4 sm:p-5" aria-label={`Video: ${title}`}>
+  <p class="!m-0 text-mute text-xs font-semibold uppercase tracking-wide flex items-center gap-2">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+    Watch on YouTube
+  </p>
+  <a href={url} target="_blank" rel="noopener noreferrer" class="block mt-2 text-ink text-base font-semibold tracking-tight leading-snug !no-underline hover:!text-link focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none rounded-sm">
+    {title}
+  </a>
+  {channel && <p class="!m-0 mt-1 text-mute text-xs sm:text-sm">{channel}</p>}
+  <p class="!m-0 mt-2 text-body text-sm leading-relaxed">{note}</p>
+</aside>

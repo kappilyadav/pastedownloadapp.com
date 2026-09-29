@@ -9,6 +9,7 @@ import { latestArticles } from '../data/articles';
 
 const newestArticles = [...latestArticles].sort(
   (a, b) => new Date(b.updatedDate || b.publishDate).getTime() - new Date(a.updatedDate || a.publishDate).getTime()
+    || new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
 );
 ---
 

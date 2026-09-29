@@ -2,6 +2,7 @@
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import RelatedGuides from '../../components/RelatedGuides.astro';
 import AuthorByline from '../../components/AuthorByline.astro';
+import VideoLink from '../../components/VideoLink.astro';
 ---
 
 <ContentLayout
@@ -19,7 +20,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
             "description": "A browser's Canvas re-encode is not the same as a PNG optimizer. Real numbers from two test files show a PNG growing by 60 to 65 percent after a round trip through canvas.toBlob.",
             "image": "https://pastedownloadapp.com/blog/why-png-reencode-bigger.png",
             "datePublished": "2026-08-22T00:00:00Z",
-            "dateModified": "2026-08-22T00:00:00Z",
+            "dateModified": "2026-09-29T00:00:00Z",
             "author": {
                 "@type": "Person",
                 "name": "Kappil Yadav",
@@ -40,7 +41,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
         Why Re-Saving a PNG Can Make the File Bigger, Not Smaller
     </h1>
 
-    <AuthorByline publishDate="2026-08-22" />
+    <AuthorByline publishDate="2026-08-22" updatedDate="2026-09-29" />
 
     <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
         <img src="/blog/why-png-reencode-bigger.png" alt="Screenshot of the paste tool showing a re-encoded PNG result" width="1600" height="900" class="w-full aspect-[16/9] object-cover" />
@@ -89,9 +90,30 @@ import AuthorByline from '../../components/AuthorByline.astro';
 
         <p>The two source files that grew significantly, the illustration and the screenshot, had both been pre-optimized before they were ever uploaded to this site's own asset pipeline. That was almost certainly done by a build tool that ran a proper PNG compressor. Once decoded into raw pixels and re-encoded by the browser's faster, less aggressive encoder, that prior optimization was gone. The new file reflects only what the browser's default encoder settings produce. The 512&times;512 icon barely changed, because it was already small and simple enough that there was little room for a better encoder to improve on.</p>
 
+        <VideoLink
+            videoId="EFUYNoFRHQI"
+            title="How PNG Works: Compromising Speed for Quality"
+            channel="Reducible"
+            note="An animated deep dive into PNG's filtering and DEFLATE compression, including why an encoder can trade speed for a smaller file. It is the clearest explanation of why two valid PNGs of the same pixels can differ so much in size."
+        />
+
+        <h2>The Other Culprit: Palette PNGs Become Full-Color PNGs</h2>
+        <p>Encoder effort is not the only reason a PNG grows. PNG supports several color types. A palette PNG, also called indexed color or PNG-8, stores a table of up to 256 colors and then one small index per pixel. Icons, simple logos, and images that went through a tool like pngquant are often saved this way, and it is very compact.</p>
+        <p>A canvas does not keep any of that. When the browser decodes the image onto a canvas, every pixel becomes a full red, green, blue, and alpha value. When <code>canvas.toBlob()</code> writes a PNG, it writes that full-color data, not a palette. An image that fit in a 256-color table is now stored as millions of possible colors, even though it still only uses 256 of them. That alone can double or triple the file size of a simple graphic. The same thing happens to grayscale PNGs, which are stored as a single channel in the original but come out as full color.</p>
+        <p>Metadata works in the opposite direction. A canvas re-encode drops text chunks, embedded color profiles, and other metadata stored in the original file. That makes the output slightly smaller, but on most images the savings are only a few kilobytes, nowhere near enough to cancel out the effects above.</p>
+
         <h2>What This Means for Format Choice</h2>
 
         <p>Say your PNG is already optimized, whether by a build tool, an export setting in Figma or Photoshop, or a dedicated compressor. Running it back through any browser-based canvas tool for a same-format "conversion" will very likely make it bigger, not smaller. This is not specific to PasteDownloadApp. It is how <code>canvas.toBlob()</code> works in every browser, since none of them run a full PNG optimization pass by default. The practical rule: only choose PNG as your output format when you actually need lossless output for a fresh capture, a new screenshot, for instance. Do not use it as a way to "clean up" or shrink an existing PNG. For an existing PNG that is already too large, there is a far more effective path. WebP lossy at PasteDownloadApp's default quality produced files 96% and 88% smaller than the originals, in <a href="/blog/image-compression-quality-settings/">the real compression numbers I tested separately</a>.</p>
+
+        <h2>How to Actually Make a PNG Smaller</h2>
+        <p>If your goal is a smaller file that is still a PNG, use a tool built for it:</p>
+        <ul class="list-disc pl-5 space-y-1.5">
+            <li><strong>Lossless optimizers</strong> such as OptiPNG and oxipng try many filter and compression combinations and keep the smallest result. The pixels stay identical, and savings of 10 to 40 percent on unoptimized files are common.</li>
+            <li><strong>Lossy palette reduction</strong> with pngquant, or web front ends built on it such as TinyPNG, reduces the image to a 256-color palette. For screenshots and flat graphics the difference is usually hard to see, and the file often shrinks by more than half.</li>
+            <li><strong>Squoosh</strong>, a free browser-based app from the Chrome team, runs these same kinds of encoders in the browser, so you can compare the result side by side before downloading.</li>
+        </ul>
+        <p>If the file does not strictly need to be a PNG, converting to WebP is simpler and usually wins by a wide margin, as the numbers above show.</p>
 
         <h2>Frequently Asked Questions</h2>
 
