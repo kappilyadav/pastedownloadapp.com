@@ -1,5 +1,7 @@
 ---
 import ContentLayout from '../layouts/ContentLayout.astro';
+import AuthorBio from '../components/AuthorBio.astro';
+import SocialLinks from '../components/SocialLinks.astro';
 ---
 
 <ContentLayout title="Contact Us - PasteDownloadApp" description="Contact the PasteDownloadApp team. Get in touch with questions, feedback, or support requests about our free image downloader tool." canonicalUrl="https://pastedownloadapp.com/contact/" breadcrumbs={[{ name: "Home", href: "/" }, { name: "Contact" }]}>
@@ -40,6 +42,15 @@ import ContentLayout from '../layouts/ContentLayout.astro';
           <p class="text-ink text-sm font-semibold m-0">Email</p>
           <a href="mailto:hello@pastedownloadapp.com" class="text-link text-sm no-underline hover:underline">hello@pastedownloadapp.com</a>
           <p class="text-mute text-xs mt-0.5 m-0">We typically respond within 1&ndash;2 business days.</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <div class="w-9 h-9 rounded-lg bg-link-bg-soft flex items-center justify-center shrink-0">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-link" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        </div>
+        <div>
+          <p class="text-ink text-sm font-semibold m-0">Find me online</p>
+          <SocialLinks class="mt-2" />
         </div>
       </div>
     </div>
@@ -119,6 +130,7 @@ import ContentLayout from '../layouts/ContentLayout.astro';
       For press, partnership, or other business-related questions, email us with a short description of what you are looking for. Because this is a small, focused tool rather than a company with a dedicated marketing department, response times for these inquiries may run a little longer than for support requests.
     </p>
   </div>
+  <Fragment slot="after"><AuthorBio /></Fragment>
 </ContentLayout>
 
 <script>
