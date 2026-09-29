@@ -8,16 +8,66 @@ export interface Props {
 
 const { videoId, title, channel, note } = Astro.props;
 const url = `https://www.youtube.com/watch?v=${videoId}`;
+const thumbnail = `https://i.ytimg.com/vi_webp/${videoId}/hqdefault.webp`;
+const fallbackThumbnail = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
 ---
 
-<aside class="not-prose my-6 rounded-xl border border-hairline bg-canvas-soft p-4 sm:p-5" aria-label={`Video: ${title}`}>
-  <p class="!m-0 text-mute text-xs font-semibold uppercase tracking-wide flex items-center gap-2">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 4 20 12 6 20 6 4"/></svg>
-    Watch on YouTube
-  </p>
-  <a href={url} target="_blank" rel="noopener noreferrer" class="block mt-2 text-ink text-base font-semibold tracking-tight leading-snug !no-underline hover:!text-link focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none rounded-sm">
-    {title}
-  </a>
-  {channel && <p class="!m-0 mt-1 text-mute text-xs sm:text-sm">{channel}</p>}
-  <p class="!m-0 mt-2 text-body text-sm leading-relaxed">{note}</p>
-</aside>
+<figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
+  <div class="video-embed relative aspect-video bg-black" data-video-id={videoId} data-video-title={title}>
+    <button
+      type="button"
+      class="group absolute inset-0 w-full h-full p-0 border-0 bg-transparent cursor-pointer focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-link focus-visible:outline-none"
+      aria-label={`Play video: ${title}`}
+    >
+      <img
+        src={thumbnail}
+        data-fallback={fallbackThumbnail}
+        alt=""
+        width="480"
+        height="360"
+        loading="lazy"
+        decoding="async"
+        class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
+      />
+      <span class="absolute inset-0 flex items-center justify-center" aria-hidden="true">
+        <span class="flex items-center justify-center w-16 h-11 rounded-xl bg-[#ff0000] shadow-[0_4px_16px_rgba(0,0,0,0.35)] group-hover:scale-105 transition-transform">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="7 4 20 12 7 20 7 4"/></svg>
+        </span>
+      </span>
+    </button>
+  </div>
+  <figcaption class="p-4 sm:p-5">
+    <a href={url} target="_blank" rel="noopener noreferrer" class="block text-ink text-base font-semibold tracking-tight leading-snug !no-underline hover:!text-link focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none rounded-sm">
+      {title}
+    </a>
+    <span class="block mt-1 text-mute text-xs sm:text-sm">{channel ? `${channel} on YouTube` : 'YouTube'}</span>
+    <span class="block mt-2 text-body text-sm leading-relaxed">{note}</span>
+  </figcaption>
+</figure>
+
+<script>
+  function useFallbackThumbnail(img: HTMLImageElement) {
+    const fallback = img.dataset.fallback;
+    if (fallback && img.src !== fallback) img.src = fallback;
+    else img.classList.add('invisible');
+  }
+
+  document.querySelectorAll<HTMLElement>('.video-embed').forEach((container) => {
+    const img = container.querySelector('img');
+    if (img) {
+      img.addEventListener('error', () => useFallbackThumbnail(img));
+      if (img.complete && img.naturalWidth === 0) useFallbackThumbnail(img);
+    }
+
+    container.querySelector('button')?.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${container.dataset.videoId}?autoplay=1&rel=0`;
+      iframe.title = container.dataset.videoTitle || 'YouTube video';
+      iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      iframe.allowFullscreen = true;
+      iframe.className = 'absolute inset-0 w-full h-full border-0';
+      container.replaceChildren(iframe);
+      iframe.focus();
+    });
+  });
+</script>
