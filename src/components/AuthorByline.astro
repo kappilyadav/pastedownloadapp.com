@@ -2,48 +2,43 @@
 export interface Props {
   publishDate: string;
   updatedDate?: string;
-  bio?: string;
 }
 
-const {
-  publishDate,
-  updatedDate,
-  bio = "Full-stack developer who builds and maintains PasteDownloadApp using the browser's native Clipboard and Canvas APIs. Ships public code on GitHub and tests every guide against real files in the live tool before publishing.",
-} = Astro.props;
+const { publishDate, updatedDate } = Astro.props;
 
 function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 }
 ---
 
-<div class="mb-6 pb-6 border-b border-hairline not-prose">
-  <div class="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-mute text-xs sm:text-sm">
-    <a href="/author/" class="flex items-center gap-2.5 text-ink no-underline hover:text-link transition-colors">
+<div class="not-prose mb-6 rounded-xl border border-hairline border-l-4 border-l-link bg-canvas-soft p-4 sm:p-5">
+  <div class="flex items-center gap-3.5">
+    <a href="/author/" class="shrink-0 rounded-full focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none" aria-label="Kappil Yadav, author profile">
       <img
         src="/author-kappil-yadav.webp"
         alt="Kappil Yadav"
-        width="36"
-        height="36"
+        width="56"
+        height="56"
         loading="lazy"
-        class="w-9 h-9 rounded-full border border-hairline object-cover shrink-0 bg-canvas-soft" decoding="async"
+        decoding="async"
+        class="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 border-canvas ring-1 ring-hairline object-cover bg-canvas"
       />
-      <span class="flex flex-col leading-tight">
-        <span class="font-medium">Written by Kappil Yadav</span>
-        <span class="text-[11px] sm:text-xs text-mute font-normal">Full-Stack Developer, PasteDownloadApp</span>
-      </span>
     </a>
-    <span class="w-full sm:w-auto flex flex-wrap items-center gap-x-3 gap-y-1">
-      <span aria-hidden="true" class="hidden sm:inline">&middot;</span>
-      <span>Published {formatDate(publishDate)}</span>
-      {updatedDate && (
-        <>
-          <span aria-hidden="true">&middot;</span>
-          <span>Last updated {formatDate(updatedDate)}</span>
-        </>
-      )}
-    </span>
+    <div class="flex flex-col leading-tight min-w-0">
+      <span class="text-sm sm:text-base text-body">Written by <a href="/author/" class="font-semibold text-ink no-underline hover:text-link transition-colors">Kappil Yadav</a></span>
+      <span class="text-xs sm:text-sm text-mute mt-1">Full-Stack Developer, PasteDownloadApp</span>
+    </div>
   </div>
-  {bio && (
-    <p class="text-mute text-xs sm:text-sm leading-relaxed mt-2.5 mb-0">{bio}</p>
-  )}
+  <div class="flex flex-wrap gap-2 mt-3.5 text-xs font-medium">
+    <span class="inline-flex items-center gap-1.5 rounded-full border border-hairline bg-canvas px-3 py-1 text-body">
+      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Published {formatDate(publishDate)}
+    </span>
+    {updatedDate && (
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-hairline bg-canvas px-3 py-1 text-body">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        Updated {formatDate(updatedDate)}
+      </span>
+    )}
+  </div>
 </div>
