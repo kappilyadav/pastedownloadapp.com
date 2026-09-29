@@ -2,6 +2,7 @@
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import RelatedGuides from '../../components/RelatedGuides.astro';
 import AuthorByline from '../../components/AuthorByline.astro';
+import AuthorBio from '../../components/AuthorBio.astro';
 import VideoLink from '../../components/VideoLink.astro';
 ---
 
@@ -37,15 +38,15 @@ import VideoLink from '../../components/VideoLink.astro';
         }
     </script>
 
-    <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight text-balance">
+    <figure class="mt-0 mb-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
+        <img src="/blog/access-clipboard-not-working.webp" alt="Screenshot of the paste tool showing the Access Clipboard button in its default state" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
+    </figure>
+
+    <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
         Why "Access Clipboard" Fails, and How to Fix It
     </h1>
 
     <AuthorByline publishDate="2026-08-22" updatedDate="2026-09-29" />
-
-    <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
-        <img src="/blog/access-clipboard-not-working.webp" alt="Screenshot of the paste tool showing the Access Clipboard button in its default state" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
-    </figure>
 
     <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
 
@@ -120,4 +121,5 @@ import VideoLink from '../../components/VideoLink.astro';
         <p>Head back to <a href="https://pastedownloadapp.com/">pastedownloadapp.com</a> and try Ctrl+V directly in the paste zone. It sidesteps every issue above.</p>
 
     </div>
+    <AuthorBio />
 </ContentLayout>

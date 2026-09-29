@@ -2,6 +2,7 @@
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import RelatedGuides from '../../components/RelatedGuides.astro';
 import AuthorByline from '../../components/AuthorByline.astro';
+import AuthorBio from '../../components/AuthorBio.astro';
 import VideoLink from '../../components/VideoLink.astro';
 ---
 
@@ -37,7 +38,11 @@ import VideoLink from '../../components/VideoLink.astro';
         }
     </script>
 
-    <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight text-balance">
+    <figure class="mt-0 mb-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
+        <img src="/blog/why-image-url-wont-download.webp" alt="Screenshot of the discontinued URL download tool with an image URL entered and its preview loaded" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
+    </figure>
+
+    <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
         Why Some Image URLs Won't Download Directly
     </h1>
 
@@ -46,10 +51,6 @@ import VideoLink from '../../components/VideoLink.astro';
     <div class="rounded-xl border border-hairline bg-warning-soft text-warning text-sm px-5 py-4 my-6" role="note">
         <strong>Update:</strong> PasteDownloadApp's URL download feature has been discontinued and is no longer available in the tool. This article is kept for reference. The CORS and hotlink-protection behavior described below still applies to any browser-based tool that tries to fetch images from arbitrary URLs.
     </div>
-
-    <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
-        <img src="/blog/why-image-url-wont-download.webp" alt="Screenshot of the discontinued URL download tool with an image URL entered and its preview loaded" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
-    </figure>
 
     <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
 
@@ -98,4 +99,5 @@ import VideoLink from '../../components/VideoLink.astro';
         <p>The URL download feature has been discontinued. The reliable option now is to save the image from your browser first (right-click, "Save image as") and then drag the file into <a href="https://pastedownloadapp.com/">PasteDownloadApp</a> to convert it.</p>
 
     </div>
+    <AuthorBio />
 </ContentLayout>

@@ -2,6 +2,7 @@
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import RelatedGuides from '../../components/RelatedGuides.astro';
 import AuthorByline from '../../components/AuthorByline.astro';
+import AuthorBio from '../../components/AuthorBio.astro';
 import VideoLink from '../../components/VideoLink.astro';
 ---
 
@@ -37,15 +38,15 @@ import VideoLink from '../../components/VideoLink.astro';
         }
     </script>
 
-    <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight text-balance">
+    <figure class="mt-0 mb-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
+        <img src="/blog/png-vs-jpg-vs-webp.webp" alt="Three abstract image file cards representing PNG transparency, JPG photos, and WebP compression" width="836" height="471" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
+    </figure>
+
+    <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
         PNG vs JPG vs WebP: Real File Sizes Compared
     </h1>
 
     <AuthorByline publishDate="2026-06-12" updatedDate="2026-09-28" />
-
-    <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
-        <img src="/blog/png-vs-jpg-vs-webp.webp" alt="Three abstract image file cards representing PNG transparency, JPG photos, and WebP compression" width="836" height="471" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
-    </figure>
 
     <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
 
@@ -224,4 +225,5 @@ import VideoLink from '../../components/VideoLink.astro';
             margin-inline-end: 0.25rem;
         }
     </style>
+    <AuthorBio />
 </ContentLayout>
