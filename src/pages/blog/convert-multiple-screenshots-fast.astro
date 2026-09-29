@@ -24,12 +24,37 @@ import VideoLink from '../../components/VideoLink.astro';
             "dateModified": "2026-09-28T00:00:00Z",
             "author": {
                 "@type": "Person",
+                "@id": "https://pastedownloadapp.com/author/#person",
                 "name": "Kappil Yadav",
-                "url": "https://pastedownloadapp.com/author/"
+                "url": "https://pastedownloadapp.com/author/",
+                "image": "https://pastedownloadapp.com/author-kappil-yadav.webp",
+                "jobTitle": "Founder & Developer",
+                "description": "Full-stack developer who builds and maintains PasteDownloadApp using the browser's native Clipboard and Canvas APIs. Ships public code on GitHub and tests every guide against real files in the live tool before publishing.",
+                "email": "hello@pastedownloadapp.com",
+                "knowsAbout": [
+                    "Clipboard API",
+                    "Canvas API",
+                    "Image formats",
+                    "Web development"
+                ],
+                "sameAs": [
+                    "https://github.com/kappilyadav",
+                    "https://www.linkedin.com/in/kapilyadavv",
+                    "https://www.instagram.com/heykapil_"
+                ],
+                "worksFor": {
+                    "@type": "Organization",
+                    "@id": "https://pastedownloadapp.com/#organization",
+                    "name": "PasteDownloadApp",
+                    "url": "https://pastedownloadapp.com/"
+                }
             },
             "publisher": {
                 "@type": "Organization",
-                "name": "PasteDownloadApp"
+                "@id": "https://pastedownloadapp.com/#organization",
+                "name": "PasteDownloadApp",
+                "url": "https://pastedownloadapp.com/",
+                "logo": { "@type": "ImageObject", "url": "https://pastedownloadapp.com/favicon.svg" }
             },
             "mainEntityOfPage": {
                 "@type": "WebPage",
@@ -166,5 +191,5 @@ import VideoLink from '../../components/VideoLink.astro';
             margin-inline-end: 0.25rem;
         }
     </style>
-    <AuthorBio />
+    <Fragment slot="after"><AuthorBio /></Fragment>
 </ContentLayout>
