@@ -44,7 +44,7 @@ import VideoLink from '../../components/VideoLink.astro';
     <AuthorByline publishDate="2026-08-22" updatedDate="2026-09-29" />
 
     <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
-        <img src="/blog/mobile-clipboard-android-vs-ios.png" alt="Screenshot of the paste download tool in a mobile browser viewport" width="1600" height="900" class="w-full aspect-[16/9] object-cover" />
+        <img src="/blog/mobile-clipboard-android-vs-ios.webp" alt="Screenshot of the paste download tool in a mobile browser viewport" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
     </figure>
 
     <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
@@ -52,7 +52,7 @@ import VideoLink from '../../components/VideoLink.astro';
         <p>A copied image on a phone does not behave the same as one on a laptop. There is no right-click and no keyboard shortcut. The browser also runs inside an OS that has its own opinion about which apps get to touch the clipboard. I tested PasteDownloadApp in a 390 pixel wide mobile viewport, shown below, to see exactly what changes. The honest answer: the biggest differences come from the OS, not the site.</p>
 
         <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
-            <img src="/blog/screenshots/mobile-clipboard-tool.png" alt="Screenshot of PasteDownloadApp at 390 pixels wide, the standard iPhone viewport width, showing the Access Clipboard button" width="780" height="940" class="w-full max-w-xs mx-auto" loading="lazy" />
+            <img src="/blog/screenshots/mobile-clipboard-tool.webp" alt="Screenshot of PasteDownloadApp at 390 pixels wide, the standard iPhone viewport width, showing the Access Clipboard button" width="780" height="940" class="w-full max-w-xs mx-auto" loading="lazy" decoding="async" />
         </figure>
 
         <h2>How Copying an Image Works on Android</h2>

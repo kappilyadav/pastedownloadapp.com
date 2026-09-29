@@ -41,7 +41,7 @@ const { id = "paste" } = Astro.props;
 
       <div id="pastePreview" class="hidden w-full flex-col items-center gap-4">
         <div class="relative max-h-[300px] overflow-hidden rounded-lg border border-hairline bg-canvas-soft-2">
-          <img id="pasteImg" class="max-w-full max-h-[300px] object-contain" alt="Pasted image preview" />
+          <img id="pasteImg" class="max-w-full max-h-[300px] object-contain" alt="Pasted image preview" loading="lazy" decoding="async" />
         </div>
         <div class="mt-4 flex items-center gap-2 sm:gap-3 flex-wrap justify-center">
           <span id="pasteInfo" class="text-mute text-xs w-full sm:w-auto text-center sm:text-left" role="status" aria-live="polite"></span>
