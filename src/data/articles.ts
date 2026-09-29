@@ -23,6 +23,7 @@ export const latestArticles = [
     title: 'Saving a Clipboard Image on Android vs iPhone: What Actually Works',
     description: 'Mobile clipboard access does not match desktop. Here is the real difference between Android and iOS browsers.',
     publishDate: '2026-08-22',
+    updatedDate: '2026-09-29',
     category: 'platforms'
   },
   {
@@ -33,6 +34,7 @@ export const latestArticles = [
     title: 'Why "Access Clipboard" Fails, and How to Fix It',
     description: 'Clipboard read permission errors explained: browser support, HTTPS requirements, and permission prompts.',
     publishDate: '2026-08-22',
+    updatedDate: '2026-09-29',
     category: 'troubleshooting'
   },
   {
@@ -54,6 +56,7 @@ export const latestArticles = [
     title: 'Image Compression Quality Settings Explained, With Real File Sizes',
     description: 'What a JPEG or WebP quality number actually changes, shown with real before-and-after file sizes.',
     publishDate: '2026-08-22',
+    updatedDate: '2026-09-29',
     category: 'formats'
   },
   {
@@ -64,6 +67,7 @@ export const latestArticles = [
     title: 'SVG and ICO Quirks You Will Hit When Converting Images in a Browser',
     description: 'Vector files and multi-resolution icons do not behave like PNG or JPG. Here is what actually happens when you convert them.',
     publishDate: '2026-08-22',
+    updatedDate: '2026-09-29',
     category: 'formats'
   },
   {
@@ -85,6 +89,7 @@ export const latestArticles = [
     title: 'Why Re-Saving a PNG Can Make the File Bigger, Not Smaller',
     description: 'A browser Canvas re-encode is not the same as a PNG optimizer. Here is the real size difference and why it happens.',
     publishDate: '2026-08-22',
+    updatedDate: '2026-09-29',
     category: 'formats'
   },
   {
@@ -150,6 +155,7 @@ export const latestArticles = [
     title: 'How to Turn a Pasted Screenshot Into an Email Attachment',
     description: 'Gmail and Outlook can paste an image straight into the message body, but that is not the same as an attachment. Here is how to turn a clipboard image into a real file first.',
     publishDate: '2026-09-27',
+    updatedDate: '2026-09-29',
     category: 'troubleshooting'
   },
   {
@@ -160,6 +166,7 @@ export const latestArticles = [
     title: "Why Some Image URLs Won't Download Directly",
     description: 'CORS, hotlink protection, and referrer blocking explained: why pasting an image URL sometimes fails, and what actually happens when a tool works around it.',
     publishDate: '2026-09-27',
+    updatedDate: '2026-09-29',
     category: 'troubleshooting'
   }
 ];

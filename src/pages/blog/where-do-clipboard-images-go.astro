@@ -2,6 +2,7 @@
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import RelatedGuides from '../../components/RelatedGuides.astro';
 import AuthorByline from '../../components/AuthorByline.astro';
+import VideoLink from '../../components/VideoLink.astro';
 ---
 
 <ContentLayout
@@ -70,6 +71,12 @@ import AuthorByline from '../../components/AuthorByline.astro';
 
         <h2>Where Do Screenshots Go on iPhone and iPad?</h2>
         <p>A screenshot on iPhone or iPad (side button + volume up) is saved into the Screenshots album inside the Photos app automatically. Long-pressing an image and choosing Copy is a different action entirely. It places the image on the system pasteboard, which other apps can read from. That pasteboard is not visible anywhere in the Files app or Photos, though. If you copy an image on iOS and never paste it, it simply disappears the next time something else is copied.</p>
+
+        <VideoLink
+            videoId="4H3X2b5UgtQ"
+            title="How To Use Clipboard History in Windows 11 - Including Permanent Clipboard Items"
+            note="Shows how to open clipboard history and pin items. It is the one place Windows lets you see screenshots that were copied to the clipboard but never saved as files."
+        />
 
         <h2>The Pattern Across All Four Platforms</h2>
         <p>A screenshot, taken with the platform's dedicated screenshot tool, almost always becomes a real file automatically. A copy, whether of a screenshot or of any other image, almost always stays on the clipboard only. It is invisible to Finder, File Explorer, or any file picker, until you explicitly paste it somewhere that writes it to disk. That distinction, not the platform itself, is what actually decides whether you can find the image again later.</p>

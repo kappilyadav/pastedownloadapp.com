@@ -2,6 +2,7 @@
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import RelatedGuides from '../../components/RelatedGuides.astro';
 import AuthorByline from '../../components/AuthorByline.astro';
+import VideoLink from '../../components/VideoLink.astro';
 ---
 
 <ContentLayout
@@ -60,6 +61,13 @@ import AuthorByline from '../../components/AuthorByline.astro';
         </ul>
 
         <p>PasteDownloadApp uses both: the paste event for the Ctrl+V flow, and <code>navigator.clipboard.read()</code> for the Access Clipboard button. That combination is also why the button sometimes behaves differently than the keyboard shortcut on the same page. If the button specifically is the one failing for you, see <a href="/blog/access-clipboard-not-working/">why "Access Clipboard" fails and how to fix it</a>.</p>
+
+        <VideoLink
+            videoId="hsfueop_Hb8"
+            title="New in Chrome 66: CSS Types Model Object, Async Clipboard & new Canvas contexts"
+            channel="Chrome for Developers"
+            note="The Chrome team's own announcement of the Async Clipboard API, the navigator.clipboard interface that the Access Clipboard button relies on. It explains why reads are asynchronous and gated behind a permission."
+        />
 
         <h2>Chrome and Edge (Chromium)</h2>
 

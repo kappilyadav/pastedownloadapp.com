@@ -2,6 +2,7 @@
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import RelatedGuides from '../../components/RelatedGuides.astro';
 import AuthorByline from '../../components/AuthorByline.astro';
+import VideoLink from '../../components/VideoLink.astro';
 ---
 
 <ContentLayout
@@ -19,7 +20,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
             "description": "Clipboard read permission errors explained: HTTPS requirements, browser support, focus rules, and why the Access Clipboard button sometimes does nothing at all.",
             "image": "https://pastedownloadapp.com/blog/access-clipboard-not-working.png",
             "datePublished": "2026-08-22T00:00:00Z",
-            "dateModified": "2026-08-22T00:00:00Z",
+            "dateModified": "2026-09-29T00:00:00Z",
             "author": {
                 "@type": "Person",
                 "name": "Kappil Yadav",
@@ -40,7 +41,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
         Why "Access Clipboard" Fails, and How to Fix It
     </h1>
 
-    <AuthorByline publishDate="2026-08-22" />
+    <AuthorByline publishDate="2026-08-22" updatedDate="2026-09-29" />
 
     <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
         <img src="/blog/access-clipboard-not-working.png" alt="Screenshot of the paste tool showing the Access Clipboard button in its default state" width="1600" height="900" class="w-full aspect-[16/9] object-cover" />
@@ -62,9 +63,27 @@ import AuthorByline from '../../components/AuthorByline.astro';
 
         <p>Chrome and Edge normally show a one-time permission prompt above the address bar the first time a site calls <code>clipboard.read()</code>. If you dismissed that prompt, or if a browser extension is auto-dismissing permission popups, the site is left with no clipboard access and no way to ask again automatically. Check your browser's site settings (the padlock icon next to the address bar) and look for a Clipboard permission you may have blocked.</p>
 
+        <h3>How to Reset a Blocked Clipboard Permission</h3>
+        <p>Each browser keeps this setting in a slightly different place:</p>
+        <ul class="list-disc pl-5 space-y-1.5">
+            <li><strong>Chrome:</strong> click the site information icon at the left of the address bar, open <strong>Site settings</strong>, find <strong>Clipboard</strong>, and set it to Allow or Ask. Reload the page afterward.</li>
+            <li><strong>Edge:</strong> click the padlock, choose <strong>Permissions for this site</strong>, and change <strong>Clipboard</strong> the same way.</li>
+            <li><strong>Firefox:</strong> there is no stored per-site clipboard setting to reset. Instead, Firefox shows a small <strong>Paste</strong> button next to your cursor when a site asks to read the clipboard, and you click it to allow that one read. If you click elsewhere, the read is denied, so just try again.</li>
+            <li><strong>Safari:</strong> works like Firefox. A <strong>Paste</strong> button appears near the click, and the read only goes through if you click it.</li>
+        </ul>
+        <p>If you use several Chrome profiles, the permission is stored per profile, so allowing it in one profile does not carry over to another.</p>
+
+        <VideoLink
+            videoId="0J3lUCw13gY"
+            title="How to Allow Clipboard Access in Google Chrome (Quick Tutorial)"
+            note="Shows exactly where Chrome keeps the per-site Clipboard permission, which is the setting to change if you dismissed or blocked the prompt the first time."
+        />
+
         <h2>4. Your Clipboard Does Not Actually Contain Image Data</h2>
 
         <p>This is the most common cause and the easiest to miss. Copying a link to an image, or copying the URL from an address bar, does not put image data on the clipboard, only text. The source has to be an actual image: a right-click "Copy image" on a picture, a screenshot capture, or a copied file. If you are not sure what is on your clipboard, try pasting into a chat app first; if it pastes as a link instead of a picture, that is the problem. For a broader look at why a screenshot or copied image is not automatically a file you can find later, see <a href="/blog/where-do-clipboard-images-go/">where clipboard images and screenshots actually go</a>.</p>
+
+        <p>A related trap: "Copy image address" and "Copy image" sit right next to each other in the right-click menu, and the first one only copies the URL as text. If the Access Clipboard button finds nothing, go back to the image and make sure you picked "Copy image". Copying a file in File Explorer or Finder is another case that surprises people. That puts a reference to the file on the clipboard, not the pixels inside it, and most browsers will not read it as an image. Drag the file into the drop zone instead.</p>
 
         <h2>5. The Browser Does Not Support This Path the Way You Expect</h2>
 
@@ -73,6 +92,17 @@ import AuthorByline from '../../components/AuthorByline.astro';
         <h2>The Reliable Fallback: Skip the Button</h2>
 
         <p>Every cause above is specific to the button-triggered <code>clipboard.read()</code> call. None of them affect the plain keyboard paste event. If Access Clipboard is not cooperating, click into the drop zone and press <strong>Ctrl+V</strong> (or <strong>Cmd+V</strong> on Mac) instead. That path only needs a real keystroke, works the same across Chrome, Firefox, and Safari, and is what the button exists to approximate for people who prefer clicking. Drag and drop is a second reliable fallback, since it does not touch the Clipboard API at all.</p>
+
+        <h2>A Quick Checklist Before You Give Up</h2>
+        <ol class="list-decimal pl-5 space-y-1.5">
+            <li>Copy the image again, right now, using "Copy image" or a screenshot-to-clipboard shortcut.</li>
+            <li>Click once inside the page so the tab has focus.</li>
+            <li>Press Ctrl+V or Cmd+V instead of clicking the button.</li>
+            <li>If you prefer the button, check the site's Clipboard permission as described above and reload.</li>
+            <li>Still nothing? Try a private window, which runs without most extensions, to rule out an extension blocking the Clipboard API.</li>
+            <li>As a last resort, save the image as a file and drag it into the drop zone. Drag and drop does not use the clipboard at all.</li>
+        </ol>
+        <p>In practice, steps 1 and 3 resolve almost every case. A stale or text-only clipboard and a blocked permission account for nearly all of the reports, and a keyboard paste avoids the permission question entirely.</p>
 
         <h2>Frequently Asked Questions</h2>
 

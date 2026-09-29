@@ -2,6 +2,7 @@
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import RelatedGuides from '../../components/RelatedGuides.astro';
 import AuthorByline from '../../components/AuthorByline.astro';
+import VideoLink from '../../components/VideoLink.astro';
 ---
 
 <ContentLayout
@@ -94,6 +95,12 @@ import AuthorByline from '../../components/AuthorByline.astro';
         <p>A <code>favicon.ico</code> file can bundle several of those raster sizes (commonly 16, 32, and 48) into one container, and the browser picks whichever frame fits the context, which is why you only need one <code>&lt;link rel="icon"&gt;</code> tag for it despite covering three sizes. SVG favicons sidestep the whole table: an SVG has no fixed pixel size, so one file scales cleanly to any of the above, though older Safari and legacy browsers still need a raster fallback alongside it. This site's own setup is exactly that combination: a <code>favicon.svg</code> as the scalable source, plus a <code>favicon.ico</code> that, decoded, bundles a 48&times;48 and a 32&times;32 frame for browsers that don't read SVG favicons yet.</p>
 
         <p>One important limit on this tool specifically: PasteDownloadApp converts <strong>format</strong>. It does not resize an image's pixel dimensions. Say you need a 512&times;512 icon from the table above, but your source photo is 4000&times;3000. This tool will give you a 4000&times;3000 file in whatever format you choose, not a resized one; resize first in an image editor, then use this tool for the format and transparency step, which is what it's genuinely useful for. Here is what each use case needs, backed by a real conversion of an actual 512&times;512 app icon.</p>
+
+        <VideoLink
+            videoId="8iXHciqlAdA"
+            title="Learn HTML favicons in 2 minutes!"
+            note="A two-minute demonstration of the link tag that points a browser at your favicon file. Once you have exported the right sizes, this is the step that makes them show up in the tab."
+        />
 
         <h2>Favicons and App Icons: Transparency Is the Whole Point</h2>
 

@@ -2,6 +2,7 @@
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import RelatedGuides from '../../components/RelatedGuides.astro';
 import AuthorByline from '../../components/AuthorByline.astro';
+import VideoLink from '../../components/VideoLink.astro';
 ---
 
 <ContentLayout
@@ -19,7 +20,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
             "description": "What a JPEG or WebP quality number actually changes, shown with real before-and-after file sizes from two test conversions, not estimates.",
             "image": "https://pastedownloadapp.com/blog/image-compression-quality-settings.png",
             "datePublished": "2026-08-22T00:00:00Z",
-            "dateModified": "2026-08-22T00:00:00Z",
+            "dateModified": "2026-09-29T00:00:00Z",
             "author": {
                 "@type": "Person",
                 "name": "Kappil Yadav",
@@ -40,7 +41,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
         Image Compression Quality Settings Explained, With Real File Sizes
     </h1>
 
-    <AuthorByline publishDate="2026-08-22" />
+    <AuthorByline publishDate="2026-08-22" updatedDate="2026-09-29" />
 
     <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
         <img src="/blog/image-compression-quality-settings.png" alt="Screenshot of the paste tool showing a WebP conversion result and file size" width="1600" height="900" class="w-full aspect-[16/9] object-cover" />
@@ -55,6 +56,13 @@ import AuthorByline from '../../components/AuthorByline.astro';
         <p>For JPEG, the quality value controls how aggressively the encoder discards data during a step called chroma subsampling and DCT quantization. In plain terms, it controls how much fine detail in color and texture gets rounded away to make the file smaller. At quality 100, very little is discarded and the file is close to lossless size. At quality 50, entire bands of visual detail get flattened, and you start seeing blocky artifacts around sharp edges. WebP's lossy mode uses a conceptually similar quality scale, but a more efficient underlying codec. That is why it tends to produce smaller files than JPEG at a visually comparable quality level.</p>
 
         <p>PasteDownloadApp does not expose an adjustable quality slider. It encodes JPEG and WebP output at a fixed <strong>92%</strong> instead. That setting was chosen because compression artifacts are not visible on typical screenshots and photos at that level, and most people would not know how to tune a dial anyway. Everything below is what that fixed 92% setting actually produces.</p>
+
+        <VideoLink
+            videoId="Q2aEzeMDHMA"
+            title="JPEG DCT, Discrete Cosine Transform (JPEG Pt2)"
+            channel="Computerphile"
+            note="Mike Pound walks through the discrete cosine transform and quantization, the exact step a quality number controls. Watch this if you want to know what is being thrown away when quality goes down."
+        />
 
         <h2>Real Result 1: A Photo-Style Illustration</h2>
 
@@ -75,6 +83,36 @@ import AuthorByline from '../../components/AuthorByline.astro';
         </ul>
 
         <p>The pattern holds across both files. WebP consistently beat JPEG by roughly 55 to 60% at the same effective quality. Both formats also compressed the photo-style illustration by a much larger percentage than the text-heavy screenshot. That is because JPEG and WebP's lossy modes are fundamentally built around smoothing photographic gradients, not preserving sharp text edges.</p>
+
+        <h2>How to Spot a Quality Setting That Is Too Low</h2>
+        <p>You do not need to read a file size to know when compression went too far. Lossy formats fail in a few recognizable ways, and once you know them you will see them everywhere:</p>
+        <ul class="list-disc pl-5 space-y-1.5">
+            <li><strong>Blocking:</strong> JPEG compresses the image in 8&times;8 pixel blocks. At low quality, the edges of those blocks become visible as a faint grid, most obvious in smooth areas like skies and skin.</li>
+            <li><strong>Ringing around text:</strong> Sharp, high-contrast edges such as black text on white produce a halo of speckled noise next to each letter. This is the softening mentioned in the screenshot test above, and it gets worse quickly below about 80.</li>
+            <li><strong>Color banding:</strong> Smooth gradients break into visible stripes of flat color because fine color steps are rounded to the same value.</li>
+            <li><strong>Smeared color detail:</strong> Thin colored lines, such as red underlines or colored code syntax, look blurry or bleed into their surroundings, because color is stored at lower resolution than brightness.</li>
+        </ul>
+        <p>The quickest check is to zoom to 200% on the area with the most text or the finest detail. If it looks clean there, it will look clean at normal size.</p>
+
+        <VideoLink
+            videoId="yBX8GFqt6GA"
+            title="The Problem with JPEG"
+            channel="Computerphile"
+            note="A short explanation of why JPEG handles text and hard edges so badly, which is exactly why the screenshot in this test lost more sharpness than the illustration did."
+        />
+
+        <h2>Re-Saving a Lossy File Makes It Worse Every Time</h2>
+        <p>Lossy compression throws information away, and it cannot get it back. If you open a JPEG, make a small edit, and save it as JPEG again, the encoder compresses an image that already has artifacts, and adds new ones on top. Do that a few times and the damage becomes visible even at high quality settings. This is often called generation loss.</p>
+        <p>The practical rule is to keep one lossless master, a PNG or the original screenshot, and export a JPEG or WebP from that master whenever you need a smaller copy. Do not convert JPEG to JPEG to "optimize" it. If you only have a JPEG to start with, converting it to PNG will not restore any quality either. It just stores the existing artifacts losslessly in a much bigger file.</p>
+
+        <h2>A Simple Way to Pick a Format and Quality</h2>
+        <p>If you do not want to think about any of this, use these defaults:</p>
+        <ul class="list-disc pl-5 space-y-1.5">
+            <li><strong>Screenshot you will send or read closely:</strong> PNG. Text stays sharp, and flat UI colors compress well losslessly.</li>
+            <li><strong>Photo, banner, or anything with gradients:</strong> WebP at around 90. Much smaller than PNG and very hard to tell apart from the source.</li>
+            <li><strong>Photo that has to open everywhere, including older software:</strong> JPEG at around 90. Larger than WebP, but universally supported.</li>
+            <li><strong>Image with transparency:</strong> PNG or WebP. JPEG has no transparency, and PasteDownloadApp fills transparent areas with white when you choose it.</li>
+        </ul>
 
         <h2>Why This Means PNG Is Still Right for Some Images</h2>
 

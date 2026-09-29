@@ -2,6 +2,7 @@
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import RelatedGuides from '../../components/RelatedGuides.astro';
 import AuthorByline from '../../components/AuthorByline.astro';
+import VideoLink from '../../components/VideoLink.astro';
 ---
 
 <ContentLayout
@@ -19,7 +20,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
             "description": "Vector files and multi-resolution icons do not behave like PNG or JPG. Real test results from converting an SVG and an ICO file through a browser-based tool.",
             "image": "https://pastedownloadapp.com/blog/svg-ico-conversion-quirks.png",
             "datePublished": "2026-08-22T00:00:00Z",
-            "dateModified": "2026-08-22T00:00:00Z",
+            "dateModified": "2026-09-29T00:00:00Z",
             "author": {
                 "@type": "Person",
                 "name": "Kappil Yadav",
@@ -40,7 +41,7 @@ import AuthorByline from '../../components/AuthorByline.astro';
         SVG and ICO Quirks You Will Hit When Converting Images in a Browser
     </h1>
 
-    <AuthorByline publishDate="2026-08-22" />
+    <AuthorByline publishDate="2026-08-22" updatedDate="2026-09-29" />
 
     <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
         <img src="/blog/svg-ico-conversion-quirks.png" alt="Screenshot of PasteDownloadApp after converting this site's own favicon.svg, showing a PNG output of 54.2 KB" width="1600" height="1572" class="w-full aspect-[16/9] object-cover" />
@@ -56,11 +57,28 @@ import AuthorByline from '../../components/AuthorByline.astro';
 
         <p>I dragged this site's <code>favicon.svg</code>, a 72.8 KB vector file, straight into the drop zone. The file declares <code>width="1200" height="1200"</code> explicitly, so the browser read it at exactly 1200&times;1200. Rasterizing it to PNG produced a 54.2 KB file, exactly what the tool reported in the paste preview, not a rounded estimate. That worked cleanly because the source file was explicit about its size. Here is <strong>the quirk to watch for</strong>: an SVG that omits width, height, and viewBox will often fall back to a browser default rendering size, commonly 300&times;150. That produces a tiny, low-resolution raster output, with no warning that anything went wrong. If a converted SVG comes out blurry or oddly cropped, check whether the source file actually declares a size before assuming the converter is broken.</p>
 
+        <VideoLink
+            videoId="emFMHH2Bfvo"
+            title="SVG Explained in 100 Seconds"
+            channel="Fireship"
+            note="A fast primer on how SVG describes shapes with XML instead of storing pixels, and what the viewBox attribute does. That attribute is the one that decides how big your converted PNG comes out."
+        />
+
+        <h3>How to Get a Bigger PNG Out of an SVG</h3>
+        <p>Because the output size comes from the SVG itself, the way to get a larger, sharper PNG is to change the SVG, not the converter. Open the file in any text editor and look at the opening <code>&lt;svg&gt;</code> tag. If it has a <code>viewBox</code> such as <code>viewBox="0 0 24 24"</code> and a small <code>width</code> and <code>height</code>, raise the width and height, for example to 1024 each, and keep the viewBox as it is. The viewBox defines the drawing's coordinate system, while width and height define how many pixels it is drawn at, so the shapes scale up cleanly with no blur. Save the file and drag it into the tool again.</p>
+        <p>Keep the proportions matched. If the viewBox is wider than it is tall, set width and height in the same ratio, or the browser will add empty space around the drawing to preserve its aspect ratio.</p>
+
+        <h3>Fonts, External Images, and Other Things That Go Missing</h3>
+        <p>An SVG can reference things outside the file itself: a web font, a linked bitmap image, or a stylesheet. When a browser draws an SVG as an image, which is what any canvas conversion does, it does not load those external resources. Text set in a custom font falls back to a default font, and linked images simply do not appear. If a converted SVG is missing its text styling or a logo inside it, that is the likely cause. Design tools usually offer an export option to convert text to outlines or embed images, which makes the SVG self-contained and fixes the conversion.</p>
+
         <h2>ICO: One File, Several Images, Only One Comes Out</h2>
 
         <p>An ICO file is a container that can bundle several versions of the same icon at different resolutions, commonly 16&times;16, 32&times;32, and 48&times;48. That way, Windows and browsers can pick whichever size fits the context, a tab icon versus a taskbar icon, for example. When you load an ICO file into an <code>&lt;img&gt;</code> element or a canvas, the browser exposes exactly one of those frames, not the full set. Which one it picks is not something a script gets to choose.</p>
 
         <p>I dragged this site's <code>favicon.ico</code>, a 14.7 KB file that bundles multiple resolutions, into the same drop zone. Chromium decoded it as a single 48&times;48 image, and converting that to PNG produced a 1.7 KB file at 48&times;48, confirmed by testing both common ICO MIME types a browser or OS might report for the file. If you specifically need the 16&times;16 or 32&times;32 version out of a multi-resolution ICO, a browser-based converter cannot get it for you. It only ever sees the single frame the browser itself chose to decode, not the full set bundled in the file.</p>
+
+        <h3>Where Transparency Goes</h3>
+        <p>Icons and SVG logos usually have a transparent background. PNG and WebP keep that transparency through the conversion. JPEG cannot store transparency at all, so PasteDownloadApp fills the background with white when you choose JPEG. If you convert a white logo on a transparent background to JPEG, it will disappear into the white fill, so pick PNG or WebP for logos and icons.</p>
 
         <h2>Practical Takeaways</h2>
 

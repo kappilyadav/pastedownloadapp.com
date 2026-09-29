@@ -2,6 +2,7 @@
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import RelatedGuides from '../../components/RelatedGuides.astro';
 import AuthorByline from '../../components/AuthorByline.astro';
+import VideoLink from '../../components/VideoLink.astro';
 ---
 
 <ContentLayout
@@ -80,6 +81,13 @@ import AuthorByline from '../../components/AuthorByline.astro';
         </figure>
 
         <p>PNG came back at <strong>1.3 MB</strong>. Switching the format dropdown to JPEG on that same image brought it down to <strong>172.1 KB</strong>, an 87% reduction. Switching again to WebP took it to <strong>108.4 KB</strong>, 92% smaller than the PNG and roughly 37% smaller than the JPEG of the identical image. That gap is wider than you would see on a plain UI screenshot with large flat-color areas, because gradient-and-noise content behaves more like a photo, and PNG's lossless compression handles photographic detail far worse than JPEG or WebP's lossy encoding does.</p>
+
+        <VideoLink
+            videoId="yBX8GFqt6GA"
+            title="The Problem with JPEG"
+            channel="Computerphile"
+            note="Explains why JPEG blurs text and hard edges, which is the main thing to watch for when you convert a screenshot of a document or an app to JPG instead of PNG."
+        />
 
         <h2>Switching Formats After Pasting Re-Downloads Automatically</h2>
 
