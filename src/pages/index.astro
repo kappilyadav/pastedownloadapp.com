@@ -3,7 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import PasteZone from '../components/PasteZone.astro';
 import Features from '../components/Features.astro';
-import HowItWorks from '../components/HowItWorks.astro';
+import HowToSteps from '../components/HowToSteps.astro';
+import UseCases from '../components/UseCases.astro';
+import FormatGuide from '../components/FormatGuide.astro';
+import Troubleshooting from '../components/Troubleshooting.astro';
 import Footer from '../components/Footer.astro';
 import { latestArticles } from '../data/articles';
 
@@ -174,53 +177,24 @@ const newestArticles = [...latestArticles].sort(
       <Features />
     </section>
 
-    <!-- How It Works -->
+    <!-- How to use -->
     <section class="mb-12 sm:mb-20 scroll-mt-14 sm:scroll-mt-24">
-      <HowItWorks />
+      <HowToSteps />
     </section>
-    <!-- SEO Content -->
+
+    <!-- Real-life examples -->
     <section class="mb-12 sm:mb-20 scroll-mt-14 sm:scroll-mt-24">
-      <div class="rounded-xl bg-canvas border border-hairline px-5 sm:px-10 py-8 sm:py-12">
-        <h2 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-6 leading-tight text-balance">
-          Paste Download for Clipboard Images, Photos, and Screenshots
-        </h2>
+      <UseCases />
+    </section>
 
-        <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-8 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
-          <p>
-            PasteDownloadApp (PasteDownload for short) is a focused workspace for getting an image off your clipboard and onto your disk as a file. Copy something (a screenshot, a design mockup, a chart from a meeting), open this page, press Ctrl+V or Cmd+V, and the browser reads the image data, shows you a preview with its dimensions and size, and lets you save it as PNG, JPEG, or WebP without sending anything to a server. If you want a slower walkthrough of that same flow, read <a href="/blog/save-clipboard-image-without-software/">saving clipboard images without extra software</a>.
-          </p>
+    <!-- Format guide -->
+    <section class="mb-12 sm:mb-20 scroll-mt-14 sm:scroll-mt-24">
+      <FormatGuide />
+    </section>
 
-          <h3>From Your Clipboard</h3>
-          <p>
-            Once you paste, the tool shows exact dimensions and file size before you commit to a format, and the <a href="/blog/png-vs-jpg-vs-webp/">PNG, JPG, and WebP comparison</a> is worth reading if you are not sure which one to pick. If you prefer a hands-free flow, the Auto-download toggle converts and saves each pasted image the moment it lands, which is the fastest way to get through several screenshots in a row, covered in more depth in <a href="/blog/convert-multiple-screenshots-fast/">converting several screenshots fast</a>. Mac users routing a copied image around Photos can follow the dedicated <a href="/blog/download-copied-image-mac/">Mac clipboard guide</a>; Windows users coming from Print Screen or Snipping Tool have their own <a href="/blog/save-screenshot-as-file-windows/">Windows screenshot guide</a>.
-          </p>
-          <p>
-            Not every browser handles a clipboard paste the same way. If Ctrl+V does nothing, or a button labeled Access Clipboard stays unresponsive, that is a real, documented difference between browsers rather than a bug on this page: see <a href="/blog/clipboard-paste-chrome-firefox-safari/">why Chrome, Firefox, and Safari behave differently</a> and <a href="/blog/access-clipboard-not-working/">why Access Clipboard fails</a> for the specific causes and fixes.
-          </p>
-
-          <h3>On Mobile</h3>
-          <p>
-            The tool works the same way in a mobile browser, though the permission model behind clipboard access differs by OS. Android and iOS handle the "Access Clipboard" permission differently enough that it is worth reading if something does not work as expected: see <a href="/blog/mobile-clipboard-android-vs-ios/">clipboard images on Android vs iPhone</a>.
-          </p>
-
-          <h3>Why It Stays Private</h3>
-          <p>
-            Clipboard images are read with the browser's <a href="https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API" target="_blank" rel="noopener noreferrer">Clipboard API</a> and converted with the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API" target="_blank" rel="noopener noreferrer">Canvas API</a>, both running entirely on your device. Nothing is uploaded, there is no account, and there is no limit on how many times you can use it:
-          </p>
-          <ul class="list-disc pl-5 space-y-1.5 text-body">
-            <li><strong>Privacy-first:</strong> images are processed in your browser and never sent to our servers.</li>
-            <li><strong>No sign-ups:</strong> nothing to register before you start.</li>
-            <li><strong>Format conversion:</strong> PNG, JPEG, and WebP, chosen with a real quality tradeoff explained in <a href="/blog/image-compression-quality-settings/">how compression quality actually works</a>.</li>
-            <li><strong>Unlimited use:</strong> no caps, no watermarks, no hidden fees.</li>
-            <li><strong>Cross-platform:</strong> Windows, Mac, Linux, Android, and iOS.</li>
-          </ul>
-
-          <h3>Get Started</h3>
-          <p>
-            No installation or account is required. Paste an image, pick a format, and save the file.
-          </p>
-        </div>
-      </div>
+    <!-- Troubleshooting -->
+    <section class="mb-12 sm:mb-20 scroll-mt-14 sm:scroll-mt-24">
+      <Troubleshooting />
     </section>
 
     <!-- FAQ -->

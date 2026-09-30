@@ -1,0 +1,47 @@
+---
+const fixes = [
+  {
+    problem: 'Ctrl+V does nothing',
+    fix: 'Check that you copied the picture and not a link or a file path. Click inside the paste box first so it has focus, then paste again.',
+    href: '/blog/access-clipboard-not-working/',
+    linkText: 'Why Access Clipboard fails and how to fix it'
+  },
+  {
+    problem: 'The Access Clipboard button does not respond',
+    fix: 'Your browser may be blocking clipboard reads for this site. Allow the permission prompt, or paste with the keyboard instead. Chrome, Firefox, and Safari differ here.',
+    href: '/blog/clipboard-paste-chrome-firefox-safari/',
+    linkText: 'How each browser handles clipboard paste'
+  },
+  {
+    problem: 'It does not work on my phone',
+    fix: 'Mobile browsers ask for permission differently. Android and iPhone each need their own steps, and saving from the gallery is the fallback.',
+    href: '/blog/mobile-clipboard-android-vs-ios/',
+    linkText: 'Android vs iPhone clipboard behavior'
+  },
+  {
+    problem: 'The PNG came out bigger than my original',
+    fix: 'The browser re-encodes the image and its PNG encoder is less aggressive than a dedicated optimizer. Choose WebP or JPEG to shrink the file.',
+    href: '/blog/why-png-reencode-bigger/',
+    linkText: 'Why re-encoded PNGs get bigger'
+  }
+];
+---
+
+<section id="troubleshooting" class="w-full">
+  <div class="rounded-xl bg-canvas border border-hairline px-5 sm:px-10 py-8 sm:py-12">
+    <p class="text-mute text-xs font-medium uppercase tracking-widest m-0">Troubleshooting</p>
+    <h2 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-3 mb-6 leading-tight">
+      When something does not work
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {fixes.map((item) => (
+        <div class="rounded-xl border border-hairline bg-canvas-soft p-5 flex flex-col">
+          <h3 class="text-ink text-base font-semibold tracking-tight m-0 leading-tight">{item.problem}</h3>
+          <p class="text-body text-sm sm:text-base leading-relaxed mt-2 mb-0">{item.fix}</p>
+          <p class="mt-auto pt-4 mb-0"><a href={item.href} class="text-link text-sm underline underline-offset-2 decoration-link/30 hover:decoration-link transition-colors">{item.linkText}</a></p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
