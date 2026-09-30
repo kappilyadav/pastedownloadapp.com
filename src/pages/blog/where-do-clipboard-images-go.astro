@@ -67,6 +67,55 @@ import VideoLink from '../../components/VideoLink.astro';
         <img src="/blog/where-do-clipboard-images-go.webp" alt="Screenshot of the paste tool in its default empty state, showing the Paste image here and Access Clipboard prompt" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
     </figure>
 
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Where do screenshots go on Mac?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The Desktop by default, unless the save location was changed in the Cmd+Shift+5 options bar, or Control was held with the capture shortcut, which sends it to the clipboard instead of saving a file at all."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Where do screenshots go on Windows?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Only Win+PrtScn saves a file automatically, to Pictures\\Screenshots. Plain PrtScn, Alt+PrtScn, and Win+Shift+S all leave the capture on the clipboard only, unless you save it manually or enable Snipping Tool's auto-save setting."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why can't I find a screenshot I know I took?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Check whether the shortcut you used copies to the clipboard or saves a file. On Windows, plain PrtScn and Alt+PrtScn never save a file. On Mac, adding Control to the usual screenshot shortcut switches it to clipboard-only. If you used one of those, the image may still be recoverable from the clipboard if you have not copied anything else since."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I recover a clipboard image after restarting my device?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Generally no. The clipboard is stored in memory, not on disk, so restarting clears it on every platform covered here. If the image mattered, the only fix going forward is saving it as a file before you close the app or restart."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does changing my screenshot save location fix this?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "It fixes it for screenshots taken with your platform's screenshot shortcut. Those already save a file, just possibly to a folder you would not think to check. It does not change anything about images you copy manually, though, since those were never going to be saved as a file in the first place."
+                }
+            }
+        ]
+    }
+    </script>
+
     <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
         Where Do Screenshots Go? Mac, Windows, Android, and iPhone
     </h1>

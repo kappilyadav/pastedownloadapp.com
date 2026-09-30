@@ -67,6 +67,39 @@ import VideoLink from '../../components/VideoLink.astro';
         <img src="/blog/why-png-reencode-bigger.webp" alt="Screenshot of the paste tool showing a re-encoded PNG result" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
     </figure>
 
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Does this mean PNG compression is broken in the browser?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No, it is working correctly. It is just optimized for encoding speed rather than minimum file size. The output is still a fully valid, lossless PNG. It is simply less aggressively compressed than a file that went through a dedicated optimizer."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Will converting the same PNG twice make it even bigger the second time?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. Once an image has been decoded and re-encoded by the same encoder, with the same settings, a second round trip through canvas.toBlob will not shrink it further. It produces an equivalent-sized file, since there is no more prior third-party optimization left to lose."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is there a way to get a smaller PNG out of a browser-based tool?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Not through canvas.toBlob alone. Getting PNG file sizes down to what a dedicated optimizer produces requires a purpose-built compression library. That is a meaningfully heavier piece of code than a simple paste-and-convert tool. If PNG size matters more than format, a dedicated PNG optimizer is the right tool for that specific job."
+                }
+            }
+        ]
+    }
+    </script>
+
     <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
         Why Re-Saving a PNG Can Make the File Bigger, Not Smaller
     </h1>

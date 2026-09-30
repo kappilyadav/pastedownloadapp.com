@@ -67,6 +67,63 @@ import VideoLink from '../../components/VideoLink.astro';
         <img src="/blog/image-for-favicon-social-resume.webp" alt="Screenshot of an app icon converted to WebP with transparency preserved" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
     </figure>
 
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is the favicon size?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "There isn't one. Browsers use 16×16 or 32×32, Google's search results display 48×48, Apple Touch Icons for iOS are 180×180, and Android/PWA manifests want 192×192 and 512×512. A single favicon.ico can bundle the smaller raster sizes; an SVG favicon covers all of them with one scalable file."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What size favicon does Google use in search results?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "48×48 pixels. If your favicon looks fine in a browser tab but pixelated or oddly cropped in Google's search results, the 48×48 frame is likely missing or was never included in your favicon.ico."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do I need a separate icon for iPhone home screens?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. iOS uses a 180×180 apple-touch-icon.png rather than the regular favicon, and unlike other favicon sizes it needs an opaque background: iOS does not composite transparency at all and fills any transparent pixels with solid black. Leave roughly 20px of padding around the artwork too, since iOS applies its own rounded-corner mask on top and can clip anything flush with the edge."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can this tool resize my image to exact favicon dimensions?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. It converts format but keeps the original pixel dimensions. If your source image is not already close to the target size, resize it first in an image editor, then convert the format here if needed."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why does my icon look fine in the browser but broken when I use it elsewhere?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "This is almost always a lost-transparency issue from converting to JPEG at some point in the pipeline. Check that every step, including any tool you used before this one, kept the file as PNG or WebP."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is WebP safe to use for a resume upload?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Only if you know the receiving system accepts it. Many older upload forms and applicant tracking systems only recognize JPEG and PNG. WebP is a bigger compatibility risk in that specific context than it is for a website."
+                }
+            }
+        ]
+    }
+    </script>
+
     <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
         Favicon Size Guide: Every Size You Actually Need
     </h1>

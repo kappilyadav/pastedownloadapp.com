@@ -67,6 +67,47 @@ import VideoLink from '../../components/VideoLink.astro';
         <img src="/blog/paste-image-to-search.webp" alt="Screenshot of PasteDownloadApp with a pasted 1200 by 900 lighthouse illustration, ready to save as a file before running a reverse image search" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
     </figure>
 
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Can I paste a screenshot directly into Google to search it?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Open Google Images, click the camera icon, and press Ctrl+V or Cmd+V while the upload panel is open. The screenshot must be on your clipboard as an image, which means taking it with a copy-to-clipboard shortcut or copying it from wherever it is displayed."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why does Google search for text when I paste an image?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You pasted into the main search box rather than the image panel, or your clipboard held text such as an image URL. Click the camera icon first, then paste."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is reverse image search free?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Google Lens, Bing Visual Search, and TinEye's standard search are all free to use. TinEye sells paid plans for high-volume and commercial use."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I search with an image on a website that blocks right-clicking?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Take a screenshot of the area with a copy-to-clipboard shortcut and paste that, or use Chrome's Search with Google Lens option to select that part of the screen."
+                }
+            }
+        ]
+    }
+    </script>
+
     <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
         How to Paste an Image to Search on Google, Bing, and TinEye
     </h1>

@@ -67,6 +67,39 @@ import VideoLink from '../../components/VideoLink.astro';
         <img src="/blog/paste-screenshot-into-email-attachment.webp" alt="Screenshot of the paste tool with an image pasted in, showing its dimensions, file size, and the Download button" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
     </figure>
 
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Why does my pasted screenshot show up as a tiny broken icon instead of a picture?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "This usually happens when the mail client expected a file reference but received raw clipboard data it could not resolve. It often shows up after a message is saved as a draft and reopened. Downloading the image as a file and attaching it directly avoids the issue entirely."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does this work the same way in webmail clients other than Gmail and Outlook?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Most modern webmail clients, including Yahoo Mail and iCloud Mail, support pasting an image inline in the same way. The distinction between an inline paste and a true attachment still applies. So the same fix, downloading the image first, works everywhere."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Will converting the image to JPEG instead of PNG make the email smaller?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Usually yes, for photographic screenshots with lots of color detail. PNG stays smaller for screenshots that are mostly flat UI and text, though. PasteDownloadApp lets you choose the format before downloading, so you can pick whichever produces a smaller attachment for your image."
+                }
+            }
+        ]
+    }
+    </script>
+
     <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
         How to Turn a Pasted Screenshot Into an Email Attachment
     </h1>

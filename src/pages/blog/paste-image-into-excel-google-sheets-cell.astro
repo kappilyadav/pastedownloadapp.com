@@ -67,6 +67,47 @@ import VideoLink from '../../components/VideoLink.astro';
         <img src="/blog/paste-image-into-excel-google-sheets-cell.webp" alt="Screenshot of PasteDownloadApp with a pasted illustration of a blue mug, set to JPEG and ready to download as a file for a spreadsheet cell" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
     </figure>
 
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Can I sort and filter rows that contain pictures?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, if the pictures are in-cell pictures. They behave like any other cell value and move with their rows. Floating pictures only follow along in Excel if they are set to Move and size with cells and sit fully inside one cell."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I put text and a picture in the same cell?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Not in Google Sheets, where a cell holds one or the other. In Excel, an in-cell picture is the cell's value, so the practical answer is also no. Use a neighboring cell for the label."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does this work in Excel on a Mac?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Microsoft 365 for Mac includes Place in Cell and the IMAGE function. The paste command is under the same Paste menu, and Cmd+V still creates a floating picture by default."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Will the pictures still be there if I download the Google Sheet as an Excel file?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Pictures inserted with Insert image in cell are generally carried over when you download a Sheet as .xlsx, but results depend on which version of Excel opens the file. Check the downloaded copy before you delete the original."
+                }
+            }
+        ]
+    }
+    </script>
+
     <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
         How to Paste an Image Into an Excel Cell or Google Sheets
     </h1>
