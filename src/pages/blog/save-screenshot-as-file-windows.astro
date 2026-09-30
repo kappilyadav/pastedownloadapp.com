@@ -67,6 +67,71 @@ import VideoLink from '../../components/VideoLink.astro';
         <img src="/blog/save-screenshot-as-file-windows.webp" alt="Minimal desktop illustration showing a Windows screenshot moving from clipboard to a downloaded file" width="836" height="471" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
     </figure>
 
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Does Windows save screenshots as files automatically?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Only some of them. Win+PrtScn does, saving a full-screen PNG to Pictures > Screenshots automatically. PrtScn alone and Win+Shift+S do not, unless you enable Snipping Tool's auto-save setting or manually save from the notification it shows after a capture."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I make every screenshot save automatically on Windows 11?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Open Snipping Tool, go to Settings, and turn on auto-save. Every capture, including region and window snips from Win+Shift+S, then saves to Pictures > Screenshots without you clicking anything further."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I save a screenshot as a PNG without Paint?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Copy your screenshot to the clipboard, open pastedownloadapp.com, paste with Ctrl+V, and choose PNG before clicking Download."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I save a clipboard image that isn't a screenshot?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Any image in your clipboard, whether from a web page, a document, or a copied photo, can be pasted and saved the same way."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does pastedownloadapp.com work in incognito or private mode?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. The tool runs entirely in the browser tab. Nothing is uploaded to a server, so it works in private or incognito mode on Chrome, Firefox, Edge, and Safari."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why does my screenshot include both monitors when I only wanted one?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "PrtScn and Win+PrtScn always capture your full virtual desktop across every connected display, not just one monitor. Use Alt+PrtScn to capture only the active window instead, or Win+Shift+S to drag a custom selection."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Where do saved screenshots actually go on Windows?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Files saved automatically, or through Snipping Tool, land in Pictures > Screenshots by default. For the fuller picture of where clipboard-only captures live before you save them, and how that differs by OS, see where clipboard images and screenshots actually go."
+                }
+            }
+        ]
+    }
+    </script>
+
     <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
         How to Save a Screenshot Directly as a File (Without Opening MS Paint)
     </h1>

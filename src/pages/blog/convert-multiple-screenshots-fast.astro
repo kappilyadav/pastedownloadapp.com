@@ -67,6 +67,63 @@ import VideoLink from '../../components/VideoLink.astro';
         <img src="/blog/convert-multiple-screenshots-fast.webp" alt="Screenshot of the paste tool with Auto-download enabled and a converted file size shown" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
     </figure>
 
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How do I convert a screenshot to JPG?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Copy the screenshot to your clipboard, paste it into pastedownloadapp.com with Ctrl+V, and switch the format dropdown to JPEG. It downloads automatically if Auto-download is checked, or with one click on Download otherwise. No install, no upload."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I select multiple files at once in the drop zone?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. The drop zone reads one file per drop or paste. If you drag multiple files at once, only the first one in the selection is processed."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Will Auto-download trigger a \"multiple downloads\" browser warning?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Chrome and Firefox may show a one-time prompt asking whether to allow a site to trigger several downloads in a row. Allowing it for the session removes the prompt for subsequent pastes."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does changing the format mid-session affect files I already downloaded?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "It depends on whether the pasted image is still in the preview. If you have clicked Clear, format changes only affect your next paste and nothing already saved. If you have not clicked Clear, changing the format re-converts and re-downloads the image currently in the preview, in the new format, immediately, as shown above. That is easy to miss if you are clicking through formats quickly."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do fast, back-to-back pastes ever produce duplicate filenames?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, if two pastes land within the same second, since the timestamp in the filename only has one-second resolution. Chrome and Firefox both detect the collision automatically and append (1), (2), and so on to keep the files from overwriting each other, so this is a cosmetic issue rather than a data-loss risk."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does converting to JPEG lose transparency?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, always. JPEG has no alpha channel, so the tool fills any transparent area with solid white before encoding. Use PNG or WebP instead if transparency matters for the file."
+                }
+            }
+        ]
+    }
+    </script>
+
     <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
         How to Convert a Screenshot to JPG (or PNG or WebP)
     </h1>

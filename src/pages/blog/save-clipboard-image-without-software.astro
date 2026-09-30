@@ -67,6 +67,63 @@ import VideoLink from '../../components/VideoLink.astro';
         <img src="/blog/save-clipboard-image-without-software.webp" alt="Browser and clipboard illustration showing copied images flowing into a downloadable file" width="836" height="471" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
     </figure>
 
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Can Windows File Explorer really not paste an image as a file?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Correct, not without extra software. Explorer's Ctrl+V only pastes copied files, never raw clipboard image data. Microsoft's own PowerToys utilities, or a similar third-party tool, add the \"paste as file\" right-click option some guides describe as if it were built in."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does pasting an image into Gmail or Google Docs reduce its quality?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Gmail can, if the image is inline in the message body rather than a true attachment: the composer's display setting resizes inline images. Attachments are untouched. Google Docs does not compress on its own but caps embedded images around 2000×2000 pixels, silently downscaling anything larger the moment you paste it in."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I save clipboard images on my phone?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. On Android, long-press an image and tap \"Copy image,\" then open pastedownloadapp.com in Chrome and paste. On iPhone, copy an image from Safari or Photos, then paste into the same tool."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is it safe to paste images into a browser tool?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, as long as the tool processes on the client side rather than uploading to a server. PasteDownloadApp's conversion runs through the browser's Canvas API locally; the image never leaves your device."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What image formats can I paste and save?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The clipboard typically stores PNG image data, though some apps copy JPEG. The tool reads whatever format your clipboard holds and lets you download the result as PNG, JPEG, or WebP regardless of the source format."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why not just paste into Paint or Preview?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You can, and it works, but it adds friction: open the app, paste, choose Save As or Export, pick a format and folder, name the file. A browser tab you already have open skips all of that."
+                }
+            }
+        ]
+    }
+    </script>
+
     <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
         5 Faster Ways to Save Clipboard Images (No Software Install Needed)
     </h1>

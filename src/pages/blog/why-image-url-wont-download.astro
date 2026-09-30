@@ -67,6 +67,39 @@ import VideoLink from '../../components/VideoLink.astro';
         <img src="/blog/why-image-url-wont-download.webp" alt="Screenshot of the discontinued URL download tool with an image URL entered and its preview loaded" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
     </figure>
 
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Is this a bug in PasteDownloadApp?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. CORS and hotlink protection are enforced by the image's own server and by browser security rules. Those rules apply to any website attempting the same thing, not just this tool. The proxy fallback existed specifically to work around the more common of the two. A properly configured hotlink block, though, is designed to survive exactly that kind of workaround."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why does the image show a preview but then fail to download?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A plain <img> tag can often display an image that CORS still blocks a script from reading. Displaying and re-encoding are different operations with different permission requirements. That is why it was possible to see a preview and still hit a failure at the download step."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I fix this myself if I own the image's server?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Adding an Access-Control-Allow-Origin header for the domains you want to support resolves the CORS side. Loosening or removing a Referer check resolves hotlink protection. That second fix, though, reopens the exact bandwidth concern the protection was meant to solve."
+                }
+            }
+        ]
+    }
+    </script>
+
     <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
         Why Some Image URLs Won't Download Directly
     </h1>

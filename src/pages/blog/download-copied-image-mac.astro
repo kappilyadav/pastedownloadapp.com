@@ -67,6 +67,63 @@ import VideoLink from '../../components/VideoLink.astro';
         <img src="/blog/download-copied-image-mac.webp" alt="Minimal laptop illustration showing a copied image being saved as a file on Mac" width="836" height="471" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
     </figure>
 
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Why is my copied Mac image a TIFF instead of a PNG?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Because macOS's clipboard stores copied images as TIFF by default, and it is up to whatever app you paste into to request a different format. Preview's Export dialog lets you choose PNG explicitly; a browser-based tool converts it to PNG automatically, since that is the format the web Clipboard API guarantees."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why is \"New from Clipboard\" greyed out in Preview?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "It means Preview does not currently see image data on the clipboard, usually because the copy did not succeed or something else, like text, was copied afterward. Re-copy the picture and try again."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does copying a picture on a Mac save it to Photos?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. Copying, with Cmd+C or right-click Copy Image, only puts the picture on the clipboard. Nothing is saved to Photos or your Desktop until you paste it somewhere and save that result yourself."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why does \"Copy Image\" not appear when I right-click a picture?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The site has disabled right-click context menus or is serving the image as a CSS background rather than a normal image element. A clipboard-targeted screenshot (Control+Cmd+Shift+4) works around it."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is there a Cmd+V shortcut to save an image directly to a file on Mac?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Not natively; macOS has no built-in paste-to-file command. With pastedownloadapp.com open, Cmd+V pastes the clipboard image into the tool and one click downloads it, which is the closest equivalent available."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does pastedownloadapp.com store my images?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. Conversion happens entirely in your browser. Images never leave your device, and nothing is uploaded to a server."
+                }
+            }
+        ]
+    }
+    </script>
+
     <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
         How to Copy a Picture on a Mac and Save It as a File
     </h1>

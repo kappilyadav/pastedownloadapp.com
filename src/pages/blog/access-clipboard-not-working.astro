@@ -67,6 +67,39 @@ import VideoLink from '../../components/VideoLink.astro';
         <img src="/blog/access-clipboard-not-working.webp" alt="Screenshot of the paste tool showing the Access Clipboard button in its default state" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
     </figure>
 
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Is there a way to see exactly why the read call failed?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Only through the browser's developer console, which will usually log a NotAllowedError with a short reason. Right-click the page, choose Inspect, and check the Console tab after clicking Access Clipboard to see the underlying error."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does using a VPN or ad blocker affect clipboard access?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A VPN has no effect, since this is a browser permission, not a network request. Some aggressive privacy extensions do block the Async Clipboard API outright, so if the button fails on every site, try disabling extensions one at a time."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why does the same button work on one site but not another?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Clipboard permission is granted per site, not globally. Even within the same browser, you may have granted access on one domain and not another, or the other site may not have requested it correctly in the first place."
+                }
+            }
+        ]
+    }
+    </script>
+
     <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
         Why "Access Clipboard" Fails, and How to Fix It
     </h1>

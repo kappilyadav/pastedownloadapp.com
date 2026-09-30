@@ -67,6 +67,39 @@ import VideoLink from '../../components/VideoLink.astro';
         <img src="/blog/clipboard-paste-chrome-firefox-safari.webp" alt="Screenshot of the paste download tool used to test clipboard behavior across browsers" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
     </figure>
 
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Does PasteDownloadApp work in Safari?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Paste with Cmd+V and it works the same as Chrome. The Access Clipboard button is less reliable in Safari because of its stricter gesture rules, so the keyboard shortcut is the better option there."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why does Firefox ask a different permission question than Chrome?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The two browsers use different underlying permission models for the Async Clipboard API. Firefox has historically treated arbitrary clipboard reads as more sensitive than Chrome does. That shows up as stricter prompts, or a feature flag on older versions."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is drag and drop affected by these differences?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. Drag and drop uses the DataTransfer interface, which is a separate, older API with consistent support across Chrome, Firefox, and Safari. If clipboard paste is giving you trouble, dragging a file into the drop zone is a reliable fallback."
+                }
+            }
+        ]
+    }
+    </script>
+
     <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
         Why Clipboard Image Paste Behaves Differently in Chrome, Firefox, and Safari
     </h1>

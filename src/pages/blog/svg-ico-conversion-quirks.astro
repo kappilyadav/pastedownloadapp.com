@@ -67,6 +67,39 @@ import VideoLink from '../../components/VideoLink.astro';
         <img src="/blog/svg-ico-conversion-quirks.webp" alt="Screenshot of PasteDownloadApp after converting this site's own favicon.svg, showing a PNG output of 54.2 KB" width="1600" height="1572" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
     </figure>
 
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Can PasteDownloadApp convert a PNG into an SVG?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. SVG is vector data, and there is no reliable automatic process for turning arbitrary pixels back into vector shapes. Canvas-based tools, this one included, can only rasterize vector formats into pixels, not the other way around."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why did my converted SVG come out as a tiny, blank-looking image?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The source SVG almost certainly did not declare a width, height, or viewBox. That is why the browser rasterized it at a small default size. Check the SVG's XML for those attributes, or open it in an editor that can add them."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does the same size-selection quirk affect other multi-frame formats?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Animated GIFs have a related issue: canvas conversion captures a single frame, not the animation. If you need to keep an image moving, converting it to PNG, JPEG, or WebP through a canvas-based tool is not the right approach."
+                }
+            }
+        ]
+    }
+    </script>
+
     <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
         SVG and ICO Quirks You Will Hit When Converting Images in a Browser
     </h1>

@@ -67,6 +67,71 @@ import VideoLink from '../../components/VideoLink.astro';
         <img src="/blog/png-vs-jpg-vs-webp.webp" alt="Three abstract image file cards representing PNG transparency, JPG photos, and WebP compression" width="836" height="471" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
     </figure>
 
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Is WebP better quality than PNG?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "It depends. WebP lossless is comparable to PNG in quality but produces smaller files. WebP lossy can match JPG quality at lower file sizes. If you are optimizing for the web, WebP often wins on both quality and size."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is WebP better than JPG?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "For web pages, WebP is often better than JPG because it can create smaller files at similar visual quality. For older apps, photo archives, and maximum compatibility, JPG is still a safe choice."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is WebP lossless better than PNG?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "WebP lossless can be smaller than PNG while preserving image detail, but PNG remains easier to edit and widely supported across older tools. Use WebP lossless for web delivery and PNG for source screenshots or graphics."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I convert PNG to JPG without losing transparency?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. JPG does not support transparent pixels. When you convert png to jpg online, transparent areas will be filled with a solid color (usually white). If you need transparency, stick with PNG or use WebP."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "PNG or JPG for printing?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "PNG, if the source allows it. Print workflows generally want the highest-fidelity source available, and PNG's lossless compression means no generational quality loss going into a print RIP. JPG at a high quality setting (95%+) is an acceptable substitute when PNG is not available, since the visible difference at that quality level is minimal for most printed photos."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does converting between formats reduce image quality?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Going from lossless PNG to lossy JPG or WebP lossy will reduce quality permanently. Converting lossy to lossless does not restore lost data. Always keep your original if you might need it later."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which image format loads fastest on a website?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "WebP generally loads fastest thanks to its smaller file size, which means less data to download. JPG is next, and PNG loads slowest for large images, consistent with the roughly 30% average size reduction Google's own WebP study reports across formats."
+                }
+            }
+        ]
+    }
+    </script>
+
     <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
         PNG vs JPG vs WebP: Real File Sizes Compared
     </h1>

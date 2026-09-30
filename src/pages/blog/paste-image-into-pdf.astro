@@ -67,6 +67,47 @@ import VideoLink from '../../components/VideoLink.astro';
         <img src="/blog/paste-image-into-pdf.webp" alt="Screenshot of PasteDownloadApp with a pasted 1200 by 500 signature image, ready to download as a PNG file for placing into a PDF" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
     </figure>
 
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Why does Cmd+V do nothing when I paste an image into a PDF in Preview?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Preview only accepts a paste of an object it created itself. Open the image in Preview, select all, copy, paste it onto itself, copy again, and then paste into the PDF. The steps above walk through it in order."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I paste an image into a PDF for free on Windows?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Windows does not include a PDF editor that places images. Microsoft Word, if you have it, is the most practical route. Otherwise you need a PDF editor, either a desktop app or an online one. Be careful with online editors for sensitive documents, since the whole PDF is uploaded to their servers."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Will the pasted image show up for everyone who opens the PDF?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Annotations and page content are both saved in the file and display in any standard PDF viewer, including browsers. The difference is only in how easily someone else can move or remove the image."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why did my PDF get so much bigger after adding one image?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The image was probably far larger in pixels than it appears on the page, or saved as PNG when it is a photo. Resize it and save it as JPEG before adding it, and the PDF will stay close to its original size."
+                }
+            }
+        ]
+    }
+    </script>
+
     <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
         How to Paste an Image Into a PDF on Mac or Windows
     </h1>

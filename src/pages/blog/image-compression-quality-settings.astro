@@ -67,6 +67,39 @@ import VideoLink from '../../components/VideoLink.astro';
         <img src="/blog/image-compression-quality-settings.webp" alt="Screenshot of the paste tool showing a WebP conversion result and file size" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
     </figure>
 
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Can I set a custom quality percentage in PasteDownloadApp?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Not currently. The tool uses a fixed 92% quality for JPEG and WebP output, chosen to avoid visible artifacts without needing a setting most people would not know how to adjust."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does a higher quality number always mean a bigger file?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Generally yes, for the same image and format, but the relationship is not linear. Going from 92% to 100% typically adds far more file size than it improves visible quality. That is why most encoders default somewhere in the low-to-mid 90s rather than 100."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why did WebP lossless produce a bigger file than WebP lossy in my testing elsewhere?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Lossless modes preserve every pixel exactly, the same tradeoff PNG makes. That is why they are usually larger than lossy output at a high quality setting. WebP's advantage over PNG shows up more in lossy mode than lossless mode for photographic content."
+                }
+            }
+        ]
+    }
+    </script>
+
     <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
         Image Compression Quality Settings Explained, With Real File Sizes
     </h1>
