@@ -14,10 +14,10 @@ import { categories, latestArticles } from '../../data/articles';
     }
   </script>
 
-  <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight text-balance">
+  <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
     Categories
   </h1>
-  <p class="text-body text-base sm:text-[17px] leading-relaxed mb-8 max-w-2xl">
+  <p class="text-body text-base sm:text-[17px] leading-relaxed mb-8">
     Every guide on the blog is written to solve one specific problem, whether that is a clipboard permission error, a format decision, or a platform quirk you just ran into. Browsing by category is the fastest way to find guides about the same kind of problem instead of scanning the full blog index for the right one. Jump to a topic below, or read the full <a href="/blog/" class="text-link underline underline-offset-2 decoration-link/30 hover:decoration-link transition-colors">blog index</a> if you would rather browse everything at once.
   </p>
 
@@ -31,7 +31,7 @@ import { categories, latestArticles } from '../../data/articles';
     {categories.map((category) => (
       <section id={category.slug} class="scroll-mt-20">
         <h2 class="text-ink text-lg sm:text-xl font-semibold tracking-tight mt-0 mb-1 leading-tight">{category.label}</h2>
-        <p class="text-mute text-sm leading-relaxed mb-5 max-w-2xl">{category.description}</p>
+        <p class="text-mute text-sm leading-relaxed mb-5">{category.description}</p>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {latestArticles.filter((article) => article.category === category.slug).map((article) => (
             <ArticleCard href={article.href} image={article.image} alt={article.alt} title={article.title} description={article.description} />
@@ -41,7 +41,7 @@ import { categories, latestArticles } from '../../data/articles';
     ))}
   </div>
 
-  <p class="text-body text-base sm:text-[17px] leading-relaxed mt-14 pt-6 border-t border-hairline max-w-2xl">
+  <p class="text-body text-base sm:text-[17px] leading-relaxed mt-14 pt-6 border-t border-hairline">
     Can't find a guide for the problem you're running into? <a href="/contact/" class="text-link underline underline-offset-2 decoration-link/30 hover:decoration-link transition-colors">Let us know</a> and it may become the next one.
   </p>
 </ContentLayout>
