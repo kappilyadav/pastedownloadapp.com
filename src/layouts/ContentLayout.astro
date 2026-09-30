@@ -16,9 +16,10 @@ export interface Props {
   noindex?: boolean;
   imageUrl?: string;
   breadcrumbs?: { name: string; href?: string }[];
+  wide?: boolean;
 }
 
-const { title, description, canonicalUrl, noindex = false, imageUrl = 'https://pastedownloadapp.com/og-image.png', breadcrumbs } = Astro.props;
+const { title, description, canonicalUrl, noindex = false, imageUrl = 'https://pastedownloadapp.com/og-image.png', breadcrumbs, wide = false } = Astro.props;
 
 const breadcrumbJsonLd = breadcrumbs
   ? JSON.stringify({
@@ -138,7 +139,7 @@ const breadcrumbJsonLd = breadcrumbs
   <body class="min-h-screen">
     <Header />
     <main class="mx-auto max-w-[1400px] px-4 sm:px-6 pt-12 pb-20 sm:pt-16 sm:pb-28">
-      <div class="max-w-3xl mx-auto">
+      <div class={`${wide ? 'max-w-6xl' : 'max-w-3xl'} mx-auto`}>
         {breadcrumbs && <Breadcrumbs items={breadcrumbs} />}
         <article class="rounded-xl bg-canvas border border-hairline px-5 sm:px-10 py-8 sm:py-12">
           <slot />

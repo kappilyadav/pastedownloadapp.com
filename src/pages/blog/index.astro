@@ -1,9 +1,10 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
 import { latestArticles } from '../../data/articles';
 ---
 
-<ContentLayout title="Blog - PasteDownloadApp" description="Tips and guides for saving clipboard images, downloading screenshots, and using PasteDownloadApp." canonicalUrl="https://pastedownloadapp.com/blog/" breadcrumbs={[{ name: "Home", href: "/" }, { name: "Blog" }]}>
+<ContentLayout wide title="Blog - PasteDownloadApp" description="Tips and guides for saving clipboard images, downloading screenshots, and using PasteDownloadApp." canonicalUrl="https://pastedownloadapp.com/blog/" breadcrumbs={[{ name: "Home", href: "/" }, { name: "Blog" }]}>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -92,29 +93,16 @@ import { latestArticles } from '../../data/articles';
       }
     }
   </script>
-  <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-6 leading-tight text-balance">
+  <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-6 leading-tight">
     Blog
   </h1>
 
   <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4">
     <p>Tips and guides for saving images from your clipboard without extra software.</p>
 
-    <div class="grid gap-4 mt-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-6">
       {latestArticles.map((article) => (
-        <a href={article.href} class="group grid gap-4 sm:grid-cols-[180px_1fr] rounded-xl border border-hairline bg-canvas overflow-hidden no-underline transition-colors hover:border-hairline-strong focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">
-          <img
-            src={article.image}
-            alt={article.alt}
-            width="836"
-            height="471"
-            loading="lazy"
-            class="w-full sm:h-full aspect-[16/9] object-cover bg-canvas-soft" decoding="async"
-          />
-          <span class="block p-4 sm:pl-0">
-            <span class="block text-ink text-base sm:text-lg font-semibold tracking-tight leading-snug group-hover:text-link transition-colors">{article.title}</span>
-            <span class="block text-mute text-xs sm:text-sm leading-relaxed mt-2">{article.description}</span>
-          </span>
-        </a>
+        <ArticleCard href={article.href} image={article.image} alt={article.alt} title={article.title} description={article.description} />
       ))}
     </div>
   </div>
