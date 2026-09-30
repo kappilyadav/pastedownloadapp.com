@@ -1,0 +1,61 @@
+---
+const rows = [
+  {
+    format: 'PNG',
+    size: '139.0 KB',
+    best: 'Screenshots, text, logos, anything that needs a transparent background',
+    watch: 'Re-encoding in the browser can make an already-optimized PNG larger. Our 80.1 KB source came out at 139.0 KB.'
+  },
+  {
+    format: 'JPEG',
+    size: '83.8 KB',
+    best: 'Photos and anything that must open in every app, including old ones',
+    watch: 'No transparency. Clear areas are filled with white.'
+  },
+  {
+    format: 'WebP',
+    size: '40.7 KB',
+    best: 'Web pages, chat, and email when the other side is a modern browser or app',
+    watch: 'A few older desktop programs cannot open it. Switch to JPEG or PNG for those.'
+  }
+];
+---
+
+<section id="which-format" class="w-full">
+  <div class="rounded-xl bg-canvas border border-hairline px-5 sm:px-10 py-8 sm:py-12">
+    <p class="text-mute text-xs font-medium uppercase tracking-widest m-0">Choosing a format</p>
+    <h2 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-3 mb-2 leading-tight">
+      PNG, JPEG, or WebP?
+    </h2>
+    <p class="text-body text-base sm:text-[17px] leading-relaxed mt-0 mb-6 max-w-3xl">
+      The same 1600×900 screenshot, saved three ways. If you are unsure, start with WebP and switch to PNG or JPEG only if the place you are uploading it rejects the file.
+    </p>
+
+    <div class="overflow-x-auto rounded-xl border border-hairline">
+      <table class="w-full min-w-[640px] text-left text-sm sm:text-base border-collapse">
+        <thead>
+          <tr class="bg-canvas-soft text-mute text-xs uppercase tracking-wide">
+            <th scope="col" class="px-4 py-3 font-medium">Format</th>
+            <th scope="col" class="px-4 py-3 font-medium">Test file size</th>
+            <th scope="col" class="px-4 py-3 font-medium">Best for</th>
+            <th scope="col" class="px-4 py-3 font-medium">Watch out for</th>
+          </tr>
+        </thead>
+        <tbody class="text-body">
+          {rows.map((row) => (
+            <tr class="border-t border-hairline align-top">
+              <th scope="row" class="px-4 py-3 text-ink font-semibold">{row.format}</th>
+              <td class="px-4 py-3 text-ink font-medium whitespace-nowrap">{row.size}</td>
+              <td class="px-4 py-3">{row.best}</td>
+              <td class="px-4 py-3">{row.watch}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <p class="text-body text-sm sm:text-base leading-relaxed mt-5 mb-0">
+      Want the full picture with quality settings? Read the <a href="/blog/png-vs-jpg-vs-webp/" class="text-link underline underline-offset-2 decoration-link/30 hover:decoration-link transition-colors">PNG, JPG, and WebP comparison</a> and <a href="/blog/image-compression-quality-settings/" class="text-link underline underline-offset-2 decoration-link/30 hover:decoration-link transition-colors">how compression quality affects file size</a>.
+    </p>
+  </div>
+</section>

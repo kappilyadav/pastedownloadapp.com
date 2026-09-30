@@ -1,0 +1,82 @@
+---
+const steps = [
+  {
+    title: 'Copy an image',
+    image: '/home/step-1-copy.webp',
+    alt: 'A sales dashboard screenshot with a dashed red selection box and a number 1 marker, showing the area being copied to the clipboard',
+    width: 1248,
+    height: 702,
+    body: 'Copy any image to your clipboard. Take a screenshot straight to the clipboard with Win+Shift+S on Windows or Cmd+Shift+Ctrl+4 on a Mac, or right-click an image in your browser and choose Copy image. Our test image is a 1600×900 dashboard screenshot.'
+  },
+  {
+    title: 'Paste it into the tool',
+    image: '/home/step-2-paste.webp',
+    alt: 'The Paste from Clipboard box of PasteDownloadApp with the drop zone circled in red and marked with a number 2',
+    width: 1248,
+    height: 878,
+    body: 'Click the box and press Ctrl+V, or Cmd+V on a Mac. If nothing happens, press Access Clipboard and allow the browser permission prompt. You can also drag an image file onto the box.'
+  },
+  {
+    title: 'Pick a format',
+    image: '/home/step-3-format.webp',
+    alt: 'PasteDownloadApp with the pasted dashboard preview and the format menu set to WebP, circled in red and marked with a number 3',
+    width: 1248,
+    height: 1220,
+    body: 'PNG is the default. Switch to WebP or JPEG from the menu and the size shows next to the Download button right away. Our test screenshot was 80.1 KB as a source file, came out as 139.0 KB as PNG, 83.8 KB as JPEG, and 40.7 KB as WebP.'
+  },
+  {
+    title: 'Download the file',
+    image: '/home/step-4-download.webp',
+    alt: 'PasteDownloadApp with the Download button circled in red and marked with a number 4',
+    width: 1248,
+    height: 1220,
+    body: 'Auto-download is on by default, so the file is saved as soon as you paste and again each time you change the format. Untick it if you want to compare formats first, then press Download when you are happy. Files are named pasted_ followed by the date and time.'
+  }
+];
+
+const howToJsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to save a clipboard image as a file',
+  description: 'Copy an image, paste it into PasteDownloadApp, choose PNG, JPEG, or WebP, and download the file. Everything runs in your browser.',
+  totalTime: 'PT1M',
+  tool: [{ '@type': 'HowToTool', name: 'A web browser' }],
+  step: steps.map((step, index) => ({
+    '@type': 'HowToStep',
+    position: index + 1,
+    name: step.title,
+    text: step.body,
+    image: `https://pastedownloadapp.com${step.image}`
+  }))
+});
+---
+
+<section id="how-to-use" class="w-full">
+  <script type="application/ld+json" set:html={howToJsonLd} />
+  <div class="rounded-xl bg-canvas border border-hairline px-5 sm:px-10 py-8 sm:py-12">
+    <p class="text-mute text-xs font-medium uppercase tracking-widest m-0">Step by step</p>
+    <h2 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-3 mb-2 leading-tight">
+      How to save a clipboard image as a file
+    </h2>
+    <p class="text-body text-base sm:text-[17px] leading-relaxed mt-0 mb-8 max-w-3xl">
+      Four steps, about a minute. Every screenshot below is the real tool with a real test image.
+    </p>
+
+    <ol class="list-none p-0 m-0 space-y-10 sm:space-y-14">
+      {steps.map((step, index) => (
+        <li class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10 items-center">
+          <div class={index % 2 === 1 ? 'md:order-2' : ''}>
+            <div class="flex items-center gap-3 mb-3">
+              <span class="w-8 h-8 rounded-full bg-ink dark:bg-white text-on-primary dark:text-black text-sm font-semibold flex items-center justify-center shrink-0" aria-hidden="true">{index + 1}</span>
+              <h3 class="text-lg sm:text-xl font-semibold text-ink tracking-tight m-0 leading-tight">{step.title}</h3>
+            </div>
+            <p class="text-body text-base sm:text-[17px] leading-relaxed m-0">{step.body}</p>
+          </div>
+          <figure class={`m-0 overflow-hidden rounded-xl border border-hairline bg-canvas-soft ${index % 2 === 1 ? 'md:order-1' : ''}`}>
+            <img src={step.image} alt={step.alt} width={step.width} height={step.height} class="w-full h-auto block" loading="lazy" decoding="async" />
+          </figure>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
