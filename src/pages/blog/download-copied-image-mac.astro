@@ -128,7 +128,7 @@ import VideoLink from '../../components/VideoLink.astro';
         How to Copy a Picture on a Mac and Save It as a File
     </h1>
 
-    <AuthorByline publishDate="2026-06-08" updatedDate="2026-09-28" />
+    <AuthorByline publishDate="2026-06-08" updatedDate="2026-10-01" />
 
     <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
 
@@ -144,6 +144,13 @@ import VideoLink from '../../components/VideoLink.astro';
             <li><strong>As a screenshot, copied instead of saved:</strong> hold <strong>Control</strong> along with the usual screenshot shortcut. Control+Cmd+Shift+3 copies the whole screen, Control+Cmd+Shift+4 lets you drag a selection, and Control+Cmd+Shift+4 then Space captures a single window, in each case sending the image straight to the clipboard with no file written anywhere.</li>
             <li><strong>Through the Screenshot app:</strong> press Cmd+Shift+5 to open the on-screen capture toolbar, click <strong>Options</strong>, and set "Save to" to Clipboard. Every capture you take afterward copies instead of saving, until you change it back.</li>
         </ul>
+
+        <VideoLink
+            videoId="hOawEk3sKoU"
+            title="How to take a screenshot and record the screen on your Mac"
+            channel="Apple Support"
+            note="Apple's own walkthrough of the macOS screenshot tools, including the Screenshot toolbar where you can choose Clipboard as the save location so captures never become files on the desktop."
+        />
 
         <h2>Where a Copied Picture Actually Goes on macOS</h2>
 
@@ -165,29 +172,13 @@ import VideoLink from '../../components/VideoLink.astro';
 
         <p>This is where the TIFF issue above stops being a problem rather than something to route around. The Clipboard API that browsers use to read pasted content is required to support PNG, and Chromium-based browsers and Safari 13.1+ implement it that way: when you paste into a web page, the browser normalizes whatever the system clipboard held into a PNG before your page ever sees it. Practically, that means a tool like <a href="https://pastedownloadapp.com/">pastedownloadapp.com</a> never has to deal with a bloated TIFF at all, regardless of what macOS was storing internally.</p>
 
-        <ol class="pl-5 space-y-2 steps-list">
-            <li>Copy your picture with Cmd+C, right-click Copy Image, or a clipboard-targeted screenshot shortcut.</li>
-            <li>Open <a href="https://pastedownloadapp.com/">pastedownloadapp.com</a> in your browser.</li>
-            <li>Press <strong>Cmd+V</strong> to paste it into the tool.</li>
-            <li>Click <strong>Download</strong>, or let Auto-download save it immediately in your chosen format: PNG, JPEG, or WebP. Unsure which to pick, see the <a href="/blog/png-vs-jpg-vs-webp/">PNG vs JPG vs WebP guide</a>.</li>
-        </ol>
+        <p>Copy the picture, open <a href="https://pastedownloadapp.com/">pastedownloadapp.com</a>, press <strong>Cmd+V</strong>, and download it as PNG, JPEG, or WebP. The full walkthrough is in <a href="/blog/save-clipboard-image-without-software/">saving clipboard images without software</a>.</p>
 
         <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
             <img src="/blog/screenshots/paste-tool-mac-copied-image-1-9mb.webp" alt="Screenshot of PasteDownloadApp after pasting a 1600 by 1000 test picture, showing the paste tool reporting a PNG output of 1.9 MB" width="1200" height="1179" class="w-full max-w-lg mx-auto" loading="lazy" decoding="async" />
         </figure>
 
         <p>That screenshot is from a real run of the live tool: pasting a 1600&times;1000 test picture produced a clean 1.9 MB PNG, reported directly by the tool, not estimated. Whatever the picture looked like on your Mac's clipboard beforehand, PNG is what comes out.</p>
-
-        <h2>Copying a Screenshot Without Saving a File First</h2>
-
-        <p>Add Control to any of the standard screenshot shortcuts and macOS copies instead of saving: <strong>Control+Cmd+Shift+3</strong> for the full screen, <strong>Control+Cmd+Shift+4</strong> to drag a selection, and <strong>Control+Cmd+Shift+4</strong> then <strong>Space</strong> to click a single window. No file lands on your Desktop, and the capture sits on the clipboard until you paste it somewhere, whether that is Preview, a document, or a browser tab. This is the shortcut to reach for when you only need the picture temporarily and do not want to clean up a stray screenshot file afterward.</p>
-
-        <VideoLink
-            videoId="hOawEk3sKoU"
-            title="How to take a screenshot and record the screen on your Mac"
-            channel="Apple Support"
-            note="Apple's own walkthrough of the macOS screenshot tools, including the Screenshot toolbar where you can choose Clipboard as the save location so captures never become files on the desktop."
-        />
 
         <h2>Copying Images From Safari, Google Images, and Sites That Block It</h2>
 
@@ -202,9 +193,9 @@ import VideoLink from '../../components/VideoLink.astro';
 
         <p>No, and this is a common source of confusion carried over from iPhone habits. On iOS, a screenshot is automatically saved into the Photos app. On a Mac, a screenshot without Control held saves a file to your Desktop, not to Photos, and a plain Cmd+C or right-click Copy Image never touches Photos or your Desktop at all; the picture exists only on the clipboard until you explicitly paste it somewhere and save it. If you want it in Photos, you have to import it there yourself.</p>
 
-        <h2>Works the Same on Windows and Mobile</h2>
+        <h2>Not on a Mac?</h2>
 
-        <p>The browser-based method above is not Mac-specific. On Windows, copy an image and paste it into the same tool; if you are starting from a Windows screenshot rather than a copied image, the <a href="/blog/save-screenshot-as-file-windows/">guide to saving a screenshot as a file on Windows</a> covers the native shortcuts. On a phone, copying an image from a browser and pasting it works the same way. One method, regardless of which device the picture started on.</p>
+        <p>The same method works elsewhere. See <a href="/blog/save-screenshot-as-file-windows/">saving a screenshot as a file on Windows</a> or <a href="/blog/mobile-clipboard-android-vs-ios/">saving a clipboard image on Android vs iPhone</a>. If your screenshot went to a file, see <a href="/blog/where-do-screenshots-go-on-mac/">where Mac screenshots go</a>.</p>
 
         <h2>Frequently Asked Questions</h2>
 

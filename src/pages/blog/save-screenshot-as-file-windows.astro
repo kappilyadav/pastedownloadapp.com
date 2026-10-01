@@ -98,22 +98,6 @@ import VideoLink from '../../components/VideoLink.astro';
             },
             {
                 "@type": "Question",
-                "name": "Can I save a clipboard image that isn't a screenshot?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. Any image in your clipboard, whether from a web page, a document, or a copied photo, can be pasted and saved the same way."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Does pastedownloadapp.com work in incognito or private mode?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. The tool runs entirely in the browser tab. Nothing is uploaded to a server, so it works in private or incognito mode on Chrome, Firefox, Edge, and Safari."
-                }
-            },
-            {
-                "@type": "Question",
                 "name": "Why does my screenshot include both monitors when I only wanted one?",
                 "acceptedAnswer": {
                     "@type": "Answer",
@@ -136,7 +120,7 @@ import VideoLink from '../../components/VideoLink.astro';
         How to Save a Screenshot Directly as a File (Without Opening MS Paint)
     </h1>
 
-    <AuthorByline publishDate="2026-06-10" updatedDate="2026-09-28" />
+    <AuthorByline publishDate="2026-06-10" updatedDate="2026-10-01" />
 
     <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
 
@@ -172,13 +156,7 @@ import VideoLink from '../../components/VideoLink.astro';
 
         <h2>Turning a Clipboard-Only Capture Into a File</h2>
 
-        <ol class="pl-5 space-y-2 steps-list">
-            <li>Take your screenshot with <strong>Win + Shift + S</strong> and select your region, or press <strong>PrtScn</strong> for the full screen.</li>
-            <li>Open <a href="https://pastedownloadapp.com/">pastedownloadapp.com</a> in a new tab. No sign-up, no install.</li>
-            <li>Press <strong>Ctrl + V</strong> to paste the clipboard image onto the page.</li>
-            <li>Choose your format: PNG for lossless quality, JPG for a smaller file. The <a href="/blog/png-vs-jpg-vs-webp/">PNG vs JPG vs WebP comparison</a> covers WebP too.</li>
-            <li>Click <strong>Download</strong> and the file saves to your downloads folder.</li>
-        </ol>
+        <p>Take the screenshot with <strong>Win + Shift + S</strong> or <strong>PrtScn</strong>, open <a href="https://pastedownloadapp.com/">pastedownloadapp.com</a>, press <strong>Ctrl + V</strong>, and click <strong>Download</strong> as PNG, JPEG, or WebP. The general steps are in <a href="/blog/save-clipboard-image-without-software/">saving clipboard images without software</a>.</p>
 
         <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
             <img src="/blog/screenshots/paste-tool-png-result.webp" alt="Screenshot of PasteDownloadApp after pasting a clipboard image, showing the file dimensions 1672 by 941 and a size of 930.2 KB" width="624" height="575" class="w-full max-w-md mx-auto" loading="lazy" decoding="async" />
@@ -188,7 +166,7 @@ import VideoLink from '../../components/VideoLink.astro';
 
         <h2>PNG or JPG for Windows Screenshots?</h2>
 
-        <p>Use PNG when the screenshot contains text, menus, windows, or code, since PNG keeps edges sharp. Use JPG when the screenshot is mostly a photo or you need a smaller file for an upload limit. The pasted preview lets you pick before downloading either way.</p>
+        <p>Use PNG for text, menus, and code, and JPG for photos or tight upload limits. The <a href="/blog/png-vs-jpg-vs-webp/">PNG vs JPG vs WebP comparison</a> has real sizes.</p>
 
         <h2>Third-Party Screenshot Tools, Honestly</h2>
 
@@ -196,7 +174,7 @@ import VideoLink from '../../components/VideoLink.astro';
 
         <h2>What About Mac or Mobile?</h2>
 
-        <p>The same paste-to-download pattern works everywhere a clipboard image can land. For Mac screenshots and copied images, including the native shortcuts and a real technical explanation of why Mac clipboard images sometimes balloon in size, read <a href="/blog/download-copied-image-mac/">copying and saving a picture on Mac</a>. On an iPhone or Android, copy an image from your gallery or browser and paste it into the tool on a mobile browser the same way as on desktop.</p>
+        <p>See <a href="/blog/download-copied-image-mac/">copying and saving a picture on Mac</a> or <a href="/blog/mobile-clipboard-android-vs-ios/">saving a clipboard image on Android vs iPhone</a>.</p>
 
         <h2>Frequently Asked Questions</h2>
 
@@ -208,12 +186,6 @@ import VideoLink from '../../components/VideoLink.astro';
 
         <h3>How do I save a screenshot as a PNG without Paint?</h3>
         <p>Copy your screenshot to the clipboard, open pastedownloadapp.com, paste with Ctrl+V, and choose PNG before clicking Download.</p>
-
-        <h3>Can I save a clipboard image that isn't a screenshot?</h3>
-        <p>Yes. Any image in your clipboard, whether from a web page, a document, or a copied photo, can be pasted and saved the same way.</p>
-
-        <h3>Does pastedownloadapp.com work in incognito or private mode?</h3>
-        <p>Yes. The tool runs entirely in the browser tab. Nothing is uploaded to a server, so it works in private or incognito mode on Chrome, Firefox, Edge, and Safari.</p>
 
         <h3>Why does my screenshot include both monitors when I only wanted one?</h3>
         <p>PrtScn and Win+PrtScn always capture your full virtual desktop across every connected display, not just one monitor. Use Alt+PrtScn to capture only the active window instead, or Win+Shift+S to drag a custom selection.</p>

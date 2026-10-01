@@ -182,11 +182,11 @@ export const latestArticles = [
     href: '/blog/why-image-url-wont-download/',
     image: '/blog/why-image-url-wont-download.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/why-image-url-wont-download.png',
-    alt: 'Screenshot of the URL download tool with an image URL entered and its preview loaded, ready to download',
-    title: "Why Some Image URLs Won't Download Directly",
-    description: 'CORS, hotlink protection, and referrer blocking explained: why pasting an image URL sometimes fails, and what actually happens when a tool works around it.',
+    alt: 'Illustration of an image URL that opens in the browser but is blocked by the host with CORS and Referer checks',
+    title: "Why Some Image URLs Won't Download (and What to Do Instead)",
+    description: 'CORS, hotlink protection, expiring links, and pages that are not images: why an image URL will not download in a tool, and what to do instead.',
     publishDate: '2026-09-27',
-    updatedDate: '2026-09-29',
+    updatedDate: '2026-10-01',
     category: 'troubleshooting'
   },
   {
