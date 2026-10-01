@@ -6,6 +6,26 @@ export const categories = [
 
 export const latestArticles = [
   {
+    href: '/blog/where-do-screenshots-go-on-mac/',
+    image: '/blog/where-do-screenshots-go-on-mac.webp',
+    absoluteImage: 'https://pastedownloadapp.com/blog/where-do-screenshots-go-on-mac.png',
+    alt: 'Illustration of the Cmd+Shift+4 shortcut pointing to the Desktop folder where a Mac screenshot file is saved',
+    title: 'Where Do Screenshots Go on Mac? How to Find Them and Change the Folder',
+    description: 'Mac screenshots save to the Desktop by default, but not always. Find a missing one, change the folder, or rescue a clipboard-only capture.',
+    publishDate: '2026-10-01',
+    category: 'platforms'
+  },
+  {
+    href: '/blog/convert-png-to-jpg-mac/',
+    image: '/blog/convert-png-to-jpg-mac.webp',
+    absoluteImage: 'https://pastedownloadapp.com/blog/convert-png-to-jpg-mac.png',
+    alt: 'Illustration showing a 2.0 MB PNG screenshot converted to a 366 KB JPG',
+    title: 'How to Convert a PNG Screenshot to JPG on Mac (4 Ways)',
+    description: 'Preview, the Finder Convert Image action, a Terminal default, and a browser tool, with real file sizes.',
+    publishDate: '2026-10-01',
+    category: 'formats'
+  },
+  {
     href: '/blog/clipboard-paste-chrome-firefox-safari/',
     image: '/blog/clipboard-paste-chrome-firefox-safari.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/clipboard-paste-chrome-firefox-safari.png',
