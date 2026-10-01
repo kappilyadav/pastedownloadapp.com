@@ -6,6 +6,26 @@ export const categories = [
 
 export const latestArticles = [
   {
+    href: '/blog/where-do-screenshots-go-on-mac/',
+    image: '/blog/where-do-screenshots-go-on-mac.webp',
+    absoluteImage: 'https://pastedownloadapp.com/blog/where-do-screenshots-go-on-mac.png',
+    alt: 'Illustration of the Cmd+Shift+4 shortcut pointing to the Desktop folder where a Mac screenshot file is saved',
+    title: 'Where Do Screenshots Go on Mac? How to Find Them and Change the Folder',
+    description: 'Mac screenshots save to the Desktop by default, but not always. Find a missing one, change the folder, or rescue a clipboard-only capture.',
+    publishDate: '2026-10-01',
+    category: 'platforms'
+  },
+  {
+    href: '/blog/convert-png-to-jpg-mac/',
+    image: '/blog/convert-png-to-jpg-mac.webp',
+    absoluteImage: 'https://pastedownloadapp.com/blog/convert-png-to-jpg-mac.png',
+    alt: 'Illustration showing a 2.0 MB PNG screenshot converted to a 366 KB JPG',
+    title: 'How to Convert a PNG Screenshot to JPG on Mac (4 Ways)',
+    description: 'Preview, the Finder Convert Image action, a Terminal default, and a browser tool, with real file sizes.',
+    publishDate: '2026-10-01',
+    category: 'formats'
+  },
+  {
     href: '/blog/clipboard-paste-chrome-firefox-safari/',
     image: '/blog/clipboard-paste-chrome-firefox-safari.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/clipboard-paste-chrome-firefox-safari.png',
@@ -141,10 +161,10 @@ export const latestArticles = [
     image: '/blog/where-do-clipboard-images-go.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/where-do-clipboard-images-go.png',
     alt: 'Screenshot of the paste tool in its default empty state, showing the Paste image here and Access Clipboard prompt',
-    title: 'Where Do Screenshots Go? Mac, Windows, Android, and iPhone',
-    description: 'Screenshots and copied images do not behave like normal files until you save them. Here is exactly where they go on Mac, Windows, Android, and iPhone.',
+    title: 'Where Do Screenshots Go on Windows, Android, and iPhone?',
+    description: 'Screenshots and copied images do not behave like normal files until you save them. Here is where they go on Windows, Android, and iPhone.',
     publishDate: '2026-09-27',
-    updatedDate: '2026-09-28',
+    updatedDate: '2026-10-01',
     category: 'platforms'
   },
   {
@@ -162,11 +182,11 @@ export const latestArticles = [
     href: '/blog/why-image-url-wont-download/',
     image: '/blog/why-image-url-wont-download.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/why-image-url-wont-download.png',
-    alt: 'Screenshot of the URL download tool with an image URL entered and its preview loaded, ready to download',
-    title: "Why Some Image URLs Won't Download Directly",
-    description: 'CORS, hotlink protection, and referrer blocking explained: why pasting an image URL sometimes fails, and what actually happens when a tool works around it.',
+    alt: 'Illustration of an image URL that opens in the browser but is blocked by the host with CORS and Referer checks',
+    title: "Why Some Image URLs Won't Download (and What to Do Instead)",
+    description: 'CORS, hotlink protection, expiring links, and pages that are not images: why an image URL will not download in a tool, and what to do instead.',
     publishDate: '2026-09-27',
-    updatedDate: '2026-09-29',
+    updatedDate: '2026-10-01',
     category: 'troubleshooting'
   },
   {

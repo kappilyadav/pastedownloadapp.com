@@ -7,8 +7,8 @@ import VideoLink from '../../components/VideoLink.astro';
 ---
 
 <ContentLayout
-    title="Why Some Image URLs Won't Download Directly"
-    description="CORS, hotlink protection, and referrer blocking explained: why pasting an image URL sometimes fails, and what actually happens when a tool works around it."
+    title="Why Some Image URLs Won't Download (and What to Do Instead)"
+    description="CORS, hotlink protection, expiring links, and pages that are not images: why an image URL opens in your browser but will not download in a tool, and what to do instead."
     canonicalUrl="https://pastedownloadapp.com/blog/why-image-url-wont-download/"
     imageUrl="https://pastedownloadapp.com/blog/why-image-url-wont-download.png"
     breadcrumbs={[{ name: "Home", href: "/" }, { name: "Blog", href: "/blog/" }, { name: "Why Some Image URLs Won't Download" }]}
@@ -17,11 +17,11 @@ import VideoLink from '../../components/VideoLink.astro';
         {
             "@context": "https://schema.org",
             "@type": "Article",
-            "headline": "Why Some Image URLs Won't Download Directly",
-            "description": "CORS, hotlink protection, and referrer blocking explained: why pasting an image URL sometimes fails, and what actually happens when a tool works around it.",
+            "headline": "Why Some Image URLs Won't Download (and What to Do Instead)",
+            "description": "CORS, hotlink protection, expiring links, and pages that are not images: why an image URL opens in your browser but will not download in a tool, and what to do instead.",
             "image": "https://pastedownloadapp.com/blog/why-image-url-wont-download.png",
             "datePublished": "2026-09-27T00:00:00Z",
-            "dateModified": "2026-09-29T00:00:00Z",
+            "dateModified": "2026-10-01T00:00:00Z",
             "author": {
                 "@type": "Person",
                 "@id": "https://pastedownloadapp.com/author/#person",
@@ -64,7 +64,7 @@ import VideoLink from '../../components/VideoLink.astro';
     </script>
 
     <figure class="mt-0 mb-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
-        <img src="/blog/why-image-url-wont-download.webp" alt="Screenshot of the discontinued URL download tool with an image URL entered and its preview loaded" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
+        <img src="/blog/why-image-url-wont-download.webp" alt="Illustration of an image URL that opens in the browser but is blocked by the host with CORS and Referer checks" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
     </figure>
 
     <script type="application/ld+json">
@@ -74,10 +74,10 @@ import VideoLink from '../../components/VideoLink.astro';
         "mainEntity": [
             {
                 "@type": "Question",
-                "name": "Is this a bug in PasteDownloadApp?",
+                "name": "Why does an image open in my browser but fail in a web tool?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "No. CORS and hotlink protection are enforced by the image's own server and by browser security rules. Those rules apply to any website attempting the same thing, not just this tool. The proxy fallback existed specifically to work around the more common of the two. A properly configured hotlink block, though, is designed to survive exactly that kind of workaround."
+                    "text": "Your browser tab navigates to the image directly and sends its own cookies and referrer. A web tool has to read the image bytes with a script, which browser CORS rules block unless the image host allows it. Hotlink protection can also reject requests that did not come from the host's own site."
                 }
             },
             {
@@ -85,7 +85,7 @@ import VideoLink from '../../components/VideoLink.astro';
                 "name": "Why does the image show a preview but then fail to download?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "A plain <img> tag can often display an image that CORS still blocks a script from reading. Displaying and re-encoding are different operations with different permission requirements. That is why it was possible to see a preview and still hit a failure at the download step."
+                    "text": "A plain <img> tag can often display an image that CORS still blocks a script from reading. Displaying and re-encoding are different operations with different permission requirements. That is why you can see a preview and still hit a failure at the download step."
                 }
             },
             {
@@ -101,22 +101,18 @@ import VideoLink from '../../components/VideoLink.astro';
     </script>
 
     <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
-        Why Some Image URLs Won't Download Directly
+        Why Some Image URLs Won't Download (and What to Do Instead)
     </h1>
 
-    <AuthorByline publishDate="2026-09-27" updatedDate="2026-09-29" />
-
-    <div class="rounded-xl border border-hairline bg-warning-soft text-warning text-sm px-5 py-4 my-6" role="note">
-        <strong>Update:</strong> PasteDownloadApp's URL download feature has been discontinued and is no longer available in the tool. This article is kept for reference. The CORS and hotlink-protection behavior described below still applies to any browser-based tool that tries to fetch images from arbitrary URLs.
-    </div>
+    <AuthorByline publishDate="2026-09-27" updatedDate="2026-10-01" />
 
     <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
 
-        <p>You paste in a direct link to an image. Instead of a preview, you get an error or a blank result. The image opens fine when you visit the URL in a new tab, so it clearly exists. A browser-based tool can still fail here, even though your own browser succeeds. The reason comes down to a handful of server-side protections. None of them were built with you in mind. They exist to stop other websites.</p>
+        <p>You paste in a direct link to an image. Instead of a preview, you get an error or a blank result. The image opens fine when you visit the URL in a new tab, so it clearly exists. A browser-based tool, or a script on any web page, can still fail here even though your own browser succeeds. The reason comes down to a handful of server-side protections. None of them were built with you in mind. They exist to stop other websites.</p>
 
         <h2>CORS: The Browser's Own Restriction</h2>
         <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS" target="_blank" rel="noopener noreferrer">Cross-Origin Resource Sharing, or CORS</a>, is a browser security rule. It stops a script on one website from reading the actual bytes of a resource hosted on a different website. The only way around it is an <code>Access-Control-Allow-Origin</code> header from that resource's own server. The image host does not have to configure anything special to block you. This is just the default, safe behavior of every modern browser. A page can display an image from another domain just fine. But a script on that page cannot read its pixel data, for example to draw it onto a canvas and re-encode it, unless the header is present.</p>
-        <p>This is exactly the situation PasteDownloadApp's old URL download feature ran into. Displaying the image was easy. Reading and re-encoding it is a different story. That step is what lets a tool convert an image or force a download with a specific filename. It requires CORS permission that many image hosts simply do not grant.</p>
+        <p>That is why a page can show you an image but not let you convert it or force a download with a specific filename. Reading and re-encoding the pixels needs CORS permission that many image hosts simply do not grant.</p>
 
         <VideoLink
             videoId="4KHiSt0oLJ0"
@@ -135,26 +131,30 @@ import VideoLink from '../../components/VideoLink.astro';
         <h2>Links That Expire or Change Format</h2>
         <p>Cloud storage and private sharing services often hand out signed URLs: long addresses with a token that is valid for a limited time, sometimes only minutes. A link copied from one of these works in your own tab right away and then fails later, or fails when a different service requests it. Content delivery networks can also return a different format depending on who asks. Your browser may receive a WebP or AVIF version of an image, while a server-side request for the same address gets a JPEG, or an error. That is why the same link can behave differently in different tools.</p>
 
-        <h2>What Happens When the Direct Request Fails</h2>
-        <p>Your browser could not fetch or read an image directly when one of these two protections applied. In that case, PasteDownloadApp automatically retried the request through <strong>corsproxy.io</strong>. That is a third-party proxy that fetches the image server-side and returns it in a way your browser is allowed to read. This got around CORS in most cases, because the proxy, not your browser, made the original request. It did not always get around hotlink protection. A strict Referer check could still reject the proxy's request the same way it would reject any other outside request.</p>
+        <h2>Why a Proxy Does Not Always Fix It</h2>
+        <p>Some tools retry a blocked request through a third-party proxy that fetches the image server-side. That can get around CORS, because the proxy, not your browser, makes the original request. It does not reliably get around hotlink protection, since a strict Referer check can reject the proxy the same way it rejects any other outside request. It also means the image passes through someone else's server, which is worth knowing before you use it with anything private.</p>
 
-        <h2>When Nothing Works</h2>
-        <p>A small number of sources block both the direct request and the proxy fallback. This usually comes down to one of a few things. Maybe a Referer check is strict enough to reject even the proxy. Maybe the source requires a logged-in session, or a signed URL that expires almost immediately. Or the host simply blocks known proxy IP ranges outright. The most reliable option in these cases does not depend on any of these protections at all. Open the image in a new browser tab and use your browser's own "Save image as" option. A real browser navigation carries the correct referrer and cookies automatically, so it gets through. If you then need to convert that saved file to a different format, drag it into PasteDownloadApp instead of pasting a URL. That is the same drag-and-drop path covered in <a href="/blog/save-clipboard-image-without-software/">saving clipboard images without extra software</a>.</p>
+        <h2>What to Do When a Link Will Not Download</h2>
+        <p>The most reliable options do not depend on any of these protections, because a real browser navigation carries the correct referrer and cookies automatically:</p>
+        <ol class="pl-5 space-y-2 list-decimal">
+            <li>Open the image in its own tab (right-click, then <strong>Open image in new tab</strong>) and use <strong>Save image as</strong>.</li>
+            <li>Or right-click the image and choose <strong>Copy Image</strong>, which puts the picture itself on your clipboard, not its address.</li>
+            <li>If the site blocks right-click, take a clipboard screenshot of just the image. It will match what is on your screen, though it will not be the original file.</li>
+        </ol>
+        <p>Once you have the image as a file or on the clipboard, converting it does not involve the original host at all. Paste it into <a href="https://pastedownloadapp.com/">PasteDownloadApp</a> with <strong>Ctrl+V</strong> (or <strong>Cmd+V</strong>), or drag the saved file in, and download it as PNG, JPEG, or WebP. The step-by-step version is in <a href="/blog/save-clipboard-image-without-software/">saving clipboard images without software</a>.</p>
 
         <h2>Frequently Asked Questions</h2>
 
-        <h3>Is this a bug in PasteDownloadApp?</h3>
-        <p>No. CORS and hotlink protection are enforced by the image's own server and by browser security rules. Those rules apply to any website attempting the same thing, not just this tool. The proxy fallback existed specifically to work around the more common of the two. A properly configured hotlink block, though, is designed to survive exactly that kind of workaround.</p>
+        <h3>Why does an image open in my browser but fail in a web tool?</h3>
+        <p>Your browser tab navigates to the image directly and sends its own cookies and referrer. A web tool has to read the image bytes with a script, which browser CORS rules block unless the image host allows it. Hotlink protection can also reject requests that did not come from the host's own site.</p>
 
         <h3>Why does the image show a preview but then fail to download?</h3>
-        <p>A plain <code>&lt;img&gt;</code> tag can often display an image that CORS still blocks a script from reading. Displaying and re-encoding are different operations with different permission requirements. That is why it was possible to see a preview and still hit a failure at the download step.</p>
+        <p>A plain <code>&lt;img&gt;</code> tag can often display an image that CORS still blocks a script from reading. Displaying and re-encoding are different operations with different permission requirements. That is why you can see a preview and still hit a failure at the download step.</p>
 
         <h3>Can I fix this myself if I own the image's server?</h3>
         <p>Yes. Adding an <code>Access-Control-Allow-Origin</code> header for the domains you want to support resolves the CORS side. Loosening or removing a Referer check resolves hotlink protection. That second fix, though, reopens the exact bandwidth concern the protection was meant to solve.</p>
 
         <RelatedGuides hrefs={["/blog/save-clipboard-image-without-software/", "/blog/access-clipboard-not-working/", "/blog/png-vs-jpg-vs-webp/"]} />
-
-        <p>The URL download feature has been discontinued. The reliable option now is to save the image from your browser first (right-click, "Save image as") and then drag the file into <a href="https://pastedownloadapp.com/">PasteDownloadApp</a> to convert it.</p>
 
     </div>
     <Fragment slot="after"><AuthorBio /></Fragment>

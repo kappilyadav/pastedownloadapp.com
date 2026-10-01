@@ -77,7 +77,7 @@ import VideoLink from '../../components/VideoLink.astro';
                 "name": "Does PasteDownloadApp work in Safari?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes. Paste with Cmd+V and it works the same as Chrome. The Access Clipboard button is less reliable in Safari because of its stricter gesture rules, so the keyboard shortcut is the better option there."
+                    "text": "Yes. Paste with Cmd+V and it works the same as Chrome. The Access Clipboard button is less reliable in Safari because its gesture rules are stricter. The keyboard shortcut is the better option there."
                 }
             },
             {
@@ -108,14 +108,14 @@ import VideoLink from '../../components/VideoLink.astro';
 
     <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
 
-        <p>Paste works fine in Chrome. Then a coworker on Safari says the button does nothing. Someone on Firefox says it asked for a permission they had never seen before. This is not a bug in any one tool. Clipboard image access runs through the <strong>Async Clipboard API</strong>. Chrome, Firefox, and Safari have not converged on identical behavior for it. Every image-pasting site, including this one, has to work around the gaps. Here is what actually differs, based on each browser's documented clipboard permission model, plus a real permission-state check run against the live tool below, not just a description of expected behavior.</p>
+        <p>Paste works fine in Chrome. Then a coworker on Safari says the button does nothing. Someone on Firefox says it asked for a permission they had never seen before. This is not a bug in any one tool. Clipboard image access runs through the <strong>Async Clipboard API</strong>. Chrome, Firefox, and Safari have not converged on identical behavior for it. Every image-pasting site, including this one, has to work around the gaps. Here is what actually differs. It is based on each browser's documented permission model. It also includes a real permission check run against the live tool.</p>
 
         <h2>The Two Ways a Page Can Read an Image From Your Clipboard</h2>
 
         <p>There are two separate code paths, and browsers support them unevenly:</p>
 
         <ul class="list-disc pl-5 space-y-1.5">
-            <li><strong>The paste event.</strong> When you press Ctrl+V or Cmd+V while a page element has focus, the browser fires a <code>paste</code> event with a <code>clipboardData</code> object. A script can read image items directly out of that event without asking for any special permission, because it only fires in response to a real user keystroke.</li>
+            <li><strong>The paste event.</strong> When you press Ctrl+V or Cmd+V while a page element has focus, the browser fires a <code>paste</code> event with a <code>clipboardData</code> object. A script can read image items from that event with no special permission. The event only fires when you press the keys yourself.</li>
             <li><strong>navigator.clipboard.read().</strong> This lets a script read the clipboard on demand, for example when you click an "Access Clipboard" button instead of pressing Ctrl+V. It requires the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/read" target="_blank" rel="noopener noreferrer">Async Clipboard API</a>, a secure context (HTTPS), and, in most browsers, an explicit permission grant.</li>
         </ul>
 
@@ -130,11 +130,11 @@ import VideoLink from '../../components/VideoLink.astro';
 
         <h2>Chrome and Edge (Chromium)</h2>
 
-        <p>Chromium browsers have the most complete implementation. The <code>paste</code> event has worked for image data for years. <code>navigator.clipboard.read()</code> with <code>ClipboardItem</code> support for images has been stable too, since Chrome shipped the Async Clipboard API's image support. I confirmed this directly against the live tool running on Chromium 141: dispatching a real paste event with a 1.4 MB PNG completed the paste, conversion, and download path with no permission prompt at all. Then, on the same page, I queried the actual permission state with <code>navigator.permissions.query(&#123; name: 'clipboard-read' &#125;)</code>, the same check <code>read()</code> depends on, and it returned <code>"prompt"</code>: unresolved, meaning a real click-triggered call to <code>clipboard.read()</code> would have required the user to respond to a permission dialog. That is a direct, testable confirmation that the two code paths genuinely carry different permission requirements, not just a description of how they are supposed to behave.</p>
+        <p>Chromium browsers have the most complete implementation. The <code>paste</code> event has worked for image data for years. <code>navigator.clipboard.read()</code> with <code>ClipboardItem</code> support for images has been stable too, since Chrome shipped the Async Clipboard API's image support. I tested this against the live tool on Chromium 141. A real paste event with a 1.4 MB PNG finished the paste, conversion, and download with no permission prompt. Then, on the same page, I checked the permission state with <code>navigator.permissions.query(&#123; name: 'clipboard-read' &#125;)</code>. That is the same check <code>read()</code> depends on. It returned <code>"prompt"</code>. That means a click-triggered call to <code>clipboard.read()</code> would have asked the user to answer a permission dialog. So the two code paths really do carry different permission rules.</p>
 
         <h2>Firefox</h2>
 
-        <p>Firefox supports the <code>paste</code> event the same way Chromium does. Ctrl+V works reliably as a result. Where it differs is <code>navigator.clipboard.read()</code>. Firefox has historically been more conservative about exposing arbitrary clipboard reads to scripts. Older releases even required enabling the feature manually through <code>about:config</code> before <code>read()</code> would work for image data at all. Current releases work unflagged, but Firefox is still stricter about requiring the call to happen inside a direct response to a user click. A rejected or unfocused window will fail silently rather than showing a prompt. If a click-to-paste button does not respond in Firefox, pressing Ctrl+V directly into the drop zone is the more reliable path.</p>
+        <p>Firefox supports the <code>paste</code> event the same way Chromium does. Ctrl+V works reliably as a result. Where it differs is <code>navigator.clipboard.read()</code>. Firefox has historically been more conservative about exposing arbitrary clipboard reads to scripts. Older releases even required enabling the feature manually through <code>about:config</code> before <code>read()</code> would work for image data at all. Current releases work without a flag. Firefox is still stricter, though. The call must happen as a direct response to a click. A rejected or unfocused window will fail silently rather than showing a prompt. If a click-to-paste button does not respond in Firefox, pressing Ctrl+V directly into the drop zone is the more reliable path.</p>
 
         <h2>Safari</h2>
 
@@ -169,12 +169,12 @@ import VideoLink from '../../components/VideoLink.astro';
             </tbody>
         </table>
 
-        <p>The practical takeaway across every browser is the same: <strong>Ctrl+V or Cmd+V is the most consistent way to get an image out of your clipboard and into a browser tool.</strong> Buttons like "Access Clipboard" are a convenience for when you cannot use the keyboard shortcut, not the primary path.</p>
+        <p>The takeaway is the same in every browser: <strong>Ctrl+V or Cmd+V is the most consistent way to get an image from your clipboard into a browser tool.</strong> Buttons like "Access Clipboard" are a convenience for when you cannot use the keyboard shortcut, not the primary path.</p>
 
         <h2>Frequently Asked Questions</h2>
 
         <h3>Does PasteDownloadApp work in Safari?</h3>
-        <p>Yes. Paste with Cmd+V and it works the same as Chrome. The Access Clipboard button is less reliable in Safari because of its stricter gesture rules, so the keyboard shortcut is the better option there.</p>
+        <p>Yes. Paste with Cmd+V and it works the same as Chrome. The Access Clipboard button is less reliable in Safari because its gesture rules are stricter. The keyboard shortcut is the better option there.</p>
 
         <h3>Why does Firefox ask a different permission question than Chrome?</h3>
         <p>The two browsers use different underlying permission models for the Async Clipboard API. Firefox has historically treated arbitrary clipboard reads as more sensitive than Chrome does. That shows up as stricter prompts, or a feature flag on older versions.</p>
@@ -183,8 +183,6 @@ import VideoLink from '../../components/VideoLink.astro';
         <p>No. Drag and drop uses the <code>DataTransfer</code> interface, which is a separate, older API with consistent support across Chrome, Firefox, and Safari. If clipboard paste is giving you trouble, dragging a file into the drop zone is a reliable fallback.</p>
 
         <RelatedGuides hrefs={["/blog/access-clipboard-not-working/", "/blog/mobile-clipboard-android-vs-ios/", "/blog/save-clipboard-image-without-software/"]} />
-
-        <p>Try <a href="https://pastedownloadapp.com/">pastedownloadapp.com</a> in your own browser. Press Ctrl+V or Cmd+V to paste an image, or drag a file in if paste is not cooperating.</p>
 
     </div>
     <Fragment slot="after"><AuthorBio /></Fragment>

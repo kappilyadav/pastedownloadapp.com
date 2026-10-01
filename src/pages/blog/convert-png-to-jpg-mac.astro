@@ -1,0 +1,204 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import RelatedGuides from '../../components/RelatedGuides.astro';
+import AuthorByline from '../../components/AuthorByline.astro';
+import AuthorBio from '../../components/AuthorBio.astro';
+import VideoLink from '../../components/VideoLink.astro';
+---
+
+<ContentLayout
+    title="How to Convert a PNG Screenshot to JPG on Mac (4 Ways)"
+    description="Mac screenshots save as PNG. Here are four ways to get a JPG: Preview, the Finder Convert Image action, a Terminal default, and a browser tool, with real file sizes."
+    canonicalUrl="https://pastedownloadapp.com/blog/convert-png-to-jpg-mac/"
+    imageUrl="https://pastedownloadapp.com/blog/convert-png-to-jpg-mac.png"
+    breadcrumbs={[{ name: "Home", href: "/" }, { name: "Blog", href: "/blog/" }, { name: "Convert PNG to JPG on Mac" }]}
+>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "How to Convert a PNG Screenshot to JPG on Mac (4 Ways)",
+            "description": "Mac screenshots save as PNG. Here are four ways to get a JPG: Preview, the Finder Convert Image action, a Terminal default, and a browser tool, with real file sizes.",
+            "image": "https://pastedownloadapp.com/blog/convert-png-to-jpg-mac.png",
+            "datePublished": "2026-10-01T00:00:00Z",
+            "dateModified": "2026-10-01T00:00:00Z",
+            "author": {
+                "@type": "Person",
+                "@id": "https://pastedownloadapp.com/author/#person",
+                "name": "Kappil Yadav",
+                "url": "https://pastedownloadapp.com/author/",
+                "image": "https://pastedownloadapp.com/author-kappil-yadav.webp",
+                "jobTitle": "Founder & Developer",
+                "description": "Full-stack developer who builds and maintains PasteDownloadApp using the browser's native Clipboard and Canvas APIs. Ships public code on GitHub and tests every guide against real files in the live tool before publishing.",
+                "email": "hello@pastedownloadapp.com",
+                "knowsAbout": [
+                    "Clipboard API",
+                    "Canvas API",
+                    "Image formats",
+                    "Web development"
+                ],
+                "sameAs": [
+                    "https://github.com/kappilyadav",
+                    "https://www.linkedin.com/in/kapilyadavv",
+                    "https://www.instagram.com/heykapil_"
+                ],
+                "worksFor": {
+                    "@type": "Organization",
+                    "@id": "https://pastedownloadapp.com/#organization",
+                    "name": "PasteDownloadApp",
+                    "url": "https://pastedownloadapp.com/"
+                }
+            },
+            "publisher": {
+                "@type": "Organization",
+                "@id": "https://pastedownloadapp.com/#organization",
+                "name": "PasteDownloadApp",
+                "url": "https://pastedownloadapp.com/",
+                "logo": { "@type": "ImageObject", "url": "https://pastedownloadapp.com/favicon.svg" }
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://pastedownloadapp.com/blog/convert-png-to-jpg-mac/"
+            }
+        }
+    </script>
+
+    <figure class="mt-0 mb-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
+        <img src="/blog/convert-png-to-jpg-mac.webp" alt="Illustration showing a 2.0 MB PNG screenshot converted to a 366 KB JPG" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
+    </figure>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Can a Mac save screenshots as JPG by default?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Run defaults write com.apple.screencapture type jpg in Terminal, then killall SystemUIServer. Every new screenshot is saved as a JPG until you switch back with type png."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does converting a PNG screenshot to JPG lose quality?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, a little. JPG uses lossy compression, so each conversion discards some detail. Photos and gradients usually look fine, but text and sharp interface edges can pick up faint blurring, especially at lower quality settings."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I convert several screenshots to JPG at once on Mac?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Select the files in Finder, right-click, and choose Quick Actions then Convert Image, then set the format to JPEG. On older macOS versions, open them all in Preview, select every thumbnail in the sidebar, and use File then Export Selected Images."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What happens to transparency when I convert a PNG to JPG?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "JPG cannot store transparency, so transparent areas are flattened onto a solid background. PasteDownloadApp fills them with white. If you need to keep transparency, use PNG or WebP instead."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
+        How to Convert a PNG Screenshot to JPG on Mac (4 Ways)
+    </h1>
+
+    <AuthorByline publishDate="2026-10-01" updatedDate="2026-10-01" />
+
+    <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
+
+        <p>Every screenshot a Mac saves is a PNG. PNG is lossless, which keeps text crisp, but it also means a single full-screen capture can weigh several megabytes. When a form only accepts JPG, an email is bouncing, or you simply want a smaller file, you need a JPG. Here are four ways to get one on a Mac, from the built-in tools to a browser, and when each one makes sense.</p>
+
+        <h2>Why Mac Screenshots Are PNG</h2>
+        <p>PNG compresses without losing any pixel data, which suits screenshots full of text, lines, and flat colors. The cost is size, particularly for busy content like gradients, photos, or video frames. JPG throws away detail the eye is less likely to notice, so the same image is usually far smaller. If you want to understand that tradeoff first, read <a href="/blog/png-vs-jpg-vs-webp/">PNG vs JPG vs WebP with real file sizes</a>.</p>
+
+        <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
+            <img src="/blog/convert-png-to-jpg-mac.webp" alt="Illustration showing a 2.0 MB PNG file converted into a 366 KB JPG file" width="1600" height="900" class="w-full aspect-[16/9] object-cover" loading="lazy" decoding="async" />
+        </figure>
+
+        <h2>Method 1: Preview (Built In, One File at a Time)</h2>
+        <ol class="pl-5 space-y-2 list-decimal">
+            <li>Double-click the screenshot to open it in Preview.</li>
+            <li>Choose <strong>File &rarr; Export</strong>.</li>
+            <li>Set <strong>Format</strong> to <strong>JPEG</strong>. A <strong>Quality</strong> slider appears.</li>
+            <li>Drag the slider to the quality you want, choose a name and folder, and click <strong>Save</strong>.</li>
+        </ol>
+        <p>Preview is the best built-in choice when you care about the quality setting, because it is the only method here that gives you a slider. It saves a new file and leaves the original PNG alone.</p>
+
+        <VideoLink
+            videoId="Z21Otpc6TXE"
+            title="macOS Preview: Convert Images - How To Change Image File Types in the Preview App"
+            note="Shows the Preview export steps from Method 1, including picking the format and quality."
+        />
+
+        <h2>Method 2: The Finder Convert Image Action (Several Files at Once)</h2>
+        <p>On macOS Ventura and later, Finder can convert files without opening an app:</p>
+        <ol class="pl-5 space-y-2 list-decimal">
+            <li>Select one or more screenshots in Finder.</li>
+            <li>Right-click and choose <strong>Quick Actions &rarr; Convert Image</strong>.</li>
+            <li>Choose <strong>JPEG</strong> as the format and an image size, such as Actual Size.</li>
+            <li>Click <strong>Convert</strong>. The JPG copies appear next to the originals.</li>
+        </ol>
+        <p>This is the fastest route for a folder of existing screenshots. If your macOS version does not show the action, use Preview instead: open all the files, press <strong>Cmd+A</strong> in the sidebar, and choose <strong>File &rarr; Export Selected Images</strong>.</p>
+
+        <h2>Method 3: Make the Mac Save Screenshots as JPG From Now On</h2>
+        <p>If you never want PNGs, change the default format. Open Terminal and run:</p>
+        <pre class="overflow-x-auto rounded-lg border border-hairline bg-canvas-soft p-4 text-sm"><code>defaults write com.apple.screencapture type jpg
+killall SystemUIServer</code></pre>
+        <p>Every new screenshot is now a JPG, with no conversion step. To switch back, run <code>defaults write com.apple.screencapture type png</code> and <code>killall SystemUIServer</code>. This only affects captures made after the change, and it applies to everything, including screenshots of text where PNG would look sharper. If you also want to change the folder, see <a href="/blog/where-do-screenshots-go-on-mac/">where Mac screenshots go and how to change the location</a>.</p>
+
+        <h2>Method 4: Paste It Into a Browser Tool</h2>
+        <p>This method works even when the screenshot was never saved as a file. Take a clipboard-only capture with <strong>Cmd+Ctrl+Shift+4</strong>, open <a href="https://pastedownloadapp.com/">PasteDownloadApp</a>, press <strong>Cmd+V</strong>, and switch the format to <strong>JPEG</strong>. The conversion happens in your browser, so the image is not uploaded anywhere.</p>
+
+        <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
+            <img src="/blog/screenshots/paste-tool-mac-test-jpg-366kb.webp" alt="Screenshot of PasteDownloadApp after switching a pasted 1280 by 800 test image from PNG at 2.0 MB to JPEG at 365.8 KB" width="576" height="566" class="w-full max-w-lg mx-auto" loading="lazy" decoding="async" />
+        </figure>
+
+        <p>In a test with a 1280&times;800 gradient image, the PNG was 2.0 MB and the JPEG was 365.8 KB. That is an example, not a promise, since flat interface screenshots shrink by less. JPEG quality in the tool is fixed at 92% and transparent areas are filled with white. The full set of tested sizes, plus the tool's quirks, is in <a href="/blog/convert-multiple-screenshots-fast/">how to convert a screenshot to JPG, PNG, or WebP</a>.</p>
+
+        <VideoLink
+            videoId="am9kbb05aBM"
+            title="How to Convert PNG to JPG (JPEG) on a Mac with 3 Different Ways"
+            note="A video comparison of several ways to convert PNG files to JPG on a Mac, useful alongside the four methods above."
+        />
+
+        <h2>Which Method Should You Use?</h2>
+        <ul class="list-disc pl-5 space-y-2">
+            <li><strong>One file, and quality matters:</strong> Preview, for the quality slider.</li>
+            <li><strong>A folder of existing screenshots:</strong> the Finder Convert Image action.</li>
+            <li><strong>You always want JPG:</strong> the Terminal default.</li>
+            <li><strong>The screenshot is on the clipboard, or you are on someone else's Mac:</strong> the browser tool.</li>
+        </ul>
+
+        <h2>When Not to Convert to JPG</h2>
+        <p>Keep the PNG if the screenshot is mostly text, a code editor, or a user interface you will zoom into, because JPEG compression can leave faint smudges around sharp edges. Keep it as well if it has transparency you need. Converting a JPG back to PNG will not restore lost detail either, so keep the original PNG if you might need it again. For web use, <a href="/blog/image-compression-quality-settings/">image compression quality settings</a> explains how much quality you can give up before it shows.</p>
+
+
+        <h2>Frequently Asked Questions</h2>
+
+        <h3>Can a Mac save screenshots as JPG by default?</h3>
+        <p>Yes. Run <code>defaults write com.apple.screencapture type jpg</code> in Terminal, then <code>killall SystemUIServer</code>. Every new screenshot is saved as a JPG until you switch back with <code>type png</code>.</p>
+
+        <h3>Does converting a PNG screenshot to JPG lose quality?</h3>
+        <p>Yes, a little. JPG uses lossy compression, so each conversion discards some detail. Photos and gradients usually look fine, but text and sharp interface edges can pick up faint blurring, especially at lower quality settings.</p>
+
+        <h3>How do I convert several screenshots to JPG at once on Mac?</h3>
+        <p>Select the files in Finder, right-click, and choose <strong>Quick Actions &rarr; Convert Image</strong>, then set the format to JPEG. On older macOS versions, open them all in Preview, select every thumbnail in the sidebar, and use <strong>File &rarr; Export Selected Images</strong>.</p>
+
+        <h3>What happens to transparency when I convert a PNG to JPG?</h3>
+        <p>JPG cannot store transparency, so transparent areas are flattened onto a solid background. PasteDownloadApp fills them with white. If you need to keep transparency, use PNG or WebP instead.</p>
+
+        <RelatedGuides hrefs={["/blog/where-do-screenshots-go-on-mac/", "/blog/png-vs-jpg-vs-webp/", "/blog/image-compression-quality-settings/"]} />
+
+    </div>
+    <Fragment slot="after"><AuthorBio /></Fragment>
+</ContentLayout>

@@ -93,7 +93,7 @@ import VideoLink from '../../components/VideoLink.astro';
                 "name": "Do I need a separate icon for iPhone home screens?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes. iOS uses a 180×180 apple-touch-icon.png rather than the regular favicon, and unlike other favicon sizes it needs an opaque background: iOS does not composite transparency at all and fills any transparent pixels with solid black. Leave roughly 20px of padding around the artwork too, since iOS applies its own rounded-corner mask on top and can clip anything flush with the edge."
+                    "text": "Yes. iOS uses a 180×180 apple-touch-icon.png rather than the regular favicon. Unlike other favicon sizes, it needs an opaque background. iOS does not handle transparency and fills transparent pixels with solid black. Leave roughly 20px of padding around the artwork too, since iOS applies its own rounded-corner mask on top and can clip anything flush with the edge."
                 }
             },
             {
@@ -132,7 +132,7 @@ import VideoLink from '../../components/VideoLink.astro';
 
     <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
 
-        <p>"Favicon size" doesn't have one answer, because a favicon isn't one file anymore. Modern browsers, iOS home screens, Android, and Google's own search results each expect a different pixel size, and a single 16&times;16 icon that covered everything in 2005 now looks broken or blurry in most of those places. Below is every size actually in use today, followed by the format question, which is where most guides stop and most people actually go wrong.</p>
+        <p>"Favicon size" doesn't have one answer, because a favicon isn't one file anymore. Modern browsers, iOS home screens, Android, and Google's search results each expect a different pixel size. A single 16&times;16 icon covered everything in 2005. Today it looks broken or blurry in most of those places. Below is every size actually in use today, followed by the format question, which is where most guides stop and most people actually go wrong.</p>
 
         <h2>What Is the Favicon Size? Every Size You Need</h2>
 
@@ -175,9 +175,9 @@ import VideoLink from '../../components/VideoLink.astro';
             </table>
         </div>
 
-        <p>A <code>favicon.ico</code> file can bundle several of those raster sizes (commonly 16, 32, and 48) into one container, and the browser picks whichever frame fits the context, which is why you only need one <code>&lt;link rel="icon"&gt;</code> tag for it despite covering three sizes. SVG favicons sidestep the whole table: an SVG has no fixed pixel size, so one file scales cleanly to any of the above, though older Safari and legacy browsers still need a raster fallback alongside it. This site's own setup is exactly that combination: a <code>favicon.svg</code> as the scalable source, plus a <code>favicon.ico</code> that, decoded, bundles a 48&times;48 and a 32&times;32 frame for browsers that don't read SVG favicons yet.</p>
+        <p>A <code>favicon.ico</code> file can bundle several of those raster sizes (commonly 16, 32, and 48) into one container. The browser picks the frame that fits. That is why you only need one <code>&lt;link rel="icon"&gt;</code> tag for all three sizes. SVG favicons sidestep the whole table. An SVG has no fixed pixel size, so one file scales cleanly to any of the above. Older Safari and legacy browsers still need a raster fallback alongside it. This site's own setup is exactly that combination: a <code>favicon.svg</code> as the scalable source, plus a <code>favicon.ico</code> that, decoded, bundles a 48&times;48 and a 32&times;32 frame for browsers that don't read SVG favicons yet.</p>
 
-        <p>One important limit on this tool specifically: PasteDownloadApp converts <strong>format</strong>. It does not resize an image's pixel dimensions. Say you need a 512&times;512 icon from the table above, but your source photo is 4000&times;3000. This tool will give you a 4000&times;3000 file in whatever format you choose, not a resized one; resize first in an image editor, then use this tool for the format and transparency step, which is what it's genuinely useful for. Here is what each use case needs, backed by a real conversion of an actual 512&times;512 app icon.</p>
+        <p>One important limit on this tool specifically: PasteDownloadApp converts <strong>format</strong>. It does not resize an image's pixel dimensions. Say you need a 512&times;512 icon from the table above, but your source photo is 4000&times;3000. This tool will give you a 4000&times;3000 file in whatever format you choose. It does not resize. Resize first in an image editor, then use this tool for the format and transparency step. That is what it is good at. Here is what each use case needs, backed by a real conversion of an actual 512&times;512 app icon.</p>
 
         <VideoLink
             videoId="8iXHciqlAdA"
@@ -266,7 +266,7 @@ import VideoLink from '../../components/VideoLink.astro';
         <p>48&times;48 pixels. If your favicon looks fine in a browser tab but pixelated or oddly cropped in Google's search results, the 48&times;48 frame is likely missing or was never included in your <code>favicon.ico</code>.</p>
 
         <h3>Do I need a separate icon for iPhone home screens?</h3>
-        <p>Yes. iOS uses a 180&times;180 <code>apple-touch-icon.png</code> rather than the regular favicon, and unlike other favicon sizes it needs an opaque background: iOS does not composite transparency at all and fills any transparent pixels with solid black. Leave roughly 20px of padding around the artwork too, since iOS applies its own rounded-corner mask on top and can clip anything flush with the edge.</p>
+        <p>Yes. iOS uses a 180&times;180 <code>apple-touch-icon.png</code> rather than the regular favicon. Unlike other favicon sizes, it needs an opaque background. iOS does not handle transparency and fills transparent pixels with solid black. Leave roughly 20px of padding around the artwork too, since iOS applies its own rounded-corner mask on top and can clip anything flush with the edge.</p>
 
         <h3>Can this tool resize my image to exact favicon dimensions?</h3>
         <p>No. It converts format but keeps the original pixel dimensions. If your source image is not already close to the target size, resize it first in an image editor, then convert the format here if needed.</p>
@@ -278,8 +278,6 @@ import VideoLink from '../../components/VideoLink.astro';
         <p>Only if you know the receiving system accepts it. Many older upload forms and applicant tracking systems only recognize JPEG and PNG. WebP is a bigger compatibility risk in that specific context than it is for a website.</p>
 
         <RelatedGuides hrefs={["/blog/png-vs-jpg-vs-webp/", "/blog/image-compression-quality-settings/", "/blog/svg-ico-conversion-quirks/"]} />
-
-        <p>Convert your own icon or photo at <a href="https://pastedownloadapp.com/">pastedownloadapp.com</a> and compare the real output size across formats.</p>
 
     </div>
     <Fragment slot="after"><AuthorBio /></Fragment>
