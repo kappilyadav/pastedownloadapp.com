@@ -162,11 +162,11 @@ import VideoLink from '../../components/VideoLink.astro';
 
         <h3>Method 1: Preview's New from Clipboard</h3>
 
-        <p>Open Preview, then <strong>File &gt; New from Clipboard</strong> (or press Cmd+N after opening Preview from Spotlight). The copied picture opens as a new, untitled image. From there, use <strong>File &gt; Export</strong>, not Save, so you get the format dropdown: choose PNG, JPEG, or another format explicitly, rather than letting Preview keep whatever representation it received. If you just press Cmd+S without checking, you may still get a format picker in the save panel, but it is easy to click through without noticing, and the difference between "PNG" and whatever the pasteboard handed over can be a large one for no visible reason in the resulting file. One more thing worth knowing: the untitled image Preview creates is not saved anywhere until you explicitly save or export it, so closing the window without doing so loses it. If New from Clipboard appears greyed out, it usually means nothing image-shaped is currently on the clipboard, often because the copy did not actually succeed or something else was copied afterward.</p>
+        <p>Open Preview, then <strong>File &gt; New from Clipboard</strong> (or press Cmd+N after opening Preview from Spotlight). The copied picture opens as a new, untitled image. From there, use <strong>File &gt; Export</strong>, not Save, so you get the format dropdown: choose PNG, JPEG, or another format explicitly, rather than letting Preview keep whatever representation it received. If you just press Cmd+S, you may still get a format picker in the save panel. It is easy to click through without noticing. The file can end up much larger than a plain PNG for no visible reason. One more thing worth knowing: the untitled image Preview creates is not saved anywhere until you explicitly save or export it, so closing the window without doing so loses it. If New from Clipboard appears greyed out, it usually means nothing image-shaped is currently on the clipboard, often because the copy did not actually succeed or something else was copied afterward.</p>
 
         <h3>Method 2: Paste into Pages, Notes, or Mail</h3>
 
-        <p>Dropping the image into a document and exporting or saving from there works, but it carries baggage: Pages and Notes attach the image inside their own document format, and getting a clean standalone file back out means exporting again and stripping formatting. It is a reasonable option if you are already in one of those apps for another reason, not a good first choice.</p>
+        <p>Dropping the image into a document and exporting from there works, but it carries baggage. Pages and Notes keep the image inside their own document format. Getting a clean standalone file back out means exporting again and stripping the formatting. It is a reasonable option if you are already in one of those apps for another reason, not a good first choice.</p>
 
         <h3>Method 3: Paste Into a Browser Tool</h3>
 
@@ -191,7 +191,7 @@ import VideoLink from '../../components/VideoLink.astro';
 
         <h2>Does Copying a Picture on a Mac Save It to Photos?</h2>
 
-        <p>No, and this is a common source of confusion carried over from iPhone habits. On iOS, a screenshot is automatically saved into the Photos app. On a Mac, a screenshot without Control held saves a file to your Desktop, not to Photos, and a plain Cmd+C or right-click Copy Image never touches Photos or your Desktop at all; the picture exists only on the clipboard until you explicitly paste it somewhere and save it. If you want it in Photos, you have to import it there yourself.</p>
+        <p>No, and this is a common source of confusion carried over from iPhone habits. On iOS, a screenshot is automatically saved into the Photos app. On a Mac, a screenshot without Control held saves a file to your Desktop, not to Photos. A plain Cmd+C or right-click Copy Image never touches Photos or your Desktop. The picture exists only on the clipboard until you paste it somewhere and save it. If you want it in Photos, you have to import it there yourself.</p>
 
         <h2>Not on a Mac?</h2>
 

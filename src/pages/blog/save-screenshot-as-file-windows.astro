@@ -133,20 +133,20 @@ import VideoLink from '../../components/VideoLink.astro';
         <ul class="list-disc pl-5 space-y-2">
             <li><strong>PrtScn alone</strong> copies the full screen to the clipboard only. No file is created anywhere.</li>
             <li><strong>Win + PrtScn</strong> both copies to the clipboard <em>and</em> automatically saves a PNG to Pictures &gt; Screenshots, no extra steps. If you only need a full-screen capture, this already does what you're looking for; nothing below is necessary.</li>
-            <li><strong>Win + Shift + S</strong> (Snipping Tool's selection overlay) copies your selected region, window, or screen to the clipboard and shows a notification in the corner. Click that notification within a few seconds to open the capture in Snipping Tool and save it from there; dismiss or miss it, and the capture stays clipboard-only with no file.</li>
+            <li><strong>Win + Shift + S</strong> (Snipping Tool's selection overlay) copies your selected region, window, or screen to the clipboard and shows a notification in the corner. Click that notification within a few seconds to open the capture in Snipping Tool and save it. If you miss it, the capture stays on the clipboard with no file.</li>
         </ul>
 
         <p>So the real gap is region and window captures taken with Win+Shift+S, the most commonly used method precisely because it lets you select an area first. That is what actually needs a save step, and it is what the rest of this guide is about.</p>
 
         <h2>Multi-Monitor and Multi-Window Captures</h2>
 
-        <p>On a multi-monitor setup, PrtScn and Win+PrtScn both capture your entire virtual desktop across every connected display as a single combined image, not just the monitor your cursor is on. Two side-by-side 1080p monitors produce one roughly 3840&times;1080 file. If that is wider or larger than you wanted, two options avoid it: <strong>Alt+PrtScn</strong> captures only the currently active window, regardless of how many monitors you have, and <strong>Win+Shift+S</strong> lets you drag a selection across a specific area even if it spans more than one screen. For a single clean shot of one window, Alt+PrtScn is the fastest option and one most guides skip entirely.</p>
+        <p>On a multi-monitor setup, PrtScn and Win+PrtScn capture your whole desktop across every connected display as one combined image. They do not capture only the monitor your cursor is on. Two side-by-side 1080p monitors produce one roughly 3840&times;1080 file. If that is wider than you wanted, two options avoid it. <strong>Alt+PrtScn</strong> captures only the active window, however many monitors you have. <strong>Win+Shift+S</strong> lets you drag a selection over a specific area, even across two screens. For a single clean shot of one window, Alt+PrtScn is the fastest option and one most guides skip entirely.</p>
 
         <h2>Native Fix: Turn On Snipping Tool's Auto-Save</h2>
 
-        <p>Recent versions of Snipping Tool (11.2209.2.0 and later, standard on current Windows 11) can save every capture as a file automatically, not just full-screen ones. Open Snipping Tool, go to its settings, and enable auto-save; from then on, every region, window, or full-screen capture lands in Pictures &gt; Screenshots as a file with no notification-click required. If you want a permanent native fix rather than a per-capture workaround, this is it, and it costs nothing to turn on.</p>
+        <p>Recent versions of Snipping Tool (11.2209.2.0 and later, standard on current Windows 11) can save every capture as a file automatically, not just full-screen ones. Open Snipping Tool, go to its settings, and turn on auto-save. From then on, every region, window, or full-screen capture is saved to Pictures &gt; Screenshots. You do not need to click the notification. If you want a permanent native fix rather than a per-capture workaround, this is it, and it costs nothing to turn on.</p>
 
-        <p>The browser method below is still worth knowing for three reasons: it works the same way on a machine where you have not (or cannot) change that setting, it gives you a choice of PNG, JPEG, or WebP instead of always PNG, and it works identically if you ever switch to Mac or Linux.</p>
+        <p>The browser method below is still worth knowing for three reasons. It works on a machine where you cannot change that setting. It lets you choose PNG, JPEG, or WebP instead of always PNG. And it works the same way on Mac or Linux.</p>
 
         <VideoLink
             videoId="LwB9dnaFRdA"
@@ -162,7 +162,7 @@ import VideoLink from '../../components/VideoLink.astro';
             <img src="/blog/screenshots/paste-tool-png-result.webp" alt="Screenshot of PasteDownloadApp after pasting a clipboard image, showing the file dimensions 1672 by 941 and a size of 930.2 KB" width="624" height="575" class="w-full max-w-md mx-auto" loading="lazy" decoding="async" />
         </figure>
 
-        <p>That is a real paste, not a mockup: the info line under the preview reports the exact dimensions and file size the browser measured, 930.2 KB, straight from the pasted clipboard image. Nothing is uploaded to get that reading; it happens entirely in the tab you are already looking at.</p>
+        <p>That is a real paste, not a mockup. The info line under the preview shows the size the browser measured: 930.2 KB. Nothing is uploaded to get that reading; it happens entirely in the tab you are already looking at.</p>
 
         <h2>PNG or JPG for Windows Screenshots?</h2>
 
@@ -170,7 +170,7 @@ import VideoLink from '../../components/VideoLink.astro';
 
         <h2>Third-Party Screenshot Tools, Honestly</h2>
 
-        <p>Greenshot and Lightshot are the two most commonly recommended third-party Windows screenshot apps, and both do more than Snipping Tool: built-in annotation, auto-save to a fixed folder by default, and configurable formats. The tradeoff is that they are installs, which defeats the point if the goal was avoiding an extra app in the first place. They are worth it if you screenshot constantly and want annotation tools; for occasional captures, native shortcuts plus a browser paste when needed cover the same ground with nothing to install.</p>
+        <p>Greenshot and Lightshot are the two most often recommended third-party screenshot apps for Windows. Both do more than Snipping Tool. They have built-in annotation, they auto-save to a fixed folder, and they let you set the format. The tradeoff is that they are installs, which defeats the point if the goal was avoiding an extra app in the first place. They are worth it if you take screenshots all day and want annotation tools. For occasional captures, the native shortcuts plus a browser paste do the same job with nothing to install.</p>
 
         <h2>What About Mac or Mobile?</h2>
 

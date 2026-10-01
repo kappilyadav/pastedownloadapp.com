@@ -132,7 +132,7 @@ import VideoLink from '../../components/VideoLink.astro';
 
     <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
 
-        <p>A screenshot straight off your clipboard is a PNG. If you need it as a JPG instead, smaller for an email attachment, a form that only accepts JPG, or just a habit, converting it takes one format change in a browser tab, no editor required. Below is the direct four-step version, followed by real tested file sizes for PNG versus JPEG versus WebP on the same screenshot, a re-download behavior I found by reading the tool's own code, and the fastest way to get through several screenshots in a row if you have more than one.</p>
+        <p>A screenshot straight off your clipboard is a PNG. If you need it as a JPG instead, smaller for an email attachment, a form that only accepts JPG, or just a habit, converting it takes one format change in a browser tab, no editor required. Below is the short four-step version. After it come real file sizes for PNG, JPEG, and WebP on the same screenshot, a re-download behavior I found in the tool's own code, and the fastest way to handle several screenshots in a row.</p>
 
         <h2>Convert a Screenshot to JPG in Four Steps</h2>
 
@@ -157,13 +157,13 @@ import VideoLink from '../../components/VideoLink.astro';
 
         <h2>The Real Numbers From Converting One Screenshot Three Ways</h2>
 
-        <p>To get real file sizes instead of guessing, I built a 1280&times;800 test graphic meant to behave like an actual screenshot: a window title bar, sharp white text over a busy blue-to-pink gradient, and a light noise texture, since a flat single-color mockup compresses unrealistically well and would make the comparison meaningless. I pasted it once and let Auto-download run at the default PNG setting.</p>
+        <p>To get real file sizes instead of guessing, I built a 1280&times;800 test graphic that behaves like a real screenshot. It has a window title bar, sharp white text, a busy blue-to-pink gradient, and a light noise texture. A flat single-color mockup would compress far too well and make the comparison meaningless. I pasted it once and let Auto-download run at the default PNG setting.</p>
 
         <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
             <img src="/blog/screenshots/paste-tool-png-1-3mb-result.webp" alt="Screenshot of PasteDownloadApp after pasting a test screenshot, showing the resulting PNG file size of 1.3 MB in the paste preview" width="1200" height="1179" class="w-full max-w-lg mx-auto" loading="lazy" decoding="async" />
         </figure>
 
-        <p>PNG came back at <strong>1.3 MB</strong>. Switching the format dropdown to JPEG on that same image brought it down to <strong>172.1 KB</strong>, an 87% reduction. Switching again to WebP took it to <strong>108.4 KB</strong>, 92% smaller than the PNG and roughly 37% smaller than the JPEG of the identical image. That gap is wider than you would see on a plain UI screenshot with large flat-color areas, because gradient-and-noise content behaves more like a photo, and PNG's lossless compression handles photographic detail far worse than JPEG or WebP's lossy encoding does.</p>
+        <p>PNG came back at <strong>1.3 MB</strong>. Switching the format dropdown to JPEG on that same image brought it down to <strong>172.1 KB</strong>, an 87% reduction. Switching again to WebP took it to <strong>108.4 KB</strong>, 92% smaller than the PNG and roughly 37% smaller than the JPEG of the identical image. That gap is wider than you would see on a plain UI screenshot with large flat-color areas. Gradient and noise behave more like a photo. PNG's lossless compression handles photo detail far worse than the lossy encoding in JPEG or WebP.</p>
 
         <VideoLink
             videoId="yBX8GFqt6GA"
@@ -174,13 +174,13 @@ import VideoLink from '../../components/VideoLink.astro';
 
         <h2>Switching Formats After Pasting Re-Downloads Automatically</h2>
 
-        <p>Here is something I did not expect until I read the tool's conversion code and then confirmed it by testing: if you change the format dropdown while a pasted image is still sitting in the preview, meaning you have not clicked Clear, the tool immediately re-converts that same image in the new format and downloads it again. It is not just "the next paste uses the new format." It is an extra, automatic download you did not click a button for.</p>
+        <p>Here is something I did not expect. I found it in the tool's conversion code and then confirmed it by testing. If you change the format dropdown while a pasted image is still in the preview, the tool converts that same image to the new format right away. It then downloads it again. You only avoid this if you have clicked Clear. It is not just "the next paste uses the new format." It is an extra, automatic download you did not click a button for.</p>
 
         <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
             <img src="/blog/screenshots/paste-tool-webp-108kb-result.webp" alt="Screenshot of PasteDownloadApp after switching the format dropdown to WebP on an already-pasted image, showing the tool immediately re-converted it to a 108.4 KB WebP file" width="1200" height="1179" class="w-full max-w-lg mx-auto" loading="lazy" decoding="async" />
         </figure>
 
-        <p>In my test run, going PNG to JPEG to WebP on the same pasted image, touching nothing but the dropdown, produced three separate downloaded files from a single paste. If you are trying out formats to see which comes out smallest before committing, expect a small pile of files in your Downloads folder afterward, one per format you tried, and check that pile before you move on to the next screenshot.</p>
+        <p>In my test run, going PNG to JPEG to WebP on the same pasted image, touching nothing but the dropdown, produced three separate downloaded files from a single paste. If you are trying formats to see which is smallest, expect a small pile of files in your Downloads folder, one per format you tried. Check that pile before you move on to the next screenshot.</p>
 
         <h2>Converting Several Screenshots at Once</h2>
 
