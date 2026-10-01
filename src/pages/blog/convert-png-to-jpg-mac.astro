@@ -158,19 +158,12 @@ killall SystemUIServer</code></pre>
 
         <h2>Method 4: Paste It Into a Browser Tool</h2>
         <p>This method works even when the screenshot was never saved as a file. Take a clipboard-only capture with <strong>Cmd+Ctrl+Shift+4</strong>, open <a href="https://pastedownloadapp.com/">PasteDownloadApp</a>, press <strong>Cmd+V</strong>, and switch the format to <strong>JPEG</strong>. The conversion happens in your browser, so the image is not uploaded anywhere.</p>
-        <p>To give you real numbers, I generated a 1280&times;800 test image designed to behave like a busy screenshot: a gradient with a light noise texture, a title bar, and white text. I pasted it into the tool in Chrome. The PNG output was <strong>2.0 MB</strong>.</p>
 
         <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
-            <img src="/blog/screenshots/paste-tool-mac-test-png-2mb.webp" alt="Screenshot of PasteDownloadApp showing a pasted 1280 by 800 test image with PNG output at 2.0 MB" width="576" height="566" class="w-full max-w-lg mx-auto" loading="lazy" decoding="async" />
+            <img src="/blog/screenshots/paste-tool-mac-test-jpg-366kb.webp" alt="Screenshot of PasteDownloadApp after switching a pasted 1280 by 800 test image from PNG at 2.0 MB to JPEG at 365.8 KB" width="576" height="566" class="w-full max-w-lg mx-auto" loading="lazy" decoding="async" />
         </figure>
 
-        <p>Switching the format dropdown to JPEG re-encoded the same image to <strong>365.8 KB</strong>, about 82% smaller.</p>
-
-        <figure class="my-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
-            <img src="/blog/screenshots/paste-tool-mac-test-jpg-366kb.webp" alt="Screenshot of PasteDownloadApp after switching the format to JPEG, showing the same test image at 365.8 KB" width="576" height="566" class="w-full max-w-lg mx-auto" loading="lazy" decoding="async" />
-        </figure>
-
-        <p>Two limits to know about. JPEG quality in the tool is fixed at 92%, with no slider. And transparent areas are filled with white, because JPEG cannot store transparency. A flat interface screenshot with large solid areas will shrink by a smaller percentage than this gradient test, so treat 82% as an example, not a promise. The same pattern is covered in more detail in <a href="/blog/convert-multiple-screenshots-fast/">how to convert a screenshot to JPG, PNG, or WebP</a>.</p>
+        <p>In a test with a 1280&times;800 gradient image, the PNG was 2.0 MB and the JPEG was 365.8 KB. That is an example, not a promise, since flat interface screenshots shrink by less. JPEG quality in the tool is fixed at 92% and transparent areas are filled with white. The full set of tested sizes, plus the tool's quirks, is in <a href="/blog/convert-multiple-screenshots-fast/">how to convert a screenshot to JPG, PNG, or WebP</a>.</p>
 
         <VideoLink
             videoId="am9kbb05aBM"
