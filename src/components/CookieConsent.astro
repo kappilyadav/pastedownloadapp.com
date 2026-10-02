@@ -75,6 +75,13 @@
       banner.classList.remove('hidden');
     }
 
+    document.querySelectorAll('[data-open-cookie-settings]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        banner.classList.remove('hidden');
+        if (acceptBtn) acceptBtn.focus();
+      });
+    });
+
     if (acceptBtn) {
       acceptBtn.addEventListener('click', function () {
         storeConsent('granted');
