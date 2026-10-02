@@ -3,7 +3,6 @@ import '../styles/global.css';
 import ConsentDefault from '../components/ConsentDefault.astro';
 import AdSense from '../components/AdSense.astro';
 import ThemeScript from '../components/ThemeScript.astro';
-import CookieConsent from '../components/CookieConsent.astro';
 import Analytics from '../components/Analytics.astro';
 
 export interface Props {
@@ -118,7 +117,6 @@ const { title, description, canonicalUrl, keywords, noAds = false } = Astro.prop
   </head>
   <body class="min-h-screen">
     <slot />
-    <CookieConsent />
 
     {/*
     <script is:inline>
