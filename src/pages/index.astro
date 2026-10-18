@@ -16,7 +16,7 @@ const newestArticles = [...latestArticles].sort(
 );
 ---
 
-<Layout title="Paste Download - Copy Paste Image Downloader" description="Paste image to download from your clipboard, Ctrl+V, or drag and drop. Save copied images, photos, and screenshots as PNG, JPEG, or WebP." canonicalUrl="https://pastedownloadapp.com/">
+<Layout title="PasteDownload: Paste to Download Any Copied Image" description="Paste to download any copied image. Press Ctrl+V to save a clipboard image, screenshot, or photo as PNG, JPEG, or WebP. Free, private, no upload." canonicalUrl="https://pastedownloadapp.com/">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -25,13 +25,14 @@ const newestArticles = [...latestArticles].sort(
       "name": "PasteDownloadApp",
       "alternateName": ["PasteDownload", "Paste Download"],
       "url": "https://pastedownloadapp.com/",
-      "description": "Free online paste download tool for saving copied images, clipboard photos, and screenshots as PNG, JPEG, or WebP with private browser-based processing.",
+      "description": "PasteDownload is a free online tool to paste to download any copied image. Save clipboard images, photos, and screenshots as PNG, JPEG, or WebP with private browser-based processing.",
       "applicationCategory": "Multimedia",
       "operatingSystem": "All",
       "browserRequirements": "Requires JavaScript",
       "screenshot": "https://pastedownloadapp.com/home/step-3-format.webp",
       "featureList": [
-        "Paste images from the clipboard with Ctrl+V or Cmd+V",
+        "Paste to download: press Ctrl+V or Cmd+V to save a copied image",
+        "Download a clipboard image as PNG, JPEG, or WebP",
         "Convert pasted images to PNG, JPEG, or WebP",
         "Processing happens in your browser, nothing is uploaded",
         "Auto-download saves each pasted image immediately",
@@ -73,6 +74,46 @@ const newestArticles = [...latestArticles].sort(
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Yes. Paste any image from your clipboard or drag and drop a file, then download it as PNG, JPEG, or WebP. Conversion is handled locally in your browser using the Canvas API."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is PasteDownload?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PasteDownload is a free online paste downloader at pastedownloadapp.com. You copy an image, paste it into the box, and download it as a PNG, JPEG, or WebP file. It runs in your browser, so nothing is installed and nothing is uploaded."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is PasteDownload the same as PasteDownloadApp?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. PasteDownload and PasteDownloadApp are the same free tool, and its only website is pastedownloadapp.com. Searches for pastedownload, paste downloader, or pastedownload.com all lead to this site."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I download a copied image?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Copy the image with Copy Image or a screenshot shortcut, open PasteDownload, click the paste box, and press Ctrl+V (Cmd+V on a Mac). The image previews instantly and downloads as a PNG, JPEG, or WebP file."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I use Ctrl+V to download an image?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Click inside the paste box and press Ctrl+V. With auto-download on, the file is saved the moment the image is pasted. Turn auto-download off if you want to pick a format first and then press Download."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I convert a clipboard image to PNG or JPG?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Paste the clipboard image, choose PNG, JPEG, or WebP from the format menu, and download it. The conversion runs in your browser, so the image is never uploaded."
           }
         },
         {
@@ -150,10 +191,10 @@ const newestArticles = [...latestArticles].sort(
         </span>
 
         <h1 class="text-[32px] sm:text-5xl lg:text-[56px] font-semibold text-ink tracking-[-1.6px] sm:tracking-[-2.4px] leading-[1.1] max-w-[700px] mx-auto text-balance">
-          Paste Download Images Instantly
+          PasteDownload: Paste to Download Any Copied Image
         </h1>
         <p class="text-body text-base sm:text-lg lg:text-xl mt-4 sm:mt-5 max-w-[600px] mx-auto leading-relaxed text-pretty">
-          Copy an image, press Ctrl+V, and download it as PNG, JPEG, or WebP. PasteDownloadApp works as a private paste downloader for screenshots, copied photos, clipboard images, and drag-and-drop files.
+          Copy an image, press Ctrl+V, and download it as PNG, JPEG, or WebP. PasteDownload is a free, private paste downloader that saves a copied image, a clipboard image, a screenshot, or a dragged file straight to your device.
         </p>
         <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-8 sm:mt-10" aria-label="Information pages">
             <a href="/about/" class="text-body text-xs sm:text-sm no-underline hover:text-ink transition-colors flex items-center gap-1.5">
@@ -195,6 +236,18 @@ const newestArticles = [...latestArticles].sort(
     </section>
 
 
+    <!-- What is PasteDownload -->
+    <section class="mb-12 sm:mb-20 scroll-mt-14 sm:scroll-mt-24">
+      <div class="rounded-xl bg-canvas border border-hairline px-5 sm:px-10 py-8 sm:py-12">
+        <h2 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-3 leading-tight text-balance">
+          What is PasteDownload?
+        </h2>
+        <p class="text-body text-base sm:text-[17px] leading-relaxed m-0 max-w-[760px]">
+          PasteDownload is a free online paste downloader at pastedownloadapp.com. Copy any image, paste it into the box, and download it as a PNG, JPEG, or WebP file. It runs entirely in your browser, so there is nothing to install and your images are never uploaded.
+        </p>
+      </div>
+    </section>
+
     <!-- Features -->
     <section class="mb-12 sm:mb-20 scroll-mt-14 sm:scroll-mt-24">
       <Features />
@@ -203,6 +256,35 @@ const newestArticles = [...latestArticles].sort(
     <!-- How to use -->
     <section class="mb-12 sm:mb-20 scroll-mt-14 sm:scroll-mt-24">
       <HowToSteps />
+    </section>
+
+    <!-- Copied image and clipboard downloads -->
+    <section class="mb-12 sm:mb-20 scroll-mt-14 sm:scroll-mt-24">
+      <div class="rounded-xl bg-canvas border border-hairline px-5 sm:px-10 py-8 sm:py-12">
+        <h2 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-3 leading-tight text-balance">
+          Download copied images from your clipboard
+        </h2>
+        <p class="text-body text-base sm:text-[17px] leading-relaxed mt-0 mb-6 max-w-[720px]">
+          Most images you copy never become a file. They sit on the clipboard until you copy something else. PasteDownload is a clipboard downloader: it lets you download from clipboard in one step and turns that clipboard image into a real file.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="rounded-xl border border-hairline p-5">
+            <h3 class="text-ink font-medium text-base tracking-tight mt-0 mb-2">Paste to download</h3>
+            <p class="text-body text-sm sm:text-base leading-relaxed m-0">Copy to download in two steps. Press Ctrl+V (Cmd+V on a Mac) in the paste box and the image is saved as a file right away. No upload, no account, and no extra button when auto-download is on. It works as a simple copy paste download tool on any device.</p>
+          </div>
+          <div class="rounded-xl border border-hairline p-5">
+            <h3 class="text-ink font-medium text-base tracking-tight mt-0 mb-2">Save copied image files</h3>
+            <p class="text-body text-sm sm:text-base leading-relaxed m-0">Right-click any picture, choose Copy Image, and paste it here to save it. This works for web photos, chat images, and pictures copied out of documents and slides.</p>
+          </div>
+          <div class="rounded-xl border border-hairline p-5">
+            <h3 class="text-ink font-medium text-base tracking-tight mt-0 mb-2">Clipboard to image: PNG, JPG, or WebP</h3>
+            <p class="text-body text-sm sm:text-base leading-relaxed m-0">Go from clipboard to image in the format you need as you download it. Pick PNG for transparency, JPEG for compatibility, or WebP for the smallest file.</p>
+          </div>
+        </div>
+        <p class="mt-6 pt-4 border-t border-hairline text-body text-sm sm:text-base leading-relaxed">
+          Working on a Mac? Read <a href="/blog/download-copied-image-mac/">how to download a copied image on Mac</a>. On Windows, see <a href="/blog/save-screenshot-as-file-windows/">how to save a screenshot as a file</a>.
+        </p>
+      </div>
     </section>
 
     <!-- Real-life examples -->
@@ -230,6 +312,24 @@ const newestArticles = [...latestArticles].sort(
           <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
             <summary class="flex items-center gap-3 px-5 py-4 cursor-pointer text-ink font-medium text-sm sm:text-base list-none select-none [&::-webkit-details-marker]:hidden">
               <svg class="shrink-0 w-4 h-4 text-mute transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              What is PasteDownload?
+            </summary>
+            <div class="px-5 pb-4 pt-0 text-body text-base sm:text-[17px] leading-relaxed border-t border-hairline mt-0">
+              <p class="pt-3">PasteDownload is a free online paste downloader at pastedownloadapp.com. You copy an image, paste it into the box, and download it as a <strong>PNG</strong>, <strong>JPEG</strong>, or <strong>WebP</strong> file. It runs in your browser, so nothing is installed and nothing is uploaded.</p>
+            </div>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
+            <summary class="flex items-center gap-3 px-5 py-4 cursor-pointer text-ink font-medium text-sm sm:text-base list-none select-none [&::-webkit-details-marker]:hidden">
+              <svg class="shrink-0 w-4 h-4 text-mute transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              Is PasteDownload the same as PasteDownloadApp?
+            </summary>
+            <div class="px-5 pb-4 pt-0 text-body text-base sm:text-[17px] leading-relaxed border-t border-hairline mt-0">
+              <p class="pt-3">Yes. PasteDownload and PasteDownloadApp are the same free tool, and its only website is pastedownloadapp.com. Searches for pastedownload, paste downloader, or pastedownload.com all lead to this site.</p>
+            </div>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
+            <summary class="flex items-center gap-3 px-5 py-4 cursor-pointer text-ink font-medium text-sm sm:text-base list-none select-none [&::-webkit-details-marker]:hidden">
+              <svg class="shrink-0 w-4 h-4 text-mute transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
               How do I use paste image to download on mobile?
             </summary>
             <div class="px-5 pb-4 pt-0 text-body text-base sm:text-[17px] leading-relaxed border-t border-hairline mt-0">
@@ -252,6 +352,33 @@ const newestArticles = [...latestArticles].sort(
             </summary>
             <div class="px-5 pb-4 pt-0 text-body text-base sm:text-[17px] leading-relaxed border-t border-hairline mt-0">
               <p class="pt-3">Yes. Paste any image from your clipboard or drag and drop a file, then download it in <strong>PNG</strong>, <strong>JPEG</strong>, or <strong>WebP</strong> format. Conversion happens locally in your browser when supported.</p>
+            </div>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
+            <summary class="flex items-center gap-3 px-5 py-4 cursor-pointer text-ink font-medium text-sm sm:text-base list-none select-none [&::-webkit-details-marker]:hidden">
+              <svg class="shrink-0 w-4 h-4 text-mute transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              How do I download a copied image?
+            </summary>
+            <div class="px-5 pb-4 pt-0 text-body text-base sm:text-[17px] leading-relaxed border-t border-hairline mt-0">
+              <p class="pt-3">Copy the image with <strong>Copy Image</strong> or a screenshot shortcut, click the paste box, and press <strong>Ctrl+V</strong> (Cmd+V on a Mac). The image previews instantly and downloads as a PNG, JPEG, or WebP file.</p>
+            </div>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
+            <summary class="flex items-center gap-3 px-5 py-4 cursor-pointer text-ink font-medium text-sm sm:text-base list-none select-none [&::-webkit-details-marker]:hidden">
+              <svg class="shrink-0 w-4 h-4 text-mute transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              How do I use Ctrl+V to download an image?
+            </summary>
+            <div class="px-5 pb-4 pt-0 text-body text-base sm:text-[17px] leading-relaxed border-t border-hairline mt-0">
+              <p class="pt-3">Click inside the paste box and press Ctrl+V. With auto-download on, the file is saved the moment the image is pasted. Turn auto-download off if you want to pick a format first and then press Download.</p>
+            </div>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
+            <summary class="flex items-center gap-3 px-5 py-4 cursor-pointer text-ink font-medium text-sm sm:text-base list-none select-none [&::-webkit-details-marker]:hidden">
+              <svg class="shrink-0 w-4 h-4 text-mute transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              How do I convert a clipboard image to PNG or JPG?
+            </summary>
+            <div class="px-5 pb-4 pt-0 text-body text-base sm:text-[17px] leading-relaxed border-t border-hairline mt-0">
+              <p class="pt-3">Paste the clipboard image, choose <strong>PNG</strong>, <strong>JPEG</strong>, or <strong>WebP</strong> from the format menu, and download it. The conversion runs in your browser, so the image is never uploaded.</p>
             </div>
           </details>
           <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
