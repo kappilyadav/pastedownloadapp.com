@@ -60,6 +60,21 @@ import ContentLayout from '../layouts/ContentLayout.astro';
         </thead>
         <tbody class="divide-y divide-hairline">
           <tr>
+            <td class="px-4 py-3 font-semibold text-ink"><code>pdl:download-count</code></td>
+            <td class="px-4 py-3">Counts how many images you have downloaded, so the optional bookmark / install bar appears only after a few uses.</td>
+            <td class="px-4 py-3">Until you clear site data</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-semibold text-ink"><code>pdl:install-snooze</code></td>
+            <td class="px-4 py-3">Remembers that you dismissed or used the bookmark / install bar, so it stays hidden for 30 days.</td>
+            <td class="px-4 py-3">Until you clear site data</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-semibold text-ink"><code>pdl:install-shown</code> (session storage)</td>
+            <td class="px-4 py-3">Makes sure the bookmark / install bar appears at most once per browsing session.</td>
+            <td class="px-4 py-3">Until you close the tab</td>
+          </tr>
+          <tr>
             <td class="px-4 py-3 font-semibold text-ink"><code>theme</code></td>
             <td class="px-4 py-3">Remembers whether you picked the light, dark, or system color theme.</td>
             <td class="px-4 py-3">Until you clear site data</td>

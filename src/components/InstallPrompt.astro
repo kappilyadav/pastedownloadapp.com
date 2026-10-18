@@ -1,0 +1,144 @@
+<div id="installBar" role="region" aria-label="Install or bookmark this site" hidden class="fixed inset-x-0 bottom-0 z-40 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pointer-events-none">
+  <div class="pointer-events-auto mx-auto max-w-xl flex items-center gap-3 rounded-xl border border-hairline bg-canvas text-ink px-4 py-3 shadow-[0_8px_24px_-8px_#00000040,0_2px_8px_#00000014]">
+    <img src="/icon-192.png" alt="" width="36" height="36" class="w-9 h-9 rounded-lg shrink-0" />
+    <div class="flex-1 min-w-0">
+      <p id="installBarTitle" class="m-0 text-sm font-semibold text-ink leading-tight">Keep Paste Download handy</p>
+      <p id="installBarText" class="m-0 mt-0.5 text-xs sm:text-sm text-body leading-snug"></p>
+    </div>
+    <button type="button" id="installBarAction" hidden class="shrink-0 bg-ink dark:bg-white text-on-primary dark:text-black text-sm font-medium px-4 py-2 rounded-full border-none cursor-pointer hover:opacity-90 transition-opacity focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">Install</button>
+    <button type="button" id="installBarClose" aria-label="Dismiss" class="shrink-0 w-8 h-8 rounded-full border border-hairline flex items-center justify-center text-body hover:text-ink bg-transparent cursor-pointer focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+</div>
+
+<style is:global>
+  @media (display-mode: standalone) {
+    [data-install-trigger] { display: none !important; }
+  }
+</style>
+
+<script>
+  const SNOOZE_KEY = 'pdl:install-snooze';
+  const COUNT_KEY = 'pdl:download-count';
+  const SHOWN_KEY = 'pdl:install-shown';
+  const SNOOZE_MS = 30 * 24 * 60 * 60 * 1000;
+  const THRESHOLD = 3;
+  const DELAY_MS = 2500;
+
+  function read(store: 'local' | 'session', key: string): string | null {
+    try { return (store === 'local' ? localStorage : sessionStorage).getItem(key); } catch { return null; }
+  }
+  function write(store: 'local' | 'session', key: string, value: string) {
+    try { (store === 'local' ? localStorage : sessionStorage).setItem(key, value); } catch {}
+  }
+
+  const inFrame = window.top !== window.self;
+
+  // Counts downloads for every visitor (also in standalone mode) and tells the rest of the page.
+  let downloads = parseInt(read('local', COUNT_KEY) || '0', 10) || 0;
+  document.addEventListener('pdl:result', () => {
+    downloads += 1;
+    write('local', COUNT_KEY, String(downloads));
+    document.dispatchEvent(new CustomEvent('pdl:count', { detail: downloads }));
+  });
+  const isStandalone = () =>
+    window.matchMedia('(display-mode: standalone)').matches || (navigator as any).standalone === true;
+
+  const bar = document.getElementById('installBar') as HTMLElement | null;
+  const titleEl = document.getElementById('installBarTitle');
+  const textEl = document.getElementById('installBarText');
+  const actionBtn = document.getElementById('installBarAction') as HTMLButtonElement | null;
+  const closeBtn = document.getElementById('installBarClose');
+  const triggers = document.querySelectorAll<HTMLElement>('[data-install-trigger]');
+
+  if (inFrame || isStandalone()) {
+    triggers.forEach((t) => (t.hidden = true));
+    if (bar) bar.remove();
+  } else if (bar && textEl && actionBtn && closeBtn) {
+    const ua = navigator.userAgent;
+    const isIOS = /iPhone|iPad|iPod/.test(ua) || (!/Android/i.test(ua) && navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const isMobile = isIOS || /Android|Mobile/i.test(ua);
+    const isMac = !isMobile && /Mac/i.test(navigator.platform || ua);
+    let deferred: any = null;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferred = e;
+    });
+
+    const snooze = () => write('local', SNOOZE_KEY, String(Date.now() + SNOOZE_MS));
+    const hide = () => { bar.hidden = true; };
+
+    window.addEventListener('appinstalled', () => {
+      deferred = null;
+      snooze();
+      hide();
+    });
+
+    function consentVisible() {
+      return Array.from(document.querySelectorAll<HTMLElement>('.fc-consent-root, .fc-dialog-container, .fc-dialog-overlay'))
+        .some((el) => getComputedStyle(el).display !== 'none' && el.getClientRects().length > 0);
+    }
+
+    function render() {
+      const n = downloads;
+      if (titleEl) titleEl.textContent = n > 0 ? `You've downloaded ${n} image${n === 1 ? '' : 's'} here` : 'Keep Paste Download handy';
+      if (deferred) {
+        textEl!.textContent = 'Install it as an app to reopen it in one tap.';
+        actionBtn!.hidden = false;
+      } else {
+        actionBtn!.hidden = true;
+        if (isIOS) textEl!.textContent = 'Tap Share, then Add to Home Screen.';
+        else if (isMobile) textEl!.textContent = 'Open the browser menu and choose Add to Home screen.';
+        else textEl!.textContent = `Press ${isMac ? '⌘+D' : 'Ctrl+D'} to bookmark.`;
+      }
+    }
+
+    function show() {
+      if (isStandalone() || consentVisible()) return;
+      render();
+      bar!.hidden = false;
+    }
+
+    actionBtn.addEventListener('click', async () => {
+      if (!deferred) return;
+      const p = deferred;
+      deferred = null;
+      try {
+        await p.prompt();
+        await p.userChoice;
+      } catch {}
+      snooze();
+      hide();
+    });
+
+    closeBtn.addEventListener('click', () => {
+      snooze();
+      hide();
+    });
+
+    triggers.forEach((t) => {
+      t.addEventListener('click', (e) => {
+        e.preventDefault();
+        show();
+      });
+    });
+
+    document.addEventListener('pdl:count', (e) => {
+      const count = (e as CustomEvent<number>).detail;
+      if (count < THRESHOLD) return;
+      if (read('session', SHOWN_KEY)) return;
+      const until = parseInt(read('local', SNOOZE_KEY) || '0', 10) || 0;
+      if (Date.now() < until) return;
+      write('session', SHOWN_KEY, '1');
+      setTimeout(show, DELAY_MS);
+    });
+  }
+
+  if (import.meta.env.PROD && !inFrame && 'serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    });
+  }
+</script>

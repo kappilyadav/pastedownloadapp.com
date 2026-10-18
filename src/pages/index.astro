@@ -131,6 +131,19 @@ const newestArticles = [...latestArticles].sort(
       </section>
 
       <div class="relative">
+        <div id="heroStats" class="mx-auto mb-6 w-full max-w-xs rounded-2xl border border-hairline bg-canvas px-4 py-3 text-left" aria-live="polite">
+          <div class="flex items-center gap-3">
+            <span id="heroStatsEmoji" class="text-3xl leading-none select-none" aria-hidden="true">📋</span>
+            <div class="flex-1 min-w-0">
+              <p class="m-0 text-ink text-sm font-semibold leading-tight"><span id="heroStatsCount" class="tabular-nums text-xl">0</span> <span id="heroStatsUnit">images</span> saved</p>
+              <p id="heroStatsLevel" class="m-0 mt-0.5 text-mute text-xs leading-tight">Clipboard Rookie</p>
+            </div>
+          </div>
+          <div class="mt-3 h-1.5 w-full rounded-full bg-canvas-soft-2 overflow-hidden" role="progressbar" aria-label="Progress to next level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="heroStatsBarWrap">
+            <div id="heroStatsBar" class="h-full rounded-full bg-gradient-to-r from-[#007cf0] via-[#7928ca] to-[#ff0080] transition-[width] duration-700 ease-out" style="width:0%"></div>
+          </div>
+          <p id="heroStatsNext" class="m-0 mt-1.5 text-mute text-xs">Paste and download your first image!</p>
+        </div>
         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-canvas border border-hairline text-mute text-xs font-medium mb-6">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
           Privacy-first &middot; 100% in-browser
@@ -317,6 +330,62 @@ const newestArticles = [...latestArticles].sort(
   </main>
 
   <Footer />
+  <script>
+    const LEVELS = [
+      { at: 0, emoji: '📋', name: 'Clipboard Rookie' },
+      { at: 1, emoji: '🚀', name: 'First Launch' },
+      { at: 5, emoji: '⚡', name: 'Paste Pro' },
+      { at: 10, emoji: '🔥', name: 'Download Streak' },
+      { at: 25, emoji: '🦸', name: 'Screenshot Hero' },
+      { at: 50, emoji: '👑', name: 'Clipboard Royalty' },
+      { at: 100, emoji: '🏆', name: 'Legend' }
+    ];
+    const $ = (id: string) => document.getElementById(id);
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let shown = 0;
+    let raf = 0;
+
+    function render(n: number) {
+      let i = 0;
+      while (i + 1 < LEVELS.length && n >= LEVELS[i + 1].at) i++;
+      const cur = LEVELS[i];
+      const next = LEVELS[i + 1];
+      $('heroStatsEmoji')!.textContent = cur.emoji;
+      $('heroStatsLevel')!.textContent = cur.name;
+      $('heroStatsUnit')!.textContent = n === 1 ? 'image' : 'images';
+      const pct = next ? Math.round(((n - cur.at) / (next.at - cur.at)) * 100) : 100;
+      $('heroStatsBar')!.style.width = pct + '%';
+      $('heroStatsBarWrap')!.setAttribute('aria-valuenow', String(pct));
+      $('heroStatsNext')!.textContent = !next
+        ? 'Top level reached. You are a legend!'
+        : n === 0
+          ? 'Paste and download your first image!'
+          : `${next.at - n} more to reach ${next.emoji} ${next.name}`;
+    }
+
+    function setCount(n: number, animate: boolean) {
+      cancelAnimationFrame(raf);
+      const from = shown;
+      shown = n;
+      render(n);
+      const el = $('heroStatsCount')!;
+      if (!animate || reduceMotion || from === n) { el.textContent = String(n); return; }
+      const start = performance.now();
+      const step = (now: number) => {
+        const t = Math.min(1, (now - start) / 600);
+        el.textContent = String(Math.round(from + (n - from) * t));
+        if (t < 1) raf = requestAnimationFrame(step);
+      };
+      raf = requestAnimationFrame(step);
+      const card = $('heroStats')!;
+      card.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.05)' }, { transform: 'scale(1)' }], { duration: 400 });
+    }
+
+    let initial = 0;
+    try { initial = parseInt(localStorage.getItem('pdl:download-count') || '0', 10) || 0; } catch {}
+    setCount(initial, initial > 0);
+    document.addEventListener('pdl:count', (e) => setCount((e as CustomEvent<number>).detail, true));
+  </script>
 </Layout>
 
 <style>

@@ -134,6 +134,7 @@ const { id = "paste" } = Astro.props;
       const filename = `pasted_${getTimestamp()}.${ext}`;
       currentFileName = filename;
       downloadBlob(blob, filename);
+      document.dispatchEvent(new CustomEvent('pdl:result'));
       pasteInfo.textContent = `${format.toUpperCase()} \u00B7 ${formatFileSize(blob.size)}`;
     }, getMimeType(format), 0.92);
   }
