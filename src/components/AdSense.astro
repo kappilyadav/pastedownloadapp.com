@@ -1,2 +1,16 @@
 <meta name="google-adsense-account" content="ca-pub-5091913868096252" />
-<script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5091913868096252" crossorigin="anonymous"></script>
+<script is:inline>
+  // Load AdSense after the visitor's first interaction so it never delays the initial page load.
+  (function () {
+    var events = ['scroll', 'pointerdown', 'keydown', 'touchstart', 'mousemove'];
+    function load() {
+      events.forEach(function (e) { window.removeEventListener(e, load); });
+      var s = document.createElement('script');
+      s.async = true;
+      s.crossOrigin = 'anonymous';
+      s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5091913868096252';
+      document.head.appendChild(s);
+    }
+    events.forEach(function (e) { window.addEventListener(e, load, { once: true, passive: true }); });
+  })();
+</script>

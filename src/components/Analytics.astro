@@ -1,7 +1,18 @@
-<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-5NJC2EHMCC"></script>
 <script is:inline>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-5NJC2EHMCC');
+  // Load gtag.js after the visitor's first interaction; queued events are sent once it loads.
+  (function () {
+    var events = ['scroll', 'pointerdown', 'keydown', 'touchstart', 'mousemove'];
+    function load() {
+      events.forEach(function (e) { window.removeEventListener(e, load); });
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-5NJC2EHMCC';
+      document.head.appendChild(s);
+    }
+    events.forEach(function (e) { window.addEventListener(e, load, { once: true, passive: true }); });
+  })();
 </script>
