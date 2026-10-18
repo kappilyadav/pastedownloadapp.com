@@ -1,0 +1,234 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import RelatedGuides from '../../components/RelatedGuides.astro';
+import AuthorByline from '../../components/AuthorByline.astro';
+import AuthorBio from '../../components/AuthorBio.astro';
+---
+
+<ContentLayout
+    title="How to Paste a Screenshot Into Claude Code and Other Terminal AI Tools"
+    description="Cmd+V pastes nothing useful in most terminals. Here are the exact keys for Claude Code on Mac, Windows, Linux and WSL, a quick clipboard check, and what to do when image paste still fails."
+    canonicalUrl="https://pastedownloadapp.com/blog/paste-image-into-claude-code-terminal/"
+    imageUrl="https://pastedownloadapp.com/blog/paste-image-into-claude-code-terminal.png"
+    breadcrumbs={[{ name: "Home", href: "/" }, { name: "Blog", href: "/blog/" }, { name: "Paste an Image Into Claude Code" }]}
+>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "How to Paste a Screenshot Into Claude Code and Other Terminal AI Tools",
+            "description": "Cmd+V pastes nothing useful in most terminals. Here are the exact keys for Claude Code on Mac, Windows, Linux and WSL, a quick clipboard check, and what to do when image paste still fails.",
+            "image": "https://pastedownloadapp.com/blog/paste-image-into-claude-code-terminal.png",
+            "datePublished": "2026-10-16T00:00:00Z",
+            "dateModified": "2026-10-16T00:00:00Z",
+            "author": {
+                "@type": "Person",
+                "@id": "https://pastedownloadapp.com/author/#person",
+                "name": "Kappil Yadav",
+                "url": "https://pastedownloadapp.com/author/",
+                "image": "https://pastedownloadapp.com/author-kappil-yadav.webp",
+                "jobTitle": "Founder & Developer",
+                "description": "Full-stack developer who builds and maintains PasteDownloadApp using the browser's native Clipboard and Canvas APIs. Ships public code on GitHub and tests every guide against real files in the live tool before publishing.",
+                "email": "hello@pastedownloadapp.com",
+                "knowsAbout": [
+                    "Clipboard API",
+                    "Canvas API",
+                    "Image formats",
+                    "Web development"
+                ],
+                "sameAs": [
+                    "https://github.com/kappilyadav",
+                    "https://www.linkedin.com/in/kapilyadavv",
+                    "https://www.instagram.com/heykapil_"
+                ],
+                "worksFor": {
+                    "@type": "Organization",
+                    "@id": "https://pastedownloadapp.com/#organization",
+                    "name": "PasteDownloadApp",
+                    "url": "https://pastedownloadapp.com/"
+                }
+            },
+            "publisher": {
+                "@type": "Organization",
+                "@id": "https://pastedownloadapp.com/#organization",
+                "name": "PasteDownloadApp",
+                "url": "https://pastedownloadapp.com/",
+                "logo": { "@type": "ImageObject", "url": "https://pastedownloadapp.com/favicon.svg" }
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://pastedownloadapp.com/blog/paste-image-into-claude-code-terminal/"
+            }
+        }
+    </script>
+
+    <figure class="mt-0 mb-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
+        <img src="/blog/paste-image-into-claude-code-terminal.webp" alt="Illustration of the Ctrl+V shortcut adding an [Image #1] marker to a terminal AI prompt" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
+    </figure>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Why can't I paste an image into Claude Code with Cmd+V?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "On a Mac, most terminals treat Cmd+V as a text paste, which cannot carry image data. Claude Code listens for Ctrl+V instead (Cmd+V works in iTerm2). On Windows and WSL the key is Alt+V."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the shortcut to paste an image in Claude Code on Windows?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Alt+V on Windows and WSL. Under WSL both Ctrl+V and Alt+V are bound, and the documentation suggests Alt+V if your terminal intercepts Ctrl+V."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I add an image if paste does not work at all?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Drag the image file into the window, or type its path in your prompt, for example \"Analyze this image: /path/to/your/image.png\". Neither method uses the clipboard."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why does image paste fail over SSH?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The tool reads the clipboard of the machine it runs on. Over SSH that is the remote server, which never received your screenshot. Save the image locally, copy it to the server, and give the tool the file path."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
+        How to Paste a Screenshot Into Claude Code and Other Terminal AI Tools
+    </h1>
+
+    <AuthorByline publishDate="2026-10-16" updatedDate="2026-10-16" />
+
+    <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
+
+        <p>You take a screenshot, switch to your terminal, press <strong>Cmd+V</strong>, and either nothing happens or a file path shows up instead of the picture. That is expected behavior, not a bug on your machine. A terminal window is built for text, so it has no way to carry image data. Terminal AI tools such as Claude Code get around this by reading the clipboard themselves, but only when you press the right key, on a system where they can reach the clipboard, with an image actually on it.</p>
+
+        <p>This guide gives the keys from Anthropic's own documentation, a quick way to check the clipboard, the failure causes in the order worth checking them, and fallbacks that work without the clipboard at all. Keys and behavior can change between versions, so the sources are linked at the end.</p>
+
+        <h2>Why Cmd+V Does Nothing in a Terminal</h2>
+        <p>When you paste into a terminal, the terminal program sends your text to the app running inside it, character by character. There is no channel in that stream for pixels. So an image-aware command line tool does not wait for the terminal to hand it a picture. Instead, you press a dedicated key, the tool receives that keypress, and then <em>the tool itself</em> asks your operating system what is on the clipboard and attaches the image if it finds one.</p>
+        <p>That means three things have to line up, and every failure comes from one of them:</p>
+        <ol class="pl-5 space-y-2 list-decimal">
+            <li><strong>The right key reaches the tool.</strong> If your terminal grabs the keypress first, as many do for Ctrl+V, the tool never sees it.</li>
+            <li><strong>The tool can read your clipboard.</strong> This is where Linux, WSL, and remote sessions run into trouble.</li>
+            <li><strong>The clipboard really holds an image.</strong> A copied file or a copied path is not an image, even though it looks like one when you copy it.</li>
+        </ol>
+
+        <h2>The Right Key for Claude Code, by System</h2>
+        <p>Anthropic's interactive mode reference lists the image paste shortcut as <code>Ctrl+V</code>, or <code>Cmd+V</code> in iTerm2, or <code>Alt+V</code> on Windows and WSL. In practice that works out to:</p>
+        <div class="overflow-x-auto rounded-xl border border-hairline">
+            <table class="w-full text-left text-sm">
+                <thead class="bg-canvas-soft text-ink"><tr><th class="px-4 py-3 font-semibold">Where you run it</th><th class="px-4 py-3 font-semibold">Key to press</th><th class="px-4 py-3 font-semibold">Notes</th></tr></thead>
+                <tbody class="divide-y divide-hairline">
+                    <tr><td class="px-4 py-3 align-top">macOS, most terminals</td><td class="px-4 py-3 align-top"><strong>Ctrl+V</strong></td><td class="px-4 py-3 align-top">Not Cmd+V. In most terminals Cmd+V is the terminal&rsquo;s own text paste.</td></tr>
+                    <tr><td class="px-4 py-3 align-top">macOS, iTerm2</td><td class="px-4 py-3 align-top"><strong>Cmd+V</strong></td><td class="px-4 py-3 align-top">Listed explicitly in the docs.</td></tr>
+                    <tr><td class="px-4 py-3 align-top">Windows, native</td><td class="px-4 py-3 align-top"><strong>Alt+V</strong></td><td class="px-4 py-3 align-top">Ctrl+V is a text paste in Windows terminals.</td></tr>
+                    <tr><td class="px-4 py-3 align-top">WSL</td><td class="px-4 py-3 align-top"><strong>Ctrl+V or Alt+V</strong></td><td class="px-4 py-3 align-top">Both are bound. The docs suggest Alt+V if your terminal intercepts Ctrl+V.</td></tr>
+                    <tr><td class="px-4 py-3 align-top">Linux</td><td class="px-4 py-3 align-top"><strong>Ctrl+V</strong></td><td class="px-4 py-3 align-top">Needs a way to read the clipboard, covered below.</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>When it works, Claude Code inserts an <code>[Image #1]</code> marker at the cursor, so you can refer to the picture by position in your prompt, for example "compare [Image #1] with [Image #2]". You can add several images to one conversation. Cmd+click (Mac) or Ctrl+click (Windows and Linux) on a marker opens the image in your default viewer, which is a quick way to confirm that the right screenshot went in.</p>
+
+        <h2>Step Zero: Check That the Clipboard Holds an Image</h2>
+        <p>Before you debug the tool, check the clipboard. On a Mac, run this in Terminal right after you copy or capture something:</p>
+        <pre class="overflow-x-auto rounded-lg border border-hairline bg-canvas-soft p-4 text-sm"><code>osascript -e 'clipboard info'</code></pre>
+        <p>If an image is there, the output lists image types such as <code>«class PNGf»</code> and <code>TIFF picture</code>. If you only see <code>alias</code> or text types like <code>«class utf8»</code>, the clipboard holds a file reference or text, and no key will turn that into a pasted image. The companion guide <a href="/blog/cant-paste-image-check-clipboard/">Can't Paste an Image? Check What Is Actually on Your Clipboard</a> shows real output for each case and the equivalent checks for Windows and Linux.</p>
+        <p>A browser check works on any system: open <a href="https://pastedownloadapp.com/">PasteDownloadApp</a> and press Ctrl+V or Cmd+V. If the preview appears, the browser can see an image on your clipboard, so the problem is between the clipboard and your terminal tool.</p>
+
+        <h2>When the Key Does Nothing: Causes in Order</h2>
+
+        <h3>1. Wrong key for your system</h3>
+        <p>The most common one. Cmd+V on a Mac Terminal pastes text only. Ctrl+V on Windows is the terminal's text paste. Use the table above.</p>
+
+        <h3>2. Your terminal intercepts the key</h3>
+        <p>Some terminals treat Ctrl+V as paste and never pass it on. The documentation's own advice for WSL is to try Alt+V. If a key seems to do nothing, try the other one before anything else. If you use a multiplexer such as tmux, test outside it once to rule it out.</p>
+
+        <h3>3. The clipboard holds a file, not an image</h3>
+        <p>Copying an image file in Finder or File Explorer puts a <em>reference to the file</em> on the clipboard, not its pixels. On macOS 26.4.1, <code>clipboard info</code> printed just <code>alias, 380</code> in that case, and asking for PNG data from it failed. The fix is to open the image in Preview or your photo viewer and copy it from there, or skip the clipboard and drag the file in (see fallbacks below).</p>
+
+        <h3>4. Something replaced the image</h3>
+        <p>The clipboard holds one copy action at a time. If you copied a line of text after the screenshot, the screenshot is gone. On a Mac, a screenshot taken with the plain <strong>Cmd+Shift+4</strong> shortcut saves a file and puts nothing on the clipboard at all. Adding <strong>Control</strong> sends it to the clipboard instead. The Windows equivalent is <strong>Win+Shift+S</strong>, which copies the capture to the clipboard.</p>
+
+        <h3>5. Linux: the tool cannot reach your clipboard</h3>
+        <p>Linux has no single clipboard interface. X11 and Wayland differ, and command line tools usually read the clipboard through a helper program, <code>xclip</code> on X11 or <code>wl-paste</code> from the wl-clipboard package on Wayland. If the helper is missing, or you are on a Wayland session while a tool talks to X11, there is nothing for it to read. You can check what your session sees:</p>
+        <pre class="overflow-x-auto rounded-lg border border-hairline bg-canvas-soft p-4 text-sm"><code>xclip -selection clipboard -t TARGETS -o      # X11
+wl-paste --list-types                         # Wayland</code></pre>
+        <p>If <code>image/png</code> is in the list, the clipboard is fine and the problem is in the tool or its environment. The official pages I checked do not list Linux prerequisites, so treat this as troubleshooting that users report rather than a documented requirement. A representative example is the <a href="https://github.com/anthropics/claude-code/issues/8324">Ubuntu image paste bug report</a>.</p>
+
+        <h3>6. WSL: Windows has the image, Linux cannot see it</h3>
+        <p>In WSL the screenshot lives on the Windows clipboard, while your tool runs on the Linux side. Users report that the Linux-side clipboard tools do not receive image data from Windows by default. That is why the docs bind both keys under WSL: try <strong>Alt+V</strong> first, and if it still fails, save the screenshot as a file inside a folder that WSL can reach and use the path method below.</p>
+
+        <h3>7. SSH, containers, and remote sessions</h3>
+        <p>A tool can only read the clipboard of the machine it runs on. If you SSH into a server and start the tool there, it looks at the server's clipboard, which never received your screenshot. This follows from how clipboards work rather than from any one tool's documentation, and it is why remote sessions need the file route: save the image on your own machine, copy it to the server (for example with <code>scp</code>), and give the tool the path.</p>
+
+        <h2>Fallbacks That Do Not Need the Clipboard</h2>
+        <p>Anthropic's workflow guide lists three ways to add an image, and two of them skip the clipboard entirely:</p>
+        <ul class="list-disc pl-5 space-y-1.5">
+            <li><strong>Drag and drop</strong> the image file into the Claude Code window.</li>
+            <li><strong>Give a path</strong> in your prompt, for example <code>Analyze this image: /path/to/your/image.png</code>. Most terminals insert a file's path when you drop the file on them, which saves typing it.</li>
+        </ul>
+        <p>These work over SSH, in WSL, and on Linux setups where clipboard paste is unreliable, as long as the file is on the machine where the tool runs.</p>
+
+        <h3>Turning a clipboard-only screenshot into a file</h3>
+        <p>If the capture exists only on your clipboard, paste it into <a href="https://pastedownloadapp.com/">PasteDownloadApp</a> and download it. The image is processed in your browser and is not uploaded. For screenshots that contain code or small text, choose PNG, because lossy formats can smear thin strokes. <a href="/blog/png-vs-jpg-vs-webp/">PNG vs JPG vs WebP: Real File Sizes Compared</a> shows the size trade-off if you need smaller files.</p>
+
+        <h2>Other Terminal AI Tools</h2>
+        <p>The same three-part check applies to any command line assistant. OpenAI's Codex CLI documentation says you can paste images into its interactive composer or pass them on the command line, for example <code>codex -i screenshot.png "Explain this error"</code>, and that second form is the dependable one over SSH. For other tools, look up the image or paste entry in their keyboard shortcut reference and confirm in your own version, since several tools list a paste key without saying whether it handles images.</p>
+
+        <h2>Quick Reference</h2>
+        <div class="overflow-x-auto rounded-xl border border-hairline">
+            <table class="w-full text-left text-sm">
+                <thead class="bg-canvas-soft text-ink"><tr><th class="px-4 py-3 font-semibold">What you see</th><th class="px-4 py-3 font-semibold">Likely cause</th><th class="px-4 py-3 font-semibold">What to do</th></tr></thead>
+                <tbody class="divide-y divide-hairline">
+                    <tr><td class="px-4 py-3 align-top">Nothing happens on Cmd+V (Mac)</td><td class="px-4 py-3 align-top">Wrong key</td><td class="px-4 py-3 align-top">Press Ctrl+V, or Cmd+V in iTerm2</td></tr>
+                    <tr><td class="px-4 py-3 align-top">Nothing happens on Ctrl+V (Windows or WSL)</td><td class="px-4 py-3 align-top">Terminal intercepts it</td><td class="px-4 py-3 align-top">Press Alt+V</td></tr>
+                    <tr><td class="px-4 py-3 align-top">A file path appears</td><td class="px-4 py-3 align-top">Clipboard holds a file reference</td><td class="px-4 py-3 align-top">Open the image and copy it, or drag the file in</td></tr>
+                    <tr><td class="px-4 py-3 align-top">Worked yesterday, not today</td><td class="px-4 py-3 align-top">Clipboard replaced, or screenshot saved to a file instead</td><td class="px-4 py-3 align-top">Retake with the clipboard shortcut, then paste straight away</td></tr>
+                    <tr><td class="px-4 py-3 align-top">Linux: nothing, no error</td><td class="px-4 py-3 align-top">Clipboard helper missing or session mismatch</td><td class="px-4 py-3 align-top">Check with xclip or wl-paste, install the right one</td></tr>
+                    <tr><td class="px-4 py-3 align-top">Over SSH: nothing</td><td class="px-4 py-3 align-top">Tool reads the remote clipboard</td><td class="px-4 py-3 align-top">Copy the file to the server and use its path</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Sources</h2>
+        <ul class="list-disc pl-5 space-y-1.5">
+            <li><a href="https://code.claude.com/docs/en/interactive-mode">Claude Code: Interactive mode, general controls</a> (image paste keys, checked October 18, 2026)</li>
+            <li><a href="https://code.claude.com/docs/en/common-workflows">Claude Code: Common workflows, Work with images</a></li>
+            <li><a href="https://developers.openai.com/codex/cli/features">Codex CLI features</a></li>
+            <li><a href="https://github.com/anthropics/claude-code/issues/39395">Claude Code issue: macOS Cmd+V and drag and drop not pasting images</a>, which matches the Ctrl+V guidance above</li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <h3>Why can't I paste an image into Claude Code with Cmd+V?</h3>
+        <p>On a Mac, most terminals treat <strong>Cmd+V</strong> as a text paste, which cannot carry image data. Claude Code listens for <strong>Ctrl+V</strong> instead (Cmd+V works in iTerm2). On Windows and WSL the key is <strong>Alt+V</strong>.</p>
+
+        <h3>What is the shortcut to paste an image in Claude Code on Windows?</h3>
+        <p><strong>Alt+V</strong> on Windows and WSL. Under WSL both Ctrl+V and Alt+V are bound, and the documentation suggests Alt+V if your terminal intercepts Ctrl+V.</p>
+
+        <h3>How do I add an image if paste does not work at all?</h3>
+        <p>Drag the image file into the window, or type its path in your prompt, for example <code>Analyze this image: /path/to/your/image.png</code>. Neither method uses the clipboard.</p>
+
+        <h3>Why does image paste fail over SSH?</h3>
+        <p>The tool reads the clipboard of the machine it runs on. Over SSH that is the remote server, which never received your screenshot. Save the image locally, copy it to the server, and give the tool the file path.</p>
+
+        <RelatedGuides hrefs={["/blog/where-do-clipboard-images-go/", "/blog/access-clipboard-not-working/", "/blog/png-vs-jpg-vs-webp/"]} />
+
+    </div>
+    <Fragment slot="after"><AuthorBio /></Fragment>
+</ContentLayout>

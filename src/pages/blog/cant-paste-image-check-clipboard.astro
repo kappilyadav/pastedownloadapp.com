@@ -1,0 +1,224 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import RelatedGuides from '../../components/RelatedGuides.astro';
+import AuthorByline from '../../components/AuthorByline.astro';
+import AuthorBio from '../../components/AuthorBio.astro';
+---
+
+<ContentLayout
+    title="Can't Paste an Image? Check What Is Actually on Your Clipboard"
+    description="When an image will not paste, the clipboard usually holds something else: a file reference, text, or nothing. Here is how to check on Mac, Windows, Linux and in the browser, with real command output."
+    canonicalUrl="https://pastedownloadapp.com/blog/cant-paste-image-check-clipboard/"
+    imageUrl="https://pastedownloadapp.com/blog/cant-paste-image-check-clipboard.png"
+    breadcrumbs={[{ name: "Home", href: "/" }, { name: "Blog", href: "/blog/" }, { name: "Check What Is on Your Clipboard" }]}
+>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Can't Paste an Image? Check What Is Actually on Your Clipboard",
+            "description": "When an image will not paste, the clipboard usually holds something else: a file reference, text, or nothing. Here is how to check on Mac, Windows, Linux and in the browser, with real command output.",
+            "image": "https://pastedownloadapp.com/blog/cant-paste-image-check-clipboard.png",
+            "datePublished": "2026-10-18T00:00:00Z",
+            "dateModified": "2026-10-18T00:00:00Z",
+            "author": {
+                "@type": "Person",
+                "@id": "https://pastedownloadapp.com/author/#person",
+                "name": "Kappil Yadav",
+                "url": "https://pastedownloadapp.com/author/",
+                "image": "https://pastedownloadapp.com/author-kappil-yadav.webp",
+                "jobTitle": "Founder & Developer",
+                "description": "Full-stack developer who builds and maintains PasteDownloadApp using the browser's native Clipboard and Canvas APIs. Ships public code on GitHub and tests every guide against real files in the live tool before publishing.",
+                "email": "hello@pastedownloadapp.com",
+                "knowsAbout": [
+                    "Clipboard API",
+                    "Canvas API",
+                    "Image formats",
+                    "Web development"
+                ],
+                "sameAs": [
+                    "https://github.com/kappilyadav",
+                    "https://www.linkedin.com/in/kapilyadavv",
+                    "https://www.instagram.com/heykapil_"
+                ],
+                "worksFor": {
+                    "@type": "Organization",
+                    "@id": "https://pastedownloadapp.com/#organization",
+                    "name": "PasteDownloadApp",
+                    "url": "https://pastedownloadapp.com/"
+                }
+            },
+            "publisher": {
+                "@type": "Organization",
+                "@id": "https://pastedownloadapp.com/#organization",
+                "name": "PasteDownloadApp",
+                "url": "https://pastedownloadapp.com/",
+                "logo": { "@type": "ImageObject", "url": "https://pastedownloadapp.com/favicon.svg" }
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://pastedownloadapp.com/blog/cant-paste-image-check-clipboard/"
+            }
+        }
+    </script>
+
+    <figure class="mt-0 mb-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
+        <img src="/blog/cant-paste-image-check-clipboard.webp" alt="Illustration of three clipboard states: image data that pastes, a file reference that does not, and text that does not" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
+    </figure>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Why won't my image paste even though I copied it?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The clipboard probably holds something other than image data, such as a file reference, a web address, or the text of a path. Check what is on it, then copy the image itself, for example by opening the file in a viewer and copying from there."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I see what is on my clipboard on a Mac?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Run osascript -e 'clipboard info' in Terminal. Image types such as PNGf or TIFF mean an image is there. Only text types or alias mean it is text or a file reference."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is a copied image file the same as a copied image?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. Copying a file in Finder or File Explorer puts a reference to the file on the clipboard, not its pixels. Apps that need image data cannot paste it. Open the file and copy from the viewer instead."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why did my screenshot not go to the clipboard?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "On a Mac, Cmd+Shift+4 saves a file, and you add Control to copy to the clipboard instead. On Windows, Win+Shift+S and Print Screen copy to the clipboard, while Win+Print Screen saves a file."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
+        Can't Paste an Image? Check What Is Actually on Your Clipboard
+    </h1>
+
+    <AuthorByline publishDate="2026-10-18" updatedDate="2026-10-18" />
+
+    <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
+
+        <p>The usual advice for a picture that will not paste is to restart the app. It rarely helps, because the app is rarely the problem. The clipboard is more likely to hold something other than what you think it does. Find out what is on it first, and the fix usually becomes obvious in a minute.</p>
+
+        <h2>The Clipboard Holds Several Things at Once</h2>
+        <p>One copy action can put the same content on the clipboard in several formats. When you paste, the target app asks for the format it understands and ignores the rest. If the format it wants is not there, paste does nothing, with no error message. For images, there are four situations worth telling apart:</p>
+        <ol class="pl-5 space-y-2 list-decimal">
+            <li><strong>Image data.</strong> The actual pixels. This is what paste normally needs.</li>
+            <li><strong>A file reference.</strong> You copied a file in Finder or File Explorer. The clipboard holds a pointer to the file, not its contents.</li>
+            <li><strong>Text.</strong> A web address, a file path, or a file name, often from &ldquo;Copy image address&rdquo; or &ldquo;Copy path&rdquo;.</li>
+            <li><strong>Nothing useful.</strong> The screenshot went to a file instead, or another copy replaced it.</li>
+        </ol>
+
+        <h2>The 30-Second Test That Works on Any System</h2>
+        <p>Open <a href="https://pastedownloadapp.com/">PasteDownloadApp</a> and press <strong>Ctrl+V</strong> (<strong>Cmd+V</strong> on a Mac). The tool reads the clipboard in your browser and shows a preview, and nothing is uploaded.</p>
+        <ul class="list-disc pl-5 space-y-1.5">
+            <li><strong>The preview appears:</strong> the browser can see image data on your clipboard. The copy step worked, so the problem is in the app you are pasting into. Skip to the last sections.</li>
+            <li><strong>Nothing appears:</strong> the clipboard does not hold an image your browser can read. Use the system checks below to see what it holds instead.</li>
+        </ul>
+        <p>If you click the tool's button instead of pressing the shortcut and it fails, the cause may be browser permissions rather than the clipboard contents. <a href="/blog/access-clipboard-not-working/">Why &ldquo;Access Clipboard&rdquo; Fails, and How to Fix It</a> covers that case.</p>
+
+        <h2>On a Mac: Ask the Clipboard Directly</h2>
+        <p>macOS can describe the clipboard without any extra software. The commands below were run on macOS 26.4.1 and the output is exactly what Terminal printed. Each line is a list of formats followed by their size in bytes.</p>
+
+        <h3>Text on the clipboard</h3>
+        <pre class="overflow-x-auto rounded-lg border border-hairline bg-canvas-soft p-4 text-sm"><code>osascript -e 'clipboard info'</code></pre>
+        <pre class="overflow-x-auto rounded-lg border border-hairline bg-canvas-soft p-4 text-sm"><code>«class utf8», 5, «class ut16», 12, string, 5, Unicode text, 10</code></pre>
+        <p>Only text types (<code>utf8</code>, <code>string</code>, <code>Unicode text</code>). A pasted image target has nothing to use here, however the copy looked.</p>
+
+        <h3>An image on the clipboard</h3>
+        <pre class="overflow-x-auto rounded-lg border border-hairline bg-canvas-soft p-4 text-sm"><code>«class PNGf», 8480, «class AVIF», 2897, «class 8BPS», 33390, GIF picture, 4259, «class jp2 », 19293, JPEG picture, 16996, TIFF picture, 789838, «class BMP », 786486, «class TPIC», 18088</code></pre>
+        <p>A long list, and that is normal for an image. AppleScript reports converted versions of the same picture, so you see PNG, TIFF, JPEG, and others, each with a size. The sign you want is an image type such as <code>«class PNGf»</code> or <code>TIFF picture</code>. When it is there, the clipboard holds a real image.</p>
+
+        <h3>A copied file on the clipboard</h3>
+        <pre class="overflow-x-auto rounded-lg border border-hairline bg-canvas-soft p-4 text-sm"><code>alias, 380</code></pre>
+        <p>One entry, <code>alias</code>, and no image types. This is what a file copied in Finder looks like. Asking this clipboard for PNG data fails:</p>
+        <pre class="overflow-x-auto rounded-lg border border-hairline bg-canvas-soft p-4 text-sm"><code>execution error: Can’t make some data into the expected type. (-1700)</code></pre>
+        <p>That error is the whole story of a file that will not paste as a picture: the clipboard never had the pixels. Open the file in Preview and press <strong>Cmd+C</strong> there, and the clipboard will hold image data instead.</p>
+
+        <h3>Save the clipboard image as a file</h3>
+        <p>If an image is on the clipboard and you want a file, this writes it as a PNG. I compared the saved file with the original image it was copied from and the bytes were identical, so nothing was re-encoded:</p>
+        <pre class="overflow-x-auto rounded-lg border border-hairline bg-canvas-soft p-4 text-sm"><code>osascript -e 'set d to the clipboard as «class PNGf»' \
+  -e 'set f to open for access POSIX file "/tmp/clip.png" with write permission' \
+  -e 'set eof f to 0' -e 'write d to f' -e 'close access f'</code></pre>
+        <p>A browser route is simpler for most people: paste into the tool and download the PNG, JPEG, or WebP. The guide <a href="/blog/download-copied-image-mac/">How to Download a Copied Image on Mac Without Saving to Photos</a> walks through it.</p>
+
+        <h2>On Windows</h2>
+        <p>I captured the Mac output above myself; the Windows and Linux commands below use documented tools and I have not included captured output for them. PowerShell can read an image straight off the clipboard:</p>
+        <pre class="overflow-x-auto rounded-lg border border-hairline bg-canvas-soft p-4 text-sm"><code>Get-Clipboard -Format Image
+(Get-Clipboard -Format Image).Save("$HOME\Desktop\clipboard.png")</code></pre>
+        <p>The first line prints an image object (with a width and height) when a picture is on the clipboard. The second saves it to your Desktop as a PNG. If there is no image on the clipboard, you will not get one back, which tells you the same thing as the Mac check.</p>
+        <p>Three capture shortcuts cause most of the confusion. <strong>Win+Shift+S</strong> copies to the clipboard, and so does <strong>Print Screen</strong> in its default setup. <strong>Win+Print Screen</strong> saves a file to Pictures instead. If you pressed that one, your capture is a file, not a clipboard image. <a href="/blog/save-screenshot-as-file-windows/">How to Save a Screenshot Directly as a File Without Opening MS Paint</a> has the details. Also try <strong>Win+V</strong>, which opens Windows clipboard history, if you copied the image a moment ago and something has replaced it since.</p>
+
+        <h2>On Linux</h2>
+        <p>Use <code>xclip</code> on X11 or <code>wl-paste</code> from the wl-clipboard package on Wayland. The first command in each pair lists what is on the clipboard, and the second saves an image if one is there:</p>
+        <pre class="overflow-x-auto rounded-lg border border-hairline bg-canvas-soft p-4 text-sm"><code>xclip -selection clipboard -t TARGETS -o
+xclip -selection clipboard -t image/png -o > clipboard.png
+
+wl-paste --list-types
+wl-paste --type image/png > clipboard.png</code></pre>
+        <p>If <code>image/png</code> appears in the list, an image is on the clipboard.</p>
+
+        <h2>What the Result Means and What to Do</h2>
+        <div class="overflow-x-auto rounded-xl border border-hairline">
+            <table class="w-full text-left text-sm">
+                <thead class="bg-canvas-soft text-ink"><tr><th class="px-4 py-3 font-semibold">What the check shows</th><th class="px-4 py-3 font-semibold">What is on the clipboard</th><th class="px-4 py-3 font-semibold">Why paste fails</th><th class="px-4 py-3 font-semibold">Fix</th></tr></thead>
+                <tbody class="divide-y divide-hairline">
+                    <tr><td class="px-4 py-3 align-top">Only <code>alias</code> (Mac) or a file path</td><td class="px-4 py-3 align-top">A reference to a file</td><td class="px-4 py-3 align-top">The target wants pixels, not a pointer to a file on disk</td><td class="px-4 py-3 align-top">Open the image and copy it from the viewer, or attach or drag the file instead</td></tr>
+                    <tr><td class="px-4 py-3 align-top">Only text types</td><td class="px-4 py-3 align-top">A URL, a path, or a file name</td><td class="px-4 py-3 align-top">&ldquo;Copy image address&rdquo;, &ldquo;Copy link&rdquo; and &ldquo;Copy path&rdquo; all copy text</td><td class="px-4 py-3 align-top">Use &ldquo;Copy image&rdquo; in the browser, not the address</td></tr>
+                    <tr><td class="px-4 py-3 align-top">Nothing, or your previous copy</td><td class="px-4 py-3 align-top">The screenshot never reached the clipboard</td><td class="px-4 py-3 align-top">On a Mac, Cmd+Shift+4 saves a file; Control must be added to copy</td><td class="px-4 py-3 align-top">Retake with the clipboard shortcut and paste straight away</td></tr>
+                    <tr><td class="px-4 py-3 align-top">An image, but the target still refuses</td><td class="px-4 py-3 align-top">Image data is fine</td><td class="px-4 py-3 align-top">The target app restricts pasting, or only accepts file uploads</td><td class="px-4 py-3 align-top">Save it as a file and upload or attach that</td></tr>
+                    <tr><td class="px-4 py-3 align-top">An image on your own machine, nothing in a remote window</td><td class="px-4 py-3 align-top">The clipboard is not shared</td><td class="px-4 py-3 align-top">Remote desktops, VMs and SSH sessions have their own clipboard</td><td class="px-4 py-3 align-top">Turn on clipboard sharing for the session, or transfer a file</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Why the Image Vanishes Between Copy and Paste</h2>
+        <p>The clipboard keeps one item. Copying anything else, even a single word, replaces the image. This also applies across devices: Apple's description of Universal Clipboard says content copied on one device stays on the other device's clipboard only briefly, and is replaced when you copy something else. Paste straight after copying, and check which device you copied on.</p>
+        <p>Clipboard manager apps and remote tools add another layer. A remote desktop, a virtual machine, or a cloud PC has its own clipboard, and the tool that connects you has to share it in both directions. If the image reaches your local browser test but not the remote window, that sharing is the missing piece.</p>
+
+        <h2>When the App Wants a File, Not Pixels</h2>
+        <p>Some apps and web forms only accept uploaded files and ignore clipboard images altogether. For those, turn the clipboard image into a file: paste it into the tool, choose PNG, JPEG, or WebP, and download it. Then attach or upload the file the normal way. If the destination is an email, <a href="/blog/paste-screenshot-into-email-attachment/">How to Turn a Pasted Screenshot Into an Email Attachment</a> covers that route, and for spreadsheets there is a separate guide on <a href="/blog/paste-image-into-excel-google-sheets-cell/">pasting images into Excel and Google Sheets</a>.</p>
+
+        <h2>Sources and Method</h2>
+        <ul class="list-disc pl-5 space-y-1.5">
+            <li>Mac output: captured on macOS 26.4.1 with <code>osascript -e 'clipboard info'</code>, October 18, 2026. The image case used a PNG file copied to the clipboard as image data; the file case used a file reference set on the clipboard from Finder.</li>
+            <li>Apple's <a href="https://support.apple.com/en-us/102430">Universal Clipboard support page</a> for the note that cross-device clipboard content is brief and replaced by the next copy.</li>
+            <li>Windows and Linux commands are standard tools (<code>Get-Clipboard</code>, <code>xclip</code>, <code>wl-paste</code>); no captured output is shown for them.</li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <h3>Why won't my image paste even though I copied it?</h3>
+        <p>The clipboard probably holds something other than image data, such as a file reference, a web address, or the text of a path. Check what is on it, then copy the image itself, for example by opening the file in a viewer and copying from there.</p>
+
+        <h3>How do I see what is on my clipboard on a Mac?</h3>
+        <p>Run <code>osascript -e 'clipboard info'</code> in Terminal. Image types such as PNGf or TIFF mean an image is there. Only text types or <code>alias</code> mean it is text or a file reference.</p>
+
+        <h3>Is a copied image file the same as a copied image?</h3>
+        <p>No. Copying a file in Finder or File Explorer puts a reference to the file on the clipboard, not its pixels. Apps that need image data cannot paste it. Open the file and copy from the viewer instead.</p>
+
+        <h3>Why did my screenshot not go to the clipboard?</h3>
+        <p>On a Mac, <strong>Cmd+Shift+4</strong> saves a file, and you add <strong>Control</strong> to copy to the clipboard instead. On Windows, <strong>Win+Shift+S</strong> and <strong>Print Screen</strong> copy to the clipboard, while <strong>Win+Print Screen</strong> saves a file.</p>
+
+        <RelatedGuides hrefs={["/blog/where-do-screenshots-go-on-mac/", "/blog/save-screenshot-as-file-windows/", "/blog/where-do-clipboard-images-go/"]} />
+
+    </div>
+    <Fragment slot="after"><AuthorBio /></Fragment>
+</ContentLayout>

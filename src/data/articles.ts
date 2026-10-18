@@ -6,6 +6,26 @@ export const categories = [
 
 export const latestArticles = [
   {
+    href: '/blog/cant-paste-image-check-clipboard/',
+    image: '/blog/cant-paste-image-check-clipboard.webp',
+    absoluteImage: 'https://pastedownloadapp.com/blog/cant-paste-image-check-clipboard.png',
+    alt: 'Illustration of three clipboard states: image data that pastes, a file reference that does not, and text that does not',
+    title: 'Can\'t Paste an Image? Check What Is Actually on Your Clipboard',
+    description: 'When an image will not paste, the clipboard usually holds a file reference or text. Check on Mac, Windows, Linux and in the browser, with real command output.',
+    publishDate: '2026-10-18',
+    category: 'troubleshooting'
+  },
+  {
+    href: '/blog/paste-image-into-claude-code-terminal/',
+    image: '/blog/paste-image-into-claude-code-terminal.webp',
+    absoluteImage: 'https://pastedownloadapp.com/blog/paste-image-into-claude-code-terminal.png',
+    alt: 'Illustration of the Ctrl+V shortcut adding an [Image #1] marker to a terminal AI prompt',
+    title: 'How to Paste a Screenshot Into Claude Code and Other Terminal AI Tools',
+    description: 'Exact paste keys for Claude Code on Mac, Windows, Linux and WSL, a clipboard check, and fixes for when image paste fails.',
+    publishDate: '2026-10-16',
+    category: 'troubleshooting'
+  },
+  {
     href: '/blog/where-do-screenshots-go-on-mac/',
     image: '/blog/where-do-screenshots-go-on-mac.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/where-do-screenshots-go-on-mac.png',
