@@ -5,6 +5,7 @@ import AdSense from '../components/AdSense.astro';
 import ThemeScript from '../components/ThemeScript.astro';
 import Analytics from '../components/Analytics.astro';
 import InstallPrompt from '../components/InstallPrompt.astro';
+import { localeInfo, defaultLocale, type Locale } from '../i18n/locales';
 
 export interface Props {
   title: string;
@@ -12,13 +13,15 @@ export interface Props {
   canonicalUrl: string;
   keywords?: string;
   noAds?: boolean;
+  locale?: Locale;
+  alternates?: { hreflang: string; href: string }[];
 }
 
-const { title, description, canonicalUrl, keywords, noAds = false } = Astro.props;
+const { title, description, canonicalUrl, keywords, noAds = false, locale = defaultLocale, alternates = [] } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={localeInfo[locale].hreflang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -43,13 +46,15 @@ const { title, description, canonicalUrl, keywords, noAds = false } = Astro.prop
     {keywords && <meta name="keywords" content={keywords} />}
 
     <link rel="canonical" href={canonicalUrl} />
+    {alternates.map((alt) => <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />)}
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content="PasteDownloadApp" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content={localeInfo[locale].ogLocale} />
+    {alternates.filter((alt) => alt.hreflang !== 'x-default' && alt.hreflang !== localeInfo[locale].hreflang).map((alt) => <meta property="og:locale:alternate" content={Object.values(localeInfo).find((i) => i.hreflang === alt.hreflang)?.ogLocale} />)}
     <meta property="og:image" content="https://pastedownloadapp.com/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />

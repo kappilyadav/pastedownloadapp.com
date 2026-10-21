@@ -1,20 +1,29 @@
 ---
-const { id = "paste" } = Astro.props;
+import { useTranslations } from '../i18n/index';
+import type { Locale } from '../i18n/locales';
+
+export interface Props {
+  id?: string;
+  locale?: Locale;
+}
+
+const { id = 'paste', locale } = Astro.props;
+const t = useTranslations(locale).paste;
 ---
 
 <section id={id} class="w-full">
   <div class="rounded-xl bg-canvas border border-hairline/50 dark:border-hairline-strong shadow-[0_2px_4px_#0000000d,0_8px_24px_-8px_#00000026] dark:shadow-[0_1px_0_0_rgba(255,255,255,0.05)_inset,0_12px_28px_-10px_rgba(0,0,0,0.7)] overflow-hidden">
     <div class="px-4 sm:px-6 py-4 sm:py-5 border-b border-hairline flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
       <div class="text-left">
-        <h3 class="text-[15px] sm:text-[17px] font-semibold text-ink tracking-tight m-0">Paste from Clipboard</h3>
-        <p class="text-body text-xs sm:text-sm m-0 mt-0.5">Press Ctrl+V or ⌘+V to paste an image</p>
+        <h3 class="text-[15px] sm:text-[17px] font-semibold text-ink tracking-tight m-0">{t.title}</h3>
+        <p class="text-body text-xs sm:text-sm m-0 mt-0.5">{t.subtitle}</p>
       </div>
       <div class="flex items-center gap-2 sm:gap-3">
         <label class="flex items-center gap-1.5 text-body text-xs cursor-pointer select-none shrink-0" for="autoDownload">
           <input type="checkbox" id="autoDownload" checked class="w-3.5 h-3.5 rounded border-hairline text-ink accent-ink" />
-          Auto-download
+          {t.autoDownload}
         </label>
-        <label for="pasteFormat" class="sr-only">Image format</label>
+        <label for="pasteFormat" class="sr-only">{t.imageFormat}</label>
         <select id="pasteFormat" class="text-xs text-body bg-canvas border border-hairline dark:border-hairline-strong rounded-md px-2 py-1.5 outline-none focus:border-hairline-strong focus-visible:ring-2 focus-visible:ring-link">
           <option value="png">PNG</option>
           <option value="jpeg">JPEG</option>
@@ -23,7 +32,7 @@ const { id = "paste" } = Astro.props;
       </div>
     </div>
 
-    <div id="pasteDropZone" class="relative flex flex-col items-center justify-center min-h-[180px] sm:min-h-[260px] px-4 sm:px-6 py-6 sm:py-10 transition-all duration-200 cursor-pointer touch-action-manipulation" tabindex="0" role="button" aria-label="Paste image here Or click to access clipboard Access Clipboard. Press Ctrl+V to paste an image.">
+    <div id="pasteDropZone" class="relative flex flex-col items-center justify-center min-h-[180px] sm:min-h-[260px] px-4 sm:px-6 py-6 sm:py-10 transition-all duration-200 cursor-pointer touch-action-manipulation" tabindex="0" role="button" aria-label={t.ariaLabel}>
       <div id="pastePlaceholder" class="flex flex-col items-center gap-4 text-center">
         <div class="w-14 h-14 rounded-xl bg-canvas-soft border border-hairline flex items-center justify-center text-body" aria-hidden="true">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -33,23 +42,23 @@ const { id = "paste" } = Astro.props;
           </svg>
         </div>
         <div>
-          <p class="text-ink text-sm font-medium m-0">Paste image here</p>
-          <p class="text-mute text-xs m-0 mt-1">Or click to access clipboard</p>
+          <p class="text-ink text-sm font-medium m-0">{t.placeholder}</p>
+          <p class="text-mute text-xs m-0 mt-1">{t.orClick}</p>
         </div>
-        <button id="accessClipboard" class="bg-ink dark:bg-white text-on-primary dark:text-black text-sm font-medium px-4 py-2 rounded-full hover:opacity-90 transition-opacity border-none cursor-pointer focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">Access Clipboard</button>
+        <button id="accessClipboard" class="bg-ink dark:bg-white text-on-primary dark:text-black text-sm font-medium px-4 py-2 rounded-full hover:opacity-90 transition-opacity border-none cursor-pointer focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">{t.accessClipboard}</button>
       </div>
 
       <div id="pastePreview" class="hidden w-full flex-col items-center gap-4">
         <div class="relative max-h-[300px] overflow-hidden rounded-lg border border-hairline bg-canvas-soft-2">
-          <img id="pasteImg" class="max-w-full max-h-[300px] object-contain" alt="Pasted image preview" loading="lazy" decoding="async" />
+          <img id="pasteImg" class="max-w-full max-h-[300px] object-contain" alt={t.previewAlt} loading="lazy" decoding="async" />
         </div>
         <div class="mt-4 flex items-center gap-2 sm:gap-3 flex-wrap justify-center">
           <span id="pasteInfo" class="text-mute text-xs w-full sm:w-auto text-center sm:text-left" role="status" aria-live="polite"></span>
           <button id="downloadBtn" class="bg-ink dark:bg-white text-on-primary dark:text-black text-sm font-medium px-4 sm:px-5 py-2 rounded-full hover:opacity-90 transition-opacity border-none cursor-pointer flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Download
+            {t.download}
           </button>
-          <button id="clearBtn" class="text-body text-sm px-4 py-2 rounded-full border border-hairline hover:bg-canvas-soft transition-colors cursor-pointer bg-transparent focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">Clear</button>
+          <button id="clearBtn" class="text-body text-sm px-4 py-2 rounded-full border border-hairline hover:bg-canvas-soft transition-colors cursor-pointer bg-transparent focus-visible:ring-2 focus-visible:ring-link focus-visible:outline-none">{t.clear}</button>
         </div>
       </div>
     </div>
@@ -57,7 +66,7 @@ const { id = "paste" } = Astro.props;
     <div class="px-4 sm:px-6 py-3 bg-canvas-soft border-t border-hairline flex flex-wrap items-center gap-2 sm:gap-4 text-mute text-xs">
       <span class="flex items-center gap-1">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Privacy-first: all processing stays in your browser
+        {t.privacy}
       </span>
     </div>
   </div>

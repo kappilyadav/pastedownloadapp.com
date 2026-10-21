@@ -1,0 +1,162 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import PasteZone from '../../components/PasteZone.astro';
+import Features from '../../components/Features.astro';
+import HowToSteps from '../../components/HowToSteps.astro';
+import Footer from '../../components/Footer.astro';
+import HeroStats from '../../components/HeroStats.astro';
+import { homeContent } from '../../i18n/index';
+import { nonDefaultLocales, localeInfo, homeUrl, homeAlternates, siteUrl, type Locale } from '../../i18n/locales';
+
+export function getStaticPaths() {
+  return nonDefaultLocales.map((locale) => ({ params: { locale } }));
+}
+
+const locale = Astro.params.locale as Exclude<Locale, 'en'>;
+const c = homeContent[locale];
+const url = homeUrl(locale);
+const lang = localeInfo[locale].hreflang;
+
+const webApplicationJsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  '@id': `${url}#webapplication`,
+  name: 'PasteDownloadApp',
+  alternateName: ['PasteDownload', 'Paste Download'],
+  url,
+  inLanguage: lang,
+  description: c.webApp.description,
+  applicationCategory: 'Multimedia',
+  operatingSystem: 'All',
+  browserRequirements: 'Requires JavaScript',
+  screenshot: `${siteUrl}/home/step-3-format.webp`,
+  featureList: c.webApp.featureList,
+  author: { '@id': `${siteUrl}/author/#person` },
+  publisher: { '@id': `${siteUrl}/#organization` },
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }
+});
+
+const faqJsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  inLanguage: lang,
+  mainEntity: c.faq.items.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a }
+  }))
+});
+
+const infoLinks = [
+  { href: '/about/', label: c.hero.nav.about },
+  { href: '/blog/', label: c.hero.nav.blog },
+  { href: '/author/', label: c.hero.nav.author },
+  { href: '/privacy/', label: c.hero.nav.privacy },
+  { href: '/terms/', label: c.hero.nav.terms },
+  { href: '/disclaimer/', label: c.hero.nav.disclaimer },
+  { href: '/contact/', label: c.hero.nav.contact }
+];
+---
+
+<Layout title={c.meta.title} description={c.meta.description} keywords={c.meta.keywords} canonicalUrl={url} locale={locale} alternates={homeAlternates()}>
+  <script type="application/ld+json" set:html={webApplicationJsonLd} />
+  <script type="application/ld+json" set:html={faqJsonLd} />
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-ink focus:dark:bg-neutral-800 focus:text-on-primary focus:text-sm focus:rounded-lg focus:no-underline">
+    {c.skip}
+  </a>
+
+  <Header locale={locale} />
+
+  <main id="main-content" class="mx-auto max-w-[1400px] px-4 sm:px-6">
+    <section class="relative pt-12 pb-10 sm:pt-20 sm:pb-16 text-center overflow-hidden">
+      <section class="grid grid-cols-1 gap-4 sm:gap-5 mb-12 sm:mb-20 scroll-mt-14 sm:scroll-mt-24 max-w-xl mx-auto">
+        <PasteZone locale={locale} />
+      </section>
+
+      <div class="relative">
+        <HeroStats locale={locale} />
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-canvas border border-hairline text-mute text-xs font-medium mb-6">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          {c.hero.badge}
+        </span>
+
+        <h1 class="text-[28px] sm:text-5xl lg:text-[52px] font-semibold text-ink tracking-tight sm:tracking-[-1.5px] leading-[1.2] max-w-[760px] mx-auto text-balance">
+          {c.hero.h1}
+        </h1>
+        <p class="text-body text-base sm:text-lg lg:text-xl mt-4 sm:mt-5 max-w-[640px] mx-auto leading-relaxed text-pretty">
+          {c.hero.intro}
+        </p>
+        <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-8 sm:mt-10" aria-label={c.hero.navLabel}>
+          {infoLinks.map((link, index) => (
+            <>
+              {index > 0 && <span class="text-hairline-strong text-xs" aria-hidden="true">/</span>}
+              <a href={link.href} class="text-body text-xs sm:text-sm no-underline hover:text-ink transition-colors">{link.label}</a>
+            </>
+          ))}
+        </nav>
+      </div>
+    </section>
+
+    <section class="mb-12 sm:mb-20 scroll-mt-14 sm:scroll-mt-24">
+      <div class="rounded-xl bg-canvas border border-hairline px-5 sm:px-10 py-8 sm:py-12">
+        <h2 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-3 leading-tight text-balance">
+          {c.what.heading}
+        </h2>
+        <p class="text-body text-base sm:text-[17px] leading-relaxed m-0 max-w-[760px]">
+          {c.what.body}
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-12 sm:mb-20 scroll-mt-14 sm:scroll-mt-24">
+      <Features locale={locale} />
+    </section>
+
+    <section class="mb-12 sm:mb-20 scroll-mt-14 sm:scroll-mt-24">
+      <HowToSteps locale={locale} />
+    </section>
+
+    <section class="mb-12 sm:mb-20 scroll-mt-14 sm:scroll-mt-24">
+      <div class="rounded-xl bg-canvas border border-hairline px-5 sm:px-10 py-8 sm:py-12">
+        <h2 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-3 leading-tight text-balance">
+          {c.clipboard.heading}
+        </h2>
+        <p class="text-body text-base sm:text-[17px] leading-relaxed mt-0 mb-6 max-w-[720px]">
+          {c.clipboard.intro}
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {c.clipboard.cards.map((card) => (
+            <div class="rounded-xl border border-hairline p-5">
+              <h3 class="text-ink font-medium text-base tracking-tight mt-0 mb-2">{card.title}</h3>
+              <p class="text-body text-sm sm:text-base leading-relaxed m-0">{card.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-12 sm:mb-20 scroll-mt-14 sm:scroll-mt-24">
+      <div class="rounded-xl bg-canvas border border-hairline px-5 sm:px-10 py-8 sm:py-12">
+        <h2 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-6 leading-tight text-balance">
+          {c.faq.heading}
+        </h2>
+        <div class="space-y-3">
+          {c.faq.items.map((item) => (
+            <details class="group rounded-xl border border-hairline bg-[var(--color-bg-canvas)] open:border-link/30 transition-colors">
+              <summary class="flex items-center gap-3 px-5 py-4 cursor-pointer text-ink font-medium text-sm sm:text-base list-none select-none [&::-webkit-details-marker]:hidden">
+                <svg class="shrink-0 w-4 h-4 text-mute transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+                {item.q}
+              </summary>
+              <div class="px-5 pb-4 pt-0 text-body text-base sm:text-[17px] leading-relaxed border-t border-hairline mt-0">
+                <p class="pt-3">{item.a}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer locale={locale} />
+</Layout>

@@ -1,41 +1,25 @@
 ---
-const features = [
-  {
-    title: 'Paste from Clipboard',
-    description: 'Use Ctrl+V or Cmd+V to turn copied screenshots, photos, and graphics into downloadable files.',
-    icon: 'clipboard'
-  },
-  {
-    title: 'Format Conversion',
-    description: 'Convert pasted images between PNG, JPEG, and WebP before saving them to your device.',
-    icon: 'convert'
-  },
-  {
-    title: 'Privacy First',
-    description: 'Clipboard images are processed locally in your browser, so private files stay on your device.',
-    icon: 'shield'
-  },
-  {
-    title: 'Auto Download',
-    description: 'Enable auto-download to save each pasted image immediately. Ideal for quick batches.',
-    icon: 'batch'
-  },
-  {
-    title: 'Drag & Drop',
-    description: 'Drag image files into the paste zone for an instant preview and download options.',
-    icon: 'dragdrop'
-  }
-];
+import { useTranslations } from '../i18n/index';
+import type { Locale } from '../i18n/locales';
+
+export interface Props {
+  locale?: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale).features;
+const icons = ['clipboard', 'convert', 'shield', 'batch', 'dragdrop'];
+const features = t.items.map((item, index) => ({ ...item, icon: icons[index] }));
 ---
 
 <section id="features" class="w-full">
   <div class="text-center mb-12">
-    <p class="text-mute text-xs font-medium uppercase tracking-widest m-0">Features</p>
+    <p class="text-mute text-xs font-medium uppercase tracking-widest m-0">{t.eyebrow}</p>
     <h2 class="text-xl sm:text-2xl lg:text-[32px] font-semibold text-ink tracking-tight mt-3 mb-4 leading-tight text-balance">
-      Why use PasteDownload for instant image downloads
+      {t.heading}
     </h2>
     <p class="text-body text-sm sm:text-[17px] max-w-[520px] mx-auto leading-relaxed text-pretty">
-      Save clipboard images and convert formats: all in your browser, nothing leaves your device.
+      {t.intro}
     </p>
   </div>
 

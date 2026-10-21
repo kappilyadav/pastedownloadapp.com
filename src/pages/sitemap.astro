@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../layouts/ContentLayout.astro';
 import { latestArticles, categories } from '../data/articles';
+import { nonDefaultLocales, localeInfo, homePath } from '../i18n/locales';
 ---
 
 <ContentLayout title="Sitemap - PasteDownloadApp" description="Full site map of PasteDownloadApp: every page and blog post in one place, organized by section." canonicalUrl="https://pastedownloadapp.com/sitemap/" breadcrumbs={[{ name: "Home", href: "/" }, { name: "Sitemap" }]}>
@@ -29,6 +30,13 @@ import { latestArticles, categories } from '../data/articles';
       <li><a href="/author/" class="text-link underline underline-offset-2 decoration-link/30 hover:decoration-link transition-colors">Author</a></li>
       <li><a href="/categories/" class="text-link underline underline-offset-2 decoration-link/30 hover:decoration-link transition-colors">Categories</a></li>
       <li><a href="/contact/" class="text-link underline underline-offset-2 decoration-link/30 hover:decoration-link transition-colors">Contact</a></li>
+    </ul>
+
+    <h2>Languages</h2>
+    <ul class="list-disc pl-5 space-y-1.5">
+      {nonDefaultLocales.map((l) => (
+        <li><a href={homePath(l)} hreflang={l} lang={l} class="text-link underline underline-offset-2 decoration-link/30 hover:decoration-link transition-colors">{localeInfo[l].name}</a></li>
+      ))}
     </ul>
 
     <h2>Blog</h2>
