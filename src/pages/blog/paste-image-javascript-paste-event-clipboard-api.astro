@@ -1,0 +1,290 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import RelatedGuides from '../../components/RelatedGuides.astro';
+import AuthorByline from '../../components/AuthorByline.astro';
+import AuthorBio from '../../components/AuthorBio.astro';
+---
+
+<ContentLayout
+    title="Paste an Image From the Clipboard in JavaScript: Paste Event vs Clipboard API"
+    description="Two ways to read a pasted image in the browser, the paste event and navigator.clipboard.read(), with working code, results from a real test in Chrome, and the canvas pitfalls that turn transparent pixels black."
+    canonicalUrl="https://pastedownloadapp.com/blog/paste-image-javascript-paste-event-clipboard-api/"
+    imageUrl="https://pastedownloadapp.com/blog/paste-image-javascript-paste-event-clipboard-api.png"
+    breadcrumbs={[{ name: "Home", href: "/" }, { name: "Blog", href: "/blog/" }, { name: "Paste an Image in JavaScript" }]}
+>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Paste an Image From the Clipboard in JavaScript: Paste Event vs Clipboard API",
+            "description": "Two ways to read a pasted image in the browser, the paste event and navigator.clipboard.read(), with working code, results from a real test in Chrome, and the canvas pitfalls that turn transparent pixels black.",
+            "image": "https://pastedownloadapp.com/blog/paste-image-javascript-paste-event-clipboard-api.png",
+            "datePublished": "2026-10-21T00:00:00Z",
+            "dateModified": "2026-10-21T00:00:00Z",
+            "author": {
+                "@type": "Person",
+                "@id": "https://pastedownloadapp.com/author/#person",
+                "name": "Kappil Yadav",
+                "url": "https://pastedownloadapp.com/author/",
+                "image": "https://pastedownloadapp.com/author-kappil-yadav.webp",
+                "jobTitle": "Founder & Developer",
+                "description": "Full-stack developer who builds and maintains PasteDownloadApp using the browser's native Clipboard and Canvas APIs. Ships public code on GitHub and tests every guide against real files in the live tool before publishing.",
+                "email": "hello@pastedownloadapp.com",
+                "knowsAbout": [
+                    "Clipboard API",
+                    "Canvas API",
+                    "Image formats",
+                    "Web development"
+                ],
+                "sameAs": [
+                    "https://github.com/kappilyadav",
+                    "https://www.linkedin.com/in/kapilyadavv",
+                    "https://www.instagram.com/heykapil_"
+                ],
+                "worksFor": {
+                    "@type": "Organization",
+                    "@id": "https://pastedownloadapp.com/#organization",
+                    "name": "PasteDownloadApp",
+                    "url": "https://pastedownloadapp.com/"
+                }
+            },
+            "publisher": {
+                "@type": "Organization",
+                "@id": "https://pastedownloadapp.com/#organization",
+                "name": "PasteDownloadApp",
+                "url": "https://pastedownloadapp.com/",
+                "logo": { "@type": "ImageObject", "url": "https://pastedownloadapp.com/favicon.svg" }
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://pastedownloadapp.com/blog/paste-image-javascript-paste-event-clipboard-api/"
+            }
+        }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How do I get an image from the clipboard in JavaScript?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Listen for the paste event and read event.clipboardData.items. An image is an item with kind file and a type starting with image/, and getAsFile() returns it. For a button, call navigator.clipboard.read() and request the image type from the ClipboardItem."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the difference between the paste event and navigator.clipboard.read()?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The paste event fires when the user pastes and needs no permission prompt. navigator.clipboard.read() is called by your code, needs a secure context, and can throw NotAllowedError. Use the paste event as the main path and the Clipboard API for a Paste button."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why does navigator.clipboard.read() throw NotAllowedError?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The usual causes are no user gesture, a page that is not focused, a blocked permission, or an iframe without the clipboard-read permission policy. In a test, a script call on an unfocused page failed with Document is not focused."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why is my pasted image black instead of transparent when I save it as JPEG?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "JPEG has no transparency. Exporting a transparent canvas to JPEG fills transparent pixels with black. Fill the canvas with white or another background colour before drawing the image."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I paste an image into a div or textarea without a library?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Attach a paste listener to the element or the document, read the image from clipboardData, and show it with an object URL. No library is needed for any of the code on this page."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
+        Paste an Image From the Clipboard in JavaScript: Paste Event vs Clipboard API
+    </h1>
+
+    <AuthorByline publishDate="2026-10-21" updatedDate="2026-10-21" />
+
+    <figure class="mt-0 mb-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
+        <img src="/blog/paste-image-javascript-paste-event-clipboard-api.webp" alt="Three ways to handle a pasted image in JavaScript: the paste event with clipboardData items, the Clipboard API read call from a button, and canvas toBlob to make a file" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
+    </figure>
+
+    <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
+
+        <p>If you search for how to paste an image from the clipboard in JavaScript, you will find two different answers that look unrelated: a <code>paste</code> event listener and <code>navigator.clipboard.read()</code>. They are both correct, they behave differently, and a page that wants to feel reliable usually needs both. PasteDownloadApp itself uses the paste event for <strong>Ctrl+V</strong> and the Clipboard API for its button, so the code below is the pattern that tool is built on.</p>
+        <p>I ran the snippets in Chrome 152 against a live page. Where a result comes from that run, I say so, and I note the places where only a real keyboard paste in your own browser can confirm the behaviour.</p>
+
+        <h2>Which One Do You Need?</h2>
+        <div class="overflow-x-auto rounded-xl border border-hairline">
+            <table class="w-full text-left text-sm">
+                <thead class="bg-canvas-soft text-ink"><tr><th class="px-4 py-3 font-semibold"></th><th class="px-4 py-3 font-semibold">paste event</th><th class="px-4 py-3 font-semibold">navigator.clipboard.read()</th></tr></thead>
+                <tbody class="divide-y divide-hairline">
+                    <tr><td class="px-4 py-3 align-top">Triggered by</td><td class="px-4 py-3 align-top">The user pressing Ctrl+V or Cmd+V, or using Paste in a menu</td><td class="px-4 py-3 align-top">Your code, usually from a button click</td></tr>
+                    <tr><td class="px-4 py-3 align-top">Permission prompt</td><td class="px-4 py-3 align-top">None, because the user is pasting</td><td class="px-4 py-3 align-top">Can prompt, and can throw NotAllowedError</td></tr>
+                    <tr><td class="px-4 py-3 align-top">Where it works</td><td class="px-4 py-3 align-top">Any page</td><td class="px-4 py-3 align-top">Secure contexts (HTTPS) only</td></tr>
+                    <tr><td class="px-4 py-3 align-top">What you get</td><td class="px-4 py-3 align-top">File objects and strings from clipboardData</td><td class="px-4 py-3 align-top">ClipboardItem objects, read by MIME type</td></tr>
+                    <tr><td class="px-4 py-3 align-top">Good for</td><td class="px-4 py-3 align-top">The main paste path</td><td class="px-4 py-3 align-top">A visible Paste button, and mobile where there is no shortcut</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Start with the paste event. Add the Clipboard API when you want a button, and always keep the paste event as the fallback.</p>
+
+        <h2>Read a Pasted Image With the Paste Event</h2>
+        <p>The event carries a <code>DataTransfer</code> in <code>event.clipboardData</code>. Each entry in <code>items</code> has a <code>kind</code> (<code>file</code> or <code>string</code>) and a MIME <code>type</code>. An image is a <code>file</code> item whose type starts with <code>image/</code>:</p>
+        <pre class="overflow-x-auto rounded-lg border border-hairline bg-canvas-soft p-4 text-sm"><code>document.addEventListener('paste', (event) =&gt; &#123;
+  const files = [...(event.clipboardData?.items ?? [])]
+    .filter((item) =&gt; item.kind === 'file' &amp;&amp; item.type.startsWith('image/'))
+    .map((item) =&gt; item.getAsFile())
+    .filter(Boolean);
+
+  if (files.length === 0) return;
+
+  event.preventDefault();
+  showPreview(files[0]);
+&#125;);</code></pre>
+        <p>Two details matter. Only call <code>preventDefault()</code> when you actually handled an image, otherwise you break ordinary text paste on the page. And pull the <code>File</code> out of the item straight away inside the handler rather than after an <code>await</code>, which is the safe habit because the browser protects clipboard data once the event ends.</p>
+        <h3>What the event looked like in my test</h3>
+        <p>I built a 40 by 30 PNG, put it in a <code>DataTransfer</code> next to a line of text, and dispatched a paste event. The handler saw this:</p>
+        <ul class="list-disc pl-5 space-y-1.5">
+            <li><code>clipboardData.types</code> was <code>["text/plain", "Files"]</code>. The word <code>Files</code> is how the list advertises that a file is present.</li>
+            <li>The first item was <code>kind: "file"</code>, <code>type: "image/png"</code>, with <code>getAsFile()</code> returning a file named <code>image.png</code>.</li>
+            <li>The second item was <code>kind: "string"</code>, <code>type: "text/plain"</code>, and <code>getAsFile()</code> returned <code>null</code>.</li>
+            <li>A second event with only text had an empty file list, so the handler returned without touching it.</li>
+        </ul>
+        <p>That was a synthetic event, built in script. A real screenshot paste from a real clipboard is the thing it cannot reproduce, so check the filename and type there. The generic name <code>image.png</code> is the one to expect, which is why the next section matters.</p>
+
+        <h2>Read the Clipboard From a Button With the Clipboard API</h2>
+        <p><code>navigator.clipboard.read()</code> returns an array of <code>ClipboardItem</code>. Each item can hold the same content in several formats, listed in <code>item.types</code>. MDN says browsers commonly support <code>text/plain</code>, <code>text/html</code> and <code>image/png</code> but guarantees none of them, so look at the list before asking for a type:</p>
+        <pre class="overflow-x-auto rounded-lg border border-hairline bg-canvas-soft p-4 text-sm"><code>pasteButton.addEventListener('click', async () =&gt; &#123;
+  try &#123;
+    const items = await navigator.clipboard.read();
+    for (const item of items) &#123;
+      const type = item.types.find((t) =&gt; t.startsWith('image/'));
+      if (type) &#123;
+        showPreview(await item.getType(type));
+        return;
+      &#125;
+    &#125;
+    showMessage('There is no image on the clipboard.');
+  &#125; catch (error) &#123;
+    showMessage('Clipboard access was blocked. Press Ctrl+V or Cmd+V instead.');
+  &#125;
+&#125;);</code></pre>
+        <p>Reading needs a secure context, and when the read is not allowed it throws a <code>NotAllowedError</code>. In embedded frames in Chromium, the page must also allow the <code>clipboard-read</code> permission through its Permissions-Policy. MDN lists the method as Baseline 2024, newly available, which means older browsers may lack it, so feature-detect with <code>navigator.clipboard?.read</code> and show only the paste hint when it is missing.</p>
+        <p>The reason this fails more often than people expect is not browser support. In my test I called <code>read()</code> from a script while the page was not the focused document, and Chrome rejected it with <code>NotAllowedError: Document is not focused</code>. A real click on a focused page avoids that, and a click is also what the browser wants before it will show a permission prompt. For the user-facing side of these failures, see <a href="/blog/access-clipboard-not-working/">Why &ldquo;Access Clipboard&rdquo; Fails, and How to Fix It</a>.</p>
+
+        <h2>Name and Show the Image</h2>
+        <p>Whatever path you used, you now have a <code>Blob</code> or <code>File</code>. Pasted images come with a generic name, so make your own if the file will be downloaded or uploaded:</p>
+        <pre class="overflow-x-auto rounded-lg border border-hairline bg-canvas-soft p-4 text-sm"><code>const name = `pasted-$&#123;Date.now()&#125;.png`;
+const file = new File([blob], name, &#123; type: blob.type &#125;);</code></pre>
+        <p>To show the image, create an object URL, load it into an <code>Image</code>, and release the URL once it has loaded. The loaded image also tells you the real pixel size:</p>
+        <pre class="overflow-x-auto rounded-lg border border-hairline bg-canvas-soft p-4 text-sm"><code>function showPreview(blob) &#123;
+  const img = new Image();
+  const url = URL.createObjectURL(blob);
+  img.onload = () =&gt; &#123;
+    URL.revokeObjectURL(url);
+    document.body.append(img);
+    console.log(img.naturalWidth + 'x' + img.naturalHeight, blob.type, blob.size);
+  &#125;;
+  img.src = url;
+&#125;</code></pre>
+        <p>Skipping <code>revokeObjectURL</code> keeps the blob in memory until the page closes, which adds up if someone pastes screenshots all afternoon.</p>
+
+        <h2>Convert to PNG, JPEG or WebP With a Canvas</h2>
+        <p>To change format, draw the image onto a canvas and call <code>canvas.toBlob()</code> with the type you want. This is where two quiet bugs live, and I confirmed both:</p>
+        <pre class="overflow-x-auto rounded-lg border border-hairline bg-canvas-soft p-4 text-sm"><code>function convert(img, type, quality = 0.92) &#123;
+  const canvas = document.createElement('canvas');
+  canvas.width = img.naturalWidth;
+  canvas.height = img.naturalHeight;
+  const ctx = canvas.getContext('2d');
+
+  if (type === 'image/jpeg') &#123;
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  &#125;
+  ctx.drawImage(img, 0, 0);
+
+  return new Promise((resolve) =&gt; canvas.toBlob(resolve, type, quality));
+&#125;</code></pre>
+        <ol class="pl-5 space-y-2 list-decimal">
+            <li><strong>Transparency becomes black in JPEG.</strong> I drew a red square on a transparent 64 by 64 canvas and exported a JPEG. The top-left pixel came back as <code>0, 0, 0</code>, which is black. After filling the canvas white first, as the function above does, the same pixel was <code>255, 255, 255</code>. JPEG has no alpha channel, so you choose the background.</li>
+            <li><strong>An unsupported type silently becomes PNG.</strong> I asked <code>toBlob</code> for <code>image/bmp</code> and the blob that came back had the type <code>image/png</code>. Always read <code>blob.type</code> instead of assuming you got what you asked for. In the same run, <code>image/jpeg</code> and <code>image/webp</code> both came back as requested.</li>
+        </ol>
+        <p>The quality argument only affects JPEG and WebP. For what the numbers mean in file size, see <a href="/blog/image-compression-quality-settings/">Image Compression Quality Settings Explained, With Real File Sizes</a>.</p>
+
+        <h2>Copying an Image Back to the Clipboard</h2>
+        <p>If you also want a Copy button, <code>navigator.clipboard.write()</code> takes <code>ClipboardItem</code> objects. Check what the browser will accept before building one:</p>
+        <pre class="overflow-x-auto rounded-lg border border-hairline bg-canvas-soft p-4 text-sm"><code>ClipboardItem.supports('image/png');   // true
+ClipboardItem.supports('image/jpeg');  // false</code></pre>
+        <p>Those two lines are the results from Chrome 152. PNG is accepted and JPEG is not, so convert to PNG before writing, even if the image started life as a JPEG. A write call from a script also hit the same <code>Document is not focused</code> rejection in my test, so only call it from a real click.</p>
+
+        <h2>Test Your Handler Without Taking a Screenshot</h2>
+        <p>You do not need to capture a new screenshot every time you change the handler. Paste this into the console on a page that has your listener, and it dispatches a paste event carrying a generated PNG:</p>
+        <pre class="overflow-x-auto rounded-lg border border-hairline bg-canvas-soft p-4 text-sm"><code>const canvas = document.createElement('canvas');
+canvas.width = 40;
+canvas.height = 30;
+canvas.getContext('2d').fillRect(0, 0, 20, 20);
+const blob = await new Promise((resolve) =&gt; canvas.toBlob(resolve, 'image/png'));
+
+const data = new DataTransfer();
+data.items.add(new File([blob], 'image.png', &#123; type: 'image/png' &#125;));
+document.dispatchEvent(new ClipboardEvent('paste', &#123; clipboardData: data, bubbles: true &#125;));</code></pre>
+        <p>It exercises your parsing, naming and preview code. It does not exercise permissions, focus rules or how your real clipboard describes an image, so finish with one genuine paste from a screenshot and one from a copied image on a web page.</p>
+
+        <h2>Common Problems</h2>
+        <div class="overflow-x-auto rounded-xl border border-hairline">
+            <table class="w-full text-left text-sm">
+                <thead class="bg-canvas-soft text-ink"><tr><th class="px-4 py-3 font-semibold">Symptom</th><th class="px-4 py-3 font-semibold">Likely cause</th><th class="px-4 py-3 font-semibold">Fix</th></tr></thead>
+                <tbody class="divide-y divide-hairline">
+                    <tr><td class="px-4 py-3 align-top">The paste handler never runs</td><td class="px-4 py-3 align-top">The listener is on an element that is not focused or not in the paste path</td><td class="px-4 py-3 align-top">Listen on <code>document</code>, or give the element tabindex and focus it</td></tr>
+                    <tr><td class="px-4 py-3 align-top">Text paste stops working on the page</td><td class="px-4 py-3 align-top"><code>preventDefault()</code> runs on every paste</td><td class="px-4 py-3 align-top">Only call it after you found an image</td></tr>
+                    <tr><td class="px-4 py-3 align-top"><code>items</code> has only text</td><td class="px-4 py-3 align-top">The clipboard holds a URL or a file path, not image data</td><td class="px-4 py-3 align-top">Copy the image itself, not its address or its file</td></tr>
+                    <tr><td class="px-4 py-3 align-top"><code>read()</code> throws NotAllowedError</td><td class="px-4 py-3 align-top">No user gesture, page not focused, blocked permission, or an iframe without clipboard-read</td><td class="px-4 py-3 align-top">Call it from a click, and fall back to the paste event</td></tr>
+                    <tr><td class="px-4 py-3 align-top">Pasted JPEG has a black background</td><td class="px-4 py-3 align-top">Transparent pixels exported as JPEG</td><td class="px-4 py-3 align-top">Fill the canvas white before drawing</td></tr>
+                    <tr><td class="px-4 py-3 align-top">Exported file is PNG when you asked for another type</td><td class="px-4 py-3 align-top">The browser does not encode that type</td><td class="px-4 py-3 align-top">Check <code>blob.type</code> and pick a supported type</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>To see which of these your own clipboard is hitting, the <a href="/blog/cant-paste-image-check-clipboard/">clipboard check</a> shows what is actually on it, and the live tool at <a href="https://pastedownloadapp.com/">pastedownloadapp.com</a> is a working version of everything on this page.</p>
+
+        <h2>Sources and Method</h2>
+        <ul class="list-disc pl-5 space-y-1.5">
+            <li>MDN Web Docs, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/read">Clipboard: read() method</a>, for the secure-context requirement, NotAllowedError, the commonly supported MIME types, the iframe permission note and the Baseline 2024 status.</li>
+            <li>All behaviour marked as tested was run in Chrome 152 on October 21, 2026, against pastedownloadapp.com. Those tests used synthetic paste events and script-driven clipboard calls, not a physical Ctrl+V.</li>
+            <li>I did not test Firefox or Safari for this article. For how the three browsers differ in practice, see <a href="/blog/clipboard-paste-chrome-firefox-safari/">Why Clipboard Image Paste Behaves Differently in Chrome, Firefox, and Safari</a>.</li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <h3>How do I get an image from the clipboard in JavaScript?</h3>
+        <p>Listen for the paste event and read event.clipboardData.items. An image is an item with kind file and a type starting with image/, and getAsFile() returns it. For a button, call navigator.clipboard.read() and request the image type from the ClipboardItem.</p>
+
+        <h3>What is the difference between the paste event and navigator.clipboard.read()?</h3>
+        <p>The paste event fires when the user pastes and needs no permission prompt. navigator.clipboard.read() is called by your code, needs a secure context, and can throw NotAllowedError. Use the paste event as the main path and the Clipboard API for a Paste button.</p>
+
+        <h3>Why does navigator.clipboard.read() throw NotAllowedError?</h3>
+        <p>The usual causes are no user gesture, a page that is not focused, a blocked permission, or an iframe without the clipboard-read permission policy. In a test, a script call on an unfocused page failed with Document is not focused.</p>
+
+        <h3>Why is my pasted image black instead of transparent when I save it as JPEG?</h3>
+        <p>JPEG has no transparency. Exporting a transparent canvas to JPEG fills transparent pixels with black. Fill the canvas with white or another background colour before drawing the image.</p>
+
+        <h3>Can I paste an image into a div or textarea without a library?</h3>
+        <p>Yes. Attach a paste listener to the element or the document, read the image from clipboardData, and show it with an object URL. No library is needed for any of the code on this page.</p>
+
+        <RelatedGuides hrefs={["/blog/clipboard-paste-chrome-firefox-safari/", "/blog/access-clipboard-not-working/", "/blog/image-compression-quality-settings/"]} />
+
+    </div>
+    <Fragment slot="after"><AuthorBio /></Fragment>
+</ContentLayout>

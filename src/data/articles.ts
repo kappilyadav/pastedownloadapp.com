@@ -6,6 +6,26 @@ export const categories = [
 
 export const latestArticles = [
   {
+    href: '/blog/paste-image-javascript-paste-event-clipboard-api/',
+    image: '/blog/paste-image-javascript-paste-event-clipboard-api.webp',
+    absoluteImage: 'https://pastedownloadapp.com/blog/paste-image-javascript-paste-event-clipboard-api.png',
+    alt: 'Three ways to handle a pasted image in JavaScript: the paste event with clipboardData items, the Clipboard API read call from a button, and canvas toBlob to make a file',
+    title: 'Paste an Image From the Clipboard in JavaScript: Paste Event vs Clipboard API',
+    description: 'Two ways to read a pasted image in the browser, with working code, results from a real Chrome test, and the canvas pitfalls that turn transparent pixels black.',
+    publishDate: '2026-10-21',
+    category: 'troubleshooting'
+  },
+  {
+    href: '/blog/mac-screenshot-file-and-clipboard/',
+    image: '/blog/mac-screenshot-file-and-clipboard.webp',
+    absoluteImage: 'https://pastedownloadapp.com/blog/mac-screenshot-file-and-clipboard.png',
+    alt: 'Three options for a Mac screenshot: the Control key sends it to the clipboard only, a Save to folder sends it to a file only, and a shell function does both',
+    title: 'Mac Screenshot to Clipboard and File at the Same Time',
+    description: 'A Mac sends each screenshot to one place. Here is how to get both at once with a tested shell function, plus the one-off keys and how to copy an existing file to the clipboard.',
+    publishDate: '2026-10-20',
+    category: 'platforms'
+  },
+  {
     href: '/blog/cant-paste-image-check-clipboard/',
     image: '/blog/cant-paste-image-check-clipboard.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/cant-paste-image-check-clipboard.png',
