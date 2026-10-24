@@ -1,0 +1,192 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import RelatedGuides from '../../components/RelatedGuides.astro';
+import AuthorByline from '../../components/AuthorByline.astro';
+import AuthorBio from '../../components/AuthorBio.astro';
+---
+
+<ContentLayout
+    title="Windows Clipboard History (Win+V) and Screenshots: What It Keeps and Drops"
+    description="Win+V holds 25 items of up to 4 MB each and empties on restart. Here is what that means for screenshots, how to turn it on, pin and clear it, and how to save an image from it before it disappears."
+    canonicalUrl="https://pastedownloadapp.com/blog/windows-clipboard-history-screenshots-win-v/"
+    imageUrl="https://pastedownloadapp.com/blog/windows-clipboard-history-screenshots-win-v.png"
+    breadcrumbs={[{ name: "Home", href: "/" }, { name: "Blog", href: "/blog/" }, { name: "Windows Clipboard History and Screenshots" }]}
+>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": "Windows Clipboard History (Win+V) and Screenshots: What It Keeps and Drops",
+          "description": "Win+V holds 25 items of up to 4 MB each and empties on restart. Here is what that means for screenshots, how to turn it on, pin and clear it, and how to save an image from it before it disappears.",
+          "image": "https://pastedownloadapp.com/blog/windows-clipboard-history-screenshots-win-v.png",
+          "datePublished": "2026-10-24T00:00:00Z",
+          "dateModified": "2026-10-24T00:00:00Z",
+          "author": {
+            "@type": "Person",
+            "@id": "https://pastedownloadapp.com/author/#person",
+            "name": "Kappil Yadav",
+            "url": "https://pastedownloadapp.com/author/",
+            "image": "https://pastedownloadapp.com/author-kappil-yadav.webp",
+            "jobTitle": "Founder & Developer",
+            "description": "Full-stack developer who builds and maintains PasteDownloadApp using the browser's native Clipboard and Canvas APIs. Ships public code on GitHub and tests every guide against real files in the live tool before publishing.",
+            "email": "hello@pastedownloadapp.com",
+            "knowsAbout": [
+              "Clipboard API",
+              "Canvas API",
+              "Image formats",
+              "Web development"
+            ],
+            "sameAs": [
+              "https://github.com/kappilyadav",
+              "https://www.linkedin.com/in/kapilyadavv",
+              "https://www.instagram.com/heykapil_"
+            ],
+            "worksFor": {
+              "@type": "Organization",
+              "@id": "https://pastedownloadapp.com/#organization",
+              "name": "PasteDownloadApp",
+              "url": "https://pastedownloadapp.com/"
+            }
+          },
+          "publisher": {
+            "@type": "Organization",
+            "@id": "https://pastedownloadapp.com/#organization",
+            "name": "PasteDownloadApp",
+            "url": "https://pastedownloadapp.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://pastedownloadapp.com/favicon.svg"
+            }
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://pastedownloadapp.com/blog/windows-clipboard-history-screenshots-win-v/"
+          }
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I open clipboard history on Windows?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Press Windows key + V. If history is off, the first press offers to turn it on, and only items copied after that are stored. You can also turn it on under Settings, System, Clipboard."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How many items does Windows clipboard history keep?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Microsoft documents up to 25 items. When the list is full, the oldest unpinned items are removed to make room, and pinned items are kept."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why did my screenshot disappear from clipboard history?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "History is cleared every time the PC restarts, except for pinned items. A large capture can also be missing if it exceeds the 4 MB per item limit Microsoft lists, so save important screenshots as files."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I save an image from Windows clipboard history?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Press Win+V, choose the image to paste it into a page or editor, then save it. Pasting it into PasteDownloadApp lets you download it as PNG, JPEG or WebP without uploading it."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I clear Windows clipboard history?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Use Settings, System, Clipboard, Clear, or the clear all option in the Win+V panel. Both keep pinned items, which you must delete one at a time."
+              }
+            }
+          ]
+        }
+    </script>
+
+    <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
+        Windows Clipboard History (Win+V) and Screenshots: What It Keeps and Drops
+    </h1>
+
+    <AuthorByline publishDate="2026-10-24" updatedDate="2026-10-24" />
+
+    <figure class="mt-0 mb-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
+        <img src="/blog/windows-clipboard-history-screenshots-win-v.webp" alt="Windows clipboard history limits: 25 items, 4 MB per item, history cleared on restart with only pinned items kept" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
+    </figure>
+
+    <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
+
+<p>Most guides to Windows clipboard history tell you to press <strong>Win+V</strong> and stop there. That is enough for copied text. It leaves out what people with screenshots keep running into: you copied a screenshot an hour ago, restarted, and it is gone, or you took a large capture and it never showed up in the list at all.</p>
+        <p>This guide takes the limits Microsoft publishes and applies them to images. I worked on a Mac while writing it, so I could not click through Windows myself. Everything in the first sections comes from Microsoft's own support page, I give the arithmetic where I draw a conclusion, and near the end there is a two minute check you can run on your own PC to settle the one question the documentation leaves open.</p>
+        <h2>The Limits, in One Table</h2>
+        <p>These are the figures from Microsoft Support's page on the clipboard in Windows:</p>
+        <div class="overflow-x-auto rounded-xl border border-hairline">
+<table class="w-full text-left text-sm">
+<thead class="bg-canvas-soft text-ink"><tr><th class="px-4 py-3 font-semibold">Question</th><th class="px-4 py-3 font-semibold">What Microsoft says</th></tr></thead>
+<tbody class="divide-y divide-hairline"><tr><td class="px-4 py-3 align-top">How many items?</td><td class="px-4 py-3 align-top">25. When it is full, the oldest unpinned items are removed to make room</td></tr><tr><td class="px-4 py-3 align-top">How big can one item be?</td><td class="px-4 py-3 align-top">Up to 4 MB</td></tr><tr><td class="px-4 py-3 align-top">What can it hold?</td><td class="px-4 py-3 align-top">Text, HTML and bitmap (image) content</td></tr><tr><td class="px-4 py-3 align-top">What happens on restart?</td><td class="px-4 py-3 align-top">History is cleared, except pinned items</td></tr><tr><td class="px-4 py-3 align-top">Do pinned items survive Clear all?</td><td class="px-4 py-3 align-top">Yes. Clearing leaves pinned items alone, and you delete those one by one</td></tr><tr><td class="px-4 py-3 align-top">Does it sync between PCs?</td><td class="px-4 py-3 align-top">Only if you turn it on under Settings, System, Clipboard, and Microsoft describes it for copied text</td></tr></tbody>
+</table>
+</div>
+        <p>Two of those rows decide what happens to screenshots. The first is the restart rule. The second is the 4 MB limit, which needs a closer look.</p>
+        <h2>Will a Screenshot Fit in 4 MB?</h2>
+        <p>An image on the clipboard is a bitmap, and a raw bitmap is large. At four bytes per pixel, the uncompressed size of a full screen is:</p>
+        <div class="overflow-x-auto rounded-xl border border-hairline">
+<table class="w-full text-left text-sm">
+<thead class="bg-canvas-soft text-ink"><tr><th class="px-4 py-3 font-semibold">Screen size</th><th class="px-4 py-3 font-semibold">Pixels</th><th class="px-4 py-3 font-semibold">Raw bitmap size</th></tr></thead>
+<tbody class="divide-y divide-hairline"><tr><td class="px-4 py-3 align-top">1920 by 1080</td><td class="px-4 py-3 align-top">2,073,600</td><td class="px-4 py-3 align-top">8,294,400 bytes (about 8.3 MB)</td></tr><tr><td class="px-4 py-3 align-top">2560 by 1440</td><td class="px-4 py-3 align-top">3,686,400</td><td class="px-4 py-3 align-top">14,745,600 bytes (about 14.7 MB)</td></tr><tr><td class="px-4 py-3 align-top">3840 by 2160</td><td class="px-4 py-3 align-top">8,294,400</td><td class="px-4 py-3 align-top">33,177,600 bytes (about 33.2 MB)</td></tr></tbody>
+</table>
+</div>
+        <p>If the 4 MB limit is measured against raw pixels, a full screen capture at any of those sizes is over it, while a small selection fits. If it is measured against a compressed PNG, a typical app window passes easily. Microsoft's page does not say which one applies, and I could not check on a Windows machine, so I will not guess. What the arithmetic does show is that the answer depends on how big the capture is, not on how many captures you have taken.</p>
+        <h3>Check it on your own PC in two minutes</h3>
+        <ul class="list-disc pl-5 space-y-1.5"><li>Press <strong>Win+Shift+S</strong> and drag a small box around part of a window. Press <strong>Win+V</strong>. Note whether the capture appears.</li><li>Press <strong>Win+Shift+S</strong> again and capture the whole screen. Press <strong>Win+V</strong> again.</li><li>If the second one is missing, large captures are not being kept on your PC, and you should save them as files instead of trusting history.</li><li>If both appear, history is handling your screen size, and you only need to watch the restart rule.</li></ul>
+        <p>If history is switched off, the first press of Win+V offers to turn it on. Captures taken before you turned it on are not in the list.</p>
+        <h2>Turn It On, Open It, Pin and Clear It</h2>
+        <ul class="list-disc pl-5 space-y-1.5"><li><strong>Turn on:</strong> press <strong>Win+V</strong> and choose the option to turn it on, or go to <strong>Settings, System, Clipboard</strong>.</li><li><strong>Open:</strong> press <strong>Win+V</strong> in any app. Choosing an item pastes it where your cursor is, the same as Ctrl+V does for the current item.</li><li><strong>Pin:</strong> use the pin on an item. Pinned items survive restarts and Clear all.</li><li><strong>Delete one:</strong> open the item menu and delete it. This is how you remove a pinned item.</li><li><strong>Clear everything:</strong> <strong>Settings, System, Clipboard, Clear</strong>, or the clear all option in the Win+V panel. Both leave pinned items alone. If sync is on, Microsoft says clearing in Settings also clears the cloud copy.</li></ul>
+        <p>A work or school PC can have clipboard history turned off by an administrator. If the option is missing or greyed out on a managed machine, that is the likely reason, and there is nothing to fix on your side.</p>
+        <h2>Save the Image Before the Restart Wipes It</h2>
+        <p>Since a restart clears unpinned items, treat history as a short buffer, not a place to keep things. Two ways to get a captured image out before it goes:</p>
+        <ul class="list-disc pl-5 space-y-1.5"><li>Open <a href="https://pastedownloadapp.com/">PasteDownloadApp</a>, press <strong>Win+V</strong>, choose the screenshot, and it pastes into the page like a normal Ctrl+V. Pick PNG, JPEG or WebP and download it. The image stays in your browser and is not uploaded.</li><li>Paste it into Paint or another editor and use Save as there. The no-software options are compared in <a href="/blog/save-clipboard-image-without-software/">5 Faster Ways to Save Clipboard Images Without Software</a>.</li></ul>
+        <p>If you want a file every time without thinking about it, the Windows steps in <a href="/blog/save-screenshot-as-file-windows/">How to Save a Screenshot Directly as a File Without Opening MS Paint</a> avoid the clipboard altogether.</p>
+        <h2>When Win+V Seems Broken</h2>
+        <div class="overflow-x-auto rounded-xl border border-hairline">
+<table class="w-full text-left text-sm">
+<thead class="bg-canvas-soft text-ink"><tr><th class="px-4 py-3 font-semibold">What you see</th><th class="px-4 py-3 font-semibold">Likely cause</th><th class="px-4 py-3 font-semibold">What to do</th></tr></thead>
+<tbody class="divide-y divide-hairline"><tr><td class="px-4 py-3 align-top">Win+V shows an offer to turn on, not a list</td><td class="px-4 py-3 align-top">History is off</td><td class="px-4 py-3 align-top">Turn it on. Earlier copies were not stored</td></tr><tr><td class="px-4 py-3 align-top">The list is empty after boot</td><td class="px-4 py-3 align-top">Restart cleared it</td><td class="px-4 py-3 align-top">Expected. Only pinned items remain</td></tr><tr><td class="px-4 py-3 align-top">A large screenshot is missing</td><td class="px-4 py-3 align-top">It may exceed the 4 MB per item limit</td><td class="px-4 py-3 align-top">Run the two minute check above and save large captures as files</td></tr><tr><td class="px-4 py-3 align-top">The oldest item vanished</td><td class="px-4 py-3 align-top">The list holds 25 and drops the oldest unpinned item</td><td class="px-4 py-3 align-top">Pin what you need to keep</td></tr><tr><td class="px-4 py-3 align-top">Win+V does nothing or the option is missing</td><td class="px-4 py-3 align-top">Managed PC policy or a conflicting shortcut</td><td class="px-4 py-3 align-top">Ask your administrator, or check what else uses the shortcut</td></tr><tr><td class="px-4 py-3 align-top">It pasted, but the app shows no image</td><td class="px-4 py-3 align-top">The app wants a file or a different format</td><td class="px-4 py-3 align-top">See <a href="/blog/cant-paste-image-check-clipboard/">Can't Paste an Image? Check What Is Actually on Your Clipboard</a></td></tr></tbody>
+</table>
+</div>
+        <h2>A Privacy Point Most Guides Skip</h2>
+        <p>Whatever you copy sits in history until a restart or until you clear it, including a screenshot of a bank page, a password manager window or a private chat. With sync turned on, Microsoft describes text moving between your devices through your account, so check what you have enabled before capturing anything sensitive. After copying something private, delete that one item from the Win+V panel instead of waiting for a restart. The same caution applies to anything you pin, because pinned items persist across restarts by design.</p>
+        <h2>Sources and Method</h2>
+        <ul class="list-disc pl-5 space-y-1.5"><li>Microsoft Support, <a href="https://support.microsoft.com/en-us/windows/clipboard-in-windows-c436501e-985d-1c8d-97ea-fe46ddf338c6">Clipboard in Windows</a>, for the 25 item limit, 4 MB per item, supported content types, restart behavior, pinning, sync and clearing, read on October 24, 2026.</li><li>The raw bitmap sizes are my own arithmetic: width times height times four bytes per pixel.</li><li>Not tested: any behavior on a real Windows PC. I used a Mac to write this guide, so I did not check whether the 4 MB limit applies to raw or compressed image data. That is why the check above is included. Third-party sites quote different size limits for older Windows 10 builds, so I used only the Microsoft page.</li></ul>
+
+        <h2>Frequently Asked Questions</h2>
+
+<h3>How do I open clipboard history on Windows?</h3>
+<p>Press Windows key + V. If history is off, the first press offers to turn it on, and only items copied after that are stored. You can also turn it on under Settings, System, Clipboard.</p>
+
+<h3>How many items does Windows clipboard history keep?</h3>
+<p>Microsoft documents up to 25 items. When the list is full, the oldest unpinned items are removed to make room, and pinned items are kept.</p>
+
+<h3>Why did my screenshot disappear from clipboard history?</h3>
+<p>History is cleared every time the PC restarts, except for pinned items. A large capture can also be missing if it exceeds the 4 MB per item limit Microsoft lists, so save important screenshots as files.</p>
+
+<h3>Can I save an image from Windows clipboard history?</h3>
+<p>Yes. Press Win+V, choose the image to paste it into a page or editor, then save it. Pasting it into PasteDownloadApp lets you download it as PNG, JPEG or WebP without uploading it.</p>
+
+<h3>How do I clear Windows clipboard history?</h3>
+<p>Use Settings, System, Clipboard, Clear, or the clear all option in the Win+V panel. Both keep pinned items, which you must delete one at a time.</p>
+
+        <RelatedGuides hrefs={["/blog/save-clipboard-image-without-software/", "/blog/save-screenshot-as-file-windows/", "/blog/where-do-clipboard-images-go/"]} />
+
+    </div>
+    <Fragment slot="after"><AuthorBio /></Fragment>
+</ContentLayout>

@@ -1,0 +1,222 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import RelatedGuides from '../../components/RelatedGuides.astro';
+import AuthorByline from '../../components/AuthorByline.astro';
+import AuthorBio from '../../components/AuthorBio.astro';
+---
+
+<ContentLayout
+    title="Why Chrome Saves Images as WebP or AVIF, and How to Get a JPG"
+    description="The same image URL returned a JPEG, a WebP and an AVIF depending on one request header. Here is why Save image as gives you the wrong format, what each fix does to file size, and how to stop transparent images turning black."
+    canonicalUrl="https://pastedownloadapp.com/blog/why-chrome-saves-images-as-webp-avif/"
+    imageUrl="https://pastedownloadapp.com/blog/why-chrome-saves-images-as-webp-avif.png"
+    breadcrumbs={[{ name: "Home", href: "/" }, { name: "Blog", href: "/blog/" }, { name: "Chrome Saves Images as WebP or AVIF" }]}
+>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": "Why Chrome Saves Images as WebP or AVIF, and How to Get a JPG",
+          "description": "The same image URL returned a JPEG, a WebP and an AVIF depending on one request header. Here is why Save image as gives you the wrong format, what each fix does to file size, and how to stop transparent images turning black.",
+          "image": "https://pastedownloadapp.com/blog/why-chrome-saves-images-as-webp-avif.png",
+          "datePublished": "2026-10-23T00:00:00Z",
+          "dateModified": "2026-10-23T00:00:00Z",
+          "author": {
+            "@type": "Person",
+            "@id": "https://pastedownloadapp.com/author/#person",
+            "name": "Kappil Yadav",
+            "url": "https://pastedownloadapp.com/author/",
+            "image": "https://pastedownloadapp.com/author-kappil-yadav.webp",
+            "jobTitle": "Founder & Developer",
+            "description": "Full-stack developer who builds and maintains PasteDownloadApp using the browser's native Clipboard and Canvas APIs. Ships public code on GitHub and tests every guide against real files in the live tool before publishing.",
+            "email": "hello@pastedownloadapp.com",
+            "knowsAbout": [
+              "Clipboard API",
+              "Canvas API",
+              "Image formats",
+              "Web development"
+            ],
+            "sameAs": [
+              "https://github.com/kappilyadav",
+              "https://www.linkedin.com/in/kapilyadavv",
+              "https://www.instagram.com/heykapil_"
+            ],
+            "worksFor": {
+              "@type": "Organization",
+              "@id": "https://pastedownloadapp.com/#organization",
+              "name": "PasteDownloadApp",
+              "url": "https://pastedownloadapp.com/"
+            }
+          },
+          "publisher": {
+            "@type": "Organization",
+            "@id": "https://pastedownloadapp.com/#organization",
+            "name": "PasteDownloadApp",
+            "url": "https://pastedownloadapp.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://pastedownloadapp.com/favicon.svg"
+            }
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://pastedownloadapp.com/blog/why-chrome-saves-images-as-webp-avif/"
+          }
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Why does Chrome save images as WebP instead of JPG?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Chrome tells the website which image formats it supports, and many sites and image services reply with WebP or AVIF to save bandwidth. The file is whatever the server sent, so a link ending in .jpg can still deliver a WebP."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why is my saved image AVIF and not WebP?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Chrome lists AVIF as supported, and a server that can produce it may prefer it because it is often the smallest. In a test on one image the AVIF was 54,223 bytes against 83,902 for the WebP."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I convert a WebP to JPG without losing quality?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You cannot keep every detail, because both formats are lossy. Convert once, use a high quality such as 90 or 95, and keep the original file. Quality 85 on a test photo gave a JPEG about 14% smaller than the WebP."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why does my converted image have a black background?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "JPEG has no transparency, and some tools fill transparent areas with black. In ImageMagick add -background white -flatten before the output name. When drawing to a canvas, fill it white before drawing the image."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I rename a WebP file to JPG?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Renaming changes only the name, not the data, so many programs and upload forms will still reject it. Convert the file with a tool instead."
+              }
+            }
+          ]
+        }
+    </script>
+
+    <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
+        Why Chrome Saves Images as WebP or AVIF, and How to Get a JPG
+    </h1>
+
+    <AuthorByline publishDate="2026-10-23" updatedDate="2026-10-23" />
+
+    <figure class="mt-0 mb-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
+        <img src="/blog/why-chrome-saves-images-as-webp-avif.webp" alt="One image URL returns three files depending on the Accept header: a 76,798 byte JPEG, an 83,902 byte WebP and a 54,223 byte AVIF" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
+    </figure>
+
+    <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
+
+        <p>You right-click a photo, choose Save image as, and the file that lands in Downloads ends in <code>.webp</code> or <code>.avif</code>. The page said <code>photo.jpg</code>. Your upload form, your slide deck or your photo editor does not want it. Most explanations stop at "websites use WebP now". That does not tell you why the same address gives different people different files, why the result is sometimes larger than the JPEG you wanted, or why a converted logo can come out with a black background.</p>
+        <p>I tested all three on one real image, so the numbers below come from actual files and an actual Chrome, and I mark the one thing I did not test.</p>
+        <h2>The Server Picks the Format, Not Chrome</h2>
+        <p>Every time a browser asks for an image it sends an <code>Accept</code> header listing the formats it can handle. Chrome's list for images has long included AVIF and WebP ahead of the catch-all. Many image services read that header and answer with the best format they can make, using the same URL. The file extension in the address does not decide anything, which is why a link ending in <code>.jpg</code> can return a WebP.</p>
+        <p>To see this directly I requested one image from the Unsplash image service three times with different <code>Accept</code> headers, changing nothing else:</p>
+        <pre class="overflow-x-auto rounded-lg border border-hairline bg-canvas-soft p-4 text-sm"><code>curl -sL -H "Accept: */*" -D - -o /dev/null "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&amp;q=80&amp;auto=format"
+curl -sL -H "Accept: image/webp,*/*" ...
+curl -sL -H "Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8" ...</code></pre>
+        <div class="overflow-x-auto rounded-xl border border-hairline">
+<table class="w-full text-left text-sm">
+<thead class="bg-canvas-soft text-ink"><tr><th class="px-4 py-3 font-semibold">Accept header sent</th><th class="px-4 py-3 font-semibold">Content-Type returned</th><th class="px-4 py-3 font-semibold">Bytes</th></tr></thead>
+<tbody class="divide-y divide-hairline"><tr><td class="px-4 py-3 align-top"><code>*/*</code> (what curl and a bare fetch send)</td><td class="px-4 py-3 align-top">image/jpeg</td><td class="px-4 py-3 align-top">76,798</td></tr><tr><td class="px-4 py-3 align-top"><code>image/webp,*/*</code></td><td class="px-4 py-3 align-top">image/webp</td><td class="px-4 py-3 align-top">83,902</td></tr><tr><td class="px-4 py-3 align-top">Browser-style list including <code>image/avif</code></td><td class="px-4 py-3 align-top">image/avif</td><td class="px-4 py-3 align-top">54,223</td></tr></tbody>
+</table>
+</div>
+        <p>The response also carried <code>Vary: Accept</code>, which is the server telling caches that the answer depends on that header. Then I loaded the same address in Chrome 152 as a normal image and read the size the browser reported. It was 54,223 bytes, which is the AVIF. A script doing a plain <code>fetch()</code> of the same address got the 76,798 byte JPEG, because <code>fetch()</code> sends <code>*/*</code> by default. Same URL, two files, decided by one header.</p>
+        <p>Two takeaways. First, the file you get can be AVIF, not only WebP, and many "WebP to JPG" guides never mention it. Second, the number of bytes depends on how the service encodes each format, not on the format name. In this test the WebP was larger than the JPEG. WebP and AVIF are usually smaller, but they are not guaranteed to be.</p>
+        <p>I did not run the Save image as dialog itself against this service. What Save image as writes depends on the site and the browser version, and forum reports about it disagree. What I can say from the test is that the page was served AVIF, so a file saved from what the page loaded will be AVIF.</p>
+        <h2>Pick the Fix by What You Have</h2>
+        <div class="overflow-x-auto rounded-xl border border-hairline">
+<table class="w-full text-left text-sm">
+<thead class="bg-canvas-soft text-ink"><tr><th class="px-4 py-3 font-semibold">Situation</th><th class="px-4 py-3 font-semibold">Best option</th><th class="px-4 py-3 font-semibold">Watch out for</th></tr></thead>
+<tbody class="divide-y divide-hairline"><tr><td class="px-4 py-3 align-top">One image, any computer</td><td class="px-4 py-3 align-top">Copy the image, paste it into <a href="https://pastedownloadapp.com/">PasteDownloadApp</a>, choose JPEG, download</td><td class="px-4 py-3 align-top">None of the page data is uploaded. JPEG gets a white background where the image is transparent</td></tr><tr><td class="px-4 py-3 align-top">One or many files on a Mac</td><td class="px-4 py-3 align-top"><code>sips</code> in Terminal, nothing to install</td><td class="px-4 py-3 align-top">Transparent areas come out white. File can be bigger than the WebP</td></tr><tr><td class="px-4 py-3 align-top">Many files, any OS with ImageMagick</td><td class="px-4 py-3 align-top"><code>magick mogrify</code> with <code>-flatten</code></td><td class="px-4 py-3 align-top">Without <code>-flatten</code>, transparent areas can turn black</td></tr><tr><td class="px-4 py-3 align-top">The site is an image service</td><td class="px-4 py-3 align-top">Add a format option to the URL if the service has one</td><td class="px-4 py-3 align-top">Parameter names differ by service. I only confirmed one</td></tr><tr><td class="px-4 py-3 align-top">The destination now accepts WebP</td><td class="px-4 py-3 align-top">Keep the file as it is</td><td class="px-4 py-3 align-top">Converting adds a second round of quality loss</td></tr></tbody>
+</table>
+</div>
+        <p>The last row matters more than it looks. If the app you are uploading to takes WebP, converting is extra work that can only make the picture worse. Convert only when something refuses the file.</p>
+        <h2>Convert on a Mac With sips</h2>
+        <p>macOS includes <code>sips</code>, and on the Mac used for this guide (macOS 26.4.1) it read both the WebP and the AVIF files. This converts one file, or every WebP in a folder:</p>
+        <pre class="overflow-x-auto rounded-lg border border-hairline bg-canvas-soft p-4 text-sm"><code>sips -s format jpeg photo.webp --out photo.jpg
+
+for f in *.webp; do sips -s format jpeg "$f" --out "$&#123;f%.webp&#125;.jpg"; done</code></pre>
+        <p>Swap <code>.webp</code> for <code>.avif</code> in the loop to convert those. Compare what came out for the same photo:</p>
+        <div class="overflow-x-auto rounded-xl border border-hairline">
+<table class="w-full text-left text-sm">
+<thead class="bg-canvas-soft text-ink"><tr><th class="px-4 py-3 font-semibold">Source</th><th class="px-4 py-3 font-semibold">Source size</th><th class="px-4 py-3 font-semibold">JPEG from sips</th><th class="px-4 py-3 font-semibold">Change</th></tr></thead>
+<tbody class="divide-y divide-hairline"><tr><td class="px-4 py-3 align-top">WebP, 800 by 534</td><td class="px-4 py-3 align-top">83,902 bytes</td><td class="px-4 py-3 align-top">103,327 bytes</td><td class="px-4 py-3 align-top">23% larger</td></tr><tr><td class="px-4 py-3 align-top">AVIF, 800 by 534</td><td class="px-4 py-3 align-top">54,223 bytes</td><td class="px-4 py-3 align-top">124,498 bytes</td><td class="px-4 py-3 align-top">2.3 times larger</td></tr></tbody>
+</table>
+</div>
+        <p>The JPEG is bigger because JPEG is a less efficient format, and it does not look any better. Converting a lossy file to another lossy file cannot bring back detail that the first format threw away. It only stores what is left, and then discards a little more.</p>
+        <h2>Choose the JPEG Quality on Purpose</h2>
+        <p>If a size limit matters, you can set quality yourself with ImageMagick. These are the JPEG sizes I got from the same WebP photo at four settings:</p>
+        <div class="overflow-x-auto rounded-xl border border-hairline">
+<table class="w-full text-left text-sm">
+<thead class="bg-canvas-soft text-ink"><tr><th class="px-4 py-3 font-semibold">Quality</th><th class="px-4 py-3 font-semibold">JPEG size</th><th class="px-4 py-3 font-semibold">Compared with the 83,902 byte WebP</th></tr></thead>
+<tbody class="divide-y divide-hairline"><tr><td class="px-4 py-3 align-top">95</td><td class="px-4 py-3 align-top">154,474 bytes</td><td class="px-4 py-3 align-top">84% larger</td></tr><tr><td class="px-4 py-3 align-top">90</td><td class="px-4 py-3 align-top">107,787 bytes</td><td class="px-4 py-3 align-top">28% larger</td></tr><tr><td class="px-4 py-3 align-top">85</td><td class="px-4 py-3 align-top">71,944 bytes</td><td class="px-4 py-3 align-top">14% smaller</td></tr><tr><td class="px-4 py-3 align-top">75</td><td class="px-4 py-3 align-top">52,436 bytes</td><td class="px-4 py-3 align-top">37% smaller</td></tr></tbody>
+</table>
+</div>
+        <p>Quality 85 is a sensible stopping point for a photo that must be a JPEG and should not grow. The deeper treatment of how quality maps to size is in <a href="/blog/image-compression-quality-settings/">Image Compression Quality Settings Explained, With Real File Sizes</a>. Note that <code>sips</code> and ImageMagick use different quality scales. The <code>sips</code> default file above measured about 93 on ImageMagick's scale, so do not assume a number means the same thing in both tools.</p>
+        <h2>Why a Converted Logo Can Have a Black Background</h2>
+        <p>JPEG cannot store transparency. A WebP logo with a clear background has to be flattened onto some color during conversion, and the tools do not agree on which color. I made a 600 by 300 WebP with a blue rounded rectangle on a transparent background, converted it three ways and read the top-left corner pixel of each result:</p>
+        <div class="overflow-x-auto rounded-xl border border-hairline">
+<table class="w-full text-left text-sm">
+<thead class="bg-canvas-soft text-ink"><tr><th class="px-4 py-3 font-semibold">Method</th><th class="px-4 py-3 font-semibold">Corner pixel</th><th class="px-4 py-3 font-semibold">Result</th></tr></thead>
+<tbody class="divide-y divide-hairline"><tr><td class="px-4 py-3 align-top"><code>sips</code></td><td class="px-4 py-3 align-top">255, 255, 255</td><td class="px-4 py-3 align-top">White. Fine for most uses</td></tr><tr><td class="px-4 py-3 align-top"><code>magick logo.webp logo.jpg</code></td><td class="px-4 py-3 align-top">0, 0, 0</td><td class="px-4 py-3 align-top">Black background. This is the surprise</td></tr><tr><td class="px-4 py-3 align-top"><code>magick logo.webp -background white -flatten logo.jpg</code></td><td class="px-4 py-3 align-top">255, 255, 255</td><td class="px-4 py-3 align-top">White. Fixed</td></tr></tbody>
+</table>
+</div>
+        <p>The same trap exists in the browser. I drew a transparent canvas in Chrome and exported it with <code>toBlob</code> as JPEG. Reading the corner pixel back gave 0, 0, 0, which is black. The fix is to paint the background first, which is what PasteDownloadApp does for JPEG output:</p>
+        <pre class="overflow-x-auto rounded-lg border border-hairline bg-canvas-soft p-4 text-sm"><code>const canvas = document.createElement('canvas');
+canvas.width = img.naturalWidth;
+canvas.height = img.naturalHeight;
+const ctx = canvas.getContext('2d');
+ctx.fillStyle = '#ffffff';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+ctx.drawImage(img, 0, 0);
+canvas.toBlob((blob) =&gt; &#123; /* use the JPEG blob */ &#125;, 'image/jpeg', 0.92);</code></pre>
+        <p>If the logo has to stay transparent, do not convert it to JPEG at all. Save it as PNG instead. The trade-offs between the formats are laid out in <a href="/blog/png-vs-jpg-vs-webp/">PNG vs JPG vs WebP: Real File Sizes Compared</a>.</p>
+        <h2>Ask the Service for a JPEG Instead</h2>
+        <p>Some image services let you force the format in the address. On the Unsplash address used above, adding <code>fm=jpg</code> returned the 76,798 byte JPEG no matter what the browser asked for. Other services use other parameter names, so check that service's documentation before copying this. If the page you are on is not an image service, there is nothing to change and you should use one of the conversion routes above. If a link will not download at all, <a href="/blog/why-image-url-wont-download/">Why Some Image URLs Won't Download</a> covers that separate problem.</p>
+        <h2>Things That Catch People Out</h2>
+        <ul class="list-disc pl-5 space-y-1.5"><li><strong>Renaming does not convert.</strong> Changing <code>.webp</code> to <code>.jpg</code> in the file name leaves WebP data inside. Some programs open it anyway, many refuse, and uploads can fail the format check. Run <code>file photo.jpg</code> in Terminal if you are unsure what a file really is.</li><li><strong>Your tab can show one format while the next visitor gets another.</strong> The <code>Vary: Accept</code> header exists because different browsers get different files from one address.</li><li><strong>Animated WebP is a different case.</strong> Converting it to JPEG keeps one frame at best. Use a GIF or video tool for animations.</li><li><strong>Screenshots avoid the problem entirely.</strong> A screenshot of the image on screen is a PNG you made yourself, at screen resolution, which is fine for a slide but not for print.</li></ul>
+        <h2>Sources and Method</h2>
+        <ul class="list-disc pl-5 space-y-1.5"><li>The three <code>Accept</code> header requests, file sizes and the <code>Vary</code> header: run with <code>curl</code> against an Unsplash image URL on October 24, 2026.</li><li>The Chrome check: a normal image load and a <code>fetch()</code> of the same URL in Chrome 152 on macOS, reading the byte sizes the browser reported.</li><li>Conversions: <code>sips</code> 316 and ImageMagick 7.1.2 on macOS 26.4.1, with sizes read from the output files. The pixel values are from the top-left corner of each result.</li><li>Not tested: the Save image as dialog against this service, and any Windows or Linux conversion tool. I do not give Windows steps here because I could not verify them.</li></ul>
+
+        <h2>Frequently Asked Questions</h2>
+
+<h3>Why does Chrome save images as WebP instead of JPG?</h3>
+<p>Chrome tells the website which image formats it supports, and many sites and image services reply with WebP or AVIF to save bandwidth. The file is whatever the server sent, so a link ending in .jpg can still deliver a WebP.</p>
+
+<h3>Why is my saved image AVIF and not WebP?</h3>
+<p>Chrome lists AVIF as supported, and a server that can produce it may prefer it because it is often the smallest. In a test on one image the AVIF was 54,223 bytes against 83,902 for the WebP.</p>
+
+<h3>How do I convert a WebP to JPG without losing quality?</h3>
+<p>You cannot keep every detail, because both formats are lossy. Convert once, use a high quality such as 90 or 95, and keep the original file. Quality 85 on a test photo gave a JPEG about 14% smaller than the WebP.</p>
+
+<h3>Why does my converted image have a black background?</h3>
+<p>JPEG has no transparency, and some tools fill transparent areas with black. In ImageMagick add -background white -flatten before the output name. When drawing to a canvas, fill it white before drawing the image.</p>
+
+<h3>Can I rename a WebP file to JPG?</h3>
+<p>No. Renaming changes only the name, not the data, so many programs and upload forms will still reject it. Convert the file with a tool instead.</p>
+
+        <RelatedGuides hrefs={["/blog/png-vs-jpg-vs-webp/", "/blog/image-compression-quality-settings/", "/blog/convert-multiple-screenshots-fast/"]} />
+
+    </div>
+    <Fragment slot="after"><AuthorBio /></Fragment>
+</ContentLayout>

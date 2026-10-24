@@ -6,6 +6,26 @@ export const categories = [
 
 export const latestArticles = [
   {
+    href: '/blog/windows-clipboard-history-screenshots-win-v/',
+    image: '/blog/windows-clipboard-history-screenshots-win-v.webp',
+    absoluteImage: 'https://pastedownloadapp.com/blog/windows-clipboard-history-screenshots-win-v.png',
+    alt: 'Windows clipboard history limits: 25 items, 4 MB per item, history cleared on restart with only pinned items kept',
+    title: 'Windows Clipboard History (Win+V) and Screenshots: What It Keeps and Drops',
+    description: 'Win+V holds 25 items of up to 4 MB each and empties on restart. What that means for screenshots, how to pin and clear, and how to save an image before it disappears.',
+    publishDate: '2026-10-24',
+    category: 'platforms'
+  },
+  {
+    href: '/blog/why-chrome-saves-images-as-webp-avif/',
+    image: '/blog/why-chrome-saves-images-as-webp-avif.webp',
+    absoluteImage: 'https://pastedownloadapp.com/blog/why-chrome-saves-images-as-webp-avif.png',
+    alt: 'One image URL returns three files depending on the Accept header: a 76,798 byte JPEG, an 83,902 byte WebP and a 54,223 byte AVIF',
+    title: 'Why Chrome Saves Images as WebP or AVIF, and How to Get a JPG',
+    description: 'The same image URL returned a JPEG, a WebP and an AVIF depending on one request header. Why Save image as gives the wrong format and what each fix does to file size.',
+    publishDate: '2026-10-23',
+    category: 'formats'
+  },
+  {
     href: '/blog/paste-image-javascript-paste-event-clipboard-api/',
     image: '/blog/paste-image-javascript-paste-event-clipboard-api.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/paste-image-javascript-paste-event-clipboard-api.png',
