@@ -1,0 +1,196 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import RelatedGuides from '../../components/RelatedGuides.astro';
+import AuthorByline from '../../components/AuthorByline.astro';
+import AuthorBio from '../../components/AuthorBio.astro';
+---
+
+<ContentLayout
+    title="Mac Screenshot Resolution: Why Your Screenshot Has Twice the Pixels You See"
+    description="A Retina Mac captures 2 pixels for every 1 point on screen. I measured what that does to dimensions, DPI and file size, and how to check a screenshot's real size and get a 1x copy when you need one."
+    canonicalUrl="https://pastedownloadapp.com/blog/mac-screenshot-resolution-retina-pixels/"
+    imageUrl="https://pastedownloadapp.com/blog/mac-screenshot-resolution-retina-pixels.png"
+    breadcrumbs={[{ name: "Home", href: "/" }, { name: "Blog", href: "/blog/" }, { name: "Mac Screenshot Resolution" }]}
+>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": "Mac Screenshot Resolution: Why Your Screenshot Has Twice the Pixels You See",
+          "description": "A Retina Mac captures 2 pixels for every 1 point on screen. I measured what that does to dimensions, DPI and file size, and how to check a screenshot's real size and get a 1x copy when you need one.",
+          "image": "https://pastedownloadapp.com/blog/mac-screenshot-resolution-retina-pixels.png",
+          "datePublished": "2026-10-26T00:00:00Z",
+          "dateModified": "2026-10-26T00:00:00Z",
+          "author": {
+            "@type": "Person",
+            "@id": "https://pastedownloadapp.com/author/#person",
+            "name": "Kappil Yadav",
+            "url": "https://pastedownloadapp.com/author/",
+            "image": "https://pastedownloadapp.com/author-kappil-yadav.webp",
+            "jobTitle": "Founder & Developer",
+            "description": "Full-stack developer who builds and maintains PasteDownloadApp using the browser's native Clipboard and Canvas APIs. Ships public code on GitHub and tests every guide against real files in the live tool before publishing.",
+            "email": "hello@pastedownloadapp.com",
+            "knowsAbout": [
+              "Clipboard API",
+              "Canvas API",
+              "Image formats",
+              "Web development"
+            ],
+            "sameAs": [
+              "https://github.com/kappilyadav",
+              "https://www.linkedin.com/in/kapilyadavv",
+              "https://www.instagram.com/heykapil_"
+            ],
+            "worksFor": {
+              "@type": "Organization",
+              "@id": "https://pastedownloadapp.com/#organization",
+              "name": "PasteDownloadApp",
+              "url": "https://pastedownloadapp.com/"
+            }
+          },
+          "publisher": {
+            "@type": "Organization",
+            "@id": "https://pastedownloadapp.com/#organization",
+            "name": "PasteDownloadApp",
+            "url": "https://pastedownloadapp.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://pastedownloadapp.com/favicon.svg"
+            }
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://pastedownloadapp.com/blog/mac-screenshot-resolution-retina-pixels/"
+          }
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What resolution is a Mac screenshot?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "On a Retina Mac it is twice the width and height of the area you captured, measured in the screen's points. A 1470 by 956 point window area becomes a 2940 by 1912 pixel image. The screenshots on my Mac are tagged 144 dpi, which is twice the 72 dpi of a standard display."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why is my Mac screenshot so big when I paste it into a document?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "It holds four times as many pixels as a 1x capture of the same area. In my test the 2x PNG was 989,464 bytes and the 1x PNG was 420,991 bytes. Resize it before use or export a smaller copy."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I check a screenshot's pixel dimensions on a Mac?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Select the file in Finder and press Command+I, then read Dimensions under More Info. You can also open it in Preview and choose Tools, Show Inspector, or run sips -g pixelWidth -g pixelHeight on the file in Terminal."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does changing the DPI make a screenshot smaller?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. I changed a 2940 by 1912 screenshot from 144 dpi to 72 dpi and it was still 2940 by 1912 pixels. DPI is only a label for printing and layout. To make the image smaller you must resample it to fewer pixels."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I make a 1x copy of a Retina screenshot?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Resample it to half the width. In Terminal, sips --resampleWidth 1470 file.png turned my 2940 by 1912 screenshot into a 1470 by 956 one. Preview's Tools, Adjust Size does the same with a dialog."
+              }
+            }
+          ]
+        }
+    </script>
+
+    <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
+        Mac Screenshot Resolution: Why Your Screenshot Has Twice the Pixels You See
+    </h1>
+
+    <AuthorByline publishDate="2026-10-26" updatedDate="2026-10-26" />
+
+    <figure class="mt-0 mb-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
+        <img src="/blog/mac-screenshot-resolution-retina-pixels.webp" alt="One 1470 by 956 area captured at 1x is 421 KB, and captured at 2x is 2940 by 1912 pixels and 989 KB" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
+    </figure>
+
+    <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
+
+<p>You take a screenshot of a small window, paste it into a document or a form, and it comes out huge. Or an upload page rejects it for being 3000 pixels wide when your screen is nowhere near that. The cause is the same each time: a Mac with a Retina display records two pixels for every one point of screen space, so every screenshot has twice the width and height you are looking at.</p>
+        <p>This guide shows the numbers on a real Retina Mac, what that does to file size, why the DPI setting will not fix it, and how to produce a normal-size copy when you need one. I also say plainly which parts I could not capture myself.</p>
+        <h2>Points, Pixels and the Two Numbers Your Screen Has</h2>
+        <p>A Retina Mac describes its screen in points, which is the unit apps are laid out in, and draws each point using a 2 by 2 block of pixels. On the MacBook I used, macOS reports a desktop of <strong>1470 by 956 points</strong> (read from Finder's desktop bounds), while System Information lists the panel at <strong>2560 by 1664 pixels</strong>. The two figures are different on purpose. The default display mode draws the desktop at twice the point size, 2940 by 1912, and then scales that to the physical panel.</p>
+        <p>That gives three numbers that people mix up when they search for the resolution of a Mac screenshot:</p>
+        <div class="overflow-x-auto rounded-xl border border-hairline">
+<table class="w-full text-left text-sm">
+<thead class="bg-canvas-soft text-ink"><tr><th class="px-4 py-3 font-semibold">Number</th><th class="px-4 py-3 font-semibold">On my Mac</th><th class="px-4 py-3 font-semibold">What it means</th></tr></thead>
+<tbody class="divide-y divide-hairline"><tr><td class="px-4 py-3 align-top">Points</td><td class="px-4 py-3 align-top">1470 by 956</td><td class="px-4 py-3 align-top">The layout size apps and websites see</td></tr><tr><td class="px-4 py-3 align-top">Pixels in a 2x capture</td><td class="px-4 py-3 align-top">2940 by 1912</td><td class="px-4 py-3 align-top">Twice the points in each direction</td></tr><tr><td class="px-4 py-3 align-top">Physical panel</td><td class="px-4 py-3 align-top">2560 by 1664</td><td class="px-4 py-3 align-top">The hardware grid. Not the size of a screenshot</td></tr></tbody>
+</table>
+</div>
+        <p>So the rule of thumb is simple. Take the size of the area you captured in points and double it. A capture that looks 400 points wide will be an 800 pixel wide image. Changing the display scaling in System Settings changes the point size, so it changes how many pixels a full-screen capture has.</p>
+        <h2>What I Could and Could Not Measure</h2>
+        <p>I will be direct about the limits of this test. The screenshot command in my shell was blocked by the Mac's screen recording permission, so I could not capture the screen with the built-in tool for this article. To get a real 2x image of a real page, I used headless Chrome with a 1470 by 956 window and a device scale factor of 2, which renders at the same 2x ratio a Retina display uses. I treated that as a stand-in for a Mac capture and recorded the dimensions it produced: 2940 by 1912.</p>
+        <p>What I could check on the Mac itself was the metadata of screenshots that were already saved there. Four Retina screenshots in my folders were each stamped <strong>144 dpi</strong>, which is exactly twice the 72 dpi of a standard display and is how Retina captures are labeled. That matches the 2x rule, but I did not verify the pixel size of a fresh full-screen capture from the Mac's own tool, so treat the 2940 by 1912 figure as the expected result and confirm it on your machine with the checks below.</p>
+        <h2>What 2x Does to File Size</h2>
+        <p>Doubling both dimensions quadruples the pixels, and the file follows. I captured the same web page area at 1x and at 2x:</p>
+        <div class="overflow-x-auto rounded-xl border border-hairline">
+<table class="w-full text-left text-sm">
+<thead class="bg-canvas-soft text-ink"><tr><th class="px-4 py-3 font-semibold">Same page area</th><th class="px-4 py-3 font-semibold">Pixels</th><th class="px-4 py-3 font-semibold">PNG size</th><th class="px-4 py-3 font-semibold">JPEG quality 85</th></tr></thead>
+<tbody class="divide-y divide-hairline"><tr><td class="px-4 py-3 align-top">1x capture</td><td class="px-4 py-3 align-top">1470 by 956</td><td class="px-4 py-3 align-top">420,991 bytes</td><td class="px-4 py-3 align-top">246,610 bytes</td></tr><tr><td class="px-4 py-3 align-top">2x capture</td><td class="px-4 py-3 align-top">2940 by 1912</td><td class="px-4 py-3 align-top">989,464 bytes</td><td class="px-4 py-3 align-top">630,367 bytes</td></tr></tbody>
+</table>
+</div>
+        <p>The pixels went up fourfold but the files only grew by about 2.4 times as PNG and 2.6 times as JPEG. Compression absorbs some of the extra pixels, because a sharper rendering of the same text has more smooth edges to predict. The cost is still real: a single full-width capture crosses 900 KB, which matters for email limits and upload forms. If you need a specific size, <a href="/blog/reduce-image-size-in-kb-target-file-size/">How to Reduce an Image to 100 KB, 200 KB or 1 MB</a> gives measured width and quality settings for that.</p>
+        <h2>Changing the DPI Does Not Change the Size</h2>
+        <p>The most common wrong fix is to set the image to 72 dpi, hoping it will shrink. I tested it. I took the 2940 by 1912 capture, set it to 144 dpi, then set it to 72 dpi with the <code>sips</code> command that ships with macOS:</p>
+        <div class="overflow-x-auto rounded-xl border border-hairline">
+<table class="w-full text-left text-sm">
+<thead class="bg-canvas-soft text-ink"><tr><th class="px-4 py-3 font-semibold">Step</th><th class="px-4 py-3 font-semibold">Pixels</th><th class="px-4 py-3 font-semibold">DPI tag</th></tr></thead>
+<tbody class="divide-y divide-hairline"><tr><td class="px-4 py-3 align-top">Start</td><td class="px-4 py-3 align-top">2940 by 1912</td><td class="px-4 py-3 align-top">144</td></tr><tr><td class="px-4 py-3 align-top">After setting 72 dpi</td><td class="px-4 py-3 align-top">2940 by 1912</td><td class="px-4 py-3 align-top">72</td></tr><tr><td class="px-4 py-3 align-top">After resampling to 1470 wide</td><td class="px-4 py-3 align-top">1470 by 956</td><td class="px-4 py-3 align-top">144 (unchanged tag)</td></tr></tbody>
+</table>
+</div>
+        <p>The DPI value is only a note that tells a printer or a layout program how large to draw the image. The pixels stayed exactly the same, so websites, upload forms and file size checks all treat the image as before. Only resampling reduced the pixel count. Notice too that the DPI tag stayed at 144 after resampling, so the file is half the pixels but still says 144. That is harmless for a web upload, but it means a layout program may draw it at the wrong physical size, which is the other reason a pasted Retina screenshot can look oversized in a document.</p>
+        <h2>How to Check a Screenshot's Real Size</h2>
+        <ul class="list-disc pl-5 space-y-1.5"><li><strong>Finder:</strong> select the file, press <strong>Command+I</strong>, and read Dimensions under More Info.</li><li><strong>Preview:</strong> open the file and choose <strong>Tools, Show Inspector</strong>, then the General tab.</li><li><strong>Terminal:</strong> <code>sips -g pixelWidth -g pixelHeight -g dpiWidth yourfile.png</code> prints the pixels and the DPI tag. I used this for every measurement above.</li><li><strong>In your browser:</strong> after you paste an image into <a href="https://pastedownloadapp.com/">PasteDownloadApp</a>, the line under the preview shows its pixel dimensions and file size, which is a quick way to see what the clipboard held.</li></ul>
+        <h2>How to Get a 1x Copy</h2>
+        <p>You cannot ask the screen for a smaller capture, so shrink the file after you take it. Pick whichever of these suits you:</p>
+        <ul class="list-disc pl-5 space-y-1.5"><li><strong>Preview:</strong> open the screenshot, choose <strong>Tools, Adjust Size</strong>, make sure Resample image is ticked, set the unit to pixels and halve the width with the proportions locked. Then save. I did not click through this dialog in the test, so check the checkbox before you save.</li><li><strong>Terminal, one file:</strong> <code>sips --resampleWidth 1470 shot.png --out shot-1x.png</code>. On my test file this changed 2940 by 1912 into 1470 by 956.</li><li><strong>Terminal, a whole folder:</strong> run <code>sips --resampleWidth 1470 *.png</code> in the folder. It rewrites those files in place, so work on copies.</li></ul>
+        <p>One warning from the measurements: <code>sips</code> re-encodes the PNG, and the result is not always smaller. Setting the DPI tag alone grew my 989,464 byte file to 1,089,913 bytes, about 10 percent, because its PNG encoder compressed less tightly than the one that made the original. If file size is the goal, resample and then also convert to JPEG, or check the size afterwards.</p>
+        <h2>When to Keep the 2x Image</h2>
+        <p>The extra pixels are not waste. Keep the full-size capture when:</p>
+        <ul class="list-disc pl-5 space-y-1.5"><li>the screenshot will be shown on Retina screens, where a 1x image looks softer than the text around it;</li><li>you may zoom in on small text, code or interface details;</li><li>you are submitting a bug report where the detail helps the reader.</li></ul>
+        <p>Use a smaller copy when the image goes to a size-limited form, a plain email, a web page that will display it at its point size, or a document where it appears at twice the size you wanted. For the format side of this decision, see <a href="/blog/convert-png-to-jpg-mac/">How to Convert PNG to JPG on Mac</a>, and for where the files land in the first place, <a href="/blog/where-do-screenshots-go-on-mac/">Where Do Screenshots Go on Mac</a>.</p>
+        <h2>Sources and Method</h2>
+        <ul class="list-disc pl-5 space-y-1.5"><li>Measurements were made on October 26, 2026, on a MacBook running macOS 26.4.1. The point size comes from Finder's desktop bounds. The panel size comes from System Information.</li><li>The 1x and 2x images are captures of the same public web page at a 1470 by 956 window, taken with headless Chrome at device scale factors of 1 and 2. They are a stand-in for a Mac screenshot, not output from the Mac's screenshot tool, which was blocked by a permission in my shell.</li><li>The 144 dpi observation comes from reading the metadata of four Retina screenshots already saved on my Mac. I only read their pixel size and DPI tag.</li><li>The DPI and resampling results come from the <code>sips</code> tool that ships with macOS.</li><li>Not tested: the exact dimensions from the Mac's own screenshot tool on other displays, the Preview Adjust Size dialog, and non-Retina or external monitors. If your display uses a different scaling, your numbers will differ from the ones here, though the 2x rule should hold on a Retina screen.</li></ul>
+
+        <h2>Frequently Asked Questions</h2>
+
+<h3>What resolution is a Mac screenshot?</h3>
+<p>On a Retina Mac it is twice the width and height of the area you captured, measured in the screen's points. A 1470 by 956 point window area becomes a 2940 by 1912 pixel image. The screenshots on my Mac are tagged 144 dpi, which is twice the 72 dpi of a standard display.</p>
+
+<h3>Why is my Mac screenshot so big when I paste it into a document?</h3>
+<p>It holds four times as many pixels as a 1x capture of the same area. In my test the 2x PNG was 989,464 bytes and the 1x PNG was 420,991 bytes. Resize it before use or export a smaller copy.</p>
+
+<h3>How do I check a screenshot's pixel dimensions on a Mac?</h3>
+<p>Select the file in Finder and press Command+I, then read Dimensions under More Info. You can also open it in Preview and choose Tools, Show Inspector, or run <code>sips -g pixelWidth -g pixelHeight</code> on the file in Terminal.</p>
+
+<h3>Does changing the DPI make a screenshot smaller?</h3>
+<p>No. I changed a 2940 by 1912 screenshot from 144 dpi to 72 dpi and it was still 2940 by 1912 pixels. DPI is only a label for printing and layout. To make the image smaller you must resample it to fewer pixels.</p>
+
+<h3>How do I make a 1x copy of a Retina screenshot?</h3>
+<p>Resample it to half the width. In Terminal, <code>sips --resampleWidth 1470 file.png</code> turned my 2940 by 1912 screenshot into a 1470 by 956 one. Preview's Tools, Adjust Size does the same with a dialog.</p>
+
+        <RelatedGuides hrefs={["/blog/mac-screenshot-file-and-clipboard/", "/blog/where-do-screenshots-go-on-mac/", "/blog/convert-png-to-jpg-mac/"]} />
+
+    </div>
+    <Fragment slot="after"><AuthorBio /></Fragment>
+</ContentLayout>

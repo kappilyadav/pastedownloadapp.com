@@ -6,6 +6,26 @@ export const categories = [
 
 export const latestArticles = [
   {
+    href: '/blog/mac-screenshot-resolution-retina-pixels/',
+    image: '/blog/mac-screenshot-resolution-retina-pixels.webp',
+    absoluteImage: 'https://pastedownloadapp.com/blog/mac-screenshot-resolution-retina-pixels.png',
+    alt: 'One 1470 by 956 area captured at 1x is 421 KB, and captured at 2x is 2940 by 1912 pixels and 989 KB',
+    title: 'Mac Screenshot Resolution: Why Your Screenshot Has Twice the Pixels You See',
+    description: 'A Retina Mac captures 2 pixels for every 1 point on screen. Measured dimensions, DPI and file size, plus how to check a screenshot and make a 1x copy.',
+    publishDate: '2026-10-26',
+    category: 'platforms'
+  },
+  {
+    href: '/blog/reduce-image-size-in-kb-target-file-size/',
+    image: '/blog/reduce-image-size-in-kb-target-file-size.webp',
+    absoluteImage: 'https://pastedownloadapp.com/blog/reduce-image-size-in-kb-target-file-size.png',
+    alt: 'Measured result: a 2940 by 1912 screenshot reaches 100 KB at JPEG quality 26 when shrunk to 1470 pixels wide, but cannot reach it at full size',
+    title: 'How to Reduce an Image to 100 KB, 200 KB or 1 MB: Measured Settings',
+    description: 'Measured width and JPEG quality settings that hit 100 KB, 200 KB, 500 KB and 1 MB on a screenshot and a photo, so you can pick them in one try.',
+    publishDate: '2026-10-25',
+    category: 'formats'
+  },
+  {
     href: '/blog/windows-clipboard-history-screenshots-win-v/',
     image: '/blog/windows-clipboard-history-screenshots-win-v.webp',
     absoluteImage: 'https://pastedownloadapp.com/blog/windows-clipboard-history-screenshots-win-v.png',

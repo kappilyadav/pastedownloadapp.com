@@ -1,0 +1,211 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import RelatedGuides from '../../components/RelatedGuides.astro';
+import AuthorByline from '../../components/AuthorByline.astro';
+import AuthorBio from '../../components/AuthorBio.astro';
+---
+
+<ContentLayout
+    title="How to Reduce an Image to 100 KB, 200 KB or 1 MB: Measured Settings"
+    description="A form says the image must be under 100 KB. I measured how width and JPEG quality combine to hit 100 KB, 200 KB, 500 KB and 1 MB on a screenshot and a photo, so you can pick settings in one try."
+    canonicalUrl="https://pastedownloadapp.com/blog/reduce-image-size-in-kb-target-file-size/"
+    imageUrl="https://pastedownloadapp.com/blog/reduce-image-size-in-kb-target-file-size.png"
+    breadcrumbs={[{ name: "Home", href: "/" }, { name: "Blog", href: "/blog/" }, { name: "Reduce Image Size to a Target KB" }]}
+>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": "How to Reduce an Image to 100 KB, 200 KB or 1 MB: Measured Settings",
+          "description": "A form says the image must be under 100 KB. I measured how width and JPEG quality combine to hit 100 KB, 200 KB, 500 KB and 1 MB on a screenshot and a photo, so you can pick settings in one try.",
+          "image": "https://pastedownloadapp.com/blog/reduce-image-size-in-kb-target-file-size.png",
+          "datePublished": "2026-10-25T00:00:00Z",
+          "dateModified": "2026-10-25T00:00:00Z",
+          "author": {
+            "@type": "Person",
+            "@id": "https://pastedownloadapp.com/author/#person",
+            "name": "Kappil Yadav",
+            "url": "https://pastedownloadapp.com/author/",
+            "image": "https://pastedownloadapp.com/author-kappil-yadav.webp",
+            "jobTitle": "Founder & Developer",
+            "description": "Full-stack developer who builds and maintains PasteDownloadApp using the browser's native Clipboard and Canvas APIs. Ships public code on GitHub and tests every guide against real files in the live tool before publishing.",
+            "email": "hello@pastedownloadapp.com",
+            "knowsAbout": [
+              "Clipboard API",
+              "Canvas API",
+              "Image formats",
+              "Web development"
+            ],
+            "sameAs": [
+              "https://github.com/kappilyadav",
+              "https://www.linkedin.com/in/kapilyadavv",
+              "https://www.instagram.com/heykapil_"
+            ],
+            "worksFor": {
+              "@type": "Organization",
+              "@id": "https://pastedownloadapp.com/#organization",
+              "name": "PasteDownloadApp",
+              "url": "https://pastedownloadapp.com/"
+            }
+          },
+          "publisher": {
+            "@type": "Organization",
+            "@id": "https://pastedownloadapp.com/#organization",
+            "name": "PasteDownloadApp",
+            "url": "https://pastedownloadapp.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://pastedownloadapp.com/favicon.svg"
+            }
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://pastedownloadapp.com/blog/reduce-image-size-in-kb-target-file-size/"
+          }
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I reduce an image to under 100 KB?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Shrink the width first, then lower the JPEG quality. In my test, a 2940 by 1912 screenshot could not reach 100 KB at any quality worth using, but at 1470 pixels wide it fit at quality 26, and at 1000 pixels wide it fit at quality 70."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does converting PNG to JPG always make the file smaller?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. A text-heavy 2940 by 1912 screenshot was 989,464 bytes as PNG and 1,122,123 bytes as JPEG at quality 95. JPEG only wins once the quality is lowered or the image is made smaller."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the lowest JPEG quality that still looks fine?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "There is no single number, because it depends on the image. On a text screenshot, quality 26 at full size still read cleanly at 100 percent zoom in my check, while a photo needs more care. Judge by looking at the result at the size it will be shown."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I set a target file size in PasteDownloadApp?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. The tool converts at its original dimensions with a fixed JPEG or WebP quality of 0.92 and has no size target. It is useful for turning a clipboard image into a file, and you then shrink the file with the steps in this guide."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How can I hit an exact size from the command line?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "With ImageMagick, add -define jpeg:extent=100kb to a convert command. In my test it produced a 96,445 byte file from a 1470 pixel wide screenshot at quality 24."
+              }
+            }
+          ]
+        }
+    </script>
+
+    <h1 class="text-xl sm:text-2xl lg:text-[28px] font-semibold text-ink tracking-tight mt-0 mb-4 leading-tight">
+        How to Reduce an Image to 100 KB, 200 KB or 1 MB: Measured Settings
+    </h1>
+
+    <AuthorByline publishDate="2026-10-25" updatedDate="2026-10-25" />
+
+    <figure class="mt-0 mb-6 overflow-hidden rounded-xl border border-hairline bg-canvas-soft">
+        <img src="/blog/reduce-image-size-in-kb-target-file-size.webp" alt="Measured result: a 2940 by 1912 screenshot reaches 100 KB at JPEG quality 26 when shrunk to 1470 pixels wide, but cannot reach it at full size" width="1600" height="900" class="w-full aspect-[16/9] object-cover" fetchpriority="high" decoding="async" />
+    </figure>
+
+    <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
+
+<p>An upload form says the image must be under 100 KB, or 200 KB, or 1 MB. Most advice for this tells you to drag a quality slider until the number gets small enough. That works for a photo that is only slightly too big. It fails when the file is far over the limit, and it never tells you how much quality you have to give up before you get there.</p>
+        <p>So I measured it. I took one full-size text screenshot and one large photo, and for each I recorded the file size at different qualities and widths, then searched for the quality that lands just under each common limit. The tables below are those results. They let you choose a width and a quality in one try instead of guessing.</p>
+        <h2>What I Tested, and What I Did Not</h2>
+        <ul class="list-disc pl-5 space-y-1.5"><li><strong>Screenshot:</strong> a capture of a long Wikipedia article at a 1470 by 956 window on a 2x display setting, which is 2940 by 1912 pixels. It is mostly text, so it is a hard case for JPEG. As a PNG it was 989,464 bytes.</li><li><strong>Photo:</strong> a 4032 by 3024 landscape picture, about the size of a phone camera shot, saved as a JPEG of 2,201,303 bytes. It is a stand-in made from a large Apple landscape image on my Mac, not a picture from a camera, so a noisy real photo with more fine grain will land somewhat larger at the same settings.</li><li><strong>Tools:</strong> ImageMagick for the size measurements and the quality search. File sizes depend on the encoder, so another program will be a few percent off but follow the same pattern.</li><li><strong>Not measured:</strong> how the results look on your screen. I checked one screenshot crop by eye, described below, and I did not judge the photo results visually.</li></ul>
+        <h2>Finding 1: Converting to JPG Does Not Always Shrink the File</h2>
+        <p>The first surprise was that the usual first move, convert the PNG to a JPG, made the screenshot bigger at high quality:</p>
+        <div class="overflow-x-auto rounded-xl border border-hairline">
+<table class="w-full text-left text-sm">
+<thead class="bg-canvas-soft text-ink"><tr><th class="px-4 py-3 font-semibold">Screenshot, 2940 by 1912</th><th class="px-4 py-3 font-semibold">Size in bytes</th></tr></thead>
+<tbody class="divide-y divide-hairline"><tr><td class="px-4 py-3 align-top">Original PNG</td><td class="px-4 py-3 align-top">989,464</td></tr><tr><td class="px-4 py-3 align-top">JPEG quality 95</td><td class="px-4 py-3 align-top">1,122,123</td></tr><tr><td class="px-4 py-3 align-top">JPEG quality 90</td><td class="px-4 py-3 align-top">867,306</td></tr><tr><td class="px-4 py-3 align-top">JPEG quality 80</td><td class="px-4 py-3 align-top">562,950</td></tr><tr><td class="px-4 py-3 align-top">JPEG quality 70</td><td class="px-4 py-3 align-top">474,422</td></tr><tr><td class="px-4 py-3 align-top">JPEG quality 50</td><td class="px-4 py-3 align-top">374,014</td></tr><tr><td class="px-4 py-3 align-top">JPEG quality 30</td><td class="px-4 py-3 align-top">292,014</td></tr></tbody>
+</table>
+</div>
+        <p>Flat colors and sharp text are what PNG compresses well, so a text screenshot gains little from JPEG until the quality is low. Notice also how slowly the size falls. Going from quality 90 to quality 30 cuts the file by about two thirds, and it is still 292,014 bytes, nearly three times a 100 KB limit. This is the core problem with the quality slider alone: at full size, it runs out of room before it reaches a small target. If you are choosing between formats in general, <a href="/blog/png-vs-jpg-vs-webp/">PNG vs JPG vs WebP: Which Format Should You Use</a> covers the tradeoffs, and <a href="/blog/why-png-reencode-bigger/">Why PNG Files Get Bigger After Re-Encoding</a> explains why sizes can grow.</p>
+        <h2>Finding 2: Width Moves the Size More Than Quality Does</h2>
+        <p>Here is the same screenshot at smaller widths. Each width was scaled down and saved at two qualities:</p>
+        <div class="overflow-x-auto rounded-xl border border-hairline">
+<table class="w-full text-left text-sm">
+<thead class="bg-canvas-soft text-ink"><tr><th class="px-4 py-3 font-semibold">Width</th><th class="px-4 py-3 font-semibold">Quality 85</th><th class="px-4 py-3 font-semibold">Quality 70</th></tr></thead>
+<tbody class="divide-y divide-hairline"><tr><td class="px-4 py-3 align-top">2940 (full)</td><td class="px-4 py-3 align-top">630,367</td><td class="px-4 py-3 align-top">474,422</td></tr><tr><td class="px-4 py-3 align-top">2000</td><td class="px-4 py-3 align-top">370,053</td><td class="px-4 py-3 align-top">275,261</td></tr><tr><td class="px-4 py-3 align-top">1470</td><td class="px-4 py-3 align-top">243,468</td><td class="px-4 py-3 align-top">181,242</td></tr><tr><td class="px-4 py-3 align-top">1200</td><td class="px-4 py-3 align-top">179,999</td><td class="px-4 py-3 align-top">134,389</td></tr><tr><td class="px-4 py-3 align-top">1000</td><td class="px-4 py-3 align-top">137,030</td><td class="px-4 py-3 align-top">101,850</td></tr><tr><td class="px-4 py-3 align-top">800</td><td class="px-4 py-3 align-top">93,959</td><td class="px-4 py-3 align-top">69,404</td></tr></tbody>
+</table>
+</div>
+        <p>Halving the width removes about three quarters of the pixels, and the file dropped by roughly the same proportion at quality 70, from 474,422 bytes to 181,242. Lowering quality from 85 to 70 at one width only trims about a quarter. Width is the big lever and quality is the fine adjustment.</p>
+        <h2>The Lookup Table: Which Width and Quality Hit Each Limit</h2>
+        <p>For each target I searched for the highest JPEG quality that stays at or under the limit, at three widths. The cap of the search was quality 95, so a value of 95 means the limit is met with room to spare. "Not reachable" means even the lowest quality I tried (5) stayed over the limit.</p>
+        <h3>Screenshot (text, 2940 by 1912 at full size)</h3>
+        <div class="overflow-x-auto rounded-xl border border-hairline">
+<table class="w-full text-left text-sm">
+<thead class="bg-canvas-soft text-ink"><tr><th class="px-4 py-3 font-semibold">Limit</th><th class="px-4 py-3 font-semibold">Full size, 2940 wide</th><th class="px-4 py-3 font-semibold">1470 wide</th><th class="px-4 py-3 font-semibold">1000 wide</th></tr></thead>
+<tbody class="divide-y divide-hairline"><tr><td class="px-4 py-3 align-top">100 KB</td><td class="px-4 py-3 align-top">Not reachable</td><td class="px-4 py-3 align-top">Quality 26</td><td class="px-4 py-3 align-top">Quality 70</td></tr><tr><td class="px-4 py-3 align-top">200 KB</td><td class="px-4 py-3 align-top">Quality 14</td><td class="px-4 py-3 align-top">Quality 77</td><td class="px-4 py-3 align-top">Quality 91</td></tr><tr><td class="px-4 py-3 align-top">500 KB</td><td class="px-4 py-3 align-top">Quality 75</td><td class="px-4 py-3 align-top">95 or higher</td><td class="px-4 py-3 align-top">95 or higher</td></tr><tr><td class="px-4 py-3 align-top">1 MB</td><td class="px-4 py-3 align-top">Quality 93</td><td class="px-4 py-3 align-top">95 or higher</td><td class="px-4 py-3 align-top">95 or higher</td></tr></tbody>
+</table>
+</div>
+        <h3>Photo (4032 by 3024 at full size)</h3>
+        <div class="overflow-x-auto rounded-xl border border-hairline">
+<table class="w-full text-left text-sm">
+<thead class="bg-canvas-soft text-ink"><tr><th class="px-4 py-3 font-semibold">Limit</th><th class="px-4 py-3 font-semibold">Full size, 4032 wide</th><th class="px-4 py-3 font-semibold">2000 wide</th><th class="px-4 py-3 font-semibold">1000 wide</th></tr></thead>
+<tbody class="divide-y divide-hairline"><tr><td class="px-4 py-3 align-top">100 KB</td><td class="px-4 py-3 align-top">Not reachable</td><td class="px-4 py-3 align-top">Quality 15</td><td class="px-4 py-3 align-top">Quality 70</td></tr><tr><td class="px-4 py-3 align-top">200 KB</td><td class="px-4 py-3 align-top">Quality 7</td><td class="px-4 py-3 align-top">Quality 40</td><td class="px-4 py-3 align-top">Quality 90</td></tr><tr><td class="px-4 py-3 align-top">500 KB</td><td class="px-4 py-3 align-top">Quality 30</td><td class="px-4 py-3 align-top">Quality 84</td><td class="px-4 py-3 align-top">95 or higher</td></tr><tr><td class="px-4 py-3 align-top">1 MB</td><td class="px-4 py-3 align-top">Quality 70</td><td class="px-4 py-3 align-top">95 or higher</td><td class="px-4 py-3 align-top">95 or higher</td></tr></tbody>
+</table>
+</div>
+        <p>Read it by finding your limit in the left column and moving right until the quality is somewhere between about 60 and 90. That is the width to use. For a 100 KB limit, the screenshot needs to be around 1000 pixels wide to keep a quality of 70, and the photo is the same at 1000 pixels. For 1 MB, the photo only needs a quality of 70 at full size, so no resizing is needed at all.</p>
+        <h2>Does a Very Low Quality Look Bad?</h2>
+        <p>A low number does not always look as bad as it sounds. I took the 100 KB case for the screenshot, the full-size file at quality 26, and compared a 600 by 300 pixel crop of body text against the original PNG at 100 percent zoom. The text was still sharp and readable, and I saw no visible difference between the two at that zoom. That is why the table shows quality 26 as a workable result for a text screenshot, and it is the reason I would not rule out a low quality for text without checking.</p>
+        <p>The other route, shrinking the screenshot to 1000 pixels wide and then stretching it back up to compare, looked soft, but that comparison is unfair, because you would normally view the smaller file at its own size. This is the real tradeoff:</p>
+        <ul class="list-disc pl-5 space-y-1.5"><li><strong>Keep the pixels, lower the quality</strong> if the image will be zoomed or printed, or if the form insists on a minimum width or height.</li><li><strong>Lower the pixels, keep the quality</strong> if it will only be shown at a small size, such as a thumbnail, a profile picture or a form preview.</li></ul>
+        <p>I did not judge the photo results by eye, so for a photo, look at the output yourself before submitting it. Skies, skin and gradients show banding and blocks sooner than text does. The general rules for spotting a setting that is too low are in <a href="/blog/image-compression-quality-settings/">Image Compression Quality Settings Explained With File Sizes</a>.</p>
+        <h2>Three Ways to Do It</h2>
+        <h3>1. Mac Preview</h3>
+        <ul class="list-disc pl-5 space-y-1.5"><li>Open the image in Preview and choose <strong>Tools, Adjust Size</strong>. Set the width in pixels with the proportions locked.</li><li>Choose <strong>File, Export</strong>, set Format to JPEG, and drag the Quality slider. The dialog shows the estimated file size, so you can stop when it is under your limit.</li></ul>
+        <h3>2. Windows</h3>
+        <ul class="list-disc pl-5 space-y-1.5"><li>Open the image in Paint and use <strong>Resize and Skew</strong> to set the width by percentage or pixels with the aspect ratio kept.</li><li>Use <strong>File, Save as, JPEG picture</strong>. Paint does not give you a quality slider, so you control the size mostly with the width. Check the file size in File Explorer and shrink again if it is still too big.</li></ul>
+        <h3>3. Command line, for an exact target</h3>
+        <p>If you have ImageMagick, it can search for the quality itself. This writes the largest JPEG it can that stays under 100 KB, after shrinking to 1470 pixels wide:</p>
+        <pre class="overflow-x-auto rounded-xl border border-hairline bg-canvas-soft p-4 text-sm"><code>magick input.png -resize 1470x -define jpeg:extent=100kb output.jpg</code></pre>
+        <p>On my screenshot this gave a 96,445 byte file at quality 24. I also ran it at full size with no resize, and it reached 83,442 bytes only by dropping to quality 2, which is a reminder to set the width first. On the photo, a 2000 pixel wide copy with a 200 KB target came out at 195,641 bytes and quality 38.</p>
+        <h2>Where PasteDownloadApp Fits, and Where It Does Not</h2>
+        <p>PasteDownloadApp does one conversion job. It turns the image on your clipboard into a PNG, JPEG or WebP file in your browser, without uploading it. It does not have a size target, a resize option or a quality slider. By its source, JPEG and WebP are written at a fixed quality of 0.92 at the image's original dimensions, so the output from a full-size screenshot will land near the quality 90 to 95 rows in the first table, which is close to 1 MB for my screenshot. I measured 934,922 bytes at quality 92 and full size.</p>
+        <p>The practical use is getting a clean file out of the clipboard in the first place. Paste the screenshot, download it as JPEG, then reduce its width with one of the three methods above. If the file is going into an email, <a href="/blog/paste-screenshot-into-email-attachment/">How to Turn a Pasted Screenshot Into an Email Attachment</a> covers the next step, and the batch options in <a href="/blog/convert-multiple-screenshots-fast/">How to Convert Multiple Screenshots Fast</a> help when there are many files.</p>
+        <h2>A Few Things That Trip People Up</h2>
+        <ul class="list-disc pl-5 space-y-1.5"><li><strong>Kilobytes and mebibytes:</strong> some forms count 1 KB as 1,000 bytes and some as 1,024. I used 1,024 for the limits above (100 KB is 102,400 bytes). If a form is strict, aim 5 to 10 percent under the limit.</li><li><strong>Transparency:</strong> JPEG has no transparent pixels, so a transparent PNG gets a solid background. The tool paints white behind it.</li><li><strong>Pixel size requirements:</strong> a form that asks for a size in KB sometimes also asks for exact dimensions. Set the dimensions first, then tune the quality for the size.</li><li><strong>Re-saving:</strong> each time a JPEG is opened and saved again it loses a little more detail. Work from the original and save once.</li><li><strong>Metadata:</strong> a phone photo carries location and camera data that adds a little to the size. For a 100 KB target it rarely matters, but you may want it removed for privacy anyway.</li></ul>
+        <h2>Sources and Method</h2>
+        <ul class="list-disc pl-5 space-y-1.5"><li>All sizes are measurements I made on October 25, 2026, with ImageMagick 7.1.2 on macOS. The screenshot was captured from a public Wikipedia page with a headless Chrome window at a 2x scale factor. The photo is a 4032 by 3024 crop of a landscape image bundled with macOS, used only for measurement.</li><li>The quality search was a binary search between 5 and 95, and recorded the highest quality at or under each limit.</li><li>Quality 92 and the fixed output settings of PasteDownloadApp come from reading the tool's own code. The 934,922 byte figure is an ImageMagick measurement at quality 92, and a browser's encoder can differ by a few percent.</li><li>Not tested: Windows Paint, macOS Preview export estimates and the visual quality of the photo results. Those steps come from how the programs are laid out and are worth checking on your own file.</li></ul>
+
+        <h2>Frequently Asked Questions</h2>
+
+<h3>How do I reduce an image to under 100 KB?</h3>
+<p>Shrink the width first, then lower the JPEG quality. In my test, a 2940 by 1912 screenshot could not reach 100 KB at any quality worth using, but at 1470 pixels wide it fit at quality 26, and at 1000 pixels wide it fit at quality 70.</p>
+
+<h3>Does converting PNG to JPG always make the file smaller?</h3>
+<p>No. A text-heavy 2940 by 1912 screenshot was 989,464 bytes as PNG and 1,122,123 bytes as JPEG at quality 95. JPEG only wins once the quality is lowered or the image is made smaller.</p>
+
+<h3>What is the lowest JPEG quality that still looks fine?</h3>
+<p>There is no single number, because it depends on the image. On a text screenshot, quality 26 at full size still read cleanly at 100 percent zoom in my check, while a photo needs more care. Judge by looking at the result at the size it will be shown.</p>
+
+<h3>Can I set a target file size in PasteDownloadApp?</h3>
+<p>No. The tool converts at its original dimensions with a fixed JPEG or WebP quality of 0.92 and has no size target. It is useful for turning a clipboard image into a file, and you then shrink the file with the steps in this guide.</p>
+
+<h3>How can I hit an exact size from the command line?</h3>
+<p>With ImageMagick, add <code>-define jpeg:extent=100kb</code> to a convert command. In my test it produced a 96,445 byte file from a 1470 pixel wide screenshot at quality 24.</p>
+
+        <RelatedGuides hrefs={["/blog/image-compression-quality-settings/", "/blog/png-vs-jpg-vs-webp/", "/blog/paste-screenshot-into-email-attachment/"]} />
+
+    </div>
+    <Fragment slot="after"><AuthorBio /></Fragment>
+</ContentLayout>
