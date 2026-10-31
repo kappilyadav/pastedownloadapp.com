@@ -53,6 +53,7 @@ ${languages.join('\n')}
 
 - [XML sitemap index](${site}/sitemap-index.xml): Canonical list of indexable URLs with last modified dates
 - [Source code](https://github.com/kappilyadav/pastedownloadapp.com): Public repository for the website
+- [Full text of the home page and all guides](${site}/llms-full.txt): Plain-text copy of the content, for ingestion in one request
 - [robots.txt](${site}/robots.txt): Crawler access policy
 `;
 

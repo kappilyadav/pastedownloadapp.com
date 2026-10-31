@@ -2,6 +2,7 @@ https://pastedownloadapp.pages.dev/*
   X-Robots-Tag: noindex
 
 /*
+  Link: </llms.txt>; rel="alternate"; type="text/plain"
   Strict-Transport-Security: max-age=31536000; includeSubDomains
   X-Frame-Options: SAMEORIGIN
   Permissions-Policy: clipboard-read=(self), clipboard-write=(self), camera=(), microphone=(), geolocation=(), usb=(), serial=(), hid=(), midi=(), magnetometer=(), gyroscope=(), accelerometer=(), display-capture=()
