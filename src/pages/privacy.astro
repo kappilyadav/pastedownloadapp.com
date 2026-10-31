@@ -21,11 +21,15 @@ import ContentLayout from '../layouts/ContentLayout.astro';
   </h1>
 
   <div class="text-body text-base sm:text-[17px] leading-relaxed space-y-4 [&_h2]:text-ink [&_h2]:text-lg [&_h2]:sm:text-xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:leading-tight [&_h3]:text-ink [&_h3]:text-base [&_h3]:sm:text-lg [&_h3]:font-semibold [&_h3]:tracking-tight [&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:leading-tight [&_a]:text-link [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-link/30 [&_a]:transition-colors [&_a:hover]:decoration-link">
-    <p><strong>Last updated:</strong> September 2026</p>
+    <p><strong>Last updated:</strong> October 2026</p>
 
     <h2>Image Processing</h2>
     <p>
       PasteDownloadApp is designed to process images in your browser whenever possible. Images pasted from your clipboard or added by drag and drop are handled locally using browser APIs such as the <strong>Clipboard API</strong> and <strong>Canvas API</strong>. We do <strong>not</strong> upload, store, or have access to images you paste from your device.
+    </p>
+    <h2>Browser Extension</h2>
+    <p>
+      The Paste Download browser extension turns the image on your clipboard into a downloaded file. It requests a single permission, <strong>clipboard read access</strong>, which is used only when you press Ctrl+V or Cmd+V, or tap the paste area, in the extension popup. The image is converted and saved on your device using browser APIs. The extension does <strong>not</strong> upload, store, or transmit your images or clipboard contents, does not make network requests, and does not include analytics, advertising, or tracking. It stores only your chosen image format and theme in the extension's local browser storage, and this stays on your device. We do not sell or share any user data, and we do not use it for purposes unrelated to the extension's single purpose.
     </p>
     <h2>Information We Collect</h2>
     <p>
