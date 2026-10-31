@@ -58,7 +58,8 @@ const breadcrumbJsonLd = breadcrumbs
     </noscript>
     <title>{title}</title>
     <meta name="description" content={description} />
-    {noindex && <meta name="robots" content="noindex, follow" />}
+    {noindex ? <meta name="robots" content="noindex, follow" /> : <meta name="robots" content="max-image-preview:large, max-snippet:-1" />}
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site overview" />
 
     <link rel="canonical" href={canonicalUrl} />
 

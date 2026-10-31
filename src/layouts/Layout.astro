@@ -13,11 +13,12 @@ export interface Props {
   canonicalUrl: string;
   keywords?: string;
   noAds?: boolean;
+  noindex?: boolean;
   locale?: Locale;
   alternates?: { hreflang: string; href: string }[];
 }
 
-const { title, description, canonicalUrl, keywords, noAds = false, locale = defaultLocale, alternates = [] } = Astro.props;
+const { title, description, canonicalUrl, keywords, noAds = false, noindex = false, locale = defaultLocale, alternates = [] } = Astro.props;
 ---
 
 <!doctype html>
@@ -44,6 +45,8 @@ const { title, description, canonicalUrl, keywords, noAds = false, locale = defa
     <title>{title}</title>
     <meta name="description" content={description} />
     {keywords && <meta name="keywords" content={keywords} />}
+    {noindex ? <meta name="robots" content="noindex, follow" /> : <meta name="robots" content="max-image-preview:large, max-snippet:-1" />}
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site overview" />
 
     <link rel="canonical" href={canonicalUrl} />
     {alternates.map((alt) => <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />)}
