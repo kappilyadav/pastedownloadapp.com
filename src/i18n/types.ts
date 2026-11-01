@@ -58,6 +58,7 @@ export interface UiStrings {
     product: string;
     paste: string;
     features: string;
+    extension: string;
     company: string;
     about: string;
     blog: string;

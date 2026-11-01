@@ -93,6 +93,7 @@ export const hi: UiStrings & HomeContent = {
     product: 'प्रोडक्ट',
     paste: 'पेस्ट',
     features: 'फीचर्स',
+    extension: 'Chrome एक्सटेंशन',
     company: 'कंपनी',
     about: 'हमारे बारे में',
     blog: 'ब्लॉग',

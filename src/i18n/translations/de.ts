@@ -93,6 +93,7 @@ export const de: UiStrings & HomeContent = {
     product: 'Produkt',
     paste: 'Einfügen',
     features: 'Funktionen',
+    extension: 'Chrome-Erweiterung',
     company: 'Unternehmen',
     about: 'Über uns',
     blog: 'Blog',

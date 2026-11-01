@@ -93,6 +93,7 @@ export const ja: UiStrings & HomeContent = {
     product: 'サービス',
     paste: '貼り付け',
     features: '機能',
+    extension: 'Chrome 拡張機能',
     company: '運営情報',
     about: 'このサイトについて',
     blog: 'ブログ',

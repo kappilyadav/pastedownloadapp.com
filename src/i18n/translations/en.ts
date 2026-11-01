@@ -87,6 +87,7 @@ export const en: UiStrings = {
     product: 'Product',
     paste: 'Paste',
     features: 'Features',
+    extension: 'Chrome extension',
     company: 'Company',
     about: 'About',
     blog: 'Blog',

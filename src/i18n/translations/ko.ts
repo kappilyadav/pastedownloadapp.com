@@ -93,6 +93,7 @@ export const ko: UiStrings & HomeContent = {
     product: '서비스',
     paste: '붙여넣기',
     features: '기능',
+    extension: 'Chrome 확장 프로그램',
     company: '회사',
     about: '소개',
     blog: '블로그',
