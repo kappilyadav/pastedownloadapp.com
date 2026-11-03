@@ -38,7 +38,7 @@ const { type, class: className = '' } = Astro.props;
     frame.setAttribute('sandbox', 'allow-scripts allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation');
     frame.style.border = '0';
     frame.srcdoc =
-      '<!doctype html><html><head><meta charset="utf-8"><base target="_blank"></head><body style="margin:0">' +
+      '<!doctype html><html><head><meta charset="utf-8"><meta name="color-scheme" content="light dark"><base target="_blank"></head><body style="margin:0">' +
       `<script>atOptions={key:'${BANNER_KEY}',format:'iframe',height:250,width:300,params:{}};<\/script>` +
       `<script src="${HOST}/22/${BANNER_KEY}"><\/script></body></html>`;
     container.appendChild(frame);
