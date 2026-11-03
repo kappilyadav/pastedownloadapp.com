@@ -1,0 +1,65 @@
+---
+export interface Props {
+  type: 'native' | 'banner';
+  class?: string;
+}
+
+const { type, class: className = '' } = Astro.props;
+---
+
+<aside class:list={['not-prose text-center', className]} aria-label="Advertisement" data-ad-slot={type}>
+  <p class="text-mute text-[11px] uppercase tracking-widest m-0 mb-2">Advertisement</p>
+  <div data-ad-container class:list={['mx-auto flex justify-center', type === 'banner' ? 'min-h-[250px] w-[300px] max-w-full' : 'min-h-[90px] w-full max-w-3xl']}></div>
+</aside>
+
+<script>
+  const NATIVE_KEY = '07237e0ac789ef22a33aac4f83f8cb72';
+  const BANNER_KEY = '0ad3afb59fd5b011cfec47620b2fd3d8';
+  const HOST = 'https://bellnewyork.org';
+
+  function loadNative(container: HTMLElement) {
+    const target = document.createElement('div');
+    target.id = `container-${NATIVE_KEY}`;
+    container.appendChild(target);
+    const s = document.createElement('script');
+    s.async = true;
+    s.dataset.cfasync = 'false';
+    s.src = `${HOST}/21/${NATIVE_KEY}`;
+    container.appendChild(s);
+  }
+
+  function loadBanner(container: HTMLElement) {
+    const frame = document.createElement('iframe');
+    frame.width = '300';
+    frame.height = '250';
+    frame.title = 'Advertisement';
+    frame.loading = 'lazy';
+    frame.setAttribute('scrolling', 'no');
+    frame.setAttribute('sandbox', 'allow-scripts allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation');
+    frame.style.border = '0';
+    frame.srcdoc =
+      '<!doctype html><html><head><meta charset="utf-8"><base target="_blank"></head><body style="margin:0">' +
+      `<script>atOptions={key:'${BANNER_KEY}',format:'iframe',height:250,width:300,params:{}};<\/script>` +
+      `<script src="${HOST}/22/${BANNER_KEY}"><\/script></body></html>`;
+    container.appendChild(frame);
+  }
+
+  const slots = document.querySelectorAll<HTMLElement>('[data-ad-slot]');
+  if (slots.length) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          const slot = entry.target as HTMLElement;
+          observer.unobserve(slot);
+          const container = slot.querySelector<HTMLElement>('[data-ad-container]');
+          if (!container) continue;
+          if (slot.dataset.adSlot === 'native') loadNative(container);
+          else loadBanner(container);
+        }
+      },
+      { rootMargin: '300px 0px' }
+    );
+    slots.forEach((slot) => observer.observe(slot));
+  }
+</script>

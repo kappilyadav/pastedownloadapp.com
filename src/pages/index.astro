@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import PasteZone from '../components/PasteZone.astro';
+import AdSlot from '../components/AdSlot.astro';
 import Features from '../components/Features.astro';
 import HowToSteps from '../components/HowToSteps.astro';
 import UseCases from '../components/UseCases.astro';
@@ -459,10 +460,7 @@ const newestArticles = [...latestArticles].sort(
       </div>
     </section>
 
-    {/*
-      Safe AdSense insertion point: if ads are added later, place a clearly labeled ad unit
-      after user-content sections like the FAQ, never near Download, Fetch, Clear, or paste controls.
-    */}
+    <AdSlot type="native" class="mb-12 sm:mb-20" />
 
     <!-- Latest Articles -->
     <section class="mb-12 sm:mb-20 scroll-mt-14 sm:scroll-mt-24">
