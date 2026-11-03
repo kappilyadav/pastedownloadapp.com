@@ -119,16 +119,15 @@ https://pastedownloadapp.com/privacy/
 - Regions: All regions
 - Pricing: Free
 
-## 6. Notes for the reviewer (Test instructions field)
+## 6. Notes for the reviewer (Test instructions field, 500 character limit)
 
 ```
-No account or login is needed.
-1. Open any web page, right click an image and choose Copy Image (or take a screenshot to the clipboard).
+No login needed.
+1. Right click any image, choose Copy Image (or copy a screenshot).
 2. Click the Paste Download toolbar icon.
-3. Press Ctrl+V (Cmd+V on Mac), or tap the paste area and allow clipboard access if asked.
-4. The image downloads to the Downloads folder as pasted_YYYYMMDD_HHMMSS.png. Use the PNG / JPEG / WebP selector to change the format.
-The extension has no background script, content script or network access. Its only permission is clipboardRead.
-The red "Help keep this free" button is an optional donation link. It only opens https://ko-fi.com/kappilyadav in a new tab when clicked. No payment happens inside the extension and no feature depends on it.
+3. Press Ctrl+V (Cmd+V on Mac) or tap the paste area.
+4. The image downloads as pasted_YYYYMMDD_HHMMSS.png. PNG/JPEG/WebP selector changes the format.
+Only permission: clipboardRead. No network access. The red "Help keep this free" button is an optional Ko-fi link that opens in a new tab.
 ```
 
 ## 7. Submission checklist
