@@ -174,13 +174,13 @@ const newestArticles = [...latestArticles].sort(
     <section class="relative pt-12 pb-10 sm:pt-20 sm:pb-16 text-center overflow-hidden">
       
       <!-- Tool Cards -->
-      {/*
-        AdSense safety: do not place ads inside or directly beside the paste/download tools.
-        Keep ad units in content sections below this interactive area to reduce accidental-click risk.
-      */}
-      <section class="grid grid-cols-1 gap-4 sm:gap-5 mb-12 sm:mb-20 scroll-mt-14 sm:scroll-mt-24 max-w-xl mx-auto">
+      <section class="relative grid grid-cols-1 gap-4 sm:gap-5 mb-8 sm:mb-10 scroll-mt-14 sm:scroll-mt-24 max-w-xl mx-auto">
         <PasteZone />
+        <AdSlot type="sky600" class="hidden xl:block absolute top-0 -left-[216px] w-[160px]" />
+        <AdSlot type="sky600" class="hidden xl:block absolute top-0 -right-[216px] w-[160px]" />
       </section>
+
+      <AdSlot type="banner" class="mb-12 sm:mb-20" />
 
       <div class="relative">
         <HeroStats />
