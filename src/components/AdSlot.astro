@@ -1,6 +1,6 @@
 ---
 export interface Props {
-  type: 'native' | 'banner' | 'sky600' | 'sky300';
+  type: 'native' | 'banner' | 'sky600';
   class?: string;
 }
 
@@ -9,8 +9,7 @@ const { type, class: className = '' } = Astro.props;
 const containerSizes = {
   native: 'min-h-[90px] w-full max-w-3xl',
   banner: 'min-h-[250px] w-[300px] max-w-full',
-  sky600: 'min-h-[600px] w-[160px]',
-  sky300: 'min-h-[300px] w-[160px]'
+  sky600: 'min-h-[600px] w-[160px]'
 };
 ---
 
@@ -21,10 +20,9 @@ const containerSizes = {
 
 <script>
   const NATIVE_KEY = '07237e0ac789ef22a33aac4f83f8cb72';
-  const BANNERS: Record<string, { key: string; width: number; height: number }> = {
-    banner: { key: '0ad3afb59fd5b011cfec47620b2fd3d8', width: 300, height: 250 },
-    sky600: { key: '030a34af81a9a82e15ad5369d7aa28b9', width: 160, height: 600 },
-    sky300: { key: '285622f7f8255d7b10e1fa95b877b5c7', width: 160, height: 300 }
+  const BANNERS: Record<string, { page: string; width: number; height: number }> = {
+    banner: { page: '/ads/banner-300x250.html', width: 300, height: 250 },
+    sky600: { page: '/ads/banner-160x600.html', width: 160, height: 600 }
   };
   const HOST = 'https://bellnewyork.org';
 
@@ -40,19 +38,14 @@ const containerSizes = {
   }
 
   function loadBanner(container: HTMLElement, type: string) {
-    const { key, width, height } = BANNERS[type];
+    const { page, width, height } = BANNERS[type];
     const frame = document.createElement('iframe');
     frame.width = String(width);
     frame.height = String(height);
     frame.title = 'Advertisement';
-    frame.loading = 'lazy';
     frame.setAttribute('scrolling', 'no');
-    frame.setAttribute('sandbox', 'allow-scripts allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation');
     frame.style.border = '0';
-    frame.srcdoc =
-      '<!doctype html><html><head><meta charset="utf-8"><meta name="color-scheme" content="light dark"><base target="_blank"></head><body style="margin:0">' +
-      `<script>atOptions={key:'${key}',format:'iframe',height:${height},width:${width},params:{}};<\/script>` +
-      `<script src="${HOST}/22/${key}"><\/script></body></html>`;
+    frame.src = page;
     container.appendChild(frame);
   }
 
