@@ -1,6 +1,7 @@
 ---
 import { useTranslations } from '../i18n/index';
 import type { Locale } from '../i18n/locales';
+import SupportButton from './SupportButton.astro';
 
 export interface Props {
   id?: string;
@@ -9,6 +10,7 @@ export interface Props {
 
 const { id = 'paste', locale } = Astro.props;
 const t = useTranslations(locale).paste;
+const t_support = useTranslations(locale).support;
 ---
 
 <section id={id} class="w-full">
@@ -63,6 +65,12 @@ const t = useTranslations(locale).paste;
       </div>
     </div>
 
+    <div class="px-4 sm:px-6 pb-6 sm:pb-8 flex flex-col items-center text-center">
+      <p id="supportHeadline" class="hidden text-ink text-sm font-semibold tracking-tight m-0 mb-3">{t_support.title}</p>
+      <SupportButton locale={locale} location="paste-zone" size="lg" />
+      <p class="text-mute text-xs m-0 mt-2.5">{t_support.note}</p>
+    </div>
+
     <div class="px-4 sm:px-6 py-3 bg-canvas-soft border-t border-hairline flex flex-wrap items-center gap-2 sm:gap-4 text-mute text-xs">
       <span class="flex items-center gap-1">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -82,6 +90,7 @@ const t = useTranslations(locale).paste;
   const clearBtn = document.getElementById('clearBtn');
   const autoDownload = document.getElementById('autoDownload');
   const formatSelect = document.getElementById('pasteFormat');
+  const supportHeadline = document.getElementById('supportHeadline');
   const accessBtn = document.getElementById('accessClipboard');
 
   let currentBlob = null;
@@ -143,6 +152,7 @@ const t = useTranslations(locale).paste;
       const filename = `pasted_${getTimestamp()}.${ext}`;
       currentFileName = filename;
       downloadBlob(blob, filename);
+      supportHeadline.classList.remove('hidden');
       document.dispatchEvent(new CustomEvent('pdl:result'));
       pasteInfo.textContent = `${format.toUpperCase()} \u00B7 ${formatFileSize(blob.size)}`;
     }, getMimeType(format), 0.92);

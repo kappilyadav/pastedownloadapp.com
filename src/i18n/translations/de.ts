@@ -88,6 +88,12 @@ export const de: UiStrings & HomeContent = {
       }
     ]
   },
+  support: {
+    button: 'Hilf mit, es kostenlos zu halten',
+    title: 'Einen Schritt gespart? Hilf, es kostenlos zu halten.',
+    text: 'Von einer Person gebaut und gepflegt. Ein kleines Trinkgeld sorgt für weitere Updates.',
+    note: 'Dauert 30 Sekunden. Ab 5 $.'
+  },
   footer: {
     tagline: 'Füge Fotos aus der Zwischenablage ein und lade sie sofort herunter. Die gesamte Verarbeitung erfolgt in deinem Browser: Es wird nichts hochgeladen.',
     product: 'Produkt',

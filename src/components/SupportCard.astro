@@ -1,0 +1,21 @@
+---
+import SupportButton from './SupportButton.astro';
+import { useTranslations } from '../i18n/index';
+import type { Locale } from '../i18n/locales';
+
+export interface Props {
+  locale?: Locale;
+  location: string;
+  class?: string;
+}
+
+const { locale, location, class: className = '' } = Astro.props;
+const t = useTranslations(locale).support;
+---
+
+<aside class:list={['not-prose rounded-xl border border-hairline bg-canvas p-5 sm:p-6 text-center', className]}>
+  <p class="text-ink text-base sm:text-lg font-semibold tracking-tight m-0">{t.title}</p>
+  <p class="text-body text-sm leading-relaxed m-0 mt-1.5 max-w-md mx-auto">{t.text}</p>
+  <SupportButton locale={locale} location={location} size="lg" class="mt-4" />
+  <p class="text-mute text-xs m-0 mt-2.5">{t.note}</p>
+</aside>

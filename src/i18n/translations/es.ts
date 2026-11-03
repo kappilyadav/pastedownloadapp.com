@@ -88,6 +88,12 @@ export const es: UiStrings & HomeContent = {
       }
     ]
   },
+  support: {
+    button: 'Ayuda a mantenerlo gratis',
+    title: '¿Te ahorró un paso? Ayuda a mantenerlo gratis.',
+    text: 'Lo crea y mantiene una sola persona. Una pequeña propina mantiene las actualizaciones.',
+    note: 'Solo 30 segundos. Desde 5 USD.'
+  },
   footer: {
     tagline: 'Pega fotos desde tu portapapeles y descárgalas al instante. Todo el procesamiento ocurre en tu navegador: no se sube nada.',
     product: 'Producto',

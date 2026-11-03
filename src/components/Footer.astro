@@ -1,5 +1,6 @@
 ---
 import SocialLinks from './SocialLinks.astro';
+import SupportButton from './SupportButton.astro';
 import { useTranslations } from '../i18n/index';
 import { homePath, type Locale } from '../i18n/locales';
 
@@ -23,6 +24,7 @@ const home = homePath(locale ?? 'en');
         <p class="text-body text-xs mt-3 leading-relaxed text-pretty">
           {t.tagline}
         </p>
+        <SupportButton locale={locale} location="footer" size="md" class="mt-4" />
         <SocialLinks class="mt-4" />
       </div>
 

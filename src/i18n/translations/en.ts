@@ -82,6 +82,12 @@ export const en: UiStrings = {
       }
     ]
   },
+  support: {
+    button: 'Help keep this free',
+    title: 'Saved you a step? Help keep it free.',
+    text: 'Built and maintained by one person. A small tip keeps updates coming.',
+    note: 'Takes 30 seconds. Tips start at $5.'
+  },
   footer: {
     tagline: 'Paste photos from your clipboard and download instantly. All processing happens in your browser: nothing is uploaded.',
     product: 'Product',

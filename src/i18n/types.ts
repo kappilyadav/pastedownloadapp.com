@@ -53,6 +53,12 @@ export interface UiStrings {
     toolName: string;
     steps: { title: string; alt: string; body: string }[];
   };
+  support: {
+    button: string;
+    title: string;
+    text: string;
+    note: string;
+  };
   footer: {
     tagline: string;
     product: string;
