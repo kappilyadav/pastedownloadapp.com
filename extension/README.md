@@ -16,3 +16,4 @@ Zip the contents of this folder (so `manifest.json` is at the zip root) and uplo
 
 - Only the `clipboardRead` permission is requested.
 - The chosen format (PNG, JPEG, WebP) is remembered in the popup's local storage.
+- The popup shows an optional support message after a download. "Maybe later" hides it for a week (stored in local storage). The support links open https://ko-fi.com/kappilyadav in a new tab only when clicked, and the extension never contacts Ko-fi itself.

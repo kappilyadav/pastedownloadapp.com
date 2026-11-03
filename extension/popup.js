@@ -10,6 +10,8 @@ const shortcut = document.getElementById('shortcut');
 const downloadBtn = document.getElementById('downloadBtn');
 const clearBtn = document.getElementById('clearBtn');
 const themeToggle = document.getElementById('themeToggle');
+const supportCard = document.getElementById('supportCard');
+const supportDismiss = document.getElementById('supportDismiss');
 
 const isMac = /Mac|iPhone|iPad/.test(navigator.platform);
 shortcut.textContent = isMac ? 'Cmd + V' : 'Ctrl + V';
@@ -29,6 +31,15 @@ function save(key, value) {
     localStorage.setItem(key, value);
   } catch {
     // Storage unavailable, ignore
+  }
+}
+
+const SUPPORT_SNOOZE_MS = 7 * 24 * 60 * 60 * 1000;
+
+function showSupportCard() {
+  const until = Number(load('pdaSupportSnooze', '0'));
+  if (Date.now() >= until) {
+    supportCard.hidden = false;
   }
 }
 
@@ -97,6 +108,7 @@ function convertAndDownload(img) {
     downloadBlob(blob, filename);
     info.textContent = `${img.naturalWidth}×${img.naturalHeight} · ${format.toUpperCase()} · ${formatFileSize(blob.size)}`;
     setStatus(`Downloaded ${filename}`, 'ok');
+    showSupportCard();
   }, getMimeType(format), 0.92);
 }
 
@@ -133,7 +145,6 @@ function clearPreview() {
   preview.hidden = true;
   placeholder.hidden = false;
   setStatus('', '');
-  dropZone.focus();
 }
 
 document.addEventListener('paste', (e) => {
@@ -181,6 +192,11 @@ formatButtons.forEach((btn) => {
   });
 });
 
+supportDismiss.addEventListener('click', () => {
+  save('pdaSupportSnooze', String(Date.now() + SUPPORT_SNOOZE_MS));
+  supportCard.hidden = true;
+});
+
 const themeOrder = ['system', 'light', 'dark'];
 
 function applyTheme(pref) {
@@ -202,4 +218,3 @@ themeToggle.addEventListener('click', () => {
 
 setFormat(load('pdaFormat', 'png'));
 applyTheme(load('pdaTheme', 'system'));
-dropZone.focus();

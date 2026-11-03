@@ -4,7 +4,7 @@ Everything below is ready to copy into the Chrome Web Store developer dashboard 
 
 ## 1. Package
 
-Upload this file: `extension-store/paste-download-app-1.0.0.zip`
+Upload this file: `extension-store/paste-download-app-1.0.1.zip`
 
 It contains only the extension files (manifest, popup, scripts, icons) with `manifest.json` at the zip root.
 
@@ -46,11 +46,13 @@ FEATURES
 PRIVATE BY DESIGN
 - Your images are never uploaded. Everything happens on your device.
 - No account, no sign-in, no analytics, no tracking.
-- The extension makes no network requests.
+- The extension makes no network requests of its own.
 - It asks for a single permission, clipboard read access, which is used only when you paste.
 
 WHO IT IS FOR
 Anyone who needs to turn a copied image or screenshot into a real image file without opening an editor: writers, developers, designers, support teams, students and anyone who shares screenshots every day.
+
+Paste Download is free. If it saves you time, you can optionally support its development with the "Help keep this free" button. Nothing is locked behind a payment, and the button simply opens a Ko-fi page in a new tab.
 
 Paste Download also works as a free web app at https://pastedownloadapp.com, where you can additionally download images from a URL.
 
@@ -126,13 +128,14 @@ No account or login is needed.
 3. Press Ctrl+V (Cmd+V on Mac), or tap the paste area and allow clipboard access if asked.
 4. The image downloads to the Downloads folder as pasted_YYYYMMDD_HHMMSS.png. Use the PNG / JPEG / WebP selector to change the format.
 The extension has no background script, content script or network access. Its only permission is clipboardRead.
+The red "Help keep this free" button is an optional donation link. It only opens https://ko-fi.com/kappilyadav in a new tab when clicked. No payment happens inside the extension and no feature depends on it.
 ```
 
 ## 7. Submission checklist
 
 1. Deploy the website so https://pastedownloadapp.com/privacy/ shows the Browser Extension section.
 2. Sign in to the developer dashboard (a one-time $5 registration fee applies if the account is new) and create a New item.
-3. Upload `paste-download-app-1.0.0.zip`.
+3. Upload `paste-download-app-1.0.1.zip`.
 4. Fill the Store listing, Privacy and Distribution tabs with the text above and upload the graphics.
 5. Submit for review. Reviews typically take from a few hours to a few days.
 

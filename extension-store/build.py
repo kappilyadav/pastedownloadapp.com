@@ -113,7 +113,7 @@ def popup_doc(state='empty', theme='light', fmt='png', os_key='Ctrl + V'):
 
 
 def popup_frame(state='empty', theme='light', fmt='png', scale=1.5, os_key='Ctrl + V', height=None):
-  heights = {'empty': 430, 'done': 468}
+  heights = {'empty': 506, 'done': 572}
   hgt = height or heights[state]
   doc = html.escape(popup_doc(state, theme, fmt, os_key), quote=True)
   w, hh = 360 * scale, hgt * scale
@@ -185,7 +185,7 @@ def shot1():
   return page(1280, 800, split_layout(
     BRAND, 'Copy. Paste.<br>Downloaded.',
     'Open the extension, press <kbd>Ctrl+V</kbd> or <kbd>Cmd+V</kbd>, and your copied image is saved.',
-    popup_frame('empty', 'light', 'png', 1.5)))
+    popup_frame('empty', 'light', 'png', 1.3)))
 
 
 def shot2():
@@ -203,8 +203,8 @@ def shot3():
 
 
 def shot4():
-  left = popup_frame('empty', 'light', 'png', 1.05, 'Ctrl + V')
-  right = popup_frame('empty', 'dark', 'png', 1.05, 'Ctrl + V').replace('class="popup"', 'class="popup dk"')
+  left = popup_frame('empty', 'light', 'png', 0.92, 'Ctrl + V')
+  right = popup_frame('empty', 'dark', 'png', 0.92, 'Ctrl + V').replace('class="popup"', 'class="popup dk"')
   body = f'''
   <div style="position:absolute;top:56px;left:0;right:0;text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px">
     {BRAND}

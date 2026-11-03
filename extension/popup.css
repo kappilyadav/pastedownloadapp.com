@@ -254,10 +254,6 @@ h1 {
   padding: 20px 16px;
   text-align: center;
   cursor: pointer;
-  transition: background 0.2s;
-}
-
-#dropZone:hover {
   background: var(--canvas-soft);
 }
 
@@ -457,4 +453,83 @@ footer a:hover {
   * {
     transition: none !important;
   }
+}
+
+.support {
+  margin-top: 10px;
+  padding: 14px;
+  text-align: center;
+  background: var(--canvas);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+}
+
+.support[hidden] {
+  display: none;
+}
+
+.support-title {
+  margin: 0 0 4px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.support-text {
+  margin: 0 0 12px;
+  color: var(--body);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.support-btn {
+  justify-content: center;
+  padding: 12px 28px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  background: #dc2626;
+  text-decoration: none;
+}
+
+.support-row {
+  display: flex;
+  background: var(--canvas-soft);
+  justify-content: center;
+  padding: 0 16px 18px;
+}
+
+.support-btn:hover {
+  opacity: 1;
+  background: #b91c1c;
+}
+
+.support-note {
+  margin: 8px 0 0;
+  color: var(--mute);
+  font-size: 11px;
+}
+
+.support-dismiss {
+  margin-top: 6px;
+  padding: 2px 6px;
+  color: var(--mute);
+  font: inherit;
+  font-size: 11px;
+  background: none;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.support-dismiss:hover {
+  color: var(--ink);
+}
+
+.support-btn:focus-visible,
+.support-dismiss:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--link);
 }
