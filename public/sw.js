@@ -1,4 +1,4 @@
-const VERSION = 'v1';
+const VERSION = 'v2';
 const CACHE = `pdl-${VERSION}`;
 const PRECACHE = ['/', '/logo.svg', '/icon-192.png', '/icon-512.png', '/site.webmanifest'];
 
@@ -22,6 +22,7 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
   if (url.pathname === '/sw.js') return;
+  if (req.destination === 'iframe') return;
 
   if (req.mode === 'navigate') {
     event.respondWith(
